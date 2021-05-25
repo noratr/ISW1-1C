@@ -9430,3 +9430,892 @@ PASSED!
 
 !testRun: #PortfolioTest #test19ShouldFailWhenAddingAnEmptyPortfolioToItselfBeingInTwoPortfolios stamp: 'JPF 5/23/2021 21:27:12'!
 PASSED!
+
+----QUIT----(23 May 2021 23:10:34) Portfolio.image priorSource: 17694374!
+
+----STARTUP---- (25 May 2021 09:25:30) as /home/juan/Apps/CuisUniversity/linux64/Portfolio.image!
+
+
+!testRun: #PortfolioTest #test01EmptyPortfolioHasBalance0 stamp: 'JPF 5/25/2021 09:25:40'!
+PASSED!
+
+!testRun: #PortfolioTest #test02PortfolioWithOneAccountWithBalance50HasBalance50 stamp: 'JPF 5/25/2021 09:25:40'!
+PASSED!
+
+!testRun: #PortfolioTest #test03PortfolioWithTwoAccountsWithBalance50HasBalance100 stamp: 'JPF 5/25/2021 09:25:40'!
+PASSED!
+
+!testRun: #PortfolioTest #test04PortfolioWithOnePortfolioWithBalance50HasBalance50 stamp: 'JPF 5/25/2021 09:25:40'!
+PASSED!
+
+!testRun: #PortfolioTest #test05PortfolioWithTwoPortfoliosWithBalance50HasBalance100 stamp: 'JPF 5/25/2021 09:25:40'!
+PASSED!
+
+!testRun: #PortfolioTest #test06PortfolioWithOnePortfolioAndOneAccountWithBalance50HasBalance100 stamp: 'JPF 5/25/2021 09:25:40'!
+PASSED!
+
+!testRun: #PortfolioTest #test07PortfolioWithTwoPortfoliosAndTwoAccountsWithBalance50HasBalance200 stamp: 'JPF 5/25/2021 09:25:40'!
+PASSED!
+
+!testRun: #PortfolioTest #test08EmptyPortfolioHasNoTransactions stamp: 'JPF 5/25/2021 09:25:40'!
+PASSED!
+
+!testRun: #PortfolioTest #test09PortfolioWithOneAccountWithOneTransactionHasOnlyThatTransaction stamp: 'JPF 5/25/2021 09:25:40'!
+PASSED!
+
+!testRun: #PortfolioTest #test10PortfolioWithTwoAccountsWithOneTransactionHasOnlyThatTwoTransactions stamp: 'JPF 5/25/2021 09:25:40'!
+PASSED!
+
+!testRun: #PortfolioTest #test11PortfolioWithTwoPortfoliosWithTwoTransactionsHasOnlyThatFourTransactions stamp: 'JPF 5/25/2021 09:25:40'!
+PASSED!
+
+!testRun: #PortfolioTest #test12EmptyPortfolioHasNotRegisteredAnyTransactions stamp: 'JPF 5/25/2021 09:25:40'!
+PASSED!
+
+!testRun: #PortfolioTest #test13PortfolioWithOneAccountWithOneTransactionHasRegisteredThatTransaction stamp: 'JPF 5/25/2021 09:25:40'!
+PASSED!
+
+!testRun: #PortfolioTest #test14PortfolioWithTwoPortfoliosWithTwoTransactionsHasRegisteredThatFourTransactions stamp: 'JPF 5/25/2021 09:25:40'!
+PASSED!
+
+!testRun: #PortfolioTest #test15ShouldFailWhenAddingTheSameAccountTwiceToAPortfolio stamp: 'JPF 5/25/2021 09:25:40'!
+PASSED!
+
+!testRun: #PortfolioTest #test16ShouldFailWhenAddingAnAccountToPortfolioThatIsAlreadyInsideAChildPortfolio stamp: 'JPF 5/25/2021 09:25:40'!
+PASSED!
+
+!testRun: #PortfolioTest #test17ShouldFailWhenAddingAPortfolioWithAnAccountToAPortfolioThatHasTheSameAccount stamp: 'JPF 5/25/2021 09:25:40'!
+PASSED!
+
+!testRun: #PortfolioTest #test18ShouldFailWhenAddingAPortfolioWithAnAccountToAPortfolioThatHasAFatherPortfolioWithTheSameAccount stamp: 'JPF 5/25/2021 09:25:40'!
+PASSED!
+
+!testRun: #PortfolioTest #test19ShouldFailWhenAddingAnEmptyPortfolioToItselfBeingInTwoPortfolios stamp: 'JPF 5/25/2021 09:25:40'!
+PASSED!
+!Portfolio methodsFor: 'assertions' stamp: 'JPF 5/25/2021 09:32:00'!
+havingTemporary: anAccountable do: aBlock
+
+	accountables add: anAccountable.
+	
+	aBlock value
+	
+	accountables remove: anAccountable.! !
+!Portfolio methodsFor: 'assertions' stamp: 'JPF 5/25/2021 09:35:21' prior: 50885679!
+havingTemporary: anAccountable do: aBlock
+
+	accountables add: anAccountable.
+	aBlock ensure: [ accountables remove: anAccountable ]! !
+!Portfolio methodsFor: 'assertions' stamp: 'JPF 5/25/2021 09:37:02' prior: 50885461!
+assert: rootPortfolios wontHaveRepeatedAccountablesAfterAdding: anAccountable
+
+	| aRootPortfolioHasRepeatedAccountables |
+	
+	self havingTemporary: anAccountable do: [
+		aRootPortfolioHasRepeatedAccountables _ 
+			rootPortfolios anySatisfy: [ :rootPortfolio | rootPortfolio hasRepeatedAccountables ].
+		].
+	
+	aRootPortfolioHasRepeatedAccountables ifTrue: [
+		self error: self class cantHaveRepeatedAccountablesErrorDescription.
+		]! !
+
+!testRun: #PortfolioTest #test01EmptyPortfolioHasBalance0 stamp: 'JPF 5/25/2021 09:37:13'!
+PASSED!
+
+!testRun: #PortfolioTest #test02PortfolioWithOneAccountWithBalance50HasBalance50 stamp: 'JPF 5/25/2021 09:37:13'!
+PASSED!
+
+!testRun: #PortfolioTest #test03PortfolioWithTwoAccountsWithBalance50HasBalance100 stamp: 'JPF 5/25/2021 09:37:13'!
+PASSED!
+
+!testRun: #PortfolioTest #test04PortfolioWithOnePortfolioWithBalance50HasBalance50 stamp: 'JPF 5/25/2021 09:37:13'!
+PASSED!
+
+!testRun: #PortfolioTest #test05PortfolioWithTwoPortfoliosWithBalance50HasBalance100 stamp: 'JPF 5/25/2021 09:37:13'!
+PASSED!
+
+!testRun: #PortfolioTest #test06PortfolioWithOnePortfolioAndOneAccountWithBalance50HasBalance100 stamp: 'JPF 5/25/2021 09:37:13'!
+PASSED!
+
+!testRun: #PortfolioTest #test07PortfolioWithTwoPortfoliosAndTwoAccountsWithBalance50HasBalance200 stamp: 'JPF 5/25/2021 09:37:13'!
+PASSED!
+
+!testRun: #PortfolioTest #test08EmptyPortfolioHasNoTransactions stamp: 'JPF 5/25/2021 09:37:13'!
+PASSED!
+
+!testRun: #PortfolioTest #test09PortfolioWithOneAccountWithOneTransactionHasOnlyThatTransaction stamp: 'JPF 5/25/2021 09:37:13'!
+PASSED!
+
+!testRun: #PortfolioTest #test10PortfolioWithTwoAccountsWithOneTransactionHasOnlyThatTwoTransactions stamp: 'JPF 5/25/2021 09:37:13'!
+PASSED!
+
+!testRun: #PortfolioTest #test11PortfolioWithTwoPortfoliosWithTwoTransactionsHasOnlyThatFourTransactions stamp: 'JPF 5/25/2021 09:37:13'!
+PASSED!
+
+!testRun: #PortfolioTest #test12EmptyPortfolioHasNotRegisteredAnyTransactions stamp: 'JPF 5/25/2021 09:37:13'!
+PASSED!
+
+!testRun: #PortfolioTest #test13PortfolioWithOneAccountWithOneTransactionHasRegisteredThatTransaction stamp: 'JPF 5/25/2021 09:37:13'!
+PASSED!
+
+!testRun: #PortfolioTest #test14PortfolioWithTwoPortfoliosWithTwoTransactionsHasRegisteredThatFourTransactions stamp: 'JPF 5/25/2021 09:37:13'!
+PASSED!
+
+!testRun: #PortfolioTest #test15ShouldFailWhenAddingTheSameAccountTwiceToAPortfolio stamp: 'JPF 5/25/2021 09:37:13'!
+PASSED!
+
+!testRun: #PortfolioTest #test16ShouldFailWhenAddingAnAccountToPortfolioThatIsAlreadyInsideAChildPortfolio stamp: 'JPF 5/25/2021 09:37:13'!
+PASSED!
+
+!testRun: #PortfolioTest #test17ShouldFailWhenAddingAPortfolioWithAnAccountToAPortfolioThatHasTheSameAccount stamp: 'JPF 5/25/2021 09:37:13'!
+PASSED!
+
+!testRun: #PortfolioTest #test18ShouldFailWhenAddingAPortfolioWithAnAccountToAPortfolioThatHasAFatherPortfolioWithTheSameAccount stamp: 'JPF 5/25/2021 09:37:13'!
+PASSED!
+
+!testRun: #PortfolioTest #test19ShouldFailWhenAddingAnEmptyPortfolioToItselfBeingInTwoPortfolios stamp: 'JPF 5/25/2021 09:37:13'!
+PASSED!
+
+!testRun: #PortfolioTest #test01EmptyPortfolioHasBalance0 stamp: 'JPF 5/25/2021 09:38:57'!
+PASSED!
+
+!testRun: #PortfolioTest #test02PortfolioWithOneAccountWithBalance50HasBalance50 stamp: 'JPF 5/25/2021 09:38:57'!
+PASSED!
+
+!testRun: #PortfolioTest #test03PortfolioWithTwoAccountsWithBalance50HasBalance100 stamp: 'JPF 5/25/2021 09:38:57'!
+PASSED!
+
+!testRun: #PortfolioTest #test04PortfolioWithOnePortfolioWithBalance50HasBalance50 stamp: 'JPF 5/25/2021 09:38:57'!
+PASSED!
+
+!testRun: #PortfolioTest #test05PortfolioWithTwoPortfoliosWithBalance50HasBalance100 stamp: 'JPF 5/25/2021 09:38:57'!
+PASSED!
+
+!testRun: #PortfolioTest #test06PortfolioWithOnePortfolioAndOneAccountWithBalance50HasBalance100 stamp: 'JPF 5/25/2021 09:38:57'!
+PASSED!
+
+!testRun: #PortfolioTest #test07PortfolioWithTwoPortfoliosAndTwoAccountsWithBalance50HasBalance200 stamp: 'JPF 5/25/2021 09:38:57'!
+PASSED!
+
+!testRun: #PortfolioTest #test08EmptyPortfolioHasNoTransactions stamp: 'JPF 5/25/2021 09:38:57'!
+PASSED!
+
+!testRun: #PortfolioTest #test09PortfolioWithOneAccountWithOneTransactionHasOnlyThatTransaction stamp: 'JPF 5/25/2021 09:38:57'!
+PASSED!
+
+!testRun: #PortfolioTest #test10PortfolioWithTwoAccountsWithOneTransactionHasOnlyThatTwoTransactions stamp: 'JPF 5/25/2021 09:38:57'!
+PASSED!
+
+!testRun: #PortfolioTest #test11PortfolioWithTwoPortfoliosWithTwoTransactionsHasOnlyThatFourTransactions stamp: 'JPF 5/25/2021 09:38:57'!
+PASSED!
+
+!testRun: #PortfolioTest #test12EmptyPortfolioHasNotRegisteredAnyTransactions stamp: 'JPF 5/25/2021 09:38:57'!
+PASSED!
+
+!testRun: #PortfolioTest #test13PortfolioWithOneAccountWithOneTransactionHasRegisteredThatTransaction stamp: 'JPF 5/25/2021 09:38:57'!
+PASSED!
+
+!testRun: #PortfolioTest #test14PortfolioWithTwoPortfoliosWithTwoTransactionsHasRegisteredThatFourTransactions stamp: 'JPF 5/25/2021 09:38:57'!
+PASSED!
+
+!testRun: #PortfolioTest #test15ShouldFailWhenAddingTheSameAccountTwiceToAPortfolio stamp: 'JPF 5/25/2021 09:38:57'!
+PASSED!
+
+!testRun: #PortfolioTest #test16ShouldFailWhenAddingAnAccountToPortfolioThatIsAlreadyInsideAChildPortfolio stamp: 'JPF 5/25/2021 09:38:57'!
+PASSED!
+
+!testRun: #PortfolioTest #test17ShouldFailWhenAddingAPortfolioWithAnAccountToAPortfolioThatHasTheSameAccount stamp: 'JPF 5/25/2021 09:38:57'!
+PASSED!
+
+!testRun: #PortfolioTest #test18ShouldFailWhenAddingAPortfolioWithAnAccountToAPortfolioThatHasAFatherPortfolioWithTheSameAccount stamp: 'JPF 5/25/2021 09:38:57'!
+PASSED!
+
+!testRun: #PortfolioTest #test19ShouldFailWhenAddingAnEmptyPortfolioToItselfBeingInTwoPortfolios stamp: 'JPF 5/25/2021 09:38:57'!
+PASSED!
+
+!testRun: #PortfolioTest #test01EmptyPortfolioHasBalance0 stamp: 'JPF 5/25/2021 09:39:04'!
+PASSED!
+
+!testRun: #PortfolioTest #test02PortfolioWithOneAccountWithBalance50HasBalance50 stamp: 'JPF 5/25/2021 09:39:04'!
+PASSED!
+
+!testRun: #PortfolioTest #test03PortfolioWithTwoAccountsWithBalance50HasBalance100 stamp: 'JPF 5/25/2021 09:39:04'!
+PASSED!
+
+!testRun: #PortfolioTest #test04PortfolioWithOnePortfolioWithBalance50HasBalance50 stamp: 'JPF 5/25/2021 09:39:04'!
+PASSED!
+
+!testRun: #PortfolioTest #test05PortfolioWithTwoPortfoliosWithBalance50HasBalance100 stamp: 'JPF 5/25/2021 09:39:04'!
+PASSED!
+
+!testRun: #PortfolioTest #test06PortfolioWithOnePortfolioAndOneAccountWithBalance50HasBalance100 stamp: 'JPF 5/25/2021 09:39:04'!
+PASSED!
+
+!testRun: #PortfolioTest #test07PortfolioWithTwoPortfoliosAndTwoAccountsWithBalance50HasBalance200 stamp: 'JPF 5/25/2021 09:39:04'!
+PASSED!
+
+!testRun: #PortfolioTest #test08EmptyPortfolioHasNoTransactions stamp: 'JPF 5/25/2021 09:39:04'!
+PASSED!
+
+!testRun: #PortfolioTest #test09PortfolioWithOneAccountWithOneTransactionHasOnlyThatTransaction stamp: 'JPF 5/25/2021 09:39:04'!
+PASSED!
+
+!testRun: #PortfolioTest #test10PortfolioWithTwoAccountsWithOneTransactionHasOnlyThatTwoTransactions stamp: 'JPF 5/25/2021 09:39:04'!
+PASSED!
+
+!testRun: #PortfolioTest #test11PortfolioWithTwoPortfoliosWithTwoTransactionsHasOnlyThatFourTransactions stamp: 'JPF 5/25/2021 09:39:04'!
+PASSED!
+
+!testRun: #PortfolioTest #test12EmptyPortfolioHasNotRegisteredAnyTransactions stamp: 'JPF 5/25/2021 09:39:04'!
+PASSED!
+
+!testRun: #PortfolioTest #test13PortfolioWithOneAccountWithOneTransactionHasRegisteredThatTransaction stamp: 'JPF 5/25/2021 09:39:04'!
+PASSED!
+
+!testRun: #PortfolioTest #test14PortfolioWithTwoPortfoliosWithTwoTransactionsHasRegisteredThatFourTransactions stamp: 'JPF 5/25/2021 09:39:04'!
+PASSED!
+
+!testRun: #PortfolioTest #test15ShouldFailWhenAddingTheSameAccountTwiceToAPortfolio stamp: 'JPF 5/25/2021 09:39:04'!
+PASSED!
+
+!testRun: #PortfolioTest #test16ShouldFailWhenAddingAnAccountToPortfolioThatIsAlreadyInsideAChildPortfolio stamp: 'JPF 5/25/2021 09:39:04'!
+PASSED!
+
+!testRun: #PortfolioTest #test17ShouldFailWhenAddingAPortfolioWithAnAccountToAPortfolioThatHasTheSameAccount stamp: 'JPF 5/25/2021 09:39:04'!
+PASSED!
+
+!testRun: #PortfolioTest #test18ShouldFailWhenAddingAPortfolioWithAnAccountToAPortfolioThatHasAFatherPortfolioWithTheSameAccount stamp: 'JPF 5/25/2021 09:39:04'!
+PASSED!
+
+!testRun: #PortfolioTest #test19ShouldFailWhenAddingAnEmptyPortfolioToItselfBeingInTwoPortfolios stamp: 'JPF 5/25/2021 09:39:04'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test01ReceptiveAccountHaveZeroAsBalanceWhenCreated stamp: 'JPF 5/25/2021 09:39:04'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test02DepositIncreasesBalanceOnTransactionValue stamp: 'JPF 5/25/2021 09:39:04'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test03WithdrawDecreasesBalanceOnTransactionValue stamp: 'JPF 5/25/2021 09:39:04'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test04WithdrawValueMustBePositive stamp: 'JPF 5/25/2021 09:39:04'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test05ReceptiveAccountKnowsRegisteredTransactions stamp: 'JPF 5/25/2021 09:39:04'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test06ReceptiveAccountDoNotKnowNotRegisteredTransactions stamp: 'JPF 5/25/2021 09:39:04'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test07AccountKnowsItsTransactions stamp: 'JPF 5/25/2021 09:39:04'!
+PASSED!
+!Portfolio methodsFor: 'assertions' stamp: 'JPF 5/25/2021 09:41:56'!
+assertRootPortfoliosWontHaveRepeatedAccountablesAfterAdding: anAccountable
+
+	| aRootPortfolioHasRepeatedAccountables |
+	
+	self havingTemporary: anAccountable do: [
+		aRootPortfolioHasRepeatedAccountables _ 
+			self rootPortfolios anySatisfy: [ :rootPortfolio | rootPortfolio hasRepeatedAccountables ].
+		].
+	
+	aRootPortfolioHasRepeatedAccountables ifTrue: [
+		self error: self class cantHaveRepeatedAccountablesErrorDescription.
+		]! !
+!Portfolio methodsFor: 'accountables' stamp: 'JPF 5/25/2021 09:42:26' prior: 50884192!
+addAccountable: anAccountable
+	
+	self assertRootPortfoliosWontHaveRepeatedAccountablesAfterAdding: anAccountable.
+	
+	accountables add: anAccountable.
+	anAccountable addTo: self.! !
+
+!testRun: #PortfolioTest #test01EmptyPortfolioHasBalance0 stamp: 'JPF 5/25/2021 09:42:34'!
+PASSED!
+
+!testRun: #PortfolioTest #test02PortfolioWithOneAccountWithBalance50HasBalance50 stamp: 'JPF 5/25/2021 09:42:34'!
+PASSED!
+
+!testRun: #PortfolioTest #test03PortfolioWithTwoAccountsWithBalance50HasBalance100 stamp: 'JPF 5/25/2021 09:42:34'!
+PASSED!
+
+!testRun: #PortfolioTest #test04PortfolioWithOnePortfolioWithBalance50HasBalance50 stamp: 'JPF 5/25/2021 09:42:34'!
+PASSED!
+
+!testRun: #PortfolioTest #test05PortfolioWithTwoPortfoliosWithBalance50HasBalance100 stamp: 'JPF 5/25/2021 09:42:34'!
+PASSED!
+
+!testRun: #PortfolioTest #test06PortfolioWithOnePortfolioAndOneAccountWithBalance50HasBalance100 stamp: 'JPF 5/25/2021 09:42:34'!
+PASSED!
+
+!testRun: #PortfolioTest #test07PortfolioWithTwoPortfoliosAndTwoAccountsWithBalance50HasBalance200 stamp: 'JPF 5/25/2021 09:42:34'!
+PASSED!
+
+!testRun: #PortfolioTest #test08EmptyPortfolioHasNoTransactions stamp: 'JPF 5/25/2021 09:42:34'!
+PASSED!
+
+!testRun: #PortfolioTest #test09PortfolioWithOneAccountWithOneTransactionHasOnlyThatTransaction stamp: 'JPF 5/25/2021 09:42:34'!
+PASSED!
+
+!testRun: #PortfolioTest #test10PortfolioWithTwoAccountsWithOneTransactionHasOnlyThatTwoTransactions stamp: 'JPF 5/25/2021 09:42:34'!
+PASSED!
+
+!testRun: #PortfolioTest #test11PortfolioWithTwoPortfoliosWithTwoTransactionsHasOnlyThatFourTransactions stamp: 'JPF 5/25/2021 09:42:34'!
+PASSED!
+
+!testRun: #PortfolioTest #test12EmptyPortfolioHasNotRegisteredAnyTransactions stamp: 'JPF 5/25/2021 09:42:34'!
+PASSED!
+
+!testRun: #PortfolioTest #test13PortfolioWithOneAccountWithOneTransactionHasRegisteredThatTransaction stamp: 'JPF 5/25/2021 09:42:34'!
+PASSED!
+
+!testRun: #PortfolioTest #test14PortfolioWithTwoPortfoliosWithTwoTransactionsHasRegisteredThatFourTransactions stamp: 'JPF 5/25/2021 09:42:34'!
+PASSED!
+
+!testRun: #PortfolioTest #test15ShouldFailWhenAddingTheSameAccountTwiceToAPortfolio stamp: 'JPF 5/25/2021 09:42:34'!
+PASSED!
+
+!testRun: #PortfolioTest #test16ShouldFailWhenAddingAnAccountToPortfolioThatIsAlreadyInsideAChildPortfolio stamp: 'JPF 5/25/2021 09:42:34'!
+PASSED!
+
+!testRun: #PortfolioTest #test17ShouldFailWhenAddingAPortfolioWithAnAccountToAPortfolioThatHasTheSameAccount stamp: 'JPF 5/25/2021 09:42:34'!
+PASSED!
+
+!testRun: #PortfolioTest #test18ShouldFailWhenAddingAPortfolioWithAnAccountToAPortfolioThatHasAFatherPortfolioWithTheSameAccount stamp: 'JPF 5/25/2021 09:42:34'!
+PASSED!
+
+!testRun: #PortfolioTest #test19ShouldFailWhenAddingAnEmptyPortfolioToItselfBeingInTwoPortfolios stamp: 'JPF 5/25/2021 09:42:34'!
+PASSED!
+
+!methodRemoval: Portfolio #assert:wontHaveRepeatedAccountablesAfterAdding: stamp: 'JPF 5/25/2021 09:44:28'!
+assert: rootPortfolios wontHaveRepeatedAccountablesAfterAdding: anAccountable
+
+	| aRootPortfolioHasRepeatedAccountables |
+	
+	self havingTemporary: anAccountable do: [
+		aRootPortfolioHasRepeatedAccountables _ 
+			rootPortfolios anySatisfy: [ :rootPortfolio | rootPortfolio hasRepeatedAccountables ].
+		].
+	
+	aRootPortfolioHasRepeatedAccountables ifTrue: [
+		self error: self class cantHaveRepeatedAccountablesErrorDescription.
+		]!
+!Portfolio methodsFor: 'assertions' stamp: 'JPF 5/25/2021 09:47:21'!
+anyRootPortfolioHasRepeatedAccountables
+
+	^ self rootPortfolios anySatisfy: [ :rootPortfolio | rootPortfolio hasRepeatedAccountables ]! !
+!Portfolio methodsFor: 'assertions' stamp: 'JPF 5/25/2021 09:47:21' prior: 50885976!
+assertRootPortfoliosWontHaveRepeatedAccountablesAfterAdding: anAccountable
+
+	| aRootPortfolioHasRepeatedAccountables |
+	
+	self havingTemporary: anAccountable do: [
+		aRootPortfolioHasRepeatedAccountables _ 
+			self anyRootPortfolioHasRepeatedAccountables.
+		].
+	
+	aRootPortfolioHasRepeatedAccountables ifTrue: [
+		self error: self class cantHaveRepeatedAccountablesErrorDescription.
+		]! !
+!Portfolio methodsFor: 'assertions' stamp: 'JPF 5/25/2021 09:47:52' prior: 50886105!
+assertRootPortfoliosWontHaveRepeatedAccountablesAfterAdding: anAccountable
+
+	| aRootPortfolioHasRepeatedAccountables |
+	
+	self havingTemporary: anAccountable do: [ 
+		aRootPortfolioHasRepeatedAccountables _			self anyRootPortfolioHasRepeatedAccountables.
+		].
+	
+	aRootPortfolioHasRepeatedAccountables ifTrue: [
+		self error: self class cantHaveRepeatedAccountablesErrorDescription.
+		]! !
+
+!testRun: #PortfolioTest #test01EmptyPortfolioHasBalance0 stamp: 'JPF 5/25/2021 09:48:02'!
+PASSED!
+
+!testRun: #PortfolioTest #test02PortfolioWithOneAccountWithBalance50HasBalance50 stamp: 'JPF 5/25/2021 09:48:02'!
+PASSED!
+
+!testRun: #PortfolioTest #test03PortfolioWithTwoAccountsWithBalance50HasBalance100 stamp: 'JPF 5/25/2021 09:48:02'!
+PASSED!
+
+!testRun: #PortfolioTest #test04PortfolioWithOnePortfolioWithBalance50HasBalance50 stamp: 'JPF 5/25/2021 09:48:02'!
+PASSED!
+
+!testRun: #PortfolioTest #test05PortfolioWithTwoPortfoliosWithBalance50HasBalance100 stamp: 'JPF 5/25/2021 09:48:02'!
+PASSED!
+
+!testRun: #PortfolioTest #test06PortfolioWithOnePortfolioAndOneAccountWithBalance50HasBalance100 stamp: 'JPF 5/25/2021 09:48:02'!
+PASSED!
+
+!testRun: #PortfolioTest #test07PortfolioWithTwoPortfoliosAndTwoAccountsWithBalance50HasBalance200 stamp: 'JPF 5/25/2021 09:48:02'!
+PASSED!
+
+!testRun: #PortfolioTest #test08EmptyPortfolioHasNoTransactions stamp: 'JPF 5/25/2021 09:48:02'!
+PASSED!
+
+!testRun: #PortfolioTest #test09PortfolioWithOneAccountWithOneTransactionHasOnlyThatTransaction stamp: 'JPF 5/25/2021 09:48:02'!
+PASSED!
+
+!testRun: #PortfolioTest #test10PortfolioWithTwoAccountsWithOneTransactionHasOnlyThatTwoTransactions stamp: 'JPF 5/25/2021 09:48:02'!
+PASSED!
+
+!testRun: #PortfolioTest #test11PortfolioWithTwoPortfoliosWithTwoTransactionsHasOnlyThatFourTransactions stamp: 'JPF 5/25/2021 09:48:02'!
+PASSED!
+
+!testRun: #PortfolioTest #test12EmptyPortfolioHasNotRegisteredAnyTransactions stamp: 'JPF 5/25/2021 09:48:02'!
+PASSED!
+
+!testRun: #PortfolioTest #test13PortfolioWithOneAccountWithOneTransactionHasRegisteredThatTransaction stamp: 'JPF 5/25/2021 09:48:02'!
+PASSED!
+
+!testRun: #PortfolioTest #test14PortfolioWithTwoPortfoliosWithTwoTransactionsHasRegisteredThatFourTransactions stamp: 'JPF 5/25/2021 09:48:02'!
+PASSED!
+
+!testRun: #PortfolioTest #test15ShouldFailWhenAddingTheSameAccountTwiceToAPortfolio stamp: 'JPF 5/25/2021 09:48:02'!
+PASSED!
+
+!testRun: #PortfolioTest #test16ShouldFailWhenAddingAnAccountToPortfolioThatIsAlreadyInsideAChildPortfolio stamp: 'JPF 5/25/2021 09:48:02'!
+PASSED!
+
+!testRun: #PortfolioTest #test17ShouldFailWhenAddingAPortfolioWithAnAccountToAPortfolioThatHasTheSameAccount stamp: 'JPF 5/25/2021 09:48:02'!
+PASSED!
+
+!testRun: #PortfolioTest #test18ShouldFailWhenAddingAPortfolioWithAnAccountToAPortfolioThatHasAFatherPortfolioWithTheSameAccount stamp: 'JPF 5/25/2021 09:48:02'!
+PASSED!
+
+!testRun: #PortfolioTest #test19ShouldFailWhenAddingAnEmptyPortfolioToItselfBeingInTwoPortfolios stamp: 'JPF 5/25/2021 09:48:02'!
+PASSED!
+!Accountable methodsFor: 'father portfolios' stamp: 'JPF 5/25/2021 09:53:32' prior: 50882457!
+rootPortfolios
+
+	| rootPortfolios |
+	
+	rootPortfolios _ OrderedCollection new.
+	
+	fatherPortfolios 
+		ifEmpty: [ rootPortfolios add: self ] 
+		ifNotEmpty: [ fatherPortfolios do: [ :fatherPortfolio |
+			rootPortfolios addAll: fatherPortfolio rootPortfolios.
+		]].
+
+	^ rootPortfolios
+	
+	! !
+
+!testRun: #PortfolioTest #test01EmptyPortfolioHasBalance0 stamp: 'JPF 5/25/2021 09:53:34'!
+PASSED!
+
+!testRun: #PortfolioTest #test02PortfolioWithOneAccountWithBalance50HasBalance50 stamp: 'JPF 5/25/2021 09:53:34'!
+PASSED!
+
+!testRun: #PortfolioTest #test03PortfolioWithTwoAccountsWithBalance50HasBalance100 stamp: 'JPF 5/25/2021 09:53:34'!
+PASSED!
+
+!testRun: #PortfolioTest #test04PortfolioWithOnePortfolioWithBalance50HasBalance50 stamp: 'JPF 5/25/2021 09:53:34'!
+PASSED!
+
+!testRun: #PortfolioTest #test05PortfolioWithTwoPortfoliosWithBalance50HasBalance100 stamp: 'JPF 5/25/2021 09:53:34'!
+PASSED!
+
+!testRun: #PortfolioTest #test06PortfolioWithOnePortfolioAndOneAccountWithBalance50HasBalance100 stamp: 'JPF 5/25/2021 09:53:34'!
+PASSED!
+
+!testRun: #PortfolioTest #test07PortfolioWithTwoPortfoliosAndTwoAccountsWithBalance50HasBalance200 stamp: 'JPF 5/25/2021 09:53:34'!
+PASSED!
+
+!testRun: #PortfolioTest #test08EmptyPortfolioHasNoTransactions stamp: 'JPF 5/25/2021 09:53:34'!
+PASSED!
+
+!testRun: #PortfolioTest #test09PortfolioWithOneAccountWithOneTransactionHasOnlyThatTransaction stamp: 'JPF 5/25/2021 09:53:34'!
+PASSED!
+
+!testRun: #PortfolioTest #test10PortfolioWithTwoAccountsWithOneTransactionHasOnlyThatTwoTransactions stamp: 'JPF 5/25/2021 09:53:34'!
+PASSED!
+
+!testRun: #PortfolioTest #test11PortfolioWithTwoPortfoliosWithTwoTransactionsHasOnlyThatFourTransactions stamp: 'JPF 5/25/2021 09:53:34'!
+PASSED!
+
+!testRun: #PortfolioTest #test12EmptyPortfolioHasNotRegisteredAnyTransactions stamp: 'JPF 5/25/2021 09:53:34'!
+PASSED!
+
+!testRun: #PortfolioTest #test13PortfolioWithOneAccountWithOneTransactionHasRegisteredThatTransaction stamp: 'JPF 5/25/2021 09:53:34'!
+PASSED!
+
+!testRun: #PortfolioTest #test14PortfolioWithTwoPortfoliosWithTwoTransactionsHasRegisteredThatFourTransactions stamp: 'JPF 5/25/2021 09:53:34'!
+PASSED!
+
+!testRun: #PortfolioTest #test15ShouldFailWhenAddingTheSameAccountTwiceToAPortfolio stamp: 'JPF 5/25/2021 09:53:34'!
+PASSED!
+
+!testRun: #PortfolioTest #test16ShouldFailWhenAddingAnAccountToPortfolioThatIsAlreadyInsideAChildPortfolio stamp: 'JPF 5/25/2021 09:53:34'!
+PASSED!
+
+!testRun: #PortfolioTest #test17ShouldFailWhenAddingAPortfolioWithAnAccountToAPortfolioThatHasTheSameAccount stamp: 'JPF 5/25/2021 09:53:34'!
+PASSED!
+
+!testRun: #PortfolioTest #test18ShouldFailWhenAddingAPortfolioWithAnAccountToAPortfolioThatHasAFatherPortfolioWithTheSameAccount stamp: 'JPF 5/25/2021 09:53:34'!
+PASSED!
+
+!testRun: #PortfolioTest #test19ShouldFailWhenAddingAnEmptyPortfolioToItselfBeingInTwoPortfolios stamp: 'JPF 5/25/2021 09:53:34'!
+PASSED!
+
+nil isNil!
+
+nil isNil isNil !
+
+nil isNil isNil ifFalse: [true]!
+
+!testRun: #PortfolioTest #test01EmptyPortfolioHasBalance0 stamp: 'JPF 5/25/2021 10:04:39'!
+PASSED!
+
+!testRun: #PortfolioTest #test02PortfolioWithOneAccountWithBalance50HasBalance50 stamp: 'JPF 5/25/2021 10:04:39'!
+PASSED!
+
+!testRun: #PortfolioTest #test03PortfolioWithTwoAccountsWithBalance50HasBalance100 stamp: 'JPF 5/25/2021 10:04:39'!
+PASSED!
+
+!testRun: #PortfolioTest #test04PortfolioWithOnePortfolioWithBalance50HasBalance50 stamp: 'JPF 5/25/2021 10:04:39'!
+PASSED!
+
+!testRun: #PortfolioTest #test05PortfolioWithTwoPortfoliosWithBalance50HasBalance100 stamp: 'JPF 5/25/2021 10:04:39'!
+PASSED!
+
+!testRun: #PortfolioTest #test06PortfolioWithOnePortfolioAndOneAccountWithBalance50HasBalance100 stamp: 'JPF 5/25/2021 10:04:39'!
+PASSED!
+
+!testRun: #PortfolioTest #test07PortfolioWithTwoPortfoliosAndTwoAccountsWithBalance50HasBalance200 stamp: 'JPF 5/25/2021 10:04:39'!
+PASSED!
+
+!testRun: #PortfolioTest #test08EmptyPortfolioHasNoTransactions stamp: 'JPF 5/25/2021 10:04:39'!
+PASSED!
+
+!testRun: #PortfolioTest #test09PortfolioWithOneAccountWithOneTransactionHasOnlyThatTransaction stamp: 'JPF 5/25/2021 10:04:39'!
+PASSED!
+
+!testRun: #PortfolioTest #test10PortfolioWithTwoAccountsWithOneTransactionHasOnlyThatTwoTransactions stamp: 'JPF 5/25/2021 10:04:39'!
+PASSED!
+
+!testRun: #PortfolioTest #test11PortfolioWithTwoPortfoliosWithTwoTransactionsHasOnlyThatFourTransactions stamp: 'JPF 5/25/2021 10:04:39'!
+PASSED!
+
+!testRun: #PortfolioTest #test12EmptyPortfolioHasNotRegisteredAnyTransactions stamp: 'JPF 5/25/2021 10:04:39'!
+PASSED!
+
+!testRun: #PortfolioTest #test13PortfolioWithOneAccountWithOneTransactionHasRegisteredThatTransaction stamp: 'JPF 5/25/2021 10:04:39'!
+PASSED!
+
+!testRun: #PortfolioTest #test14PortfolioWithTwoPortfoliosWithTwoTransactionsHasRegisteredThatFourTransactions stamp: 'JPF 5/25/2021 10:04:39'!
+PASSED!
+
+!testRun: #PortfolioTest #test15ShouldFailWhenAddingTheSameAccountTwiceToAPortfolio stamp: 'JPF 5/25/2021 10:04:39'!
+PASSED!
+
+!testRun: #PortfolioTest #test16ShouldFailWhenAddingAnAccountToPortfolioThatIsAlreadyInsideAChildPortfolio stamp: 'JPF 5/25/2021 10:04:39'!
+PASSED!
+
+!testRun: #PortfolioTest #test17ShouldFailWhenAddingAPortfolioWithAnAccountToAPortfolioThatHasTheSameAccount stamp: 'JPF 5/25/2021 10:04:39'!
+PASSED!
+
+!testRun: #PortfolioTest #test18ShouldFailWhenAddingAPortfolioWithAnAccountToAPortfolioThatHasAFatherPortfolioWithTheSameAccount stamp: 'JPF 5/25/2021 10:04:39'!
+PASSED!
+
+!testRun: #PortfolioTest #test19ShouldFailWhenAddingAnEmptyPortfolioToItselfBeingInTwoPortfolios stamp: 'JPF 5/25/2021 10:04:39'!
+PASSED!
+!Accountable methodsFor: 'father portfolios' stamp: 'JPF 5/25/2021 10:10:22' prior: 50886216!
+rootPortfolios
+
+	| rootPortfolios |
+	
+	rootPortfolios _ OrderedCollection new.
+	
+	fatherPortfolios 
+		ifEmpty: [ ^ OrderedCollection with: self ] 
+		ifNotEmpty: [ fatherPortfolios do: [ :fatherPortfolio |
+			rootPortfolios addAll: fatherPortfolio rootPortfolios.
+		]].
+
+	^ rootPortfolios
+	
+	! !
+!Accountable methodsFor: 'father portfolios' stamp: 'JPF 5/25/2021 10:11:33' prior: 50886391!
+rootPortfolios
+
+	fatherPortfolios 
+		ifEmpty: [ ^ OrderedCollection with: self ] 
+		ifNotEmpty: [ fatherPortfolios inject: OrderedCollection new into: [ :rootPortfolios :fatherPortfolio |
+			rootPortfolios addAll: fatherPortfolio rootPortfolios.
+			rootPortfolios.
+		]]
+	
+	! !
+
+!testRun: #PortfolioTest #test01EmptyPortfolioHasBalance0 stamp: 'JPF 5/25/2021 10:11:44'!
+PASSED!
+
+!testRun: #PortfolioTest #test02PortfolioWithOneAccountWithBalance50HasBalance50 stamp: 'JPF 5/25/2021 10:11:44'!
+PASSED!
+
+!testRun: #PortfolioTest #test03PortfolioWithTwoAccountsWithBalance50HasBalance100 stamp: 'JPF 5/25/2021 10:11:44'!
+PASSED!
+
+!testRun: #PortfolioTest #test04PortfolioWithOnePortfolioWithBalance50HasBalance50 stamp: 'JPF 5/25/2021 10:11:44'!
+PASSED!
+
+!testRun: #PortfolioTest #test05PortfolioWithTwoPortfoliosWithBalance50HasBalance100 stamp: 'JPF 5/25/2021 10:11:44'!
+PASSED!
+
+!testRun: #PortfolioTest #test06PortfolioWithOnePortfolioAndOneAccountWithBalance50HasBalance100 stamp: 'JPF 5/25/2021 10:11:44'!
+PASSED!
+
+!testRun: #PortfolioTest #test07PortfolioWithTwoPortfoliosAndTwoAccountsWithBalance50HasBalance200 stamp: 'JPF 5/25/2021 10:11:44'!
+PASSED!
+
+!testRun: #PortfolioTest #test08EmptyPortfolioHasNoTransactions stamp: 'JPF 5/25/2021 10:11:44'!
+PASSED!
+
+!testRun: #PortfolioTest #test09PortfolioWithOneAccountWithOneTransactionHasOnlyThatTransaction stamp: 'JPF 5/25/2021 10:11:44'!
+PASSED!
+
+!testRun: #PortfolioTest #test10PortfolioWithTwoAccountsWithOneTransactionHasOnlyThatTwoTransactions stamp: 'JPF 5/25/2021 10:11:44'!
+PASSED!
+
+!testRun: #PortfolioTest #test11PortfolioWithTwoPortfoliosWithTwoTransactionsHasOnlyThatFourTransactions stamp: 'JPF 5/25/2021 10:11:44'!
+PASSED!
+
+!testRun: #PortfolioTest #test12EmptyPortfolioHasNotRegisteredAnyTransactions stamp: 'JPF 5/25/2021 10:11:44'!
+PASSED!
+
+!testRun: #PortfolioTest #test13PortfolioWithOneAccountWithOneTransactionHasRegisteredThatTransaction stamp: 'JPF 5/25/2021 10:11:44'!
+PASSED!
+
+!testRun: #PortfolioTest #test14PortfolioWithTwoPortfoliosWithTwoTransactionsHasRegisteredThatFourTransactions stamp: 'JPF 5/25/2021 10:11:44'!
+PASSED!
+
+!testRun: #PortfolioTest #test15ShouldFailWhenAddingTheSameAccountTwiceToAPortfolio stamp: 'JPF 5/25/2021 10:11:44'!
+PASSED!
+
+!testRun: #PortfolioTest #test16ShouldFailWhenAddingAnAccountToPortfolioThatIsAlreadyInsideAChildPortfolio stamp: 'JPF 5/25/2021 10:11:44'!
+PASSED!
+
+!testRun: #PortfolioTest #test17ShouldFailWhenAddingAPortfolioWithAnAccountToAPortfolioThatHasTheSameAccount stamp: 'JPF 5/25/2021 10:11:44'!
+PASSED!
+
+!testRun: #PortfolioTest #test18ShouldFailWhenAddingAPortfolioWithAnAccountToAPortfolioThatHasAFatherPortfolioWithTheSameAccount stamp: 'JPF 5/25/2021 10:11:44'!
+FAILURE!
+
+!testRun: #PortfolioTest #test19ShouldFailWhenAddingAnEmptyPortfolioToItselfBeingInTwoPortfolios stamp: 'JPF 5/25/2021 10:11:44'!
+FAILURE!
+
+!testRun: #PortfolioTest #test18ShouldFailWhenAddingAPortfolioWithAnAccountToAPortfolioThatHasAFatherPortfolioWithTheSameAccount stamp: 'JPF 5/25/2021 10:11:59'!
+FAILURE!
+!Accountable methodsFor: 'father portfolios' stamp: 'JPF 5/25/2021 10:12:28' prior: 50886404!
+rootPortfolios
+
+	fatherPortfolios 
+		ifEmpty: [ ^ OrderedCollection with: self ] 
+		ifNotEmpty: [ ^ fatherPortfolios inject: OrderedCollection new into: [ :rootPortfolios :fatherPortfolio |
+			rootPortfolios addAll: fatherPortfolio rootPortfolios.
+			rootPortfolios.
+		]]
+	
+	! !
+
+!testRun: #PortfolioTest #test01EmptyPortfolioHasBalance0 stamp: 'JPF 5/25/2021 10:12:35'!
+PASSED!
+
+!testRun: #PortfolioTest #test02PortfolioWithOneAccountWithBalance50HasBalance50 stamp: 'JPF 5/25/2021 10:12:35'!
+PASSED!
+
+!testRun: #PortfolioTest #test03PortfolioWithTwoAccountsWithBalance50HasBalance100 stamp: 'JPF 5/25/2021 10:12:35'!
+PASSED!
+
+!testRun: #PortfolioTest #test04PortfolioWithOnePortfolioWithBalance50HasBalance50 stamp: 'JPF 5/25/2021 10:12:35'!
+PASSED!
+
+!testRun: #PortfolioTest #test05PortfolioWithTwoPortfoliosWithBalance50HasBalance100 stamp: 'JPF 5/25/2021 10:12:35'!
+PASSED!
+
+!testRun: #PortfolioTest #test06PortfolioWithOnePortfolioAndOneAccountWithBalance50HasBalance100 stamp: 'JPF 5/25/2021 10:12:35'!
+PASSED!
+
+!testRun: #PortfolioTest #test07PortfolioWithTwoPortfoliosAndTwoAccountsWithBalance50HasBalance200 stamp: 'JPF 5/25/2021 10:12:35'!
+PASSED!
+
+!testRun: #PortfolioTest #test08EmptyPortfolioHasNoTransactions stamp: 'JPF 5/25/2021 10:12:35'!
+PASSED!
+
+!testRun: #PortfolioTest #test09PortfolioWithOneAccountWithOneTransactionHasOnlyThatTransaction stamp: 'JPF 5/25/2021 10:12:35'!
+PASSED!
+
+!testRun: #PortfolioTest #test10PortfolioWithTwoAccountsWithOneTransactionHasOnlyThatTwoTransactions stamp: 'JPF 5/25/2021 10:12:35'!
+PASSED!
+
+!testRun: #PortfolioTest #test11PortfolioWithTwoPortfoliosWithTwoTransactionsHasOnlyThatFourTransactions stamp: 'JPF 5/25/2021 10:12:35'!
+PASSED!
+
+!testRun: #PortfolioTest #test12EmptyPortfolioHasNotRegisteredAnyTransactions stamp: 'JPF 5/25/2021 10:12:35'!
+PASSED!
+
+!testRun: #PortfolioTest #test13PortfolioWithOneAccountWithOneTransactionHasRegisteredThatTransaction stamp: 'JPF 5/25/2021 10:12:35'!
+PASSED!
+
+!testRun: #PortfolioTest #test14PortfolioWithTwoPortfoliosWithTwoTransactionsHasRegisteredThatFourTransactions stamp: 'JPF 5/25/2021 10:12:35'!
+PASSED!
+
+!testRun: #PortfolioTest #test15ShouldFailWhenAddingTheSameAccountTwiceToAPortfolio stamp: 'JPF 5/25/2021 10:12:35'!
+PASSED!
+
+!testRun: #PortfolioTest #test16ShouldFailWhenAddingAnAccountToPortfolioThatIsAlreadyInsideAChildPortfolio stamp: 'JPF 5/25/2021 10:12:35'!
+PASSED!
+
+!testRun: #PortfolioTest #test17ShouldFailWhenAddingAPortfolioWithAnAccountToAPortfolioThatHasTheSameAccount stamp: 'JPF 5/25/2021 10:12:35'!
+PASSED!
+
+!testRun: #PortfolioTest #test18ShouldFailWhenAddingAPortfolioWithAnAccountToAPortfolioThatHasAFatherPortfolioWithTheSameAccount stamp: 'JPF 5/25/2021 10:12:35'!
+PASSED!
+
+!testRun: #PortfolioTest #test19ShouldFailWhenAddingAnEmptyPortfolioToItselfBeingInTwoPortfolios stamp: 'JPF 5/25/2021 10:12:35'!
+PASSED!
+!Portfolio methodsFor: 'accountables' stamp: 'JPF 5/25/2021 10:14:09' prior: 50884513!
+hasRepeatedAccountables
+
+	^ RepeatedAccountablesVisitor new hasRepeatedAccountables: self! !
+
+!testRun: #PortfolioTest #test01EmptyPortfolioHasBalance0 stamp: 'JPF 5/25/2021 10:14:18'!
+PASSED!
+
+!testRun: #PortfolioTest #test02PortfolioWithOneAccountWithBalance50HasBalance50 stamp: 'JPF 5/25/2021 10:14:18'!
+PASSED!
+
+!testRun: #PortfolioTest #test03PortfolioWithTwoAccountsWithBalance50HasBalance100 stamp: 'JPF 5/25/2021 10:14:18'!
+PASSED!
+
+!testRun: #PortfolioTest #test04PortfolioWithOnePortfolioWithBalance50HasBalance50 stamp: 'JPF 5/25/2021 10:14:18'!
+PASSED!
+
+!testRun: #PortfolioTest #test05PortfolioWithTwoPortfoliosWithBalance50HasBalance100 stamp: 'JPF 5/25/2021 10:14:18'!
+PASSED!
+
+!testRun: #PortfolioTest #test06PortfolioWithOnePortfolioAndOneAccountWithBalance50HasBalance100 stamp: 'JPF 5/25/2021 10:14:18'!
+PASSED!
+
+!testRun: #PortfolioTest #test07PortfolioWithTwoPortfoliosAndTwoAccountsWithBalance50HasBalance200 stamp: 'JPF 5/25/2021 10:14:18'!
+PASSED!
+
+!testRun: #PortfolioTest #test08EmptyPortfolioHasNoTransactions stamp: 'JPF 5/25/2021 10:14:18'!
+PASSED!
+
+!testRun: #PortfolioTest #test09PortfolioWithOneAccountWithOneTransactionHasOnlyThatTransaction stamp: 'JPF 5/25/2021 10:14:18'!
+PASSED!
+
+!testRun: #PortfolioTest #test10PortfolioWithTwoAccountsWithOneTransactionHasOnlyThatTwoTransactions stamp: 'JPF 5/25/2021 10:14:18'!
+PASSED!
+
+!testRun: #PortfolioTest #test11PortfolioWithTwoPortfoliosWithTwoTransactionsHasOnlyThatFourTransactions stamp: 'JPF 5/25/2021 10:14:18'!
+PASSED!
+
+!testRun: #PortfolioTest #test12EmptyPortfolioHasNotRegisteredAnyTransactions stamp: 'JPF 5/25/2021 10:14:18'!
+PASSED!
+
+!testRun: #PortfolioTest #test13PortfolioWithOneAccountWithOneTransactionHasRegisteredThatTransaction stamp: 'JPF 5/25/2021 10:14:18'!
+PASSED!
+
+!testRun: #PortfolioTest #test14PortfolioWithTwoPortfoliosWithTwoTransactionsHasRegisteredThatFourTransactions stamp: 'JPF 5/25/2021 10:14:18'!
+PASSED!
+
+!testRun: #PortfolioTest #test15ShouldFailWhenAddingTheSameAccountTwiceToAPortfolio stamp: 'JPF 5/25/2021 10:14:18'!
+PASSED!
+
+!testRun: #PortfolioTest #test16ShouldFailWhenAddingAnAccountToPortfolioThatIsAlreadyInsideAChildPortfolio stamp: 'JPF 5/25/2021 10:14:18'!
+PASSED!
+
+!testRun: #PortfolioTest #test17ShouldFailWhenAddingAPortfolioWithAnAccountToAPortfolioThatHasTheSameAccount stamp: 'JPF 5/25/2021 10:14:18'!
+PASSED!
+
+!testRun: #PortfolioTest #test18ShouldFailWhenAddingAPortfolioWithAnAccountToAPortfolioThatHasAFatherPortfolioWithTheSameAccount stamp: 'JPF 5/25/2021 10:14:18'!
+PASSED!
+
+!testRun: #PortfolioTest #test19ShouldFailWhenAddingAnEmptyPortfolioToItselfBeingInTwoPortfolios stamp: 'JPF 5/25/2021 10:14:18'!
+PASSED!
+
+!testRun: #PortfolioTest #test01EmptyPortfolioHasBalance0 stamp: 'JPF 5/25/2021 10:15:13'!
+PASSED!
+
+!testRun: #PortfolioTest #test02PortfolioWithOneAccountWithBalance50HasBalance50 stamp: 'JPF 5/25/2021 10:15:13'!
+PASSED!
+
+!testRun: #PortfolioTest #test03PortfolioWithTwoAccountsWithBalance50HasBalance100 stamp: 'JPF 5/25/2021 10:15:13'!
+PASSED!
+
+!testRun: #PortfolioTest #test04PortfolioWithOnePortfolioWithBalance50HasBalance50 stamp: 'JPF 5/25/2021 10:15:13'!
+PASSED!
+
+!testRun: #PortfolioTest #test05PortfolioWithTwoPortfoliosWithBalance50HasBalance100 stamp: 'JPF 5/25/2021 10:15:13'!
+PASSED!
+
+!testRun: #PortfolioTest #test06PortfolioWithOnePortfolioAndOneAccountWithBalance50HasBalance100 stamp: 'JPF 5/25/2021 10:15:13'!
+PASSED!
+
+!testRun: #PortfolioTest #test07PortfolioWithTwoPortfoliosAndTwoAccountsWithBalance50HasBalance200 stamp: 'JPF 5/25/2021 10:15:13'!
+PASSED!
+
+!testRun: #PortfolioTest #test08EmptyPortfolioHasNoTransactions stamp: 'JPF 5/25/2021 10:15:13'!
+PASSED!
+
+!testRun: #PortfolioTest #test09PortfolioWithOneAccountWithOneTransactionHasOnlyThatTransaction stamp: 'JPF 5/25/2021 10:15:13'!
+PASSED!
+
+!testRun: #PortfolioTest #test10PortfolioWithTwoAccountsWithOneTransactionHasOnlyThatTwoTransactions stamp: 'JPF 5/25/2021 10:15:13'!
+PASSED!
+
+!testRun: #PortfolioTest #test11PortfolioWithTwoPortfoliosWithTwoTransactionsHasOnlyThatFourTransactions stamp: 'JPF 5/25/2021 10:15:13'!
+PASSED!
+
+!testRun: #PortfolioTest #test12EmptyPortfolioHasNotRegisteredAnyTransactions stamp: 'JPF 5/25/2021 10:15:13'!
+PASSED!
+
+!testRun: #PortfolioTest #test13PortfolioWithOneAccountWithOneTransactionHasRegisteredThatTransaction stamp: 'JPF 5/25/2021 10:15:13'!
+PASSED!
+
+!testRun: #PortfolioTest #test14PortfolioWithTwoPortfoliosWithTwoTransactionsHasRegisteredThatFourTransactions stamp: 'JPF 5/25/2021 10:15:13'!
+PASSED!
+
+!testRun: #PortfolioTest #test15ShouldFailWhenAddingTheSameAccountTwiceToAPortfolio stamp: 'JPF 5/25/2021 10:15:13'!
+PASSED!
+
+!testRun: #PortfolioTest #test16ShouldFailWhenAddingAnAccountToPortfolioThatIsAlreadyInsideAChildPortfolio stamp: 'JPF 5/25/2021 10:15:13'!
+PASSED!
+
+!testRun: #PortfolioTest #test17ShouldFailWhenAddingAPortfolioWithAnAccountToAPortfolioThatHasTheSameAccount stamp: 'JPF 5/25/2021 10:15:13'!
+PASSED!
+
+!testRun: #PortfolioTest #test18ShouldFailWhenAddingAPortfolioWithAnAccountToAPortfolioThatHasAFatherPortfolioWithTheSameAccount stamp: 'JPF 5/25/2021 10:15:13'!
+PASSED!
+
+!testRun: #PortfolioTest #test19ShouldFailWhenAddingAnEmptyPortfolioToItselfBeingInTwoPortfolios stamp: 'JPF 5/25/2021 10:15:13'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test01ReceptiveAccountHaveZeroAsBalanceWhenCreated stamp: 'JPF 5/25/2021 10:15:13'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test02DepositIncreasesBalanceOnTransactionValue stamp: 'JPF 5/25/2021 10:15:13'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test03WithdrawDecreasesBalanceOnTransactionValue stamp: 'JPF 5/25/2021 10:15:13'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test04WithdrawValueMustBePositive stamp: 'JPF 5/25/2021 10:15:13'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test05ReceptiveAccountKnowsRegisteredTransactions stamp: 'JPF 5/25/2021 10:15:13'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test06ReceptiveAccountDoNotKnowNotRegisteredTransactions stamp: 'JPF 5/25/2021 10:15:13'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test07AccountKnowsItsTransactions stamp: 'JPF 5/25/2021 10:15:13'!
+PASSED!
+
+----SNAPSHOT----(25 May 2021 10:15:40) Portfolio.image priorSource: 17726174!

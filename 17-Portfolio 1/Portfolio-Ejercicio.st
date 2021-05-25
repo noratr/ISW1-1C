@@ -56,24 +56,23 @@ portfolioWithBalance50
 	^ portfolio! !
 
 
-!PortfolioTest methodsFor: 'tests - adding' stamp: 'JPF 5/23/2021 13:19:38'!
+!PortfolioTest methodsFor: 'tests - adding' stamp: 'JPF 5/23/2021 21:26:55'!
 test15ShouldFailWhenAddingTheSameAccountTwiceToAPortfolio
 	
 	| portfolio account|
 	
-	portfolio _ Portfolio new.
 	account _ self accountWithBalance50.
+	portfolio _ self portfolioWith: { account }.
 	
 	self 
-		should: [ portfolio addAccountable: account.
-			portfolio addAccountable: account ]
+		should: [ portfolio addAccountable: account ]
 		raise: Error
 		withExceptionDo: [ :error | self assert: 1 equals: portfolio accountables size ]
-		description: Portfolio cantHaveRepeatedAccountsErrorDescription.
+		description: Portfolio cantHaveRepeatedAccountablesErrorDescription.
 	
 	! !
 
-!PortfolioTest methodsFor: 'tests - adding' stamp: 'JPF 5/23/2021 20:17:01'!
+!PortfolioTest methodsFor: 'tests - adding' stamp: 'JPF 5/23/2021 21:21:24'!
 test16ShouldFailWhenAddingAnAccountToPortfolioThatIsAlreadyInsideAChildPortfolio
 
 	| portfolio portfolio2 account|
@@ -82,16 +81,9 @@ test16ShouldFailWhenAddingAnAccountToPortfolioThatIsAlreadyInsideAChildPortfolio
 	portfolio2 _ self portfolioWith: { account }.
 	portfolio _ self portfolioWith: { portfolio2 }.
 	
-	self 
-		should: [ portfolio addAccountable: account ]
-		raise: Error
-		withExceptionDo: [ :error | self deny: (portfolio accountables includes: account) ]
-		description: Portfolio cantHaveRepeatedAccountsErrorDescription.
+	self assertCantAdd: account to: portfolio! !
 
-	
-	! !
-
-!PortfolioTest methodsFor: 'tests - adding' stamp: 'JPF 5/23/2021 20:17:34'!
+!PortfolioTest methodsFor: 'tests - adding' stamp: 'JPF 5/23/2021 21:21:31'!
 test17ShouldFailWhenAddingAPortfolioWithAnAccountToAPortfolioThatHasTheSameAccount
 	| portfolio portfolio2 account|
 	
@@ -99,16 +91,9 @@ test17ShouldFailWhenAddingAPortfolioWithAnAccountToAPortfolioThatHasTheSameAccou
 	portfolio2 _ self portfolioWith: { account }.
 	portfolio _ self portfolioWith: { account }.
 	
-	self 
-		should: [ portfolio addAccountable: portfolio2. ]
-		raise: Error
-		withExceptionDo: [ :error | self deny: (portfolio accountables includes: portfolio2) ]
-		description: Portfolio cantHaveRepeatedAccountsErrorDescription.
+	self assertCantAdd: portfolio2 to: portfolio! !
 
-	
-	! !
-
-!PortfolioTest methodsFor: 'tests - adding' stamp: 'JPF 5/23/2021 20:45:02'!
+!PortfolioTest methodsFor: 'tests - adding' stamp: 'JPF 5/23/2021 21:21:40'!
 test18ShouldFailWhenAddingAPortfolioWithAnAccountToAPortfolioThatHasAFatherPortfolioWithTheSameAccount
 	| porfolioRoot1 porfolioRoot2 portfolioToAdd portfolio account|
 	
@@ -118,16 +103,9 @@ test18ShouldFailWhenAddingAPortfolioWithAnAccountToAPortfolioThatHasAFatherPortf
 	porfolioRoot2 _ self portfolioWith: { portfolio }.
 	portfolioToAdd _ self portfolioWith: { account }.
 	
-	self 
-		should: [ portfolio addAccountable: portfolioToAdd. ]
-		raise: Error
-		withExceptionDo: [ :error | self deny: (portfolio accountables includes: portfolioToAdd) ]
-		description: Portfolio cantHaveRepeatedAccountsErrorDescription.
+	self assertCantAdd: portfolioToAdd to: portfolio! !
 
-	
-	! !
-
-!PortfolioTest methodsFor: 'tests - adding' stamp: 'JPF 5/23/2021 20:45:51'!
+!PortfolioTest methodsFor: 'tests - adding' stamp: 'JPF 5/23/2021 21:22:46'!
 test19ShouldFailWhenAddingAnEmptyPortfolioToItselfBeingInTwoPortfolios
 	| portfolio fatherPorfolio1 fatherPorfolio2 |
 	
@@ -135,11 +113,7 @@ test19ShouldFailWhenAddingAnEmptyPortfolioToItselfBeingInTwoPortfolios
 	fatherPorfolio1 _ self portfolioWith: { portfolio }.
 	fatherPorfolio2 _ self portfolioWith: { portfolio }.
 	
-	self 
-		should: [ portfolio addAccountable: portfolio. ]
-		raise: Error
-		withExceptionDo: [ :error | self deny: (portfolio accountables includes: portfolio) ]
-		description: Portfolio cantHaveRepeatedAccountsErrorDescription.
+	self assertCantAdd: portfolio to: portfolio
 
 	
 	! !
@@ -156,6 +130,17 @@ assert: aPortfolio hasOnly: transactions
 assert: aPortfolio hasRegistered: transactions
 	
 	transactions do: [ :transaction | self assert: (aPortfolio hasRegistered: transaction) ]
+	! !
+
+!PortfolioTest methodsFor: 'assertions' stamp: 'JPF 5/23/2021 21:26:55'!
+assertCantAdd: anAccountable to: aPortfolio
+	
+	self 
+		should: [ aPortfolio addAccountable: anAccountable ]
+		raise: Error
+		withExceptionDo: [ :error | self deny: (aPortfolio accountables includes: anAccountable) ]
+		description: Portfolio cantHaveRepeatedAccountablesErrorDescription.
+	
 	! !
 
 
@@ -578,20 +563,15 @@ removeFrom: aPortfolio
 	
 	fatherPortfolios removeFirst: aPortfolio! !
 
-!Accountable methodsFor: 'father portfolios' stamp: 'JPF 5/23/2021 19:49:49'!
+!Accountable methodsFor: 'father portfolios' stamp: 'JPF 5/25/2021 10:12:28'!
 rootPortfolios
 
-	| rootPortfolios |
-	
-	rootPortfolios _ OrderedCollection new.
-	
 	fatherPortfolios 
-		ifEmpty: [ rootPortfolios add: self ] 
-		ifNotEmpty: [ ^ fatherPortfolios do: [ :fatherPortfolio |
+		ifEmpty: [ ^ OrderedCollection with: self ] 
+		ifNotEmpty: [ ^ fatherPortfolios inject: OrderedCollection new into: [ :rootPortfolios :fatherPortfolio |
 			rootPortfolios addAll: fatherPortfolio rootPortfolios.
-		]].
-
-	^ rootPortfolios
+			rootPortfolios.
+		]]
 	
 	! !
 
@@ -615,30 +595,18 @@ balance
 	^ accountables sum: [:accountable | accountable balance ] ifEmpty: [ 0 ]! !
 
 
-!Portfolio methodsFor: 'assertions' stamp: 'JPF 5/23/2021 21:03:58'!
-assert: rootPortfolios wontHaveRepeatedAccountablesAfterAdding: anAccountable
+!Portfolio methodsFor: 'assertions' stamp: 'JPF 5/25/2021 09:47:52'!
+assertRootPortfoliosWontHaveRepeatedAccountablesAfterAdding: anAccountable
 
 	| aRootPortfolioHasRepeatedAccountables |
 	
-	accountables add: anAccountable.
-	
-	aRootPortfolioHasRepeatedAccountables _ 
-	rootPortfolios anySatisfy: [ :rootPortfolio | rootPortfolio hasRepeatedAccountables ].
-	
-	accountables remove: anAccountable.
+	self havingTemporary: anAccountable do: [ 
+		aRootPortfolioHasRepeatedAccountables _			self anyRootPortfolioHasRepeatedAccountables.
+		].
 	
 	aRootPortfolioHasRepeatedAccountables ifTrue: [
-		self error: self class cantHaveRepeatedAccountsErrorDescription.
-		].! !
-
-
-!Portfolio methodsFor: 'adding' stamp: 'JPF 5/23/2021 20:56:08'!
-addAccountable: anAccountable
-	
-	self assert: self rootPortfolios wontHaveRepeatedAccountablesAfterAdding: anAccountable.
-	
-	accountables add: anAccountable.
-	anAccountable addTo: self.! !
+		self error: self class cantHaveRepeatedAccountablesErrorDescription.
+		]! !
 
 
 !Portfolio methodsFor: 'initialization' stamp: 'JPF 5/23/2021 19:49:49'!
@@ -668,19 +636,35 @@ transactions
 			transactions ]! !
 
 
+!Portfolio methodsFor: 'accountables private' stamp: 'JPF 5/25/2021 09:47:21'!
+anyRootPortfolioHasRepeatedAccountables
+
+	^ self rootPortfolios anySatisfy: [ :rootPortfolio | rootPortfolio hasRepeatedAccountables ]! !
+
+!Portfolio methodsFor: 'accountables private' stamp: 'JPF 5/25/2021 09:35:21'!
+havingTemporary: anAccountable do: aBlock
+
+	accountables add: anAccountable.
+	aBlock ensure: [ accountables remove: anAccountable ]! !
+
 
 !Portfolio methodsFor: 'accountables' stamp: 'JPF 5/23/2021 12:53:07'!
 accountables
 	
 	^ accountables! !
 
-!Portfolio methodsFor: 'accountables' stamp: 'JPF 5/23/2021 21:05:58'!
+!Portfolio methodsFor: 'accountables' stamp: 'JPF 5/25/2021 09:42:26'!
+addAccountable: anAccountable
+	
+	self assertRootPortfoliosWontHaveRepeatedAccountablesAfterAdding: anAccountable.
+	
+	accountables add: anAccountable.
+	anAccountable addTo: self.! !
+
+!Portfolio methodsFor: 'accountables' stamp: 'JPF 5/25/2021 10:14:09'!
 hasRepeatedAccountables
 
-	| visitor |
-	
-	visitor _ RepeatedAccountablesVisitor new.
-	^ visitor hasRepeatedAccountables: self! !
+	^ RepeatedAccountablesVisitor new hasRepeatedAccountables: self! !
 
 
 !Portfolio methodsFor: 'visitor' stamp: 'JPF 5/23/2021 20:34:11'!
@@ -694,8 +678,8 @@ accept: aVisitor
 Portfolio class
 	instanceVariableNames: ''!
 
-!Portfolio class methodsFor: 'error descriptions' stamp: 'JPF 5/22/2021 11:29:52'!
-cantHaveRepeatedAccountsErrorDescription
+!Portfolio class methodsFor: 'error descriptions' stamp: 'JPF 5/23/2021 21:26:55'!
+cantHaveRepeatedAccountablesErrorDescription
 
 	^ 'a portfolio can not have reapeted accounts'! !
 
