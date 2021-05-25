@@ -749,27 +749,34 @@ initialize
 	visited _ Set new.! !
 
 
+!RepeatedAccountablesVisitor methodsFor: 'private' stamp: 'JPF 5/25/2021 10:40:52'!
+visit: anAccountable ifNotVisitedDo: aBlock
+	
+	(visited includes: anAccountable)
+		ifTrue: [ hasRepeatedNodes _ true ]
+		ifFalse: [
+			visited add: anAccountable.
+			aBlock value
+			].
+	! !
+
+
 !RepeatedAccountablesVisitor methodsFor: 'repeated nodes' stamp: 'JPF 5/23/2021 19:42:53'!
 hasRepeatedAccountables: anAccountable
 	
 	anAccountable accept: self.
 	^ hasRepeatedNodes.! !
 
-!RepeatedAccountablesVisitor methodsFor: 'repeated nodes' stamp: 'JPF 5/23/2021 13:41:55'!
+!RepeatedAccountablesVisitor methodsFor: 'repeated nodes' stamp: 'JPF 5/25/2021 10:41:36'!
 visitAccount: anAccount
 	
-	(visited includes: anAccount)
-		ifTrue: [ hasRepeatedNodes _ true ]
-		ifFalse: [ visited add: anAccount ].
+	self visit: anAccount ifNotVisitedDo: []
 	! !
 
-!RepeatedAccountablesVisitor methodsFor: 'repeated nodes' stamp: 'JPF 5/23/2021 13:42:29'!
+!RepeatedAccountablesVisitor methodsFor: 'repeated nodes' stamp: 'JPF 5/25/2021 10:41:48'!
 visitPortfolio: aPortfolio
 	
-	(visited includes: aPortfolio)
-		ifTrue: [ hasRepeatedNodes _ true ]
-		ifFalse: [ 
-			visited add: aPortfolio.
-			aPortfolio accountables do: [ :accountable | accountable accept: self ]
-			].
+	self visit: aPortfolio ifNotVisitedDo: [
+		aPortfolio accountables do: [ :accountable | accountable accept: self ]
+		]
 	! !
