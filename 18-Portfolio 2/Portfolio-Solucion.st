@@ -351,6 +351,27 @@ test03ShouldInform10ForAnAccountWithA50TransferEntryAnd40TransferOutput
 	
 	self assert: 10 equals: account netTransferValue! !
 
+!ReportTest methodsFor: 'net transfer value tests' stamp: 'JPF 6/2/2021 19:14:21'!
+test04ShouldInformCorrectValueForAPortfolioWithAReceptiveAccountAndAnotherPortfolioHavingAllTypeOfTransactions
+	
+	| portfolio portfolioChild account account2 account3 |
+	
+	account _ ReceptiveAccount new.
+	account2 _ ReceptiveAccount new.
+	account3 _ ReceptiveAccount new.
+	
+	portfolioChild _ Portfolio with: account2.
+	portfolio _ Portfolio with: portfolioChild with: account.
+	
+	account register: (Deposit for: 100).
+	account2 register: (Withdraw for: 50).
+	
+	account transfer: 50 to: account2.
+	account3 transfer: 100 to: account.
+	account2 transfer: 50 to: account3.
+	
+	self assert: 50 equals: portfolio netTransferValue ! !
+
 
 !ReportTest methodsFor: 'account summary tests' stamp: 'JPF 5/30/2021 11:17:47'!
 test01ShouldInformBalance0ForAnAccountWithoutTransactions
@@ -412,6 +433,103 @@ test04ShouldInformBalance0A50DepositA50WithdrawA50TransferEntryA50TransferOutput
 			with: 'Balance = 0')
 		equals: account summary! !
 
+!ReportTest methodsFor: 'account summary tests' stamp: 'JPF 6/2/2021 18:48:13'!
+test05ShouldInformCorrectBalanceForAPortfolioWithAReceptiveAccountAndAnotherPortfolioHavingAllTypeOfTransactions
+	
+	| portfolio portfolioChild account account2 |
+	
+	account _ ReceptiveAccount new.
+	account2 _ ReceptiveAccount new.
+	
+	portfolioChild _ Portfolio with: account2.
+	portfolio _ Portfolio with: portfolioChild with: account.
+	
+	account register: (Deposit for: 100).
+	account register: (Withdraw for: 50).
+	
+	account transfer: 50 to: account2.
+	
+	self 
+		assert:
+		(OrderedCollection
+			with: 'Entrada por transferencia de 50.'
+			with: 'Depósito por 100.'
+			with: 'Extracción por 50.'
+			with: 'Salida por transferencia de 50.'
+			with: 'Balance = 50')
+		equals: portfolio summary! !
+
+
+!classDefinition: #TransactionIteratorTest category: 'Portfolio-Solucion'!
+TestCase subclass: #TransactionIteratorTest
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Portfolio-Solucion'!
+
+!TransactionIteratorTest methodsFor: 'tests' stamp: 'JPF 6/1/2021 19:44:44'!
+test01IteratorForAnAccountWithoutTransactionsHasNotNext
+	
+	| iterator |
+	
+	iterator _ (ReceptiveAccount new) transactionIterator.
+	
+	self deny: iterator hasNext! !
+
+!TransactionIteratorTest methodsFor: 'tests' stamp: 'JPF 6/1/2021 19:44:36'!
+test02IteratorForAnAccountWithOneTransactionHasNext
+	
+	| iterator account |
+	
+	account _ ReceptiveAccount new.
+	account register: (Deposit for: 50).
+	
+	iterator _ account transactionIterator.
+	
+	self assert: iterator hasNext! !
+
+!TransactionIteratorTest methodsFor: 'tests' stamp: 'JPF 6/1/2021 19:53:22'!
+test03IteratorForAnAccountWithOneTransactionHasNotNextWhenWasAskedForNextOnce
+	
+	| iterator account |
+	
+	account _ ReceptiveAccount new.
+	account register: (Deposit for: 50).
+	
+	iterator _ account transactionIterator.
+	iterator next.
+	
+	self deny: iterator hasNext! !
+
+!TransactionIteratorTest methodsFor: 'tests' stamp: 'JPF 6/1/2021 20:04:50'!
+test04IteratorForAnAccountWithOneTransactionShouldReturnThatTransactionWhenAskForNext
+	
+	| iterator account transaction |
+	
+	account _ ReceptiveAccount new.
+	transaction _ Deposit for: 50.
+	account register: transaction.
+	
+	iterator _ account transactionIterator.
+	
+	self assert: transaction equals: iterator next! !
+
+!TransactionIteratorTest methodsFor: 'tests' stamp: 'JPF 6/1/2021 20:14:44'!
+test05NextShouldRaiseAnErrorWhenHasNotNext
+	
+	| iterator account transaction |
+	
+	account _ ReceptiveAccount new.
+	transaction _ Deposit for: 50.
+	account register: transaction.
+	
+	iterator _ account transactionIterator.
+	iterator next.
+	
+	self deny: iterator hasNext.
+	self should: [ iterator next ] raise: Error - MessageNotUnderstood withMessageText: TransactionIterator notNextTransationErrorDescription.
+	! !
+
 
 !classDefinition: #TransferTest category: 'Portfolio-Solucion'!
 TestCase subclass: #TransferTest
@@ -465,6 +583,62 @@ test03ShouldReturnATransferWithTheTransferOutputAndTheTransferEntry
 	self assert: (sourceAccount transactions anySatisfy: [ :transaction | transaction = transfer output ]).
 	self assert: (targetAccount transactions anySatisfy: [ :transaction | transaction = transfer entry ]).! !
 
+!TransferTest methodsFor: 'tests' stamp: 'JPF 5/31/2021 21:47:06'!
+test04ShouldObtainTheSameTransferFromTheTransferOutputAndTheTransferEntry
+	
+	| sourceAccount targetAccount transfer |
+	
+	sourceAccount _ ReceptiveAccount new.
+	
+	targetAccount _ ReceptiveAccount new.
+	
+	transfer _ sourceAccount transfer: 50 to: targetAccount.
+	
+	self assert: transfer output transfer equals: transfer entry transfer.
+	self assert: sourceAccount transactions first transfer equals: targetAccount transactions first transfer! !
+
+!TransferTest methodsFor: 'tests' stamp: 'JPF 6/1/2021 20:15:52'!
+test05ShouldRaiseAnErrorIfTheTargetAndSourceAccountAreTheSameAccount
+	
+	| account |
+	
+	account _ ReceptiveAccount new.
+	
+	self
+		should: [ account transfer: 50 to: account ]	
+		raise: Error
+		withMessageText: ReceptiveAccount transferToSourceAccountErrorDescription.! !
+
+!TransferTest methodsFor: 'tests' stamp: 'JPF 6/1/2021 20:15:43'!
+test06ShouldRaiseAnErrorIfAnAccountTransferANegativeAmount
+	
+	| sourceAccount targetAccount |
+	
+	sourceAccount _ ReceptiveAccount new.
+	sourceAccount register: (Deposit for: 100).
+	
+	targetAccount _ ReceptiveAccount new.
+	
+	self
+		should: [ sourceAccount transfer: -1 to: targetAccount ]	
+		raise: Error
+		withMessageText: ReceptiveAccount invalidAmountErrorDescription.! !
+
+!TransferTest methodsFor: 'tests' stamp: 'JPF 6/1/2021 20:15:36'!
+test07ShouldRaiseAnErrorIfAnAccountTransferZeroAsAmount
+	
+	| sourceAccount targetAccount |
+	
+	sourceAccount _ ReceptiveAccount new.
+	sourceAccount register: (Deposit for: 100).
+	
+	targetAccount _ ReceptiveAccount new.
+	
+	self
+		should: [ sourceAccount transfer: 0 to: targetAccount ]	
+		raise: Error
+		withMessageText: ReceptiveAccount invalidAmountErrorDescription.! !
+
 
 !classDefinition: #Account category: 'Portfolio-Solucion'!
 Object subclass: #Account
@@ -505,6 +679,23 @@ transactions
 addedTo: aPortfolio
 
 	self subclassResponsibility ! !
+
+
+!Account methodsFor: 'report' stamp: 'JPF 6/2/2021 19:26:51'!
+netTransferValue
+
+	^ (NetTransferValueVisitor for: self) doOperation! !
+
+!Account methodsFor: 'report' stamp: 'JPF 6/2/2021 19:28:20'!
+summary
+
+	^ (SummaryVisitor for: self) doOperation! !
+
+
+!Account methodsFor: 'transaction iterator' stamp: 'JPF 6/2/2021 18:50:21'!
+transactionIterator
+	
+	^ TransactionIterator with: self transactions! !
 
 
 !classDefinition: #Portfolio category: 'Portfolio-Solucion'!
@@ -702,10 +893,13 @@ addedTo: aPortfolio
 	! !
 
 
-!ReceptiveAccount methodsFor: 'transfer' stamp: 'JPF 5/30/2021 10:53:53'!
+!ReceptiveAccount methodsFor: 'transfer' stamp: 'JPF 6/1/2021 18:52:33'!
 transfer: aValue to: targetReceptiveAccount 
 	
 	| transfer |
+	
+	self assertSourceAndTargetAccountAreNotTheSameAccount: targetReceptiveAccount.
+	self assertTheAmountTransferedIsValid: aValue.
 	
 	transfer _ Transfer for: aValue from: self to: targetReceptiveAccount.
 	
@@ -713,37 +907,31 @@ transfer: aValue to: targetReceptiveAccount
 	! !
 
 
-!ReceptiveAccount methodsFor: 'report' stamp: 'JPF 5/30/2021 12:19:38'!
-netTransferValue
+!ReceptiveAccount methodsFor: 'assertions' stamp: 'JPF 6/1/2021 18:51:49'!
+assertSourceAndTargetAccountAreNotTheSameAccount: targetReceptiveAccount
 
-	| net |
-	
-	net _ 0.
+	^ (targetReceptiveAccount = self) ifTrue: [ self error: self class transferToSourceAccountErrorDescription ]! !
 
-	transactions do: [  :transaction | 	
-		(transaction isKindOf: TransferEntry) ifTrue: [ net _ transaction affectBalance: net].
-		(transaction isKindOf: TransferOutput) ifTrue: [ net _ transaction affectBalance: net].
-		].
-	
-	^ net! !
+!ReceptiveAccount methodsFor: 'assertions' stamp: 'JPF 6/1/2021 18:52:33'!
+assertTheAmountTransferedIsValid: aValue
 
-!ReceptiveAccount methodsFor: 'report' stamp: 'JPF 5/30/2021 11:53:13'!
-summary
+	^ (aValue <= 0) ifTrue: [ self error: self class invalidAmountErrorDescription ]! !
 
-	| summary |
+"-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- "!
+
+!classDefinition: 'ReceptiveAccount class' category: 'Portfolio-Solucion'!
+ReceptiveAccount class
+	instanceVariableNames: ''!
+
+!ReceptiveAccount class methodsFor: 'error descriptions' stamp: 'JPF 6/1/2021 18:49:46'!
+invalidAmountErrorDescription
+
+	^ 'Cannot transfer a negative amount'! !
+
+!ReceptiveAccount class methodsFor: 'error descriptions' stamp: 'JPF 6/1/2021 18:40:42'!
+transferToSourceAccountErrorDescription
 	
-	summary _ OrderedCollection new.
-	
-	transactions do: [ :transaction | 
-		(transaction isKindOf: Deposit) ifTrue: [ summary add: 'Depósito por ' , transaction value asString , '.' ].
-		(transaction isKindOf: Withdraw ) ifTrue: [ summary add: 'Extracción por ' , transaction value asString , '.' ].
-		(transaction isKindOf: TransferEntry ) ifTrue: [ summary add: 'Entrada por transferencia de ' , transaction value asString , '.' ].
-		(transaction isKindOf: TransferOutput ) ifTrue: [ summary add: 'Salida por transferencia de ' , transaction value asString , '.' ].
-		].
-	
-	summary add: 'Balance = ', self balance asString.
-	
-	^ summary! !
+	^ 'Cannot transfer to the source account'.! !
 
 
 !classDefinition: #AccountTransaction category: 'Portfolio-Solucion'!
@@ -762,6 +950,12 @@ value
 !AccountTransaction methodsFor: 'balance' stamp: 'JPF 5/27/2021 22:04:24'!
 affectBalance: aBalance  
 
+	self subclassResponsibility ! !
+
+
+!AccountTransaction methodsFor: 'visitor' stamp: 'JPF 6/1/2021 19:03:18'!
+accept: aVisitor
+	
 	self subclassResponsibility ! !
 
 "-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- "!
@@ -805,6 +999,12 @@ affectBalance: aBalance
 
 	^aBalance + value ! !
 
+
+!Deposit methodsFor: 'visitor' stamp: 'JPF 6/2/2021 19:07:26'!
+accept: aVisitor
+	
+	aVisitor visitDeposit: self! !
+
 "-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- "!
 
 !classDefinition: 'Deposit class' category: 'Portfolio-Solucion'!
@@ -817,54 +1017,67 @@ for: aValue
 	^ self new initializeFor: aValue ! !
 
 
-!classDefinition: #TransferEntry category: 'Portfolio-Solucion'!
-AccountTransaction subclass: #TransferEntry
+!classDefinition: #TransferLeg category: 'Portfolio-Solucion'!
+AccountTransaction subclass: #TransferLeg
 	instanceVariableNames: 'transfer'
 	classVariableNames: ''
 	poolDictionaries: ''
 	category: 'Portfolio-Solucion'!
 
-!TransferEntry methodsFor: 'initialization' stamp: 'JPF 5/30/2021 10:57:39'!
+!TransferLeg methodsFor: 'transfer' stamp: 'JPF 6/2/2021 19:39:10'!
+transfer
+
+	^transfer! !
+
+
+!TransferLeg methodsFor: 'initialization' stamp: 'JPF 6/2/2021 19:41:58'!
 initializeFor: aTransfer
 
 	transfer := aTransfer ! !
 
 
-!TransferEntry methodsFor: 'value' stamp: 'JPF 5/30/2021 10:58:13'!
+!TransferLeg methodsFor: 'value' stamp: 'JPF 6/2/2021 19:43:09'!
 value
 	
 	^ transfer value! !
 
+"-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- "!
+
+!classDefinition: 'TransferLeg class' category: 'Portfolio-Solucion'!
+TransferLeg class
+	instanceVariableNames: ''!
+
+!TransferLeg class methodsFor: 'instance creation' stamp: 'JPF 6/2/2021 19:41:20'!
+for: aTransfer
+
+	^ self new initializeFor: aTransfer! !
+
+
+!classDefinition: #TransferEntry category: 'Portfolio-Solucion'!
+TransferLeg subclass: #TransferEntry
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Portfolio-Solucion'!
 
 !TransferEntry methodsFor: 'balance' stamp: 'JPF 5/30/2021 12:11:41'!
 affectBalance: aBalance  
 
 	^aBalance + self value! !
 
-"-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- "!
 
-!classDefinition: 'TransferEntry class' category: 'Portfolio-Solucion'!
-TransferEntry class
-	instanceVariableNames: ''!
-
-!TransferEntry class methodsFor: 'instance creation' stamp: 'JPF 5/30/2021 10:56:30'!
-for: aTransfer
-
-	^ self new initializeFor: aTransfer! !
+!TransferEntry methodsFor: 'visitor' stamp: 'JPF 6/2/2021 19:08:14'!
+accept: aVisitor
+	
+	aVisitor visitTransferEntry: self! !
 
 
 !classDefinition: #TransferOutput category: 'Portfolio-Solucion'!
-AccountTransaction subclass: #TransferOutput
-	instanceVariableNames: 'transfer'
+TransferLeg subclass: #TransferOutput
+	instanceVariableNames: ''
 	classVariableNames: ''
 	poolDictionaries: ''
 	category: 'Portfolio-Solucion'!
-
-!TransferOutput methodsFor: 'initialization' stamp: 'JPF 5/30/2021 10:57:21'!
-initializeFor: aTransfer
-
-	transfer := aTransfer ! !
-
 
 !TransferOutput methodsFor: 'balance' stamp: 'JPF 5/30/2021 10:59:11'!
 affectBalance: aBalance  
@@ -872,10 +1085,10 @@ affectBalance: aBalance
 	^aBalance - self value! !
 
 
-!TransferOutput methodsFor: 'value' stamp: 'JPF 5/30/2021 10:58:43'!
-value
+!TransferOutput methodsFor: 'visitor' stamp: 'JPF 6/2/2021 19:08:05'!
+accept: aVisitor
 	
-	^ transfer value! !
+	aVisitor visitTransferOutput: self! !
 
 "-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- "!
 
@@ -913,6 +1126,12 @@ affectBalance: aBalance
 
 	^aBalance - value! !
 
+
+!Withdraw methodsFor: 'visitor' stamp: 'JPF 6/2/2021 19:07:49'!
+accept: aVisitor
+	
+	aVisitor visitWithdraw: self! !
+
 "-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- "!
 
 !classDefinition: 'Withdraw class' category: 'Portfolio-Solucion'!
@@ -923,6 +1142,220 @@ Withdraw class
 for: aValue
 
 	^ self new initializeFor: aValue ! !
+
+
+!classDefinition: #AccountVisitor category: 'Portfolio-Solucion'!
+Object subclass: #AccountVisitor
+	instanceVariableNames: 'account'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Portfolio-Solucion'!
+
+!AccountVisitor methodsFor: 'visit transaction - private' stamp: 'JPF 6/2/2021 19:22:06'!
+visitDeposit
+	
+	^ self subclassResponsibility ! !
+
+!AccountVisitor methodsFor: 'visit transaction - private' stamp: 'JPF 6/2/2021 19:33:26'!
+visitTransactions
+
+	| transactionIterator |
+	
+	transactionIterator _ account transactionIterator.
+	
+	[ transactionIterator hasNext ] whileTrue: [ | currentTransaction |
+		currentTransaction _ transactionIterator next.
+		currentTransaction accept: self
+		]! !
+
+!AccountVisitor methodsFor: 'visit transaction - private' stamp: 'JPF 6/2/2021 19:22:18'!
+visitTransferEntry
+	
+	^ self subclassResponsibility ! !
+
+!AccountVisitor methodsFor: 'visit transaction - private' stamp: 'JPF 6/2/2021 19:22:23'!
+visitTransferOutput
+	
+	^ self subclassResponsibility ! !
+
+!AccountVisitor methodsFor: 'visit transaction - private' stamp: 'JPF 6/2/2021 19:22:12'!
+visitWithdraw
+	
+	^ self subclassResponsibility ! !
+
+
+!AccountVisitor methodsFor: 'operation' stamp: 'JPF 6/2/2021 19:22:45'!
+doOperation
+	
+	self subclassResponsibility! !
+
+
+!classDefinition: #NetTransferValueVisitor category: 'Portfolio-Solucion'!
+AccountVisitor subclass: #NetTransferValueVisitor
+	instanceVariableNames: 'netTransferValue'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Portfolio-Solucion'!
+
+!NetTransferValueVisitor methodsFor: 'operation' stamp: 'JPF 6/2/2021 19:29:58'!
+doOperation
+	
+	self visitTransactions.
+	
+	^ netTransferValue ! !
+
+
+!NetTransferValueVisitor methodsFor: 'initialization' stamp: 'JPF 6/2/2021 18:59:50'!
+initializeFor: anAccount
+	
+	account := anAccount.
+	netTransferValue := 0! !
+
+
+!NetTransferValueVisitor methodsFor: 'visit transaction - private' stamp: 'JPF 6/2/2021 19:02:55'!
+visitDeposit: aDeposit
+! !
+
+!NetTransferValueVisitor methodsFor: 'visit transaction - private' stamp: 'JPF 6/2/2021 19:09:18'!
+visitTransferEntry: aTransferEntry
+
+	netTransferValue _ aTransferEntry affectBalance: netTransferValue! !
+
+!NetTransferValueVisitor methodsFor: 'visit transaction - private' stamp: 'JPF 6/2/2021 19:09:32'!
+visitTransferOutput: aTransferOutput
+
+	netTransferValue _ aTransferOutput affectBalance: netTransferValue! !
+
+!NetTransferValueVisitor methodsFor: 'visit transaction - private' stamp: 'JPF 6/2/2021 19:03:12'!
+visitWithdraw: aWithdraw
+! !
+
+"-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- "!
+
+!classDefinition: 'NetTransferValueVisitor class' category: 'Portfolio-Solucion'!
+NetTransferValueVisitor class
+	instanceVariableNames: ''!
+
+!NetTransferValueVisitor class methodsFor: 'instance creation' stamp: 'JPF 6/2/2021 18:58:14'!
+for: anAccount
+	
+	^ self new initializeFor: anAccount! !
+
+
+!classDefinition: #SummaryVisitor category: 'Portfolio-Solucion'!
+AccountVisitor subclass: #SummaryVisitor
+	instanceVariableNames: 'summary'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Portfolio-Solucion'!
+
+!SummaryVisitor methodsFor: 'initialization' stamp: 'JPF 6/1/2021 19:19:32'!
+initializeFor: anAccount
+	
+	account := anAccount.
+	summary := OrderedCollection new! !
+
+
+!SummaryVisitor methodsFor: 'operation' stamp: 'JPF 6/2/2021 19:31:29'!
+doOperation
+
+	self visitTransactions.
+	
+	summary add: 'Balance = ', account balance asString.
+	
+	^ summary
+	
+	
+	! !
+
+
+!SummaryVisitor methodsFor: 'visit transaction - private' stamp: 'JPF 6/2/2021 19:07:26'!
+visitDeposit: aDeposit
+	
+	summary add: 'Depósito por ' , aDeposit value asString , '.'! !
+
+!SummaryVisitor methodsFor: 'visit transaction - private' stamp: 'JPF 6/2/2021 19:08:14'!
+visitTransferEntry: aTransferEntry
+	
+	summary add: 'Entrada por transferencia de ' , aTransferEntry value asString , '.'! !
+
+!SummaryVisitor methodsFor: 'visit transaction - private' stamp: 'JPF 6/2/2021 19:08:05'!
+visitTransferOutput: aTransferOutput
+	
+	summary add: 'Salida por transferencia de ' , aTransferOutput value asString , '.'! !
+
+!SummaryVisitor methodsFor: 'visit transaction - private' stamp: 'JPF 6/2/2021 19:07:49'!
+visitWithdraw: aWithdraw
+	
+	summary add: 'Extracción por ' , aWithdraw value asString , '.'! !
+
+"-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- "!
+
+!classDefinition: 'SummaryVisitor class' category: 'Portfolio-Solucion'!
+SummaryVisitor class
+	instanceVariableNames: ''!
+
+!SummaryVisitor class methodsFor: 'instance creation' stamp: 'JPF 6/1/2021 19:18:39'!
+for: anAccount
+	
+	^ self new initializeFor: anAccount! !
+
+
+!classDefinition: #TransactionIterator category: 'Portfolio-Solucion'!
+Object subclass: #TransactionIterator
+	instanceVariableNames: 'transactions index'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Portfolio-Solucion'!
+
+!TransactionIterator methodsFor: 'testing' stamp: 'JPF 6/1/2021 20:01:08'!
+hasNext
+	
+	^ index <= transactions size! !
+
+
+!TransactionIterator methodsFor: 'initialization' stamp: 'JPF 6/1/2021 19:59:37'!
+initializeWith: transactionCollection
+	
+	transactions _ transactionCollection.
+	index _ 1! !
+
+
+!TransactionIterator methodsFor: 'next' stamp: 'JPF 6/1/2021 20:19:54'!
+assertHasNext
+
+	^ (self hasNext) ifFalse: [ self error: self class notNextTransationErrorDescription ]! !
+
+!TransactionIterator methodsFor: 'next' stamp: 'JPF 6/1/2021 20:19:54'!
+next
+	
+	| currentTransaction |
+	
+	self assertHasNext.
+	
+	currentTransaction _ transactions at: index.
+	index _ index + 1.
+	
+	^ currentTransaction
+	
+	! !
+
+"-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- "!
+
+!classDefinition: 'TransactionIterator class' category: 'Portfolio-Solucion'!
+TransactionIterator class
+	instanceVariableNames: ''!
+
+!TransactionIterator class methodsFor: 'instance creation' stamp: 'JPF 6/1/2021 19:49:38'!
+with: transactions
+	
+	^ self new initializeWith: transactions! !
+
+
+!TransactionIterator class methodsFor: 'error descriptions' stamp: 'JPF 6/1/2021 20:11:34'!
+notNextTransationErrorDescription
+	
+	^ 'Cannot ask for next when iterator has not next'! !
 
 
 !classDefinition: #Transfer category: 'Portfolio-Solucion'!
