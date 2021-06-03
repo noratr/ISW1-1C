@@ -312,46 +312,60 @@ TestCase subclass: #ReportTest
 	poolDictionaries: ''
 	category: 'Portfolio-Solucion'!
 
-!ReportTest methodsFor: 'net transfer value tests' stamp: 'JPF 5/30/2021 11:58:55'!
+!ReportTest methodsFor: 'do report' stamp: 'JPF 6/3/2021 07:24:42'!
+accountSummaryFor: anAccount
+	
+	^ (SummaryVisitor for: anAccount) doOperation! !
+
+!ReportTest methodsFor: 'do report' stamp: 'JPF 6/3/2021 07:25:19'!
+netTransferValueFor: anAccount
+	
+	^ (NetTransferValueVisitor for: anAccount) doOperation! !
+
+
+!ReportTest methodsFor: 'net transfer value tests' stamp: 'JPF 6/3/2021 07:26:20'!
 test01ShouldInform0ForAnAccountWithoutTransfers
 	
 	| account |
 	
 	account _ ReceptiveAccount new.
 	account register: (Deposit for: 50).
+	account register: (Withdraw for: 100).
 	
-	self assert: 0 equals: account netTransferValue! !
+	self assert: 0 equals: (self netTransferValueFor: account)! !
 
-!ReportTest methodsFor: 'net transfer value tests' stamp: 'JPF 5/30/2021 12:03:44'!
+!ReportTest methodsFor: 'net transfer value tests' stamp: 'JPF 6/3/2021 07:26:47'!
 test02ShouldInform50ForAnAccountWithA50TransferEntry
 	
 	| account account2 |
 	
 	account _ ReceptiveAccount new.
 	account register: (Withdraw for: 50).
+	account register: (Deposit for: 100).
 	
 	account2 _ ReceptiveAccount new.
 	
 	account2 transfer: 50 to: account.
 	
-	self assert: 50 equals: account netTransferValue! !
+	self assert: 50 equals: (self netTransferValueFor: account)! !
 
-!ReportTest methodsFor: 'net transfer value tests' stamp: 'JPF 5/30/2021 12:18:58'!
+!ReportTest methodsFor: 'net transfer value tests' stamp: 'JPF 6/3/2021 07:26:54'!
 test03ShouldInform10ForAnAccountWithA50TransferEntryAnd40TransferOutput
 	
 	| account account2 |
 	
 	account _ ReceptiveAccount new.
 	account register: (Withdraw for: 50).
+	account register: (Deposit for: 100).
 	
 	account2 _ ReceptiveAccount new.
 	
 	account2 transfer: 50 to: account.
 	account transfer: 40 to: account2.
 	
-	self assert: 10 equals: account netTransferValue! !
+	self assert: 10 equals: (self netTransferValueFor: account)! !
 
-!ReportTest methodsFor: 'net transfer value tests' stamp: 'JPF 6/2/2021 19:14:21'!
+!ReportTest methodsFor: 'net transfer value tests' stamp: 'JPF 6/3/2021 07:27:07'!
 test04ShouldInformCorrectValueForAPortfolioWithAReceptiveAccountAndAnotherPortfolioHavingAllTypeOfTransactions
 	
 	| portfolio portfolioChild account account2 account3 |
@@ -370,19 +384,21 @@ test04ShouldInformCorrectValueForAPortfolioWithAReceptiveAccountAndAnotherPortfo
 	account3 transfer: 100 to: account.
 	account2 transfer: 50 to: account3.
 	
-	self assert: 50 equals: portfolio netTransferValue ! !
+	self assert: 50 equals: (self netTransferValueFor: portfolio) ! !
 
 
-!ReportTest methodsFor: 'account summary tests' stamp: 'JPF 5/30/2021 11:17:47'!
+!ReportTest methodsFor: 'account summary tests' stamp: 'JPF 6/3/2021 07:27:46'!
 test01ShouldInformBalance0ForAnAccountWithoutTransactions
 	
 	| account |
 	
 	account _ ReceptiveAccount new.
 	
-	self assert: (OrderedCollection with: 'Balance = 0') equals: account summary! !
+	self
+		assert: (OrderedCollection with: 'Balance = 0')
+		equals: (self accountSummaryFor: account)! !
 
-!ReportTest methodsFor: 'account summary tests' stamp: 'JPF 5/30/2021 11:43:41'!
+!ReportTest methodsFor: 'account summary tests' stamp: 'JPF 6/3/2021 07:28:23'!
 test02ShouldInformBalance50AndA50DepositForAnAccountWithA50Deposit
 	
 	| account |
@@ -390,9 +406,11 @@ test02ShouldInformBalance50AndA50DepositForAnAccountWithA50Deposit
 	account _ ReceptiveAccount new.
 	account register: (Deposit for: 50).
 	
-	self assert: (OrderedCollection with: 'Depósito por 50.' with: 'Balance = 50') equals: account summary! !
+	self
+		assert: (OrderedCollection with: 'Depósito por 50.' with: 'Balance = 50')
+		equals: (self accountSummaryFor: account)! !
 
-!ReportTest methodsFor: 'account summary tests' stamp: 'JPF 5/30/2021 11:43:26'!
+!ReportTest methodsFor: 'account summary tests' stamp: 'JPF 6/3/2021 07:28:36'!
 test03ShouldInformBalance0A50DepositA50WithdrawForAnAccountWithA50DepositAnd50Withdraw
 	
 	| account |
@@ -407,9 +425,9 @@ test03ShouldInformBalance0A50DepositA50WithdrawForAnAccountWithA50DepositAnd50Wi
 			with: 'Depósito por 50.'
 			with: 'Extracción por 50.'
 			with: 'Balance = 0')
-		equals: account summary! !
+		equals: (self accountSummaryFor: account)! !
 
-!ReportTest methodsFor: 'account summary tests' stamp: 'JPF 5/30/2021 11:51:04'!
+!ReportTest methodsFor: 'account summary tests' stamp: 'JPF 6/3/2021 07:28:44'!
 test04ShouldInformBalance0A50DepositA50WithdrawA50TransferEntryA50TransferOutputForAnAccountWithThoseTransactions
 	
 	| account account2 |
@@ -431,9 +449,9 @@ test04ShouldInformBalance0A50DepositA50WithdrawA50TransferEntryA50TransferOutput
 			with: 'Entrada por transferencia de 50.'
 			with: 'Salida por transferencia de 50.'
 			with: 'Balance = 0')
-		equals: account summary! !
+		equals: (self accountSummaryFor: account)! !
 
-!ReportTest methodsFor: 'account summary tests' stamp: 'JPF 6/2/2021 18:48:13'!
+!ReportTest methodsFor: 'account summary tests' stamp: 'JPF 6/3/2021 07:28:58'!
 test05ShouldInformCorrectBalanceForAPortfolioWithAReceptiveAccountAndAnotherPortfolioHavingAllTypeOfTransactions
 	
 	| portfolio portfolioChild account account2 |
@@ -457,7 +475,7 @@ test05ShouldInformCorrectBalanceForAPortfolioWithAReceptiveAccountAndAnotherPort
 			with: 'Extracción por 50.'
 			with: 'Salida por transferencia de 50.'
 			with: 'Balance = 50')
-		equals: portfolio summary! !
+		equals: (self accountSummaryFor: portfolio)! !
 
 
 !classDefinition: #TransactionIteratorTest category: 'Portfolio-Solucion'!
@@ -679,17 +697,6 @@ transactions
 addedTo: aPortfolio
 
 	self subclassResponsibility ! !
-
-
-!Account methodsFor: 'report' stamp: 'JPF 6/2/2021 19:26:51'!
-netTransferValue
-
-	^ (NetTransferValueVisitor for: self) doOperation! !
-
-!Account methodsFor: 'report' stamp: 'JPF 6/2/2021 19:28:20'!
-summary
-
-	^ (SummaryVisitor for: self) doOperation! !
 
 
 !Account methodsFor: 'transaction iterator' stamp: 'JPF 6/2/2021 18:50:21'!

@@ -10218,3 +10218,4281 @@ PASSED!
 PASSED!
 
 ----SNAPSHOT----(2 June 2021 19:52:50) Portfolio2.image priorSource: 17765266!
+
+!testRun: #PortfolioTest #test01BalanceOfPortfolioWithoutAccountsIsZero stamp: 'JPF 6/2/2021 22:48:31'!
+PASSED!
+
+!testRun: #PortfolioTest #test02BalanceOfPortfolioWithAccountsIsSumOfAccountsBalance stamp: 'JPF 6/2/2021 22:48:31'!
+PASSED!
+
+!testRun: #PortfolioTest #test03BalanceOfPortfolioIsCalculatedRecursivelyOnPortfolios stamp: 'JPF 6/2/2021 22:48:31'!
+PASSED!
+
+!testRun: #PortfolioTest #test04PortfolioWithoutAccountsHasNoRegisteredTransaction stamp: 'JPF 6/2/2021 22:48:31'!
+PASSED!
+
+!testRun: #PortfolioTest #test05PortfolioHasRegisteredItsAccountsTransactions stamp: 'JPF 6/2/2021 22:48:31'!
+PASSED!
+
+!testRun: #PortfolioTest #test06PortfolioLooksForRegisteredTransactionsRecursively stamp: 'JPF 6/2/2021 22:48:31'!
+PASSED!
+
+!testRun: #PortfolioTest #test07PortfolioHasNoTransactionWhenHasNoAccounts stamp: 'JPF 6/2/2021 22:48:31'!
+PASSED!
+
+!testRun: #PortfolioTest #test08PortfolioTransactionsIncludesAllItsAccountsTransactions stamp: 'JPF 6/2/2021 22:48:31'!
+PASSED!
+
+!testRun: #PortfolioTest #test09PortfolioTransactionsAreCalculatedRecursively stamp: 'JPF 6/2/2021 22:48:31'!
+PASSED!
+
+!testRun: #PortfolioTest #test10PortfolioCanNotIncludeTheSameAccountMoreThanOnce stamp: 'JPF 6/2/2021 22:48:31'!
+PASSED!
+
+!testRun: #PortfolioTest #test11PortfolioCanNotIncludeAccountOfItsPortfolios stamp: 'JPF 6/2/2021 22:48:31'!
+PASSED!
+
+!testRun: #PortfolioTest #test12PortfolioCanNotIncludeItself stamp: 'JPF 6/2/2021 22:48:31'!
+PASSED!
+
+!testRun: #PortfolioTest #test13ComposedPortfolioCanNotHaveParentPortfolioAccount stamp: 'JPF 6/2/2021 22:48:31'!
+PASSED!
+
+!testRun: #PortfolioTest #test14ComposedPortfolioCanNotHaveAccountOfAnyRootParentRecursively stamp: 'JPF 6/2/2021 22:48:31'!
+PASSED!
+
+!testRun: #PortfolioTest #test15PortfolioCanNotIncludeAnyOfTheComposedAccountOfPortfolioToAdd stamp: 'JPF 6/2/2021 22:48:31'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test01ReceptiveAccountHaveZeroAsBalanceWhenCreated stamp: 'JPF 6/2/2021 22:48:31'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test02DepositIncreasesBalanceOnTransactionValue stamp: 'JPF 6/2/2021 22:48:31'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test03WithdrawDecreasesBalanceOnTransactionValue stamp: 'JPF 6/2/2021 22:48:31'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test04WithdrawValueMustBePositive stamp: 'JPF 6/2/2021 22:48:31'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test05ReceptiveAccountKnowsRegisteredTransactions stamp: 'JPF 6/2/2021 22:48:31'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test06ReceptiveAccountDoNotKnowNotRegisteredTransactions stamp: 'JPF 6/2/2021 22:48:31'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test07AccountKnowsItsTransactions stamp: 'JPF 6/2/2021 22:48:31'!
+PASSED!
+
+!testRun: #ReportTest #test01ShouldInform0ForAnAccountWithoutTransfers stamp: 'JPF 6/2/2021 22:48:31'!
+PASSED!
+
+!testRun: #ReportTest #test01ShouldInformBalance0ForAnAccountWithoutTransactions stamp: 'JPF 6/2/2021 22:48:31'!
+PASSED!
+
+!testRun: #ReportTest #test02ShouldInform50ForAnAccountWithA50TransferEntry stamp: 'JPF 6/2/2021 22:48:31'!
+PASSED!
+
+!testRun: #ReportTest #test02ShouldInformBalance50AndA50DepositForAnAccountWithA50Deposit stamp: 'JPF 6/2/2021 22:48:31'!
+PASSED!
+
+!testRun: #ReportTest #test03ShouldInform10ForAnAccountWithA50TransferEntryAnd40TransferOutput stamp: 'JPF 6/2/2021 22:48:31'!
+PASSED!
+
+!testRun: #ReportTest #test03ShouldInformBalance0A50DepositA50WithdrawForAnAccountWithA50DepositAnd50Withdraw stamp: 'JPF 6/2/2021 22:48:31'!
+PASSED!
+
+!testRun: #ReportTest #test04ShouldInformBalance0A50DepositA50WithdrawA50TransferEntryA50TransferOutputForAnAccountWithThoseTransactions stamp: 'JPF 6/2/2021 22:48:31'!
+PASSED!
+
+!testRun: #ReportTest #test04ShouldInformCorrectValueForAPortfolioWithAReceptiveAccountAndAnotherPortfolioHavingAllTypeOfTransactions stamp: 'JPF 6/2/2021 22:48:31'!
+PASSED!
+
+!testRun: #ReportTest #test05ShouldInformCorrectBalanceForAPortfolioWithAReceptiveAccountAndAnotherPortfolioHavingAllTypeOfTransactions stamp: 'JPF 6/2/2021 22:48:31'!
+PASSED!
+
+!testRun: #TransactionIteratorTest #test01IteratorForAnAccountWithoutTransactionsHasNotNext stamp: 'JPF 6/2/2021 22:48:31'!
+PASSED!
+
+!testRun: #TransactionIteratorTest #test02IteratorForAnAccountWithOneTransactionHasNext stamp: 'JPF 6/2/2021 22:48:31'!
+PASSED!
+
+!testRun: #TransactionIteratorTest #test03IteratorForAnAccountWithOneTransactionHasNotNextWhenWasAskedForNextOnce stamp: 'JPF 6/2/2021 22:48:31'!
+PASSED!
+
+!testRun: #TransactionIteratorTest #test04IteratorForAnAccountWithOneTransactionShouldReturnThatTransactionWhenAskForNext stamp: 'JPF 6/2/2021 22:48:31'!
+PASSED!
+
+!testRun: #TransactionIteratorTest #test05NextShouldRaiseAnErrorWhenHasNotNext stamp: 'JPF 6/2/2021 22:48:31'!
+PASSED!
+
+!testRun: #TransferTest #test01ShouldIncreaseTargetAccountBalanceAndDecreaseSourceAccountBalanceInTheSameAmount stamp: 'JPF 6/2/2021 22:48:31'!
+PASSED!
+
+!testRun: #TransferTest #test02ShouldNotAddDepositsToTargetAccountOrWithdrawToSourceAccount stamp: 'JPF 6/2/2021 22:48:31'!
+PASSED!
+
+!testRun: #TransferTest #test03ShouldReturnATransferWithTheTransferOutputAndTheTransferEntry stamp: 'JPF 6/2/2021 22:48:31'!
+PASSED!
+
+!testRun: #TransferTest #test04ShouldObtainTheSameTransferFromTheTransferOutputAndTheTransferEntry stamp: 'JPF 6/2/2021 22:48:31'!
+PASSED!
+
+!testRun: #TransferTest #test05ShouldRaiseAnErrorIfTheTargetAndSourceAccountAreTheSameAccount stamp: 'JPF 6/2/2021 22:48:31'!
+PASSED!
+
+!testRun: #TransferTest #test06ShouldRaiseAnErrorIfAnAccountTransferANegativeAmount stamp: 'JPF 6/2/2021 22:48:31'!
+PASSED!
+
+!testRun: #TransferTest #test07ShouldRaiseAnErrorIfAnAccountTransferZeroAsAmount stamp: 'JPF 6/2/2021 22:48:31'!
+PASSED!
+!Behavior method!
+initialize
+	(accounts _ [
+	(OrderedCollection
+		cover: (26 to: 42)
+		declaredAt: (26 to: 42)) new ] valueCoveringAll:
+		{44 to: 46})
+		cover: (14 to: 21)
+		declaredAt: (14 to: 21).
+	(parents _ [
+	(OrderedCollection
+		cover: (61 to: 77)
+		declaredAt: (26 to: 42)) new ] valueCoveringAll:
+		{79 to: 81})
+		cover: (50 to: 56)
+		declaredAt: (50 to: 56).! !
+!Behavior method!
+balance
+	^ [
+	(accounts
+		cover: (13 to: 20)
+		declaredAt: (13 to: 20))
+		sum: [ :anAccount |
+			[
+			(anAccount
+				cover: (42 to: 50)
+				declaredAt: (30 to: 38)) balance ] valueCoveringAll:
+				{52 to: 58} ]
+		ifEmpty: [
+			0 coverAll:
+				{73 to: 73} ]] valueCoveringAll:
+		{22 to: 25. 62 to: 69}.! !
+
+!testRun: #PortfolioTest #test01BalanceOfPortfolioWithoutAccountsIsZero stamp: 'JPF 6/2/2021 22:48:41'!
+PASSED!
+!Behavior method!
+initialize
+	[ super initialize ] valueCoveringAll:
+		{20 to: 29}.
+	(transactions _ [
+	(OrderedCollection
+		cover: (49 to: 65)
+		declaredAt: (49 to: 65)) new ] valueCoveringAll:
+		{67 to: 69})
+		cover: (33 to: 44)
+		declaredAt: (33 to: 44).! !
+!Behavior method!
+register: aValue on: account
+	| transaction |
+	(transaction _ [
+	(self coverAll:
+		{66 to: 69}) for:
+		(aValue
+			cover: (76 to: 81)
+			declaredAt: (11 to: 16)) ] valueCoveringAll:
+		{71 to: 74})
+		cover: (51 to: 61)
+		declaredAt: (34 to: 44).
+	[
+	(account
+		cover: (85 to: 91)
+		declaredAt: (22 to: 28)) register:
+		(transaction
+			cover: (103 to: 113)
+			declaredAt: (34 to: 44)) ] valueCoveringAll:
+		{93 to: 101}.
+	^ transaction
+		cover: (122 to: 132)
+		declaredAt: (34 to: 44).! !
+!Behavior method!
+for: aValue
+	^ [
+	([
+	(self coverAll:
+		{17 to: 20}) new ] valueCoveringAll:
+		{22 to: 24}) initializeFor:
+		(aValue
+			cover: (41 to: 46)
+			declaredAt: (6 to: 11)) ] valueCoveringAll:
+		{26 to: 39}.! !
+!Behavior method!
+initializeFor: aValue
+	(value _ aValue
+		cover: (34 to: 39)
+		declaredAt: (16 to: 21))
+		cover: (25 to: 29)
+		declaredAt: (25 to: 29).! !
+!Behavior method!
+register: aTransaction
+	[
+	(transactions
+		cover: (26 to: 37)
+		declaredAt: (26 to: 37)) add:
+		(aTransaction
+			cover: (44 to: 55)
+			declaredAt: (11 to: 22)) ] valueCoveringAll:
+		{39 to: 42}.! !
+!Behavior method!
+with: anAccount
+	^ [ | cascadeReceiver |
+	cascadeReceiver _ [
+	(self coverAll:
+		{20 to: 23}) new ] valueCoveringAll:
+		{25 to: 27}.
+	[ cascadeReceiver add: anAccount ] valueCoveringAll:
+		{32 to: 45}.
+	[ cascadeReceiver yourself ] valueCoveringAll:
+		{50 to: 57} ] value.! !
+!Behavior method!
+add: accountToAdd
+	[
+	(self coverAll:
+		{21 to: 24}) assertCanAdd:
+		(accountToAdd
+			cover: (40 to: 51)
+			declaredAt: (6 to: 17)) ] valueCoveringAll:
+		{26 to: 38}.
+	[
+	(accounts
+		cover: (58 to: 65)
+		declaredAt: (58 to: 65)) add:
+		(accountToAdd
+			cover: (72 to: 83)
+			declaredAt: (6 to: 17)) ] valueCoveringAll:
+		{67 to: 70}.
+	[
+	(accountToAdd
+		cover: (87 to: 98)
+		declaredAt: (6 to: 17)) addedTo:
+		(self coverAll:
+			{109 to: 112}) ] valueCoveringAll:
+		{100 to: 107}.! !
+!Behavior method!
+assertCanAdd: accountToAdd
+	[
+	([
+	(self coverAll:
+		{31 to: 34}) anyRootParentIsComposedBy:
+		(accountToAdd
+			cover: (63 to: 74)
+			declaredAt: (15 to: 26)) ] valueCoveringAll:
+		{36 to: 61}) ifTrue: [
+		[
+		(self coverAll:
+			{87 to: 90}) signalCanNotAddAccount ] valueCoveringAll:
+			{92 to: 113} ]] valueCoveringAll:
+		{77 to: 83}.! !
+!Behavior method!
+anyRootParentIsComposedBy: accountToAdd
+	^ [
+	([
+	(self coverAll:
+		{44 to: 47}) rootParents ] valueCoveringAll:
+		{49 to: 59}) anySatisfy: [ :aParent |
+		[
+		(aParent
+			cover: (86 to: 92)
+			declaredAt: (76 to: 82)) isComposedBy:
+			(accountToAdd
+				cover: (108 to: 119)
+				declaredAt: (28 to: 39)) ] valueCoveringAll:
+			{94 to: 106} ]] valueCoveringAll:
+		{61 to: 71}.! !
+!Behavior method!
+rootParents
+	| rootParents |
+	(rootParents _ [
+	(Set
+		cover: (50 to: 52)
+		declaredAt: (50 to: 52)) new ] valueCoveringAll:
+		{54 to: 56})
+		cover: (35 to: 45)
+		declaredAt: (18 to: 28).
+	[
+	(self coverAll:
+		{60 to: 63}) addRootParentsTo:
+		(rootParents
+			cover: (83 to: 93)
+			declaredAt: (18 to: 28)) ] valueCoveringAll:
+		{65 to: 81}.
+	^ rootParents
+		cover: (101 to: 111)
+		declaredAt: (18 to: 28).! !
+!Behavior method!
+addRootParentsTo: rootParents
+	[
+	(parents
+		cover: (33 to: 39)
+		declaredAt: (33 to: 39))
+		ifEmpty: [
+			[
+			(rootParents
+				cover: (55 to: 65)
+				declaredAt: (19 to: 29)) add:
+				(self coverAll:
+					{72 to: 75}) ] valueCoveringAll:
+				{67 to: 70} ]
+		ifNotEmpty: [
+			[
+			(parents
+				cover: (96 to: 102)
+				declaredAt: (33 to: 39)) do: [ :aParent |
+				[
+				(aParent
+					cover: (121 to: 127)
+					declaredAt: (111 to: 117)) addRootParentsTo:
+					(rootParents
+						cover: (147 to: 157)
+						declaredAt: (19 to: 29)) ] valueCoveringAll:
+					{129 to: 145} ]] valueCoveringAll:
+				{104 to: 106} ]] valueCoveringAll:
+		{44 to: 51. 82 to: 92}.! !
+!Behavior method!
+isComposedBy: anAccount
+	^ [
+	([
+	(self coverAll:
+		{29 to: 32}) =
+		(anAccount
+			cover: (36 to: 44)
+			declaredAt: (15 to: 23)) ] valueCoveringAll:
+		{34 to: 34}) or: [
+		[
+		(accounts
+			cover: (52 to: 59)
+			declaredAt: (52 to: 59)) anySatisfy: [ :composedAccount |
+			[
+			([
+			(composedAccount
+				cover: (95 to: 109)
+				declaredAt: (76 to: 90)) isComposedBy:
+				(anAccount
+					cover: (125 to: 133)
+					declaredAt: (15 to: 23)) ] valueCoveringAll:
+				{111 to: 123}) or: [
+				[
+				(anAccount
+					cover: (142 to: 150)
+					declaredAt: (15 to: 23)) isComposedBy:
+					(composedAccount
+						cover: (166 to: 180)
+						declaredAt: (76 to: 90)) ] valueCoveringAll:
+					{152 to: 164} ]] valueCoveringAll:
+				{136 to: 138} ]] valueCoveringAll:
+			{61 to: 71} ]] valueCoveringAll:
+		{46 to: 48}.! !
+!Behavior method!
+addedTo: aPortfolio
+	^ self.! !
+!Behavior method!
+balance
+	^ [
+	(transactions
+		cover: (12 to: 23)
+		declaredAt: (12 to: 23))
+		inject:
+			(0 coverAll:
+				{36 to: 36})
+		into: [ :currentBalance :transaction |
+			[
+			(transaction
+				cover: (79 to: 89)
+				declaredAt: (65 to: 75)) affectBalance:
+				(currentBalance
+					cover: (106 to: 119)
+					declaredAt: (49 to: 62)) ] valueCoveringAll:
+				{91 to: 104} ]] valueCoveringAll:
+		{28 to: 34. 40 to: 44}.! !
+!Behavior method!
+affectBalance: aBalance
+	^ [
+	(aBalance
+		cover: (30 to: 37)
+		declaredAt: (16 to: 23)) +
+		(value
+			cover: (41 to: 45)
+			declaredAt: (41 to: 45)) ] valueCoveringAll:
+		{39 to: 39}.! !
+
+!testRun: #PortfolioTest #test02BalanceOfPortfolioWithAccountsIsSumOfAccountsBalance stamp: 'JPF 6/2/2021 22:48:41'!
+PASSED!
+!Behavior method!
+for: aValue
+	^ [
+	([
+	(self coverAll:
+		{17 to: 20}) new ] valueCoveringAll:
+		{22 to: 24}) initializeFor:
+		(aValue
+			cover: (41 to: 46)
+			declaredAt: (6 to: 11)) ] valueCoveringAll:
+		{26 to: 39}.! !
+!Behavior method!
+initializeFor: aValue
+	(value _ aValue
+		cover: (34 to: 39)
+		declaredAt: (16 to: 21))
+		cover: (25 to: 29)
+		declaredAt: (25 to: 29).! !
+!Behavior method!
+with: anAccount with: anotherAccount
+	^ [ | cascadeReceiver |
+	cascadeReceiver _ [
+	(self coverAll:
+		{41 to: 44}) new ] valueCoveringAll:
+		{46 to: 48}.
+	[ cascadeReceiver add: anAccount ] valueCoveringAll:
+		{53 to: 66}.
+	[ cascadeReceiver add: anotherAccount ] valueCoveringAll:
+		{71 to: 89}.
+	[ cascadeReceiver yourself ] valueCoveringAll:
+		{94 to: 101} ] value.! !
+!Behavior method!
+addedTo: aPortfolio
+	[
+	(parents
+		cover: (25 to: 31)
+		declaredAt: (25 to: 31)) add:
+		(aPortfolio
+			cover: (38 to: 47)
+			declaredAt: (10 to: 19)) ] valueCoveringAll:
+		{33 to: 36}.! !
+!Behavior method!
+isComposedBy: anAccount
+	^ [
+	(self coverAll:
+		{28 to: 31}) =
+		(anAccount
+			cover: (35 to: 43)
+			declaredAt: (15 to: 23)) ] valueCoveringAll:
+		{33 to: 33}.! !
+!Behavior method!
+affectBalance: aBalance
+	^ [
+	(aBalance
+		cover: (30 to: 37)
+		declaredAt: (16 to: 23)) -
+		(value
+			cover: (41 to: 45)
+			declaredAt: (41 to: 45)) ] valueCoveringAll:
+		{39 to: 39}.! !
+
+!testRun: #PortfolioTest #test03BalanceOfPortfolioIsCalculatedRecursivelyOnPortfolios stamp: 'JPF 6/2/2021 22:48:41'!
+PASSED!
+!Behavior method!
+hasRegistered: aTransaction
+	^ [
+	(accounts
+		cover: (32 to: 39)
+		declaredAt: (32 to: 39)) anySatisfy: [ :anAccount |
+		[
+		(anAccount
+			cover: (68 to: 76)
+			declaredAt: (56 to: 64)) hasRegistered:
+			(aTransaction
+				cover: (93 to: 104)
+				declaredAt: (16 to: 27)) ] valueCoveringAll:
+			{78 to: 91} ]] valueCoveringAll:
+		{41 to: 51}.! !
+
+!testRun: #PortfolioTest #test04PortfolioWithoutAccountsHasNoRegisteredTransaction stamp: 'JPF 6/2/2021 22:48:41'!
+PASSED!
+!Behavior method!
+hasRegistered: aTransaction
+	^ [
+	(transactions
+		cover: (33 to: 44)
+		declaredAt: (33 to: 44)) includes:
+		(aTransaction
+			cover: (56 to: 67)
+			declaredAt: (16 to: 27)) ] valueCoveringAll:
+		{46 to: 54}.! !
+
+!testRun: #PortfolioTest #test05PortfolioHasRegisteredItsAccountsTransactions stamp: 'JPF 6/2/2021 22:48:41'!
+PASSED!
+
+!testRun: #PortfolioTest #test06PortfolioLooksForRegisteredTransactionsRecursively stamp: 'JPF 6/2/2021 22:48:41'!
+PASSED!
+!Behavior method!
+transactions
+	| transactions |
+	(transactions _ [
+	(OrderedCollection
+		cover: (53 to: 69)
+		declaredAt: (53 to: 69)) new ] valueCoveringAll:
+		{71 to: 73})
+		cover: (37 to: 48)
+		declaredAt: (19 to: 30).
+	[
+	(accounts
+		cover: (77 to: 84)
+		declaredAt: (77 to: 84)) do: [ :anAccount |
+		[
+		(anAccount
+			cover: (105 to: 113)
+			declaredAt: (93 to: 101)) addTransactionsTo:
+			(transactions
+				cover: (134 to: 145)
+				declaredAt: (19 to: 30)) ] valueCoveringAll:
+			{115 to: 132} ]] valueCoveringAll:
+		{86 to: 88}.
+	^ transactions
+		cover: (154 to: 165)
+		declaredAt: (19 to: 30).! !
+
+!testRun: #PortfolioTest #test07PortfolioHasNoTransactionWhenHasNoAccounts stamp: 'JPF 6/2/2021 22:48:41'!
+PASSED!
+!Behavior method!
+addTransactionsTo: aCollectionOfTransactions
+	[
+	(aCollectionOfTransactions
+		cover: (48 to: 72)
+		declaredAt: (20 to: 44)) addAll:
+		(transactions
+			cover: (82 to: 93)
+			declaredAt: (82 to: 93)) ] valueCoveringAll:
+		{74 to: 80}.! !
+
+!testRun: #PortfolioTest #test08PortfolioTransactionsIncludesAllItsAccountsTransactions stamp: 'JPF 6/2/2021 22:48:41'!
+PASSED!
+!Behavior method!
+addTransactionsTo: aCollectionOfTransactions
+	[
+	(accounts
+		cover: (48 to: 55)
+		declaredAt: (48 to: 55)) do: [ :anAccount |
+		[
+		(anAccount
+			cover: (76 to: 84)
+			declaredAt: (64 to: 72)) addTransactionsTo:
+			(aCollectionOfTransactions
+				cover: (105 to: 129)
+				declaredAt: (20 to: 44)) ] valueCoveringAll:
+			{86 to: 103} ]] valueCoveringAll:
+		{57 to: 59}.! !
+
+!testRun: #PortfolioTest #test09PortfolioTransactionsAreCalculatedRecursively stamp: 'JPF 6/2/2021 22:48:41'!
+PASSED!
+!Behavior method!
+signalCanNotAddAccount
+	[
+	(self coverAll:
+		{27 to: 30}) error:
+		([
+		([
+		(self coverAll:
+			{39 to: 42}) class ] valueCoveringAll:
+			{44 to: 48}) canNotAddAccountErrorMessage ] valueCoveringAll:
+			{50 to: 77}) ] valueCoveringAll:
+		{32 to: 37}.! !
+!Behavior method!
+canNotAddAccountErrorMessage
+	^ 'Can not add repeated account to a portfolio' coverAll:
+		{34 to: 78}.! !
+!Behavior method!
+accountsSize
+	^ [
+	(accounts
+		cover: (18 to: 25)
+		declaredAt: (18 to: 25)) size ] valueCoveringAll:
+		{27 to: 30}.! !
+!Behavior method!
+accountsIncludes: anAccount
+	^ [
+	(accounts
+		cover: (32 to: 39)
+		declaredAt: (32 to: 39)) includes:
+		(anAccount
+			cover: (51 to: 59)
+			declaredAt: (19 to: 27)) ] valueCoveringAll:
+		{41 to: 49}.! !
+
+!testRun: #PortfolioTest #test10PortfolioCanNotIncludeTheSameAccountMoreThanOnce stamp: 'JPF 6/2/2021 22:48:41'!
+PASSED!
+
+!testRun: #PortfolioTest #test11PortfolioCanNotIncludeAccountOfItsPortfolios stamp: 'JPF 6/2/2021 22:48:41'!
+PASSED!
+
+!testRun: #PortfolioTest #test12PortfolioCanNotIncludeItself stamp: 'JPF 6/2/2021 22:48:41'!
+PASSED!
+!Behavior method!
+accountsIsEmpty
+	^ [
+	(accounts
+		cover: (21 to: 28)
+		declaredAt: (21 to: 28)) isEmpty ] valueCoveringAll:
+		{30 to: 36}.! !
+
+!testRun: #PortfolioTest #test13ComposedPortfolioCanNotHaveParentPortfolioAccount stamp: 'JPF 6/2/2021 22:48:41'!
+PASSED!
+
+!testRun: #PortfolioTest #test14ComposedPortfolioCanNotHaveAccountOfAnyRootParentRecursively stamp: 'JPF 6/2/2021 22:48:41'!
+PASSED!
+
+!testRun: #PortfolioTest #test15PortfolioCanNotIncludeAnyOfTheComposedAccountOfPortfolioToAdd stamp: 'JPF 6/2/2021 22:48:41'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test01ReceptiveAccountHaveZeroAsBalanceWhenCreated stamp: 'JPF 6/2/2021 22:48:41'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test02DepositIncreasesBalanceOnTransactionValue stamp: 'JPF 6/2/2021 22:48:41'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test03WithdrawDecreasesBalanceOnTransactionValue stamp: 'JPF 6/2/2021 22:48:41'!
+PASSED!
+!Behavior method!
+value
+	^ value
+		cover: (11 to: 15)
+		declaredAt: (11 to: 15).! !
+
+!testRun: #ReceptiveAccountTest #test04WithdrawValueMustBePositive stamp: 'JPF 6/2/2021 22:48:41'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test05ReceptiveAccountKnowsRegisteredTransactions stamp: 'JPF 6/2/2021 22:48:41'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test06ReceptiveAccountDoNotKnowNotRegisteredTransactions stamp: 'JPF 6/2/2021 22:48:41'!
+PASSED!
+!Behavior method!
+transactions
+	^ [
+	(transactions
+		cover: (19 to: 30)
+		declaredAt: (19 to: 30)) copy ] valueCoveringAll:
+		{32 to: 35}.! !
+
+!testRun: #ReceptiveAccountTest #test07AccountKnowsItsTransactions stamp: 'JPF 6/2/2021 22:48:41'!
+PASSED!
+!Behavior method!
+netTransferValue
+	^ [
+	([
+	(NetTransferValueVisitor
+		cover: (23 to: 45)
+		declaredAt: (23 to: 45)) for:
+		(self coverAll:
+			{52 to: 55}) ] valueCoveringAll:
+		{47 to: 50}) doOperation ] valueCoveringAll:
+		{58 to: 68}.! !
+!Behavior method!
+for: anAccount
+	^ [
+	([
+	(self coverAll:
+		{21 to: 24}) new ] valueCoveringAll:
+		{26 to: 28}) initializeFor:
+		(anAccount
+			cover: (45 to: 53)
+			declaredAt: (6 to: 14)) ] valueCoveringAll:
+		{30 to: 43}.! !
+!Behavior method!
+initializeFor: anAccount
+	(account _ anAccount
+		cover: (40 to: 48)
+		declaredAt: (16 to: 24))
+		cover: (29 to: 35)
+		declaredAt: (29 to: 35).
+	(netTransferValue _ 0 coverAll:
+		{71 to: 72})
+		cover: (52 to: 67)
+		declaredAt: (52 to: 67).! !
+!Behavior method!
+doOperation
+	[
+	(self coverAll:
+		{16 to: 19}) visitTransactions ] valueCoveringAll:
+		{21 to: 37}.
+	^ netTransferValue
+		cover: (45 to: 60)
+		declaredAt: (45 to: 60).! !
+!Behavior method!
+visitTransactions
+	| transactionIterator |
+	(transactionIterator _ [
+	(account
+		cover: (70 to: 76)
+		declaredAt: (70 to: 76)) transactionIterator ] valueCoveringAll:
+		{78 to: 96})
+		cover: (48 to: 66)
+		declaredAt: (23 to: 41).
+	[
+	[
+	[
+	(transactionIterator
+		cover: (104 to: 122)
+		declaredAt: (23 to: 41)) hasNext ] valueCoveringAll:
+		{124 to: 130} ] whileTrue: [ | currentTransaction |
+		(currentTransaction _ [
+		(transactionIterator
+			cover: (193 to: 211)
+			declaredAt: (23 to: 41)) next ] valueCoveringAll:
+			{213 to: 216})
+			cover: (172 to: 189)
+			declaredAt: (149 to: 166).
+		[
+		(currentTransaction
+			cover: (221 to: 238)
+			declaredAt: (149 to: 166)) accept:
+			(self coverAll:
+				{248 to: 251}) ] valueCoveringAll:
+			{240 to: 246} ]] valueCoveringAll:
+		{134 to: 143}.! !
+!Behavior method!
+transactionIterator
+	^ [
+	(TransactionIterator
+		cover: (26 to: 44)
+		declaredAt: (26 to: 44)) with:
+		([
+		(self coverAll:
+			{52 to: 55}) transactions ] valueCoveringAll:
+			{57 to: 68}) ] valueCoveringAll:
+		{46 to: 50}.! !
+!Behavior method!
+with: transactions
+	^ [
+	([
+	(self coverAll:
+		{25 to: 28}) new ] valueCoveringAll:
+		{30 to: 32}) initializeWith:
+		(transactions
+			cover: (50 to: 61)
+			declaredAt: (7 to: 18)) ] valueCoveringAll:
+		{34 to: 48}.! !
+!Behavior method!
+initializeWith: transactionCollection
+	(transactions _ transactionCollection
+		cover: (57 to: 77)
+		declaredAt: (17 to: 37))
+		cover: (42 to: 53)
+		declaredAt: (42 to: 53).
+	(index _ 1 coverAll:
+		{88 to: 89})
+		cover: (81 to: 85)
+		declaredAt: (81 to: 85).! !
+!Behavior method!
+hasNext
+	^ [
+	(index
+		cover: (14 to: 18)
+		declaredAt: (14 to: 18)) <=
+		([
+		(transactions
+			cover: (23 to: 34)
+			declaredAt: (23 to: 34)) size ] valueCoveringAll:
+			{36 to: 39}) ] valueCoveringAll:
+		{20 to: 21}.! !
+!Behavior method!
+next
+	| currentTransaction |
+	[
+	(self coverAll:
+		{35 to: 38}) assertHasNext ] valueCoveringAll:
+		{40 to: 52}.
+	(currentTransaction _ [
+	(transactions
+		cover: (79 to: 90)
+		declaredAt: (79 to: 90)) at:
+		(index
+			cover: (96 to: 100)
+			declaredAt: (96 to: 100)) ] valueCoveringAll:
+		{92 to: 94})
+		cover: (58 to: 75)
+		declaredAt: (11 to: 28).
+	(index _ [
+	(index
+		cover: (104 to: 108)
+		declaredAt: (96 to: 100)) +
+		(1 coverAll:
+			{120 to: 120}) ] valueCoveringAll:
+		{118 to: 118})
+		cover: (112 to: 116)
+		declaredAt: (96 to: 100).
+	^ currentTransaction
+		cover: (128 to: 145)
+		declaredAt: (11 to: 28).! !
+!Behavior method!
+assertHasNext
+	^ [
+	([
+	(self coverAll:
+		{20 to: 23}) hasNext ] valueCoveringAll:
+		{25 to: 31}) ifFalse: [
+		[
+		(self coverAll:
+			{45 to: 48}) error:
+			([
+			([
+			(self coverAll:
+				{57 to: 60}) class ] valueCoveringAll:
+				{62 to: 66}) notNextTransationErrorDescription ] valueCoveringAll:
+				{68 to: 100}) ] valueCoveringAll:
+			{50 to: 55} ]] valueCoveringAll:
+		{34 to: 41}.! !
+!Behavior method!
+accept: aVisitor
+	[
+	(aVisitor
+		cover: (21 to: 28)
+		declaredAt: (9 to: 16)) visitDeposit:
+		(self coverAll:
+			{44 to: 47}) ] valueCoveringAll:
+		{30 to: 42}.! !
+!Behavior method!
+visitDeposit: aDeposit
+	^ self.! !
+
+!testRun: #ReportTest #test01ShouldInform0ForAnAccountWithoutTransfers stamp: 'JPF 6/2/2021 22:48:41'!
+PASSED!
+!Behavior method!
+summary
+	^ [
+	([
+	(SummaryVisitor
+		cover: (14 to: 27)
+		declaredAt: (14 to: 27)) for:
+		(self coverAll:
+			{34 to: 37}) ] valueCoveringAll:
+		{29 to: 32}) doOperation ] valueCoveringAll:
+		{40 to: 50}.! !
+!Behavior method!
+for: anAccount
+	^ [
+	([
+	(self coverAll:
+		{21 to: 24}) new ] valueCoveringAll:
+		{26 to: 28}) initializeFor:
+		(anAccount
+			cover: (45 to: 53)
+			declaredAt: (6 to: 14)) ] valueCoveringAll:
+		{30 to: 43}.! !
+!Behavior method!
+initializeFor: anAccount
+	(account _ anAccount
+		cover: (40 to: 48)
+		declaredAt: (16 to: 24))
+		cover: (29 to: 35)
+		declaredAt: (29 to: 35).
+	(summary _ [
+	(OrderedCollection
+		cover: (63 to: 79)
+		declaredAt: (63 to: 79)) new ] valueCoveringAll:
+		{81 to: 83})
+		cover: (52 to: 58)
+		declaredAt: (52 to: 58).! !
+!Behavior method!
+doOperation
+	[
+	(self coverAll:
+		{15 to: 18}) visitTransactions ] valueCoveringAll:
+		{20 to: 36}.
+	[
+	(summary
+		cover: (42 to: 48)
+		declaredAt: (42 to: 48)) add:
+		([
+		('Balance = ' coverAll:
+			{55 to: 66}) ,
+			([
+			([
+			(account
+				cover: (69 to: 75)
+				declaredAt: (69 to: 75)) balance ] valueCoveringAll:
+				{77 to: 83}) asString ] valueCoveringAll:
+				{85 to: 92}) ] valueCoveringAll:
+			{67 to: 67}) ] valueCoveringAll:
+		{50 to: 53}.
+	^ summary
+		cover: (100 to: 106)
+		declaredAt: (42 to: 48).! !
+
+!testRun: #ReportTest #test01ShouldInformBalance0ForAnAccountWithoutTransactions stamp: 'JPF 6/2/2021 22:48:41'!
+PASSED!
+!Behavior method!
+transfer: aValue to: targetReceptiveAccount
+	| transfer |
+	[
+	(self coverAll:
+		{65 to: 68}) assertSourceAndTargetAccountAreNotTheSameAccount:
+		(targetReceptiveAccount
+			cover: (120 to: 141)
+			declaredAt: (22 to: 43)) ] valueCoveringAll:
+		{70 to: 118}.
+	[
+	(self coverAll:
+		{145 to: 148}) assertTheAmountTransferedIsValid:
+		(aValue
+			cover: (184 to: 189)
+			declaredAt: (11 to: 16)) ] valueCoveringAll:
+		{150 to: 182}.
+	(transfer _ [
+	(Transfer
+		cover: (206 to: 213)
+		declaredAt: (206 to: 213))
+		for:
+			(aValue
+				cover: (220 to: 225)
+				declaredAt: (11 to: 16))
+		from:
+			(self coverAll:
+				{233 to: 236})
+		to:
+			(targetReceptiveAccount
+				cover: (242 to: 263)
+				declaredAt: (22 to: 43)) ] valueCoveringAll:
+		{215 to: 218. 227 to: 231. 238 to: 240})
+		cover: (195 to: 202)
+		declaredAt: (51 to: 58).
+	^ transfer
+		cover: (271 to: 278)
+		declaredAt: (51 to: 58).! !
+!Behavior method!
+assertSourceAndTargetAccountAreNotTheSameAccount: targetReceptiveAccount
+	^ [
+	([
+	(targetReceptiveAccount
+		cover: (79 to: 100)
+		declaredAt: (51 to: 72)) =
+		(self coverAll:
+			{104 to: 107}) ] valueCoveringAll:
+		{102 to: 102}) ifTrue: [
+		[
+		(self coverAll:
+			{120 to: 123}) error:
+			([
+			([
+			(self coverAll:
+				{132 to: 135}) class ] valueCoveringAll:
+				{137 to: 141}) transferToSourceAccountErrorDescription ] valueCoveringAll:
+				{143 to: 181}) ] valueCoveringAll:
+			{125 to: 130} ]] valueCoveringAll:
+		{110 to: 116}.! !
+!Behavior method!
+assertTheAmountTransferedIsValid: aValue
+	^ [
+	([
+	(aValue
+		cover: (47 to: 52)
+		declaredAt: (35 to: 40)) <=
+		(0 coverAll:
+			{57 to: 57}) ] valueCoveringAll:
+		{54 to: 55}) ifTrue: [
+		[
+		(self coverAll:
+			{70 to: 73}) error:
+			([
+			([
+			(self coverAll:
+				{82 to: 85}) class ] valueCoveringAll:
+				{87 to: 91}) invalidAmountErrorDescription ] valueCoveringAll:
+				{93 to: 121}) ] valueCoveringAll:
+			{75 to: 80} ]] valueCoveringAll:
+		{60 to: 66}.! !
+!Behavior method!
+for: aValue from: aSourceReceptiveAccount to: aTargetReceptiveAccount
+	^ [
+	([
+	(self coverAll:
+		{76 to: 79}) new ] valueCoveringAll:
+		{81 to: 83})
+		initializeFor:
+			(aValue
+				cover: (100 to: 105)
+				declaredAt: (6 to: 11))
+		from:
+			(aSourceReceptiveAccount
+				cover: (113 to: 135)
+				declaredAt: (19 to: 41))
+		to:
+			(aTargetReceptiveAccount
+				cover: (141 to: 163)
+				declaredAt: (47 to: 69)) ] valueCoveringAll:
+		{85 to: 98. 107 to: 111. 137 to: 139}.! !
+!Behavior method!
+initializeFor: aValue from: aSourceReceptiveAccount to: aTargetReceptiveAccount
+	(value _ aValue
+		cover: (92 to: 97)
+		declaredAt: (16 to: 21))
+		cover: (83 to: 87)
+		declaredAt: (83 to: 87).
+	(output _ [
+	(TransferOutput
+		cover: (111 to: 124)
+		declaredAt: (111 to: 124)) for:
+		(self coverAll:
+			{131 to: 134}) ] valueCoveringAll:
+		{126 to: 129})
+		cover: (101 to: 106)
+		declaredAt: (101 to: 106).
+	(entry _ [
+	(TransferEntry
+		cover: (147 to: 159)
+		declaredAt: (147 to: 159)) for:
+		(self coverAll:
+			{166 to: 169}) ] valueCoveringAll:
+		{161 to: 164})
+		cover: (138 to: 142)
+		declaredAt: (138 to: 142).
+	[
+	(aSourceReceptiveAccount
+		cover: (175 to: 197)
+		declaredAt: (29 to: 51)) register:
+		(output
+			cover: (209 to: 214)
+			declaredAt: (101 to: 106)) ] valueCoveringAll:
+		{199 to: 207}.
+	[
+	(aTargetReceptiveAccount
+		cover: (218 to: 240)
+		declaredAt: (57 to: 79)) register:
+		(entry
+			cover: (252 to: 256)
+			declaredAt: (138 to: 142)) ] valueCoveringAll:
+		{242 to: 250}.! !
+!Behavior method!
+for: aTransfer
+	^ [
+	([
+	(self coverAll:
+		{20 to: 23}) new ] valueCoveringAll:
+		{25 to: 27}) initializeFor:
+		(aTransfer
+			cover: (44 to: 52)
+			declaredAt: (6 to: 14)) ] valueCoveringAll:
+		{29 to: 42}.! !
+!Behavior method!
+initializeFor: aTransfer
+	(transfer _ aTransfer
+		cover: (40 to: 48)
+		declaredAt: (16 to: 24))
+		cover: (28 to: 35)
+		declaredAt: (28 to: 35).! !
+!Behavior method!
+for: aTransfer
+	^ [
+	([
+	(self coverAll:
+		{20 to: 23}) new ] valueCoveringAll:
+		{25 to: 27}) initializeFor:
+		(aTransfer
+			cover: (44 to: 52)
+			declaredAt: (6 to: 14)) ] valueCoveringAll:
+		{29 to: 42}.! !
+!Behavior method!
+accept: aVisitor
+	[
+	(aVisitor
+		cover: (21 to: 28)
+		declaredAt: (9 to: 16)) visitWithdraw:
+		(self coverAll:
+			{45 to: 48}) ] valueCoveringAll:
+		{30 to: 43}.! !
+!Behavior method!
+visitWithdraw: aWithdraw
+	^ self.! !
+!Behavior method!
+accept: aVisitor
+	[
+	(aVisitor
+		cover: (21 to: 28)
+		declaredAt: (9 to: 16)) visitTransferEntry:
+		(self coverAll:
+			{50 to: 53}) ] valueCoveringAll:
+		{30 to: 48}.! !
+!Behavior method!
+visitTransferEntry: aTransferEntry
+	(netTransferValue _ [
+	(aTransferEntry
+		cover: (57 to: 70)
+		declaredAt: (21 to: 34)) affectBalance:
+		(netTransferValue
+			cover: (38 to: 53)
+			declaredAt: (38 to: 53)) ] valueCoveringAll:
+		{72 to: 85})
+		cover: (87 to: 102)
+		declaredAt: (38 to: 53).! !
+!Behavior method!
+affectBalance: aBalance
+	^ [
+	(aBalance
+		cover: (30 to: 37)
+		declaredAt: (16 to: 23)) +
+		([
+		(self coverAll:
+			{41 to: 44}) value ] valueCoveringAll:
+			{46 to: 50}) ] valueCoveringAll:
+		{39 to: 39}.! !
+!Behavior method!
+value
+	^ [
+	(transfer
+		cover: (12 to: 19)
+		declaredAt: (12 to: 19)) value ] valueCoveringAll:
+		{21 to: 25}.! !
+!Behavior method!
+value
+	^ value
+		cover: (11 to: 15)
+		declaredAt: (11 to: 15).! !
+
+!testRun: #ReportTest #test02ShouldInform50ForAnAccountWithA50TransferEntry stamp: 'JPF 6/2/2021 22:48:41'!
+PASSED!
+!Behavior method!
+visitDeposit: aDeposit
+	[
+	(summary
+		cover: (27 to: 33)
+		declaredAt: (27 to: 33)) add:
+		([
+		([
+		('Depósito por ' coverAll:
+			{40 to: 54}) ,
+			([
+			([
+			(aDeposit
+				cover: (58 to: 65)
+				declaredAt: (15 to: 22)) value ] valueCoveringAll:
+				{67 to: 71}) asString ] valueCoveringAll:
+				{73 to: 80}) ] valueCoveringAll:
+			{56 to: 56}) ,
+			('.' coverAll:
+				{84 to: 86}) ] valueCoveringAll:
+			{82 to: 82}) ] valueCoveringAll:
+		{35 to: 38}.! !
+!Behavior method!
+value
+	^ value
+		cover: (11 to: 15)
+		declaredAt: (11 to: 15).! !
+
+!testRun: #ReportTest #test02ShouldInformBalance50AndA50DepositForAnAccountWithA50Deposit stamp: 'JPF 6/2/2021 22:48:41'!
+PASSED!
+!Behavior method!
+accept: aVisitor
+	[
+	(aVisitor
+		cover: (21 to: 28)
+		declaredAt: (9 to: 16)) visitTransferOutput:
+		(self coverAll:
+			{51 to: 54}) ] valueCoveringAll:
+		{30 to: 49}.! !
+!Behavior method!
+visitTransferOutput: aTransferOutput
+	(netTransferValue _ [
+	(aTransferOutput
+		cover: (59 to: 73)
+		declaredAt: (22 to: 36)) affectBalance:
+		(netTransferValue
+			cover: (40 to: 55)
+			declaredAt: (40 to: 55)) ] valueCoveringAll:
+		{75 to: 88})
+		cover: (90 to: 105)
+		declaredAt: (40 to: 55).! !
+!Behavior method!
+affectBalance: aBalance
+	^ [
+	(aBalance
+		cover: (30 to: 37)
+		declaredAt: (16 to: 23)) -
+		([
+		(self coverAll:
+			{41 to: 44}) value ] valueCoveringAll:
+			{46 to: 50}) ] valueCoveringAll:
+		{39 to: 39}.! !
+
+!testRun: #ReportTest #test03ShouldInform10ForAnAccountWithA50TransferEntryAnd40TransferOutput stamp: 'JPF 6/2/2021 22:48:41'!
+PASSED!
+!Behavior method!
+visitWithdraw: aWithdraw
+	[
+	(summary
+		cover: (29 to: 35)
+		declaredAt: (29 to: 35)) add:
+		([
+		([
+		('Extracción por ' coverAll:
+			{42 to: 58}) ,
+			([
+			([
+			(aWithdraw
+				cover: (62 to: 70)
+				declaredAt: (16 to: 24)) value ] valueCoveringAll:
+				{72 to: 76}) asString ] valueCoveringAll:
+				{78 to: 85}) ] valueCoveringAll:
+			{60 to: 60}) ,
+			('.' coverAll:
+				{89 to: 91}) ] valueCoveringAll:
+			{87 to: 87}) ] valueCoveringAll:
+		{37 to: 40}.! !
+
+!testRun: #ReportTest #test03ShouldInformBalance0A50DepositA50WithdrawForAnAccountWithA50DepositAnd50Withdraw stamp: 'JPF 6/2/2021 22:48:41'!
+PASSED!
+!Behavior method!
+visitTransferEntry: aTransferEntry
+	[
+	(summary
+		cover: (39 to: 45)
+		declaredAt: (39 to: 45)) add:
+		([
+		([
+		('Entrada por transferencia de ' coverAll:
+			{52 to: 82}) ,
+			([
+			([
+			(aTransferEntry
+				cover: (86 to: 99)
+				declaredAt: (21 to: 34)) value ] valueCoveringAll:
+				{101 to: 105}) asString ] valueCoveringAll:
+				{107 to: 114}) ] valueCoveringAll:
+			{84 to: 84}) ,
+			('.' coverAll:
+				{118 to: 120}) ] valueCoveringAll:
+			{116 to: 116}) ] valueCoveringAll:
+		{47 to: 50}.! !
+!Behavior method!
+visitTransferOutput: aTransferOutput
+	[
+	(summary
+		cover: (41 to: 47)
+		declaredAt: (41 to: 47)) add:
+		([
+		([
+		('Salida por transferencia de ' coverAll:
+			{54 to: 83}) ,
+			([
+			([
+			(aTransferOutput
+				cover: (87 to: 101)
+				declaredAt: (22 to: 36)) value ] valueCoveringAll:
+				{103 to: 107}) asString ] valueCoveringAll:
+				{109 to: 116}) ] valueCoveringAll:
+			{85 to: 85}) ,
+			('.' coverAll:
+				{120 to: 122}) ] valueCoveringAll:
+			{118 to: 118}) ] valueCoveringAll:
+		{49 to: 52}.! !
+
+!testRun: #ReportTest #test04ShouldInformBalance0A50DepositA50WithdrawA50TransferEntryA50TransferOutputForAnAccountWithThoseTransactions stamp: 'JPF 6/2/2021 22:48:41'!
+PASSED!
+
+!testRun: #ReportTest #test04ShouldInformCorrectValueForAPortfolioWithAReceptiveAccountAndAnotherPortfolioHavingAllTypeOfTransactions stamp: 'JPF 6/2/2021 22:48:41'!
+PASSED!
+
+!testRun: #ReportTest #test05ShouldInformCorrectBalanceForAPortfolioWithAReceptiveAccountAndAnotherPortfolioHavingAllTypeOfTransactions stamp: 'JPF 6/2/2021 22:48:41'!
+PASSED!
+
+!testRun: #TransactionIteratorTest #test01IteratorForAnAccountWithoutTransactionsHasNotNext stamp: 'JPF 6/2/2021 22:48:41'!
+PASSED!
+
+!testRun: #TransactionIteratorTest #test02IteratorForAnAccountWithOneTransactionHasNext stamp: 'JPF 6/2/2021 22:48:41'!
+PASSED!
+
+!testRun: #TransactionIteratorTest #test03IteratorForAnAccountWithOneTransactionHasNotNextWhenWasAskedForNextOnce stamp: 'JPF 6/2/2021 22:48:41'!
+PASSED!
+
+!testRun: #TransactionIteratorTest #test04IteratorForAnAccountWithOneTransactionShouldReturnThatTransactionWhenAskForNext stamp: 'JPF 6/2/2021 22:48:41'!
+PASSED!
+!Behavior method!
+notNextTransationErrorDescription
+	^ 'Cannot ask for next when iterator has not next' coverAll:
+		{40 to: 87}.! !
+
+!testRun: #TransactionIteratorTest #test05NextShouldRaiseAnErrorWhenHasNotNext stamp: 'JPF 6/2/2021 22:48:41'!
+PASSED!
+
+!testRun: #TransferTest #test01ShouldIncreaseTargetAccountBalanceAndDecreaseSourceAccountBalanceInTheSameAmount stamp: 'JPF 6/2/2021 22:48:41'!
+PASSED!
+
+!testRun: #TransferTest #test02ShouldNotAddDepositsToTargetAccountOrWithdrawToSourceAccount stamp: 'JPF 6/2/2021 22:48:41'!
+PASSED!
+!Behavior method!
+output
+	^ output
+		cover: (13 to: 18)
+		declaredAt: (13 to: 18).! !
+!Behavior method!
+entry
+	^ entry
+		cover: (12 to: 16)
+		declaredAt: (12 to: 16).! !
+
+!testRun: #TransferTest #test03ShouldReturnATransferWithTheTransferOutputAndTheTransferEntry stamp: 'JPF 6/2/2021 22:48:41'!
+PASSED!
+!Behavior method!
+transfer
+	^ transfer
+		cover: (13 to: 20)
+		declaredAt: (13 to: 20).! !
+
+!testRun: #TransferTest #test04ShouldObtainTheSameTransferFromTheTransferOutputAndTheTransferEntry stamp: 'JPF 6/2/2021 22:48:41'!
+PASSED!
+!Behavior method!
+transferToSourceAccountErrorDescription
+	^ 'Cannot transfer to the source account' coverAll:
+		{46 to: 84}.! !
+
+!testRun: #TransferTest #test05ShouldRaiseAnErrorIfTheTargetAndSourceAccountAreTheSameAccount stamp: 'JPF 6/2/2021 22:48:41'!
+PASSED!
+!Behavior method!
+invalidAmountErrorDescription
+	^ 'Cannot transfer a negative amount' coverAll:
+		{35 to: 69}.! !
+
+!testRun: #TransferTest #test06ShouldRaiseAnErrorIfAnAccountTransferANegativeAmount stamp: 'JPF 6/2/2021 22:48:41'!
+PASSED!
+
+!testRun: #TransferTest #test07ShouldRaiseAnErrorIfAnAccountTransferZeroAsAmount stamp: 'JPF 6/2/2021 22:48:41'!
+PASSED!
+!Behavior method!
+initialize
+	(accounts _ [
+	(OrderedCollection
+		cover: (26 to: 42)
+		declaredAt: (26 to: 42)) new ] valueCoveringAll:
+		{44 to: 46})
+		cover: (14 to: 21)
+		declaredAt: (14 to: 21).
+	(parents _ [
+	(OrderedCollection
+		cover: (61 to: 77)
+		declaredAt: (26 to: 42)) new ] valueCoveringAll:
+		{79 to: 81})
+		cover: (50 to: 56)
+		declaredAt: (50 to: 56).! !
+!Behavior method!
+balance
+	^ [
+	(accounts
+		cover: (13 to: 20)
+		declaredAt: (13 to: 20))
+		sum: [ :anAccount |
+			[
+			(anAccount
+				cover: (42 to: 50)
+				declaredAt: (30 to: 38)) balance ] valueCoveringAll:
+				{52 to: 58} ]
+		ifEmpty: [
+			0 coverAll:
+				{73 to: 73} ]] valueCoveringAll:
+		{22 to: 25. 62 to: 69}.! !
+
+!testRun: #PortfolioTest #test01BalanceOfPortfolioWithoutAccountsIsZero stamp: 'JPF 6/2/2021 22:48:55'!
+PASSED!
+!Behavior method!
+initialize
+	[ super initialize ] valueCoveringAll:
+		{20 to: 29}.
+	(transactions _ [
+	(OrderedCollection
+		cover: (49 to: 65)
+		declaredAt: (49 to: 65)) new ] valueCoveringAll:
+		{67 to: 69})
+		cover: (33 to: 44)
+		declaredAt: (33 to: 44).! !
+!Behavior method!
+register: aValue on: account
+	| transaction |
+	(transaction _ [
+	(self coverAll:
+		{66 to: 69}) for:
+		(aValue
+			cover: (76 to: 81)
+			declaredAt: (11 to: 16)) ] valueCoveringAll:
+		{71 to: 74})
+		cover: (51 to: 61)
+		declaredAt: (34 to: 44).
+	[
+	(account
+		cover: (85 to: 91)
+		declaredAt: (22 to: 28)) register:
+		(transaction
+			cover: (103 to: 113)
+			declaredAt: (34 to: 44)) ] valueCoveringAll:
+		{93 to: 101}.
+	^ transaction
+		cover: (122 to: 132)
+		declaredAt: (34 to: 44).! !
+!Behavior method!
+for: aValue
+	^ [
+	([
+	(self coverAll:
+		{17 to: 20}) new ] valueCoveringAll:
+		{22 to: 24}) initializeFor:
+		(aValue
+			cover: (41 to: 46)
+			declaredAt: (6 to: 11)) ] valueCoveringAll:
+		{26 to: 39}.! !
+!Behavior method!
+initializeFor: aValue
+	(value _ aValue
+		cover: (34 to: 39)
+		declaredAt: (16 to: 21))
+		cover: (25 to: 29)
+		declaredAt: (25 to: 29).! !
+!Behavior method!
+register: aTransaction
+	[
+	(transactions
+		cover: (26 to: 37)
+		declaredAt: (26 to: 37)) add:
+		(aTransaction
+			cover: (44 to: 55)
+			declaredAt: (11 to: 22)) ] valueCoveringAll:
+		{39 to: 42}.! !
+!Behavior method!
+with: anAccount
+	^ [ | cascadeReceiver |
+	cascadeReceiver _ [
+	(self coverAll:
+		{20 to: 23}) new ] valueCoveringAll:
+		{25 to: 27}.
+	[ cascadeReceiver add: anAccount ] valueCoveringAll:
+		{32 to: 45}.
+	[ cascadeReceiver yourself ] valueCoveringAll:
+		{50 to: 57} ] value.! !
+!Behavior method!
+add: accountToAdd
+	[
+	(self coverAll:
+		{21 to: 24}) assertCanAdd:
+		(accountToAdd
+			cover: (40 to: 51)
+			declaredAt: (6 to: 17)) ] valueCoveringAll:
+		{26 to: 38}.
+	[
+	(accounts
+		cover: (58 to: 65)
+		declaredAt: (58 to: 65)) add:
+		(accountToAdd
+			cover: (72 to: 83)
+			declaredAt: (6 to: 17)) ] valueCoveringAll:
+		{67 to: 70}.
+	[
+	(accountToAdd
+		cover: (87 to: 98)
+		declaredAt: (6 to: 17)) addedTo:
+		(self coverAll:
+			{109 to: 112}) ] valueCoveringAll:
+		{100 to: 107}.! !
+!Behavior method!
+assertCanAdd: accountToAdd
+	[
+	([
+	(self coverAll:
+		{31 to: 34}) anyRootParentIsComposedBy:
+		(accountToAdd
+			cover: (63 to: 74)
+			declaredAt: (15 to: 26)) ] valueCoveringAll:
+		{36 to: 61}) ifTrue: [
+		[
+		(self coverAll:
+			{87 to: 90}) signalCanNotAddAccount ] valueCoveringAll:
+			{92 to: 113} ]] valueCoveringAll:
+		{77 to: 83}.! !
+!Behavior method!
+anyRootParentIsComposedBy: accountToAdd
+	^ [
+	([
+	(self coverAll:
+		{44 to: 47}) rootParents ] valueCoveringAll:
+		{49 to: 59}) anySatisfy: [ :aParent |
+		[
+		(aParent
+			cover: (86 to: 92)
+			declaredAt: (76 to: 82)) isComposedBy:
+			(accountToAdd
+				cover: (108 to: 119)
+				declaredAt: (28 to: 39)) ] valueCoveringAll:
+			{94 to: 106} ]] valueCoveringAll:
+		{61 to: 71}.! !
+!Behavior method!
+rootParents
+	| rootParents |
+	(rootParents _ [
+	(Set
+		cover: (50 to: 52)
+		declaredAt: (50 to: 52)) new ] valueCoveringAll:
+		{54 to: 56})
+		cover: (35 to: 45)
+		declaredAt: (18 to: 28).
+	[
+	(self coverAll:
+		{60 to: 63}) addRootParentsTo:
+		(rootParents
+			cover: (83 to: 93)
+			declaredAt: (18 to: 28)) ] valueCoveringAll:
+		{65 to: 81}.
+	^ rootParents
+		cover: (101 to: 111)
+		declaredAt: (18 to: 28).! !
+!Behavior method!
+addRootParentsTo: rootParents
+	[
+	(parents
+		cover: (33 to: 39)
+		declaredAt: (33 to: 39))
+		ifEmpty: [
+			[
+			(rootParents
+				cover: (55 to: 65)
+				declaredAt: (19 to: 29)) add:
+				(self coverAll:
+					{72 to: 75}) ] valueCoveringAll:
+				{67 to: 70} ]
+		ifNotEmpty: [
+			[
+			(parents
+				cover: (96 to: 102)
+				declaredAt: (33 to: 39)) do: [ :aParent |
+				[
+				(aParent
+					cover: (121 to: 127)
+					declaredAt: (111 to: 117)) addRootParentsTo:
+					(rootParents
+						cover: (147 to: 157)
+						declaredAt: (19 to: 29)) ] valueCoveringAll:
+					{129 to: 145} ]] valueCoveringAll:
+				{104 to: 106} ]] valueCoveringAll:
+		{44 to: 51. 82 to: 92}.! !
+!Behavior method!
+isComposedBy: anAccount
+	^ [
+	([
+	(self coverAll:
+		{29 to: 32}) =
+		(anAccount
+			cover: (36 to: 44)
+			declaredAt: (15 to: 23)) ] valueCoveringAll:
+		{34 to: 34}) or: [
+		[
+		(accounts
+			cover: (52 to: 59)
+			declaredAt: (52 to: 59)) anySatisfy: [ :composedAccount |
+			[
+			([
+			(composedAccount
+				cover: (95 to: 109)
+				declaredAt: (76 to: 90)) isComposedBy:
+				(anAccount
+					cover: (125 to: 133)
+					declaredAt: (15 to: 23)) ] valueCoveringAll:
+				{111 to: 123}) or: [
+				[
+				(anAccount
+					cover: (142 to: 150)
+					declaredAt: (15 to: 23)) isComposedBy:
+					(composedAccount
+						cover: (166 to: 180)
+						declaredAt: (76 to: 90)) ] valueCoveringAll:
+					{152 to: 164} ]] valueCoveringAll:
+				{136 to: 138} ]] valueCoveringAll:
+			{61 to: 71} ]] valueCoveringAll:
+		{46 to: 48}.! !
+!Behavior method!
+addedTo: aPortfolio
+	^ self.! !
+!Behavior method!
+balance
+	^ [
+	(transactions
+		cover: (12 to: 23)
+		declaredAt: (12 to: 23))
+		inject:
+			(0 coverAll:
+				{36 to: 36})
+		into: [ :currentBalance :transaction |
+			[
+			(transaction
+				cover: (79 to: 89)
+				declaredAt: (65 to: 75)) affectBalance:
+				(currentBalance
+					cover: (106 to: 119)
+					declaredAt: (49 to: 62)) ] valueCoveringAll:
+				{91 to: 104} ]] valueCoveringAll:
+		{28 to: 34. 40 to: 44}.! !
+!Behavior method!
+affectBalance: aBalance
+	^ [
+	(aBalance
+		cover: (30 to: 37)
+		declaredAt: (16 to: 23)) +
+		(value
+			cover: (41 to: 45)
+			declaredAt: (41 to: 45)) ] valueCoveringAll:
+		{39 to: 39}.! !
+
+!testRun: #PortfolioTest #test02BalanceOfPortfolioWithAccountsIsSumOfAccountsBalance stamp: 'JPF 6/2/2021 22:48:56'!
+PASSED!
+!Behavior method!
+for: aValue
+	^ [
+	([
+	(self coverAll:
+		{17 to: 20}) new ] valueCoveringAll:
+		{22 to: 24}) initializeFor:
+		(aValue
+			cover: (41 to: 46)
+			declaredAt: (6 to: 11)) ] valueCoveringAll:
+		{26 to: 39}.! !
+!Behavior method!
+initializeFor: aValue
+	(value _ aValue
+		cover: (34 to: 39)
+		declaredAt: (16 to: 21))
+		cover: (25 to: 29)
+		declaredAt: (25 to: 29).! !
+!Behavior method!
+with: anAccount with: anotherAccount
+	^ [ | cascadeReceiver |
+	cascadeReceiver _ [
+	(self coverAll:
+		{41 to: 44}) new ] valueCoveringAll:
+		{46 to: 48}.
+	[ cascadeReceiver add: anAccount ] valueCoveringAll:
+		{53 to: 66}.
+	[ cascadeReceiver add: anotherAccount ] valueCoveringAll:
+		{71 to: 89}.
+	[ cascadeReceiver yourself ] valueCoveringAll:
+		{94 to: 101} ] value.! !
+!Behavior method!
+addedTo: aPortfolio
+	[
+	(parents
+		cover: (25 to: 31)
+		declaredAt: (25 to: 31)) add:
+		(aPortfolio
+			cover: (38 to: 47)
+			declaredAt: (10 to: 19)) ] valueCoveringAll:
+		{33 to: 36}.! !
+!Behavior method!
+isComposedBy: anAccount
+	^ [
+	(self coverAll:
+		{28 to: 31}) =
+		(anAccount
+			cover: (35 to: 43)
+			declaredAt: (15 to: 23)) ] valueCoveringAll:
+		{33 to: 33}.! !
+!Behavior method!
+affectBalance: aBalance
+	^ [
+	(aBalance
+		cover: (30 to: 37)
+		declaredAt: (16 to: 23)) -
+		(value
+			cover: (41 to: 45)
+			declaredAt: (41 to: 45)) ] valueCoveringAll:
+		{39 to: 39}.! !
+
+!testRun: #PortfolioTest #test03BalanceOfPortfolioIsCalculatedRecursivelyOnPortfolios stamp: 'JPF 6/2/2021 22:48:56'!
+PASSED!
+!Behavior method!
+hasRegistered: aTransaction
+	^ [
+	(accounts
+		cover: (32 to: 39)
+		declaredAt: (32 to: 39)) anySatisfy: [ :anAccount |
+		[
+		(anAccount
+			cover: (68 to: 76)
+			declaredAt: (56 to: 64)) hasRegistered:
+			(aTransaction
+				cover: (93 to: 104)
+				declaredAt: (16 to: 27)) ] valueCoveringAll:
+			{78 to: 91} ]] valueCoveringAll:
+		{41 to: 51}.! !
+
+!testRun: #PortfolioTest #test04PortfolioWithoutAccountsHasNoRegisteredTransaction stamp: 'JPF 6/2/2021 22:48:56'!
+PASSED!
+!Behavior method!
+hasRegistered: aTransaction
+	^ [
+	(transactions
+		cover: (33 to: 44)
+		declaredAt: (33 to: 44)) includes:
+		(aTransaction
+			cover: (56 to: 67)
+			declaredAt: (16 to: 27)) ] valueCoveringAll:
+		{46 to: 54}.! !
+
+!testRun: #PortfolioTest #test05PortfolioHasRegisteredItsAccountsTransactions stamp: 'JPF 6/2/2021 22:48:56'!
+PASSED!
+
+!testRun: #PortfolioTest #test06PortfolioLooksForRegisteredTransactionsRecursively stamp: 'JPF 6/2/2021 22:48:56'!
+PASSED!
+!Behavior method!
+transactions
+	| transactions |
+	(transactions _ [
+	(OrderedCollection
+		cover: (53 to: 69)
+		declaredAt: (53 to: 69)) new ] valueCoveringAll:
+		{71 to: 73})
+		cover: (37 to: 48)
+		declaredAt: (19 to: 30).
+	[
+	(accounts
+		cover: (77 to: 84)
+		declaredAt: (77 to: 84)) do: [ :anAccount |
+		[
+		(anAccount
+			cover: (105 to: 113)
+			declaredAt: (93 to: 101)) addTransactionsTo:
+			(transactions
+				cover: (134 to: 145)
+				declaredAt: (19 to: 30)) ] valueCoveringAll:
+			{115 to: 132} ]] valueCoveringAll:
+		{86 to: 88}.
+	^ transactions
+		cover: (154 to: 165)
+		declaredAt: (19 to: 30).! !
+
+!testRun: #PortfolioTest #test07PortfolioHasNoTransactionWhenHasNoAccounts stamp: 'JPF 6/2/2021 22:48:56'!
+PASSED!
+!Behavior method!
+addTransactionsTo: aCollectionOfTransactions
+	[
+	(aCollectionOfTransactions
+		cover: (48 to: 72)
+		declaredAt: (20 to: 44)) addAll:
+		(transactions
+			cover: (82 to: 93)
+			declaredAt: (82 to: 93)) ] valueCoveringAll:
+		{74 to: 80}.! !
+
+!testRun: #PortfolioTest #test08PortfolioTransactionsIncludesAllItsAccountsTransactions stamp: 'JPF 6/2/2021 22:48:56'!
+PASSED!
+!Behavior method!
+addTransactionsTo: aCollectionOfTransactions
+	[
+	(accounts
+		cover: (48 to: 55)
+		declaredAt: (48 to: 55)) do: [ :anAccount |
+		[
+		(anAccount
+			cover: (76 to: 84)
+			declaredAt: (64 to: 72)) addTransactionsTo:
+			(aCollectionOfTransactions
+				cover: (105 to: 129)
+				declaredAt: (20 to: 44)) ] valueCoveringAll:
+			{86 to: 103} ]] valueCoveringAll:
+		{57 to: 59}.! !
+
+!testRun: #PortfolioTest #test09PortfolioTransactionsAreCalculatedRecursively stamp: 'JPF 6/2/2021 22:48:56'!
+PASSED!
+!Behavior method!
+signalCanNotAddAccount
+	[
+	(self coverAll:
+		{27 to: 30}) error:
+		([
+		([
+		(self coverAll:
+			{39 to: 42}) class ] valueCoveringAll:
+			{44 to: 48}) canNotAddAccountErrorMessage ] valueCoveringAll:
+			{50 to: 77}) ] valueCoveringAll:
+		{32 to: 37}.! !
+!Behavior method!
+canNotAddAccountErrorMessage
+	^ 'Can not add repeated account to a portfolio' coverAll:
+		{34 to: 78}.! !
+!Behavior method!
+accountsSize
+	^ [
+	(accounts
+		cover: (18 to: 25)
+		declaredAt: (18 to: 25)) size ] valueCoveringAll:
+		{27 to: 30}.! !
+!Behavior method!
+accountsIncludes: anAccount
+	^ [
+	(accounts
+		cover: (32 to: 39)
+		declaredAt: (32 to: 39)) includes:
+		(anAccount
+			cover: (51 to: 59)
+			declaredAt: (19 to: 27)) ] valueCoveringAll:
+		{41 to: 49}.! !
+
+!testRun: #PortfolioTest #test10PortfolioCanNotIncludeTheSameAccountMoreThanOnce stamp: 'JPF 6/2/2021 22:48:56'!
+PASSED!
+
+!testRun: #PortfolioTest #test11PortfolioCanNotIncludeAccountOfItsPortfolios stamp: 'JPF 6/2/2021 22:48:56'!
+PASSED!
+
+!testRun: #PortfolioTest #test12PortfolioCanNotIncludeItself stamp: 'JPF 6/2/2021 22:48:56'!
+PASSED!
+!Behavior method!
+accountsIsEmpty
+	^ [
+	(accounts
+		cover: (21 to: 28)
+		declaredAt: (21 to: 28)) isEmpty ] valueCoveringAll:
+		{30 to: 36}.! !
+
+!testRun: #PortfolioTest #test13ComposedPortfolioCanNotHaveParentPortfolioAccount stamp: 'JPF 6/2/2021 22:48:56'!
+PASSED!
+
+!testRun: #PortfolioTest #test14ComposedPortfolioCanNotHaveAccountOfAnyRootParentRecursively stamp: 'JPF 6/2/2021 22:48:56'!
+PASSED!
+
+!testRun: #PortfolioTest #test15PortfolioCanNotIncludeAnyOfTheComposedAccountOfPortfolioToAdd stamp: 'JPF 6/2/2021 22:48:56'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test01ReceptiveAccountHaveZeroAsBalanceWhenCreated stamp: 'JPF 6/2/2021 22:48:56'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test02DepositIncreasesBalanceOnTransactionValue stamp: 'JPF 6/2/2021 22:48:56'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test03WithdrawDecreasesBalanceOnTransactionValue stamp: 'JPF 6/2/2021 22:48:56'!
+PASSED!
+!Behavior method!
+value
+	^ value
+		cover: (11 to: 15)
+		declaredAt: (11 to: 15).! !
+
+!testRun: #ReceptiveAccountTest #test04WithdrawValueMustBePositive stamp: 'JPF 6/2/2021 22:48:56'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test05ReceptiveAccountKnowsRegisteredTransactions stamp: 'JPF 6/2/2021 22:48:56'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test06ReceptiveAccountDoNotKnowNotRegisteredTransactions stamp: 'JPF 6/2/2021 22:48:56'!
+PASSED!
+!Behavior method!
+transactions
+	^ [
+	(transactions
+		cover: (19 to: 30)
+		declaredAt: (19 to: 30)) copy ] valueCoveringAll:
+		{32 to: 35}.! !
+
+!testRun: #ReceptiveAccountTest #test07AccountKnowsItsTransactions stamp: 'JPF 6/2/2021 22:48:56'!
+PASSED!
+!Behavior method!
+netTransferValue
+	^ [
+	([
+	(NetTransferValueVisitor
+		cover: (23 to: 45)
+		declaredAt: (23 to: 45)) for:
+		(self coverAll:
+			{52 to: 55}) ] valueCoveringAll:
+		{47 to: 50}) doOperation ] valueCoveringAll:
+		{58 to: 68}.! !
+!Behavior method!
+for: anAccount
+	^ [
+	([
+	(self coverAll:
+		{21 to: 24}) new ] valueCoveringAll:
+		{26 to: 28}) initializeFor:
+		(anAccount
+			cover: (45 to: 53)
+			declaredAt: (6 to: 14)) ] valueCoveringAll:
+		{30 to: 43}.! !
+!Behavior method!
+initializeFor: anAccount
+	(account _ anAccount
+		cover: (40 to: 48)
+		declaredAt: (16 to: 24))
+		cover: (29 to: 35)
+		declaredAt: (29 to: 35).
+	(netTransferValue _ 0 coverAll:
+		{71 to: 72})
+		cover: (52 to: 67)
+		declaredAt: (52 to: 67).! !
+!Behavior method!
+doOperation
+	[
+	(self coverAll:
+		{16 to: 19}) visitTransactions ] valueCoveringAll:
+		{21 to: 37}.
+	^ netTransferValue
+		cover: (45 to: 60)
+		declaredAt: (45 to: 60).! !
+!Behavior method!
+visitTransactions
+	| transactionIterator |
+	(transactionIterator _ [
+	(account
+		cover: (70 to: 76)
+		declaredAt: (70 to: 76)) transactionIterator ] valueCoveringAll:
+		{78 to: 96})
+		cover: (48 to: 66)
+		declaredAt: (23 to: 41).
+	[
+	[
+	[
+	(transactionIterator
+		cover: (104 to: 122)
+		declaredAt: (23 to: 41)) hasNext ] valueCoveringAll:
+		{124 to: 130} ] whileTrue: [ | currentTransaction |
+		(currentTransaction _ [
+		(transactionIterator
+			cover: (193 to: 211)
+			declaredAt: (23 to: 41)) next ] valueCoveringAll:
+			{213 to: 216})
+			cover: (172 to: 189)
+			declaredAt: (149 to: 166).
+		[
+		(currentTransaction
+			cover: (221 to: 238)
+			declaredAt: (149 to: 166)) accept:
+			(self coverAll:
+				{248 to: 251}) ] valueCoveringAll:
+			{240 to: 246} ]] valueCoveringAll:
+		{134 to: 143}.! !
+!Behavior method!
+transactionIterator
+	^ [
+	(TransactionIterator
+		cover: (26 to: 44)
+		declaredAt: (26 to: 44)) with:
+		([
+		(self coverAll:
+			{52 to: 55}) transactions ] valueCoveringAll:
+			{57 to: 68}) ] valueCoveringAll:
+		{46 to: 50}.! !
+!Behavior method!
+with: transactions
+	^ [
+	([
+	(self coverAll:
+		{25 to: 28}) new ] valueCoveringAll:
+		{30 to: 32}) initializeWith:
+		(transactions
+			cover: (50 to: 61)
+			declaredAt: (7 to: 18)) ] valueCoveringAll:
+		{34 to: 48}.! !
+!Behavior method!
+initializeWith: transactionCollection
+	(transactions _ transactionCollection
+		cover: (57 to: 77)
+		declaredAt: (17 to: 37))
+		cover: (42 to: 53)
+		declaredAt: (42 to: 53).
+	(index _ 1 coverAll:
+		{88 to: 89})
+		cover: (81 to: 85)
+		declaredAt: (81 to: 85).! !
+!Behavior method!
+hasNext
+	^ [
+	(index
+		cover: (14 to: 18)
+		declaredAt: (14 to: 18)) <=
+		([
+		(transactions
+			cover: (23 to: 34)
+			declaredAt: (23 to: 34)) size ] valueCoveringAll:
+			{36 to: 39}) ] valueCoveringAll:
+		{20 to: 21}.! !
+!Behavior method!
+next
+	| currentTransaction |
+	[
+	(self coverAll:
+		{35 to: 38}) assertHasNext ] valueCoveringAll:
+		{40 to: 52}.
+	(currentTransaction _ [
+	(transactions
+		cover: (79 to: 90)
+		declaredAt: (79 to: 90)) at:
+		(index
+			cover: (96 to: 100)
+			declaredAt: (96 to: 100)) ] valueCoveringAll:
+		{92 to: 94})
+		cover: (58 to: 75)
+		declaredAt: (11 to: 28).
+	(index _ [
+	(index
+		cover: (104 to: 108)
+		declaredAt: (96 to: 100)) +
+		(1 coverAll:
+			{120 to: 120}) ] valueCoveringAll:
+		{118 to: 118})
+		cover: (112 to: 116)
+		declaredAt: (96 to: 100).
+	^ currentTransaction
+		cover: (128 to: 145)
+		declaredAt: (11 to: 28).! !
+!Behavior method!
+assertHasNext
+	^ [
+	([
+	(self coverAll:
+		{20 to: 23}) hasNext ] valueCoveringAll:
+		{25 to: 31}) ifFalse: [
+		[
+		(self coverAll:
+			{45 to: 48}) error:
+			([
+			([
+			(self coverAll:
+				{57 to: 60}) class ] valueCoveringAll:
+				{62 to: 66}) notNextTransationErrorDescription ] valueCoveringAll:
+				{68 to: 100}) ] valueCoveringAll:
+			{50 to: 55} ]] valueCoveringAll:
+		{34 to: 41}.! !
+!Behavior method!
+accept: aVisitor
+	[
+	(aVisitor
+		cover: (21 to: 28)
+		declaredAt: (9 to: 16)) visitDeposit:
+		(self coverAll:
+			{44 to: 47}) ] valueCoveringAll:
+		{30 to: 42}.! !
+!Behavior method!
+visitDeposit: aDeposit
+	^ self.! !
+
+!testRun: #ReportTest #test01ShouldInform0ForAnAccountWithoutTransfers stamp: 'JPF 6/2/2021 22:48:56'!
+PASSED!
+!Behavior method!
+summary
+	^ [
+	([
+	(SummaryVisitor
+		cover: (14 to: 27)
+		declaredAt: (14 to: 27)) for:
+		(self coverAll:
+			{34 to: 37}) ] valueCoveringAll:
+		{29 to: 32}) doOperation ] valueCoveringAll:
+		{40 to: 50}.! !
+!Behavior method!
+for: anAccount
+	^ [
+	([
+	(self coverAll:
+		{21 to: 24}) new ] valueCoveringAll:
+		{26 to: 28}) initializeFor:
+		(anAccount
+			cover: (45 to: 53)
+			declaredAt: (6 to: 14)) ] valueCoveringAll:
+		{30 to: 43}.! !
+!Behavior method!
+initializeFor: anAccount
+	(account _ anAccount
+		cover: (40 to: 48)
+		declaredAt: (16 to: 24))
+		cover: (29 to: 35)
+		declaredAt: (29 to: 35).
+	(summary _ [
+	(OrderedCollection
+		cover: (63 to: 79)
+		declaredAt: (63 to: 79)) new ] valueCoveringAll:
+		{81 to: 83})
+		cover: (52 to: 58)
+		declaredAt: (52 to: 58).! !
+!Behavior method!
+doOperation
+	[
+	(self coverAll:
+		{15 to: 18}) visitTransactions ] valueCoveringAll:
+		{20 to: 36}.
+	[
+	(summary
+		cover: (42 to: 48)
+		declaredAt: (42 to: 48)) add:
+		([
+		('Balance = ' coverAll:
+			{55 to: 66}) ,
+			([
+			([
+			(account
+				cover: (69 to: 75)
+				declaredAt: (69 to: 75)) balance ] valueCoveringAll:
+				{77 to: 83}) asString ] valueCoveringAll:
+				{85 to: 92}) ] valueCoveringAll:
+			{67 to: 67}) ] valueCoveringAll:
+		{50 to: 53}.
+	^ summary
+		cover: (100 to: 106)
+		declaredAt: (42 to: 48).! !
+
+!testRun: #ReportTest #test01ShouldInformBalance0ForAnAccountWithoutTransactions stamp: 'JPF 6/2/2021 22:48:56'!
+PASSED!
+!Behavior method!
+transfer: aValue to: targetReceptiveAccount
+	| transfer |
+	[
+	(self coverAll:
+		{65 to: 68}) assertSourceAndTargetAccountAreNotTheSameAccount:
+		(targetReceptiveAccount
+			cover: (120 to: 141)
+			declaredAt: (22 to: 43)) ] valueCoveringAll:
+		{70 to: 118}.
+	[
+	(self coverAll:
+		{145 to: 148}) assertTheAmountTransferedIsValid:
+		(aValue
+			cover: (184 to: 189)
+			declaredAt: (11 to: 16)) ] valueCoveringAll:
+		{150 to: 182}.
+	(transfer _ [
+	(Transfer
+		cover: (206 to: 213)
+		declaredAt: (206 to: 213))
+		for:
+			(aValue
+				cover: (220 to: 225)
+				declaredAt: (11 to: 16))
+		from:
+			(self coverAll:
+				{233 to: 236})
+		to:
+			(targetReceptiveAccount
+				cover: (242 to: 263)
+				declaredAt: (22 to: 43)) ] valueCoveringAll:
+		{215 to: 218. 227 to: 231. 238 to: 240})
+		cover: (195 to: 202)
+		declaredAt: (51 to: 58).
+	^ transfer
+		cover: (271 to: 278)
+		declaredAt: (51 to: 58).! !
+!Behavior method!
+assertSourceAndTargetAccountAreNotTheSameAccount: targetReceptiveAccount
+	^ [
+	([
+	(targetReceptiveAccount
+		cover: (79 to: 100)
+		declaredAt: (51 to: 72)) =
+		(self coverAll:
+			{104 to: 107}) ] valueCoveringAll:
+		{102 to: 102}) ifTrue: [
+		[
+		(self coverAll:
+			{120 to: 123}) error:
+			([
+			([
+			(self coverAll:
+				{132 to: 135}) class ] valueCoveringAll:
+				{137 to: 141}) transferToSourceAccountErrorDescription ] valueCoveringAll:
+				{143 to: 181}) ] valueCoveringAll:
+			{125 to: 130} ]] valueCoveringAll:
+		{110 to: 116}.! !
+!Behavior method!
+assertTheAmountTransferedIsValid: aValue
+	^ [
+	([
+	(aValue
+		cover: (47 to: 52)
+		declaredAt: (35 to: 40)) <=
+		(0 coverAll:
+			{57 to: 57}) ] valueCoveringAll:
+		{54 to: 55}) ifTrue: [
+		[
+		(self coverAll:
+			{70 to: 73}) error:
+			([
+			([
+			(self coverAll:
+				{82 to: 85}) class ] valueCoveringAll:
+				{87 to: 91}) invalidAmountErrorDescription ] valueCoveringAll:
+				{93 to: 121}) ] valueCoveringAll:
+			{75 to: 80} ]] valueCoveringAll:
+		{60 to: 66}.! !
+!Behavior method!
+for: aValue from: aSourceReceptiveAccount to: aTargetReceptiveAccount
+	^ [
+	([
+	(self coverAll:
+		{76 to: 79}) new ] valueCoveringAll:
+		{81 to: 83})
+		initializeFor:
+			(aValue
+				cover: (100 to: 105)
+				declaredAt: (6 to: 11))
+		from:
+			(aSourceReceptiveAccount
+				cover: (113 to: 135)
+				declaredAt: (19 to: 41))
+		to:
+			(aTargetReceptiveAccount
+				cover: (141 to: 163)
+				declaredAt: (47 to: 69)) ] valueCoveringAll:
+		{85 to: 98. 107 to: 111. 137 to: 139}.! !
+!Behavior method!
+initializeFor: aValue from: aSourceReceptiveAccount to: aTargetReceptiveAccount
+	(value _ aValue
+		cover: (92 to: 97)
+		declaredAt: (16 to: 21))
+		cover: (83 to: 87)
+		declaredAt: (83 to: 87).
+	(output _ [
+	(TransferOutput
+		cover: (111 to: 124)
+		declaredAt: (111 to: 124)) for:
+		(self coverAll:
+			{131 to: 134}) ] valueCoveringAll:
+		{126 to: 129})
+		cover: (101 to: 106)
+		declaredAt: (101 to: 106).
+	(entry _ [
+	(TransferEntry
+		cover: (147 to: 159)
+		declaredAt: (147 to: 159)) for:
+		(self coverAll:
+			{166 to: 169}) ] valueCoveringAll:
+		{161 to: 164})
+		cover: (138 to: 142)
+		declaredAt: (138 to: 142).
+	[
+	(aSourceReceptiveAccount
+		cover: (175 to: 197)
+		declaredAt: (29 to: 51)) register:
+		(output
+			cover: (209 to: 214)
+			declaredAt: (101 to: 106)) ] valueCoveringAll:
+		{199 to: 207}.
+	[
+	(aTargetReceptiveAccount
+		cover: (218 to: 240)
+		declaredAt: (57 to: 79)) register:
+		(entry
+			cover: (252 to: 256)
+			declaredAt: (138 to: 142)) ] valueCoveringAll:
+		{242 to: 250}.! !
+!Behavior method!
+for: aTransfer
+	^ [
+	([
+	(self coverAll:
+		{20 to: 23}) new ] valueCoveringAll:
+		{25 to: 27}) initializeFor:
+		(aTransfer
+			cover: (44 to: 52)
+			declaredAt: (6 to: 14)) ] valueCoveringAll:
+		{29 to: 42}.! !
+!Behavior method!
+initializeFor: aTransfer
+	(transfer _ aTransfer
+		cover: (40 to: 48)
+		declaredAt: (16 to: 24))
+		cover: (28 to: 35)
+		declaredAt: (28 to: 35).! !
+!Behavior method!
+for: aTransfer
+	^ [
+	([
+	(self coverAll:
+		{20 to: 23}) new ] valueCoveringAll:
+		{25 to: 27}) initializeFor:
+		(aTransfer
+			cover: (44 to: 52)
+			declaredAt: (6 to: 14)) ] valueCoveringAll:
+		{29 to: 42}.! !
+!Behavior method!
+accept: aVisitor
+	[
+	(aVisitor
+		cover: (21 to: 28)
+		declaredAt: (9 to: 16)) visitWithdraw:
+		(self coverAll:
+			{45 to: 48}) ] valueCoveringAll:
+		{30 to: 43}.! !
+!Behavior method!
+visitWithdraw: aWithdraw
+	^ self.! !
+!Behavior method!
+accept: aVisitor
+	[
+	(aVisitor
+		cover: (21 to: 28)
+		declaredAt: (9 to: 16)) visitTransferEntry:
+		(self coverAll:
+			{50 to: 53}) ] valueCoveringAll:
+		{30 to: 48}.! !
+!Behavior method!
+visitTransferEntry: aTransferEntry
+	(netTransferValue _ [
+	(aTransferEntry
+		cover: (57 to: 70)
+		declaredAt: (21 to: 34)) affectBalance:
+		(netTransferValue
+			cover: (38 to: 53)
+			declaredAt: (38 to: 53)) ] valueCoveringAll:
+		{72 to: 85})
+		cover: (87 to: 102)
+		declaredAt: (38 to: 53).! !
+!Behavior method!
+affectBalance: aBalance
+	^ [
+	(aBalance
+		cover: (30 to: 37)
+		declaredAt: (16 to: 23)) +
+		([
+		(self coverAll:
+			{41 to: 44}) value ] valueCoveringAll:
+			{46 to: 50}) ] valueCoveringAll:
+		{39 to: 39}.! !
+!Behavior method!
+value
+	^ [
+	(transfer
+		cover: (12 to: 19)
+		declaredAt: (12 to: 19)) value ] valueCoveringAll:
+		{21 to: 25}.! !
+!Behavior method!
+value
+	^ value
+		cover: (11 to: 15)
+		declaredAt: (11 to: 15).! !
+
+!testRun: #ReportTest #test02ShouldInform50ForAnAccountWithA50TransferEntry stamp: 'JPF 6/2/2021 22:48:56'!
+PASSED!
+!Behavior method!
+visitDeposit: aDeposit
+	[
+	(summary
+		cover: (27 to: 33)
+		declaredAt: (27 to: 33)) add:
+		([
+		([
+		('Depósito por ' coverAll:
+			{40 to: 54}) ,
+			([
+			([
+			(aDeposit
+				cover: (58 to: 65)
+				declaredAt: (15 to: 22)) value ] valueCoveringAll:
+				{67 to: 71}) asString ] valueCoveringAll:
+				{73 to: 80}) ] valueCoveringAll:
+			{56 to: 56}) ,
+			('.' coverAll:
+				{84 to: 86}) ] valueCoveringAll:
+			{82 to: 82}) ] valueCoveringAll:
+		{35 to: 38}.! !
+!Behavior method!
+value
+	^ value
+		cover: (11 to: 15)
+		declaredAt: (11 to: 15).! !
+
+!testRun: #ReportTest #test02ShouldInformBalance50AndA50DepositForAnAccountWithA50Deposit stamp: 'JPF 6/2/2021 22:48:56'!
+PASSED!
+!Behavior method!
+accept: aVisitor
+	[
+	(aVisitor
+		cover: (21 to: 28)
+		declaredAt: (9 to: 16)) visitTransferOutput:
+		(self coverAll:
+			{51 to: 54}) ] valueCoveringAll:
+		{30 to: 49}.! !
+!Behavior method!
+visitTransferOutput: aTransferOutput
+	(netTransferValue _ [
+	(aTransferOutput
+		cover: (59 to: 73)
+		declaredAt: (22 to: 36)) affectBalance:
+		(netTransferValue
+			cover: (40 to: 55)
+			declaredAt: (40 to: 55)) ] valueCoveringAll:
+		{75 to: 88})
+		cover: (90 to: 105)
+		declaredAt: (40 to: 55).! !
+!Behavior method!
+affectBalance: aBalance
+	^ [
+	(aBalance
+		cover: (30 to: 37)
+		declaredAt: (16 to: 23)) -
+		([
+		(self coverAll:
+			{41 to: 44}) value ] valueCoveringAll:
+			{46 to: 50}) ] valueCoveringAll:
+		{39 to: 39}.! !
+
+!testRun: #ReportTest #test03ShouldInform10ForAnAccountWithA50TransferEntryAnd40TransferOutput stamp: 'JPF 6/2/2021 22:48:56'!
+PASSED!
+!Behavior method!
+visitWithdraw: aWithdraw
+	[
+	(summary
+		cover: (29 to: 35)
+		declaredAt: (29 to: 35)) add:
+		([
+		([
+		('Extracción por ' coverAll:
+			{42 to: 58}) ,
+			([
+			([
+			(aWithdraw
+				cover: (62 to: 70)
+				declaredAt: (16 to: 24)) value ] valueCoveringAll:
+				{72 to: 76}) asString ] valueCoveringAll:
+				{78 to: 85}) ] valueCoveringAll:
+			{60 to: 60}) ,
+			('.' coverAll:
+				{89 to: 91}) ] valueCoveringAll:
+			{87 to: 87}) ] valueCoveringAll:
+		{37 to: 40}.! !
+
+!testRun: #ReportTest #test03ShouldInformBalance0A50DepositA50WithdrawForAnAccountWithA50DepositAnd50Withdraw stamp: 'JPF 6/2/2021 22:48:56'!
+PASSED!
+!Behavior method!
+visitTransferEntry: aTransferEntry
+	[
+	(summary
+		cover: (39 to: 45)
+		declaredAt: (39 to: 45)) add:
+		([
+		([
+		('Entrada por transferencia de ' coverAll:
+			{52 to: 82}) ,
+			([
+			([
+			(aTransferEntry
+				cover: (86 to: 99)
+				declaredAt: (21 to: 34)) value ] valueCoveringAll:
+				{101 to: 105}) asString ] valueCoveringAll:
+				{107 to: 114}) ] valueCoveringAll:
+			{84 to: 84}) ,
+			('.' coverAll:
+				{118 to: 120}) ] valueCoveringAll:
+			{116 to: 116}) ] valueCoveringAll:
+		{47 to: 50}.! !
+!Behavior method!
+visitTransferOutput: aTransferOutput
+	[
+	(summary
+		cover: (41 to: 47)
+		declaredAt: (41 to: 47)) add:
+		([
+		([
+		('Salida por transferencia de ' coverAll:
+			{54 to: 83}) ,
+			([
+			([
+			(aTransferOutput
+				cover: (87 to: 101)
+				declaredAt: (22 to: 36)) value ] valueCoveringAll:
+				{103 to: 107}) asString ] valueCoveringAll:
+				{109 to: 116}) ] valueCoveringAll:
+			{85 to: 85}) ,
+			('.' coverAll:
+				{120 to: 122}) ] valueCoveringAll:
+			{118 to: 118}) ] valueCoveringAll:
+		{49 to: 52}.! !
+
+!testRun: #ReportTest #test04ShouldInformBalance0A50DepositA50WithdrawA50TransferEntryA50TransferOutputForAnAccountWithThoseTransactions stamp: 'JPF 6/2/2021 22:48:56'!
+PASSED!
+
+!testRun: #ReportTest #test04ShouldInformCorrectValueForAPortfolioWithAReceptiveAccountAndAnotherPortfolioHavingAllTypeOfTransactions stamp: 'JPF 6/2/2021 22:48:56'!
+PASSED!
+
+!testRun: #ReportTest #test05ShouldInformCorrectBalanceForAPortfolioWithAReceptiveAccountAndAnotherPortfolioHavingAllTypeOfTransactions stamp: 'JPF 6/2/2021 22:48:56'!
+PASSED!
+
+!testRun: #TransactionIteratorTest #test01IteratorForAnAccountWithoutTransactionsHasNotNext stamp: 'JPF 6/2/2021 22:48:56'!
+PASSED!
+
+!testRun: #TransactionIteratorTest #test02IteratorForAnAccountWithOneTransactionHasNext stamp: 'JPF 6/2/2021 22:48:56'!
+PASSED!
+
+!testRun: #TransactionIteratorTest #test03IteratorForAnAccountWithOneTransactionHasNotNextWhenWasAskedForNextOnce stamp: 'JPF 6/2/2021 22:48:56'!
+PASSED!
+
+!testRun: #TransactionIteratorTest #test04IteratorForAnAccountWithOneTransactionShouldReturnThatTransactionWhenAskForNext stamp: 'JPF 6/2/2021 22:48:56'!
+PASSED!
+!Behavior method!
+notNextTransationErrorDescription
+	^ 'Cannot ask for next when iterator has not next' coverAll:
+		{40 to: 87}.! !
+
+!testRun: #TransactionIteratorTest #test05NextShouldRaiseAnErrorWhenHasNotNext stamp: 'JPF 6/2/2021 22:48:56'!
+PASSED!
+
+!testRun: #TransferTest #test01ShouldIncreaseTargetAccountBalanceAndDecreaseSourceAccountBalanceInTheSameAmount stamp: 'JPF 6/2/2021 22:48:56'!
+PASSED!
+
+!testRun: #TransferTest #test02ShouldNotAddDepositsToTargetAccountOrWithdrawToSourceAccount stamp: 'JPF 6/2/2021 22:48:56'!
+PASSED!
+!Behavior method!
+output
+	^ output
+		cover: (13 to: 18)
+		declaredAt: (13 to: 18).! !
+!Behavior method!
+entry
+	^ entry
+		cover: (12 to: 16)
+		declaredAt: (12 to: 16).! !
+
+!testRun: #TransferTest #test03ShouldReturnATransferWithTheTransferOutputAndTheTransferEntry stamp: 'JPF 6/2/2021 22:48:56'!
+PASSED!
+!Behavior method!
+transfer
+	^ transfer
+		cover: (13 to: 20)
+		declaredAt: (13 to: 20).! !
+
+!testRun: #TransferTest #test04ShouldObtainTheSameTransferFromTheTransferOutputAndTheTransferEntry stamp: 'JPF 6/2/2021 22:48:56'!
+PASSED!
+!Behavior method!
+transferToSourceAccountErrorDescription
+	^ 'Cannot transfer to the source account' coverAll:
+		{46 to: 84}.! !
+
+!testRun: #TransferTest #test05ShouldRaiseAnErrorIfTheTargetAndSourceAccountAreTheSameAccount stamp: 'JPF 6/2/2021 22:48:56'!
+PASSED!
+!Behavior method!
+invalidAmountErrorDescription
+	^ 'Cannot transfer a negative amount' coverAll:
+		{35 to: 69}.! !
+
+!testRun: #TransferTest #test06ShouldRaiseAnErrorIfAnAccountTransferANegativeAmount stamp: 'JPF 6/2/2021 22:48:56'!
+PASSED!
+
+!testRun: #TransferTest #test07ShouldRaiseAnErrorIfAnAccountTransferZeroAsAmount stamp: 'JPF 6/2/2021 22:48:56'!
+PASSED!
+!ReportTest methodsFor: 'net transfer value tests' stamp: 'JPF 6/2/2021 22:52:29' prior: 50879580!
+test02ShouldInform50ForAnAccountWithA50TransferEntry
+	
+	| account account2 |
+	
+	account _ ReceptiveAccount new.
+	account register: (Withdraw for: 50).
+	account register: (Deposit for: 50).
+	
+	account2 _ ReceptiveAccount new.
+	
+	account2 transfer: 50 to: account.
+	
+	self assert: 50 equals: account netTransferValue! !
+!ReportTest methodsFor: 'net transfer value tests' stamp: 'JPF 6/2/2021 22:52:33' prior: 50879784!
+test03ShouldInform10ForAnAccountWithA50TransferEntryAnd40TransferOutput
+	
+	| account account2 |
+	
+	account _ ReceptiveAccount new.
+	account register: (Withdraw for: 50).
+	account register: (Deposit for: 50).
+	
+	account2 _ ReceptiveAccount new.
+	
+	account2 transfer: 50 to: account.
+	account transfer: 40 to: account2.
+	
+	self assert: 10 equals: account netTransferValue! !
+!ReportTest methodsFor: 'net transfer value tests' stamp: 'JPF 6/2/2021 22:52:43' prior: 50891070!
+test03ShouldInform10ForAnAccountWithA50TransferEntryAnd40TransferOutput
+	
+	| account account2 |
+	
+	account _ ReceptiveAccount new.
+	account register: (Withdraw for: 50).
+	account register: (Deposit for: 100).
+	
+	account2 _ ReceptiveAccount new.
+	
+	account2 transfer: 50 to: account.
+	account transfer: 40 to: account2.
+	
+	self assert: 10 equals: account netTransferValue! !
+!ReportTest methodsFor: 'net transfer value tests' stamp: 'JPF 6/2/2021 22:52:50' prior: 50891056!
+test02ShouldInform50ForAnAccountWithA50TransferEntry
+	
+	| account account2 |
+	
+	account _ ReceptiveAccount new.
+	account register: (Withdraw for: 50).
+	account register: (Deposit for: 100).
+	
+	account2 _ ReceptiveAccount new.
+	
+	account2 transfer: 50 to: account.
+	
+	self assert: 50 equals: account netTransferValue! !
+!ReportTest methodsFor: 'net transfer value tests' stamp: 'JPF 6/2/2021 22:53:01' prior: 50879514!
+test01ShouldInform0ForAnAccountWithoutTransfers
+	
+	| account |
+	
+	account _ ReceptiveAccount new.
+	account register: (Deposit for: 50).
+	account register: (Withdraw for: 100).
+	
+	self assert: 0 equals: account netTransferValue! !
+!Behavior method!
+initialize
+	(accounts _ [
+	(OrderedCollection
+		cover: (26 to: 42)
+		declaredAt: (26 to: 42)) new ] valueCoveringAll:
+		{44 to: 46})
+		cover: (14 to: 21)
+		declaredAt: (14 to: 21).
+	(parents _ [
+	(OrderedCollection
+		cover: (61 to: 77)
+		declaredAt: (26 to: 42)) new ] valueCoveringAll:
+		{79 to: 81})
+		cover: (50 to: 56)
+		declaredAt: (50 to: 56).! !
+!Behavior method!
+balance
+	^ [
+	(accounts
+		cover: (13 to: 20)
+		declaredAt: (13 to: 20))
+		sum: [ :anAccount |
+			[
+			(anAccount
+				cover: (42 to: 50)
+				declaredAt: (30 to: 38)) balance ] valueCoveringAll:
+				{52 to: 58} ]
+		ifEmpty: [
+			0 coverAll:
+				{73 to: 73} ]] valueCoveringAll:
+		{22 to: 25. 62 to: 69}.! !
+
+!testRun: #PortfolioTest #test01BalanceOfPortfolioWithoutAccountsIsZero stamp: 'JPF 6/2/2021 22:53:08'!
+PASSED!
+!Behavior method!
+initialize
+	[ super initialize ] valueCoveringAll:
+		{20 to: 29}.
+	(transactions _ [
+	(OrderedCollection
+		cover: (49 to: 65)
+		declaredAt: (49 to: 65)) new ] valueCoveringAll:
+		{67 to: 69})
+		cover: (33 to: 44)
+		declaredAt: (33 to: 44).! !
+!Behavior method!
+register: aValue on: account
+	| transaction |
+	(transaction _ [
+	(self coverAll:
+		{66 to: 69}) for:
+		(aValue
+			cover: (76 to: 81)
+			declaredAt: (11 to: 16)) ] valueCoveringAll:
+		{71 to: 74})
+		cover: (51 to: 61)
+		declaredAt: (34 to: 44).
+	[
+	(account
+		cover: (85 to: 91)
+		declaredAt: (22 to: 28)) register:
+		(transaction
+			cover: (103 to: 113)
+			declaredAt: (34 to: 44)) ] valueCoveringAll:
+		{93 to: 101}.
+	^ transaction
+		cover: (122 to: 132)
+		declaredAt: (34 to: 44).! !
+!Behavior method!
+for: aValue
+	^ [
+	([
+	(self coverAll:
+		{17 to: 20}) new ] valueCoveringAll:
+		{22 to: 24}) initializeFor:
+		(aValue
+			cover: (41 to: 46)
+			declaredAt: (6 to: 11)) ] valueCoveringAll:
+		{26 to: 39}.! !
+!Behavior method!
+initializeFor: aValue
+	(value _ aValue
+		cover: (34 to: 39)
+		declaredAt: (16 to: 21))
+		cover: (25 to: 29)
+		declaredAt: (25 to: 29).! !
+!Behavior method!
+register: aTransaction
+	[
+	(transactions
+		cover: (26 to: 37)
+		declaredAt: (26 to: 37)) add:
+		(aTransaction
+			cover: (44 to: 55)
+			declaredAt: (11 to: 22)) ] valueCoveringAll:
+		{39 to: 42}.! !
+!Behavior method!
+with: anAccount
+	^ [ | cascadeReceiver |
+	cascadeReceiver _ [
+	(self coverAll:
+		{20 to: 23}) new ] valueCoveringAll:
+		{25 to: 27}.
+	[ cascadeReceiver add: anAccount ] valueCoveringAll:
+		{32 to: 45}.
+	[ cascadeReceiver yourself ] valueCoveringAll:
+		{50 to: 57} ] value.! !
+!Behavior method!
+add: accountToAdd
+	[
+	(self coverAll:
+		{21 to: 24}) assertCanAdd:
+		(accountToAdd
+			cover: (40 to: 51)
+			declaredAt: (6 to: 17)) ] valueCoveringAll:
+		{26 to: 38}.
+	[
+	(accounts
+		cover: (58 to: 65)
+		declaredAt: (58 to: 65)) add:
+		(accountToAdd
+			cover: (72 to: 83)
+			declaredAt: (6 to: 17)) ] valueCoveringAll:
+		{67 to: 70}.
+	[
+	(accountToAdd
+		cover: (87 to: 98)
+		declaredAt: (6 to: 17)) addedTo:
+		(self coverAll:
+			{109 to: 112}) ] valueCoveringAll:
+		{100 to: 107}.! !
+!Behavior method!
+assertCanAdd: accountToAdd
+	[
+	([
+	(self coverAll:
+		{31 to: 34}) anyRootParentIsComposedBy:
+		(accountToAdd
+			cover: (63 to: 74)
+			declaredAt: (15 to: 26)) ] valueCoveringAll:
+		{36 to: 61}) ifTrue: [
+		[
+		(self coverAll:
+			{87 to: 90}) signalCanNotAddAccount ] valueCoveringAll:
+			{92 to: 113} ]] valueCoveringAll:
+		{77 to: 83}.! !
+!Behavior method!
+anyRootParentIsComposedBy: accountToAdd
+	^ [
+	([
+	(self coverAll:
+		{44 to: 47}) rootParents ] valueCoveringAll:
+		{49 to: 59}) anySatisfy: [ :aParent |
+		[
+		(aParent
+			cover: (86 to: 92)
+			declaredAt: (76 to: 82)) isComposedBy:
+			(accountToAdd
+				cover: (108 to: 119)
+				declaredAt: (28 to: 39)) ] valueCoveringAll:
+			{94 to: 106} ]] valueCoveringAll:
+		{61 to: 71}.! !
+!Behavior method!
+rootParents
+	| rootParents |
+	(rootParents _ [
+	(Set
+		cover: (50 to: 52)
+		declaredAt: (50 to: 52)) new ] valueCoveringAll:
+		{54 to: 56})
+		cover: (35 to: 45)
+		declaredAt: (18 to: 28).
+	[
+	(self coverAll:
+		{60 to: 63}) addRootParentsTo:
+		(rootParents
+			cover: (83 to: 93)
+			declaredAt: (18 to: 28)) ] valueCoveringAll:
+		{65 to: 81}.
+	^ rootParents
+		cover: (101 to: 111)
+		declaredAt: (18 to: 28).! !
+!Behavior method!
+addRootParentsTo: rootParents
+	[
+	(parents
+		cover: (33 to: 39)
+		declaredAt: (33 to: 39))
+		ifEmpty: [
+			[
+			(rootParents
+				cover: (55 to: 65)
+				declaredAt: (19 to: 29)) add:
+				(self coverAll:
+					{72 to: 75}) ] valueCoveringAll:
+				{67 to: 70} ]
+		ifNotEmpty: [
+			[
+			(parents
+				cover: (96 to: 102)
+				declaredAt: (33 to: 39)) do: [ :aParent |
+				[
+				(aParent
+					cover: (121 to: 127)
+					declaredAt: (111 to: 117)) addRootParentsTo:
+					(rootParents
+						cover: (147 to: 157)
+						declaredAt: (19 to: 29)) ] valueCoveringAll:
+					{129 to: 145} ]] valueCoveringAll:
+				{104 to: 106} ]] valueCoveringAll:
+		{44 to: 51. 82 to: 92}.! !
+!Behavior method!
+isComposedBy: anAccount
+	^ [
+	([
+	(self coverAll:
+		{29 to: 32}) =
+		(anAccount
+			cover: (36 to: 44)
+			declaredAt: (15 to: 23)) ] valueCoveringAll:
+		{34 to: 34}) or: [
+		[
+		(accounts
+			cover: (52 to: 59)
+			declaredAt: (52 to: 59)) anySatisfy: [ :composedAccount |
+			[
+			([
+			(composedAccount
+				cover: (95 to: 109)
+				declaredAt: (76 to: 90)) isComposedBy:
+				(anAccount
+					cover: (125 to: 133)
+					declaredAt: (15 to: 23)) ] valueCoveringAll:
+				{111 to: 123}) or: [
+				[
+				(anAccount
+					cover: (142 to: 150)
+					declaredAt: (15 to: 23)) isComposedBy:
+					(composedAccount
+						cover: (166 to: 180)
+						declaredAt: (76 to: 90)) ] valueCoveringAll:
+					{152 to: 164} ]] valueCoveringAll:
+				{136 to: 138} ]] valueCoveringAll:
+			{61 to: 71} ]] valueCoveringAll:
+		{46 to: 48}.! !
+!Behavior method!
+addedTo: aPortfolio
+	^ self.! !
+!Behavior method!
+balance
+	^ [
+	(transactions
+		cover: (12 to: 23)
+		declaredAt: (12 to: 23))
+		inject:
+			(0 coverAll:
+				{36 to: 36})
+		into: [ :currentBalance :transaction |
+			[
+			(transaction
+				cover: (79 to: 89)
+				declaredAt: (65 to: 75)) affectBalance:
+				(currentBalance
+					cover: (106 to: 119)
+					declaredAt: (49 to: 62)) ] valueCoveringAll:
+				{91 to: 104} ]] valueCoveringAll:
+		{28 to: 34. 40 to: 44}.! !
+!Behavior method!
+affectBalance: aBalance
+	^ [
+	(aBalance
+		cover: (30 to: 37)
+		declaredAt: (16 to: 23)) +
+		(value
+			cover: (41 to: 45)
+			declaredAt: (41 to: 45)) ] valueCoveringAll:
+		{39 to: 39}.! !
+
+!testRun: #PortfolioTest #test02BalanceOfPortfolioWithAccountsIsSumOfAccountsBalance stamp: 'JPF 6/2/2021 22:53:08'!
+PASSED!
+!Behavior method!
+for: aValue
+	^ [
+	([
+	(self coverAll:
+		{17 to: 20}) new ] valueCoveringAll:
+		{22 to: 24}) initializeFor:
+		(aValue
+			cover: (41 to: 46)
+			declaredAt: (6 to: 11)) ] valueCoveringAll:
+		{26 to: 39}.! !
+!Behavior method!
+initializeFor: aValue
+	(value _ aValue
+		cover: (34 to: 39)
+		declaredAt: (16 to: 21))
+		cover: (25 to: 29)
+		declaredAt: (25 to: 29).! !
+!Behavior method!
+with: anAccount with: anotherAccount
+	^ [ | cascadeReceiver |
+	cascadeReceiver _ [
+	(self coverAll:
+		{41 to: 44}) new ] valueCoveringAll:
+		{46 to: 48}.
+	[ cascadeReceiver add: anAccount ] valueCoveringAll:
+		{53 to: 66}.
+	[ cascadeReceiver add: anotherAccount ] valueCoveringAll:
+		{71 to: 89}.
+	[ cascadeReceiver yourself ] valueCoveringAll:
+		{94 to: 101} ] value.! !
+!Behavior method!
+addedTo: aPortfolio
+	[
+	(parents
+		cover: (25 to: 31)
+		declaredAt: (25 to: 31)) add:
+		(aPortfolio
+			cover: (38 to: 47)
+			declaredAt: (10 to: 19)) ] valueCoveringAll:
+		{33 to: 36}.! !
+!Behavior method!
+isComposedBy: anAccount
+	^ [
+	(self coverAll:
+		{28 to: 31}) =
+		(anAccount
+			cover: (35 to: 43)
+			declaredAt: (15 to: 23)) ] valueCoveringAll:
+		{33 to: 33}.! !
+!Behavior method!
+affectBalance: aBalance
+	^ [
+	(aBalance
+		cover: (30 to: 37)
+		declaredAt: (16 to: 23)) -
+		(value
+			cover: (41 to: 45)
+			declaredAt: (41 to: 45)) ] valueCoveringAll:
+		{39 to: 39}.! !
+
+!testRun: #PortfolioTest #test03BalanceOfPortfolioIsCalculatedRecursivelyOnPortfolios stamp: 'JPF 6/2/2021 22:53:08'!
+PASSED!
+!Behavior method!
+hasRegistered: aTransaction
+	^ [
+	(accounts
+		cover: (32 to: 39)
+		declaredAt: (32 to: 39)) anySatisfy: [ :anAccount |
+		[
+		(anAccount
+			cover: (68 to: 76)
+			declaredAt: (56 to: 64)) hasRegistered:
+			(aTransaction
+				cover: (93 to: 104)
+				declaredAt: (16 to: 27)) ] valueCoveringAll:
+			{78 to: 91} ]] valueCoveringAll:
+		{41 to: 51}.! !
+
+!testRun: #PortfolioTest #test04PortfolioWithoutAccountsHasNoRegisteredTransaction stamp: 'JPF 6/2/2021 22:53:08'!
+PASSED!
+!Behavior method!
+hasRegistered: aTransaction
+	^ [
+	(transactions
+		cover: (33 to: 44)
+		declaredAt: (33 to: 44)) includes:
+		(aTransaction
+			cover: (56 to: 67)
+			declaredAt: (16 to: 27)) ] valueCoveringAll:
+		{46 to: 54}.! !
+
+!testRun: #PortfolioTest #test05PortfolioHasRegisteredItsAccountsTransactions stamp: 'JPF 6/2/2021 22:53:08'!
+PASSED!
+
+!testRun: #PortfolioTest #test06PortfolioLooksForRegisteredTransactionsRecursively stamp: 'JPF 6/2/2021 22:53:08'!
+PASSED!
+!Behavior method!
+transactions
+	| transactions |
+	(transactions _ [
+	(OrderedCollection
+		cover: (53 to: 69)
+		declaredAt: (53 to: 69)) new ] valueCoveringAll:
+		{71 to: 73})
+		cover: (37 to: 48)
+		declaredAt: (19 to: 30).
+	[
+	(accounts
+		cover: (77 to: 84)
+		declaredAt: (77 to: 84)) do: [ :anAccount |
+		[
+		(anAccount
+			cover: (105 to: 113)
+			declaredAt: (93 to: 101)) addTransactionsTo:
+			(transactions
+				cover: (134 to: 145)
+				declaredAt: (19 to: 30)) ] valueCoveringAll:
+			{115 to: 132} ]] valueCoveringAll:
+		{86 to: 88}.
+	^ transactions
+		cover: (154 to: 165)
+		declaredAt: (19 to: 30).! !
+
+!testRun: #PortfolioTest #test07PortfolioHasNoTransactionWhenHasNoAccounts stamp: 'JPF 6/2/2021 22:53:08'!
+PASSED!
+!Behavior method!
+addTransactionsTo: aCollectionOfTransactions
+	[
+	(aCollectionOfTransactions
+		cover: (48 to: 72)
+		declaredAt: (20 to: 44)) addAll:
+		(transactions
+			cover: (82 to: 93)
+			declaredAt: (82 to: 93)) ] valueCoveringAll:
+		{74 to: 80}.! !
+
+!testRun: #PortfolioTest #test08PortfolioTransactionsIncludesAllItsAccountsTransactions stamp: 'JPF 6/2/2021 22:53:08'!
+PASSED!
+!Behavior method!
+addTransactionsTo: aCollectionOfTransactions
+	[
+	(accounts
+		cover: (48 to: 55)
+		declaredAt: (48 to: 55)) do: [ :anAccount |
+		[
+		(anAccount
+			cover: (76 to: 84)
+			declaredAt: (64 to: 72)) addTransactionsTo:
+			(aCollectionOfTransactions
+				cover: (105 to: 129)
+				declaredAt: (20 to: 44)) ] valueCoveringAll:
+			{86 to: 103} ]] valueCoveringAll:
+		{57 to: 59}.! !
+
+!testRun: #PortfolioTest #test09PortfolioTransactionsAreCalculatedRecursively stamp: 'JPF 6/2/2021 22:53:08'!
+PASSED!
+!Behavior method!
+signalCanNotAddAccount
+	[
+	(self coverAll:
+		{27 to: 30}) error:
+		([
+		([
+		(self coverAll:
+			{39 to: 42}) class ] valueCoveringAll:
+			{44 to: 48}) canNotAddAccountErrorMessage ] valueCoveringAll:
+			{50 to: 77}) ] valueCoveringAll:
+		{32 to: 37}.! !
+!Behavior method!
+canNotAddAccountErrorMessage
+	^ 'Can not add repeated account to a portfolio' coverAll:
+		{34 to: 78}.! !
+!Behavior method!
+accountsSize
+	^ [
+	(accounts
+		cover: (18 to: 25)
+		declaredAt: (18 to: 25)) size ] valueCoveringAll:
+		{27 to: 30}.! !
+!Behavior method!
+accountsIncludes: anAccount
+	^ [
+	(accounts
+		cover: (32 to: 39)
+		declaredAt: (32 to: 39)) includes:
+		(anAccount
+			cover: (51 to: 59)
+			declaredAt: (19 to: 27)) ] valueCoveringAll:
+		{41 to: 49}.! !
+
+!testRun: #PortfolioTest #test10PortfolioCanNotIncludeTheSameAccountMoreThanOnce stamp: 'JPF 6/2/2021 22:53:08'!
+PASSED!
+
+!testRun: #PortfolioTest #test11PortfolioCanNotIncludeAccountOfItsPortfolios stamp: 'JPF 6/2/2021 22:53:08'!
+PASSED!
+
+!testRun: #PortfolioTest #test12PortfolioCanNotIncludeItself stamp: 'JPF 6/2/2021 22:53:08'!
+PASSED!
+!Behavior method!
+accountsIsEmpty
+	^ [
+	(accounts
+		cover: (21 to: 28)
+		declaredAt: (21 to: 28)) isEmpty ] valueCoveringAll:
+		{30 to: 36}.! !
+
+!testRun: #PortfolioTest #test13ComposedPortfolioCanNotHaveParentPortfolioAccount stamp: 'JPF 6/2/2021 22:53:08'!
+PASSED!
+
+!testRun: #PortfolioTest #test14ComposedPortfolioCanNotHaveAccountOfAnyRootParentRecursively stamp: 'JPF 6/2/2021 22:53:08'!
+PASSED!
+
+!testRun: #PortfolioTest #test15PortfolioCanNotIncludeAnyOfTheComposedAccountOfPortfolioToAdd stamp: 'JPF 6/2/2021 22:53:08'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test01ReceptiveAccountHaveZeroAsBalanceWhenCreated stamp: 'JPF 6/2/2021 22:53:08'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test02DepositIncreasesBalanceOnTransactionValue stamp: 'JPF 6/2/2021 22:53:08'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test03WithdrawDecreasesBalanceOnTransactionValue stamp: 'JPF 6/2/2021 22:53:08'!
+PASSED!
+!Behavior method!
+value
+	^ value
+		cover: (11 to: 15)
+		declaredAt: (11 to: 15).! !
+
+!testRun: #ReceptiveAccountTest #test04WithdrawValueMustBePositive stamp: 'JPF 6/2/2021 22:53:08'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test05ReceptiveAccountKnowsRegisteredTransactions stamp: 'JPF 6/2/2021 22:53:08'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test06ReceptiveAccountDoNotKnowNotRegisteredTransactions stamp: 'JPF 6/2/2021 22:53:08'!
+PASSED!
+!Behavior method!
+transactions
+	^ [
+	(transactions
+		cover: (19 to: 30)
+		declaredAt: (19 to: 30)) copy ] valueCoveringAll:
+		{32 to: 35}.! !
+
+!testRun: #ReceptiveAccountTest #test07AccountKnowsItsTransactions stamp: 'JPF 6/2/2021 22:53:08'!
+PASSED!
+!Behavior method!
+netTransferValue
+	^ [
+	([
+	(NetTransferValueVisitor
+		cover: (23 to: 45)
+		declaredAt: (23 to: 45)) for:
+		(self coverAll:
+			{52 to: 55}) ] valueCoveringAll:
+		{47 to: 50}) doOperation ] valueCoveringAll:
+		{58 to: 68}.! !
+!Behavior method!
+for: anAccount
+	^ [
+	([
+	(self coverAll:
+		{21 to: 24}) new ] valueCoveringAll:
+		{26 to: 28}) initializeFor:
+		(anAccount
+			cover: (45 to: 53)
+			declaredAt: (6 to: 14)) ] valueCoveringAll:
+		{30 to: 43}.! !
+!Behavior method!
+initializeFor: anAccount
+	(account _ anAccount
+		cover: (40 to: 48)
+		declaredAt: (16 to: 24))
+		cover: (29 to: 35)
+		declaredAt: (29 to: 35).
+	(netTransferValue _ 0 coverAll:
+		{71 to: 72})
+		cover: (52 to: 67)
+		declaredAt: (52 to: 67).! !
+!Behavior method!
+doOperation
+	[
+	(self coverAll:
+		{16 to: 19}) visitTransactions ] valueCoveringAll:
+		{21 to: 37}.
+	^ netTransferValue
+		cover: (45 to: 60)
+		declaredAt: (45 to: 60).! !
+!Behavior method!
+visitTransactions
+	| transactionIterator |
+	(transactionIterator _ [
+	(account
+		cover: (70 to: 76)
+		declaredAt: (70 to: 76)) transactionIterator ] valueCoveringAll:
+		{78 to: 96})
+		cover: (48 to: 66)
+		declaredAt: (23 to: 41).
+	[
+	[
+	[
+	(transactionIterator
+		cover: (104 to: 122)
+		declaredAt: (23 to: 41)) hasNext ] valueCoveringAll:
+		{124 to: 130} ] whileTrue: [ | currentTransaction |
+		(currentTransaction _ [
+		(transactionIterator
+			cover: (193 to: 211)
+			declaredAt: (23 to: 41)) next ] valueCoveringAll:
+			{213 to: 216})
+			cover: (172 to: 189)
+			declaredAt: (149 to: 166).
+		[
+		(currentTransaction
+			cover: (221 to: 238)
+			declaredAt: (149 to: 166)) accept:
+			(self coverAll:
+				{248 to: 251}) ] valueCoveringAll:
+			{240 to: 246} ]] valueCoveringAll:
+		{134 to: 143}.! !
+!Behavior method!
+transactionIterator
+	^ [
+	(TransactionIterator
+		cover: (26 to: 44)
+		declaredAt: (26 to: 44)) with:
+		([
+		(self coverAll:
+			{52 to: 55}) transactions ] valueCoveringAll:
+			{57 to: 68}) ] valueCoveringAll:
+		{46 to: 50}.! !
+!Behavior method!
+with: transactions
+	^ [
+	([
+	(self coverAll:
+		{25 to: 28}) new ] valueCoveringAll:
+		{30 to: 32}) initializeWith:
+		(transactions
+			cover: (50 to: 61)
+			declaredAt: (7 to: 18)) ] valueCoveringAll:
+		{34 to: 48}.! !
+!Behavior method!
+initializeWith: transactionCollection
+	(transactions _ transactionCollection
+		cover: (57 to: 77)
+		declaredAt: (17 to: 37))
+		cover: (42 to: 53)
+		declaredAt: (42 to: 53).
+	(index _ 1 coverAll:
+		{88 to: 89})
+		cover: (81 to: 85)
+		declaredAt: (81 to: 85).! !
+!Behavior method!
+hasNext
+	^ [
+	(index
+		cover: (14 to: 18)
+		declaredAt: (14 to: 18)) <=
+		([
+		(transactions
+			cover: (23 to: 34)
+			declaredAt: (23 to: 34)) size ] valueCoveringAll:
+			{36 to: 39}) ] valueCoveringAll:
+		{20 to: 21}.! !
+!Behavior method!
+next
+	| currentTransaction |
+	[
+	(self coverAll:
+		{35 to: 38}) assertHasNext ] valueCoveringAll:
+		{40 to: 52}.
+	(currentTransaction _ [
+	(transactions
+		cover: (79 to: 90)
+		declaredAt: (79 to: 90)) at:
+		(index
+			cover: (96 to: 100)
+			declaredAt: (96 to: 100)) ] valueCoveringAll:
+		{92 to: 94})
+		cover: (58 to: 75)
+		declaredAt: (11 to: 28).
+	(index _ [
+	(index
+		cover: (104 to: 108)
+		declaredAt: (96 to: 100)) +
+		(1 coverAll:
+			{120 to: 120}) ] valueCoveringAll:
+		{118 to: 118})
+		cover: (112 to: 116)
+		declaredAt: (96 to: 100).
+	^ currentTransaction
+		cover: (128 to: 145)
+		declaredAt: (11 to: 28).! !
+!Behavior method!
+assertHasNext
+	^ [
+	([
+	(self coverAll:
+		{20 to: 23}) hasNext ] valueCoveringAll:
+		{25 to: 31}) ifFalse: [
+		[
+		(self coverAll:
+			{45 to: 48}) error:
+			([
+			([
+			(self coverAll:
+				{57 to: 60}) class ] valueCoveringAll:
+				{62 to: 66}) notNextTransationErrorDescription ] valueCoveringAll:
+				{68 to: 100}) ] valueCoveringAll:
+			{50 to: 55} ]] valueCoveringAll:
+		{34 to: 41}.! !
+!Behavior method!
+accept: aVisitor
+	[
+	(aVisitor
+		cover: (21 to: 28)
+		declaredAt: (9 to: 16)) visitDeposit:
+		(self coverAll:
+			{44 to: 47}) ] valueCoveringAll:
+		{30 to: 42}.! !
+!Behavior method!
+visitDeposit: aDeposit
+	^ self.! !
+!Behavior method!
+accept: aVisitor
+	[
+	(aVisitor
+		cover: (21 to: 28)
+		declaredAt: (9 to: 16)) visitWithdraw:
+		(self coverAll:
+			{45 to: 48}) ] valueCoveringAll:
+		{30 to: 43}.! !
+!Behavior method!
+visitWithdraw: aWithdraw
+	^ self.! !
+
+!testRun: #ReportTest #test01ShouldInform0ForAnAccountWithoutTransfers stamp: 'JPF 6/2/2021 22:53:09'!
+PASSED!
+!Behavior method!
+summary
+	^ [
+	([
+	(SummaryVisitor
+		cover: (14 to: 27)
+		declaredAt: (14 to: 27)) for:
+		(self coverAll:
+			{34 to: 37}) ] valueCoveringAll:
+		{29 to: 32}) doOperation ] valueCoveringAll:
+		{40 to: 50}.! !
+!Behavior method!
+for: anAccount
+	^ [
+	([
+	(self coverAll:
+		{21 to: 24}) new ] valueCoveringAll:
+		{26 to: 28}) initializeFor:
+		(anAccount
+			cover: (45 to: 53)
+			declaredAt: (6 to: 14)) ] valueCoveringAll:
+		{30 to: 43}.! !
+!Behavior method!
+initializeFor: anAccount
+	(account _ anAccount
+		cover: (40 to: 48)
+		declaredAt: (16 to: 24))
+		cover: (29 to: 35)
+		declaredAt: (29 to: 35).
+	(summary _ [
+	(OrderedCollection
+		cover: (63 to: 79)
+		declaredAt: (63 to: 79)) new ] valueCoveringAll:
+		{81 to: 83})
+		cover: (52 to: 58)
+		declaredAt: (52 to: 58).! !
+!Behavior method!
+doOperation
+	[
+	(self coverAll:
+		{15 to: 18}) visitTransactions ] valueCoveringAll:
+		{20 to: 36}.
+	[
+	(summary
+		cover: (42 to: 48)
+		declaredAt: (42 to: 48)) add:
+		([
+		('Balance = ' coverAll:
+			{55 to: 66}) ,
+			([
+			([
+			(account
+				cover: (69 to: 75)
+				declaredAt: (69 to: 75)) balance ] valueCoveringAll:
+				{77 to: 83}) asString ] valueCoveringAll:
+				{85 to: 92}) ] valueCoveringAll:
+			{67 to: 67}) ] valueCoveringAll:
+		{50 to: 53}.
+	^ summary
+		cover: (100 to: 106)
+		declaredAt: (42 to: 48).! !
+
+!testRun: #ReportTest #test01ShouldInformBalance0ForAnAccountWithoutTransactions stamp: 'JPF 6/2/2021 22:53:09'!
+PASSED!
+!Behavior method!
+transfer: aValue to: targetReceptiveAccount
+	| transfer |
+	[
+	(self coverAll:
+		{65 to: 68}) assertSourceAndTargetAccountAreNotTheSameAccount:
+		(targetReceptiveAccount
+			cover: (120 to: 141)
+			declaredAt: (22 to: 43)) ] valueCoveringAll:
+		{70 to: 118}.
+	[
+	(self coverAll:
+		{145 to: 148}) assertTheAmountTransferedIsValid:
+		(aValue
+			cover: (184 to: 189)
+			declaredAt: (11 to: 16)) ] valueCoveringAll:
+		{150 to: 182}.
+	(transfer _ [
+	(Transfer
+		cover: (206 to: 213)
+		declaredAt: (206 to: 213))
+		for:
+			(aValue
+				cover: (220 to: 225)
+				declaredAt: (11 to: 16))
+		from:
+			(self coverAll:
+				{233 to: 236})
+		to:
+			(targetReceptiveAccount
+				cover: (242 to: 263)
+				declaredAt: (22 to: 43)) ] valueCoveringAll:
+		{215 to: 218. 227 to: 231. 238 to: 240})
+		cover: (195 to: 202)
+		declaredAt: (51 to: 58).
+	^ transfer
+		cover: (271 to: 278)
+		declaredAt: (51 to: 58).! !
+!Behavior method!
+assertSourceAndTargetAccountAreNotTheSameAccount: targetReceptiveAccount
+	^ [
+	([
+	(targetReceptiveAccount
+		cover: (79 to: 100)
+		declaredAt: (51 to: 72)) =
+		(self coverAll:
+			{104 to: 107}) ] valueCoveringAll:
+		{102 to: 102}) ifTrue: [
+		[
+		(self coverAll:
+			{120 to: 123}) error:
+			([
+			([
+			(self coverAll:
+				{132 to: 135}) class ] valueCoveringAll:
+				{137 to: 141}) transferToSourceAccountErrorDescription ] valueCoveringAll:
+				{143 to: 181}) ] valueCoveringAll:
+			{125 to: 130} ]] valueCoveringAll:
+		{110 to: 116}.! !
+!Behavior method!
+assertTheAmountTransferedIsValid: aValue
+	^ [
+	([
+	(aValue
+		cover: (47 to: 52)
+		declaredAt: (35 to: 40)) <=
+		(0 coverAll:
+			{57 to: 57}) ] valueCoveringAll:
+		{54 to: 55}) ifTrue: [
+		[
+		(self coverAll:
+			{70 to: 73}) error:
+			([
+			([
+			(self coverAll:
+				{82 to: 85}) class ] valueCoveringAll:
+				{87 to: 91}) invalidAmountErrorDescription ] valueCoveringAll:
+				{93 to: 121}) ] valueCoveringAll:
+			{75 to: 80} ]] valueCoveringAll:
+		{60 to: 66}.! !
+!Behavior method!
+for: aValue from: aSourceReceptiveAccount to: aTargetReceptiveAccount
+	^ [
+	([
+	(self coverAll:
+		{76 to: 79}) new ] valueCoveringAll:
+		{81 to: 83})
+		initializeFor:
+			(aValue
+				cover: (100 to: 105)
+				declaredAt: (6 to: 11))
+		from:
+			(aSourceReceptiveAccount
+				cover: (113 to: 135)
+				declaredAt: (19 to: 41))
+		to:
+			(aTargetReceptiveAccount
+				cover: (141 to: 163)
+				declaredAt: (47 to: 69)) ] valueCoveringAll:
+		{85 to: 98. 107 to: 111. 137 to: 139}.! !
+!Behavior method!
+initializeFor: aValue from: aSourceReceptiveAccount to: aTargetReceptiveAccount
+	(value _ aValue
+		cover: (92 to: 97)
+		declaredAt: (16 to: 21))
+		cover: (83 to: 87)
+		declaredAt: (83 to: 87).
+	(output _ [
+	(TransferOutput
+		cover: (111 to: 124)
+		declaredAt: (111 to: 124)) for:
+		(self coverAll:
+			{131 to: 134}) ] valueCoveringAll:
+		{126 to: 129})
+		cover: (101 to: 106)
+		declaredAt: (101 to: 106).
+	(entry _ [
+	(TransferEntry
+		cover: (147 to: 159)
+		declaredAt: (147 to: 159)) for:
+		(self coverAll:
+			{166 to: 169}) ] valueCoveringAll:
+		{161 to: 164})
+		cover: (138 to: 142)
+		declaredAt: (138 to: 142).
+	[
+	(aSourceReceptiveAccount
+		cover: (175 to: 197)
+		declaredAt: (29 to: 51)) register:
+		(output
+			cover: (209 to: 214)
+			declaredAt: (101 to: 106)) ] valueCoveringAll:
+		{199 to: 207}.
+	[
+	(aTargetReceptiveAccount
+		cover: (218 to: 240)
+		declaredAt: (57 to: 79)) register:
+		(entry
+			cover: (252 to: 256)
+			declaredAt: (138 to: 142)) ] valueCoveringAll:
+		{242 to: 250}.! !
+!Behavior method!
+for: aTransfer
+	^ [
+	([
+	(self coverAll:
+		{20 to: 23}) new ] valueCoveringAll:
+		{25 to: 27}) initializeFor:
+		(aTransfer
+			cover: (44 to: 52)
+			declaredAt: (6 to: 14)) ] valueCoveringAll:
+		{29 to: 42}.! !
+!Behavior method!
+initializeFor: aTransfer
+	(transfer _ aTransfer
+		cover: (40 to: 48)
+		declaredAt: (16 to: 24))
+		cover: (28 to: 35)
+		declaredAt: (28 to: 35).! !
+!Behavior method!
+for: aTransfer
+	^ [
+	([
+	(self coverAll:
+		{20 to: 23}) new ] valueCoveringAll:
+		{25 to: 27}) initializeFor:
+		(aTransfer
+			cover: (44 to: 52)
+			declaredAt: (6 to: 14)) ] valueCoveringAll:
+		{29 to: 42}.! !
+!Behavior method!
+accept: aVisitor
+	[
+	(aVisitor
+		cover: (21 to: 28)
+		declaredAt: (9 to: 16)) visitTransferEntry:
+		(self coverAll:
+			{50 to: 53}) ] valueCoveringAll:
+		{30 to: 48}.! !
+!Behavior method!
+visitTransferEntry: aTransferEntry
+	(netTransferValue _ [
+	(aTransferEntry
+		cover: (57 to: 70)
+		declaredAt: (21 to: 34)) affectBalance:
+		(netTransferValue
+			cover: (38 to: 53)
+			declaredAt: (38 to: 53)) ] valueCoveringAll:
+		{72 to: 85})
+		cover: (87 to: 102)
+		declaredAt: (38 to: 53).! !
+!Behavior method!
+affectBalance: aBalance
+	^ [
+	(aBalance
+		cover: (30 to: 37)
+		declaredAt: (16 to: 23)) +
+		([
+		(self coverAll:
+			{41 to: 44}) value ] valueCoveringAll:
+			{46 to: 50}) ] valueCoveringAll:
+		{39 to: 39}.! !
+!Behavior method!
+value
+	^ [
+	(transfer
+		cover: (12 to: 19)
+		declaredAt: (12 to: 19)) value ] valueCoveringAll:
+		{21 to: 25}.! !
+!Behavior method!
+value
+	^ value
+		cover: (11 to: 15)
+		declaredAt: (11 to: 15).! !
+
+!testRun: #ReportTest #test02ShouldInform50ForAnAccountWithA50TransferEntry stamp: 'JPF 6/2/2021 22:53:09'!
+PASSED!
+!Behavior method!
+visitDeposit: aDeposit
+	[
+	(summary
+		cover: (27 to: 33)
+		declaredAt: (27 to: 33)) add:
+		([
+		([
+		('Depósito por ' coverAll:
+			{40 to: 54}) ,
+			([
+			([
+			(aDeposit
+				cover: (58 to: 65)
+				declaredAt: (15 to: 22)) value ] valueCoveringAll:
+				{67 to: 71}) asString ] valueCoveringAll:
+				{73 to: 80}) ] valueCoveringAll:
+			{56 to: 56}) ,
+			('.' coverAll:
+				{84 to: 86}) ] valueCoveringAll:
+			{82 to: 82}) ] valueCoveringAll:
+		{35 to: 38}.! !
+!Behavior method!
+value
+	^ value
+		cover: (11 to: 15)
+		declaredAt: (11 to: 15).! !
+
+!testRun: #ReportTest #test02ShouldInformBalance50AndA50DepositForAnAccountWithA50Deposit stamp: 'JPF 6/2/2021 22:53:09'!
+PASSED!
+!Behavior method!
+accept: aVisitor
+	[
+	(aVisitor
+		cover: (21 to: 28)
+		declaredAt: (9 to: 16)) visitTransferOutput:
+		(self coverAll:
+			{51 to: 54}) ] valueCoveringAll:
+		{30 to: 49}.! !
+!Behavior method!
+visitTransferOutput: aTransferOutput
+	(netTransferValue _ [
+	(aTransferOutput
+		cover: (59 to: 73)
+		declaredAt: (22 to: 36)) affectBalance:
+		(netTransferValue
+			cover: (40 to: 55)
+			declaredAt: (40 to: 55)) ] valueCoveringAll:
+		{75 to: 88})
+		cover: (90 to: 105)
+		declaredAt: (40 to: 55).! !
+!Behavior method!
+affectBalance: aBalance
+	^ [
+	(aBalance
+		cover: (30 to: 37)
+		declaredAt: (16 to: 23)) -
+		([
+		(self coverAll:
+			{41 to: 44}) value ] valueCoveringAll:
+			{46 to: 50}) ] valueCoveringAll:
+		{39 to: 39}.! !
+
+!testRun: #ReportTest #test03ShouldInform10ForAnAccountWithA50TransferEntryAnd40TransferOutput stamp: 'JPF 6/2/2021 22:53:09'!
+PASSED!
+!Behavior method!
+visitWithdraw: aWithdraw
+	[
+	(summary
+		cover: (29 to: 35)
+		declaredAt: (29 to: 35)) add:
+		([
+		([
+		('Extracción por ' coverAll:
+			{42 to: 58}) ,
+			([
+			([
+			(aWithdraw
+				cover: (62 to: 70)
+				declaredAt: (16 to: 24)) value ] valueCoveringAll:
+				{72 to: 76}) asString ] valueCoveringAll:
+				{78 to: 85}) ] valueCoveringAll:
+			{60 to: 60}) ,
+			('.' coverAll:
+				{89 to: 91}) ] valueCoveringAll:
+			{87 to: 87}) ] valueCoveringAll:
+		{37 to: 40}.! !
+
+!testRun: #ReportTest #test03ShouldInformBalance0A50DepositA50WithdrawForAnAccountWithA50DepositAnd50Withdraw stamp: 'JPF 6/2/2021 22:53:09'!
+PASSED!
+!Behavior method!
+visitTransferEntry: aTransferEntry
+	[
+	(summary
+		cover: (39 to: 45)
+		declaredAt: (39 to: 45)) add:
+		([
+		([
+		('Entrada por transferencia de ' coverAll:
+			{52 to: 82}) ,
+			([
+			([
+			(aTransferEntry
+				cover: (86 to: 99)
+				declaredAt: (21 to: 34)) value ] valueCoveringAll:
+				{101 to: 105}) asString ] valueCoveringAll:
+				{107 to: 114}) ] valueCoveringAll:
+			{84 to: 84}) ,
+			('.' coverAll:
+				{118 to: 120}) ] valueCoveringAll:
+			{116 to: 116}) ] valueCoveringAll:
+		{47 to: 50}.! !
+!Behavior method!
+visitTransferOutput: aTransferOutput
+	[
+	(summary
+		cover: (41 to: 47)
+		declaredAt: (41 to: 47)) add:
+		([
+		([
+		('Salida por transferencia de ' coverAll:
+			{54 to: 83}) ,
+			([
+			([
+			(aTransferOutput
+				cover: (87 to: 101)
+				declaredAt: (22 to: 36)) value ] valueCoveringAll:
+				{103 to: 107}) asString ] valueCoveringAll:
+				{109 to: 116}) ] valueCoveringAll:
+			{85 to: 85}) ,
+			('.' coverAll:
+				{120 to: 122}) ] valueCoveringAll:
+			{118 to: 118}) ] valueCoveringAll:
+		{49 to: 52}.! !
+
+!testRun: #ReportTest #test04ShouldInformBalance0A50DepositA50WithdrawA50TransferEntryA50TransferOutputForAnAccountWithThoseTransactions stamp: 'JPF 6/2/2021 22:53:09'!
+PASSED!
+
+!testRun: #ReportTest #test04ShouldInformCorrectValueForAPortfolioWithAReceptiveAccountAndAnotherPortfolioHavingAllTypeOfTransactions stamp: 'JPF 6/2/2021 22:53:09'!
+PASSED!
+
+!testRun: #ReportTest #test05ShouldInformCorrectBalanceForAPortfolioWithAReceptiveAccountAndAnotherPortfolioHavingAllTypeOfTransactions stamp: 'JPF 6/2/2021 22:53:09'!
+PASSED!
+
+!testRun: #TransactionIteratorTest #test01IteratorForAnAccountWithoutTransactionsHasNotNext stamp: 'JPF 6/2/2021 22:53:09'!
+PASSED!
+
+!testRun: #TransactionIteratorTest #test02IteratorForAnAccountWithOneTransactionHasNext stamp: 'JPF 6/2/2021 22:53:09'!
+PASSED!
+
+!testRun: #TransactionIteratorTest #test03IteratorForAnAccountWithOneTransactionHasNotNextWhenWasAskedForNextOnce stamp: 'JPF 6/2/2021 22:53:09'!
+PASSED!
+
+!testRun: #TransactionIteratorTest #test04IteratorForAnAccountWithOneTransactionShouldReturnThatTransactionWhenAskForNext stamp: 'JPF 6/2/2021 22:53:09'!
+PASSED!
+!Behavior method!
+notNextTransationErrorDescription
+	^ 'Cannot ask for next when iterator has not next' coverAll:
+		{40 to: 87}.! !
+
+!testRun: #TransactionIteratorTest #test05NextShouldRaiseAnErrorWhenHasNotNext stamp: 'JPF 6/2/2021 22:53:09'!
+PASSED!
+
+!testRun: #TransferTest #test01ShouldIncreaseTargetAccountBalanceAndDecreaseSourceAccountBalanceInTheSameAmount stamp: 'JPF 6/2/2021 22:53:09'!
+PASSED!
+
+!testRun: #TransferTest #test02ShouldNotAddDepositsToTargetAccountOrWithdrawToSourceAccount stamp: 'JPF 6/2/2021 22:53:09'!
+PASSED!
+!Behavior method!
+output
+	^ output
+		cover: (13 to: 18)
+		declaredAt: (13 to: 18).! !
+!Behavior method!
+entry
+	^ entry
+		cover: (12 to: 16)
+		declaredAt: (12 to: 16).! !
+
+!testRun: #TransferTest #test03ShouldReturnATransferWithTheTransferOutputAndTheTransferEntry stamp: 'JPF 6/2/2021 22:53:09'!
+PASSED!
+!Behavior method!
+transfer
+	^ transfer
+		cover: (13 to: 20)
+		declaredAt: (13 to: 20).! !
+
+!testRun: #TransferTest #test04ShouldObtainTheSameTransferFromTheTransferOutputAndTheTransferEntry stamp: 'JPF 6/2/2021 22:53:09'!
+PASSED!
+!Behavior method!
+transferToSourceAccountErrorDescription
+	^ 'Cannot transfer to the source account' coverAll:
+		{46 to: 84}.! !
+
+!testRun: #TransferTest #test05ShouldRaiseAnErrorIfTheTargetAndSourceAccountAreTheSameAccount stamp: 'JPF 6/2/2021 22:53:09'!
+PASSED!
+!Behavior method!
+invalidAmountErrorDescription
+	^ 'Cannot transfer a negative amount' coverAll:
+		{35 to: 69}.! !
+
+!testRun: #TransferTest #test06ShouldRaiseAnErrorIfAnAccountTransferANegativeAmount stamp: 'JPF 6/2/2021 22:53:09'!
+PASSED!
+
+!testRun: #TransferTest #test07ShouldRaiseAnErrorIfAnAccountTransferZeroAsAmount stamp: 'JPF 6/2/2021 22:53:09'!
+PASSED!
+
+----QUIT----(2 June 2021 22:54:07) Portfolio2.image priorSource: 17832471!
+
+----STARTUP---- (3 June 2021 07:21:00) as /Users/juan.ferrino/CuisUniversity/Portfolio2.image!
+
+!ReportTest methodsFor: 'do report' stamp: 'JPF 6/3/2021 07:24:42'!
+accountSummaryFor: anAccount
+	
+	^ (SummaryVisitor for: anAccount) doOperation! !
+!ReportTest methodsFor: 'do report' stamp: 'JPF 6/3/2021 07:25:19'!
+netTransferValueFor: anAccount
+	
+	^ (NetTransferValueVisitor for: anAccount) doOperation! !
+!ReportTest methodsFor: 'net transfer value tests' stamp: 'JPF 6/3/2021 07:26:20' prior: 50891114!
+test01ShouldInform0ForAnAccountWithoutTransfers
+	
+	| account |
+	
+	account _ ReceptiveAccount new.
+	account register: (Deposit for: 50).
+	account register: (Withdraw for: 100).
+	
+	self assert: 0 equals: (self netTransferValueFor: account)! !
+
+!testRun: #ReportTest #test01ShouldInform0ForAnAccountWithoutTransfers stamp: 'JPF 6/3/2021 07:26:27'!
+PASSED!
+
+!testRun: #ReportTest #test01ShouldInformBalance0ForAnAccountWithoutTransactions stamp: 'JPF 6/3/2021 07:26:27'!
+PASSED!
+
+!testRun: #ReportTest #test02ShouldInform50ForAnAccountWithA50TransferEntry stamp: 'JPF 6/3/2021 07:26:27'!
+PASSED!
+
+!testRun: #ReportTest #test02ShouldInformBalance50AndA50DepositForAnAccountWithA50Deposit stamp: 'JPF 6/3/2021 07:26:27'!
+PASSED!
+
+!testRun: #ReportTest #test03ShouldInform10ForAnAccountWithA50TransferEntryAnd40TransferOutput stamp: 'JPF 6/3/2021 07:26:27'!
+PASSED!
+
+!testRun: #ReportTest #test03ShouldInformBalance0A50DepositA50WithdrawForAnAccountWithA50DepositAnd50Withdraw stamp: 'JPF 6/3/2021 07:26:27'!
+PASSED!
+
+!testRun: #ReportTest #test04ShouldInformBalance0A50DepositA50WithdrawA50TransferEntryA50TransferOutputForAnAccountWithThoseTransactions stamp: 'JPF 6/3/2021 07:26:27'!
+PASSED!
+
+!testRun: #ReportTest #test04ShouldInformCorrectValueForAPortfolioWithAReceptiveAccountAndAnotherPortfolioHavingAllTypeOfTransactions stamp: 'JPF 6/3/2021 07:26:27'!
+PASSED!
+
+!testRun: #ReportTest #test05ShouldInformCorrectBalanceForAPortfolioWithAReceptiveAccountAndAnotherPortfolioHavingAllTypeOfTransactions stamp: 'JPF 6/3/2021 07:26:27'!
+PASSED!
+!ReportTest methodsFor: 'net transfer value tests' stamp: 'JPF 6/3/2021 07:26:47' prior: 50891100!
+test02ShouldInform50ForAnAccountWithA50TransferEntry
+	
+	| account account2 |
+	
+	account _ ReceptiveAccount new.
+	account register: (Withdraw for: 50).
+	account register: (Deposit for: 100).
+	
+	account2 _ ReceptiveAccount new.
+	
+	account2 transfer: 50 to: account.
+	
+	self assert: 50 equals: (self netTransferValueFor: account)! !
+!ReportTest methodsFor: 'net transfer value tests' stamp: 'JPF 6/3/2021 07:26:54' prior: 50891085!
+test03ShouldInform10ForAnAccountWithA50TransferEntryAnd40TransferOutput
+	
+	| account account2 |
+	
+	account _ ReceptiveAccount new.
+	account register: (Withdraw for: 50).
+	account register: (Deposit for: 100).
+	
+	account2 _ ReceptiveAccount new.
+	
+	account2 transfer: 50 to: account.
+	account transfer: 40 to: account2.
+	
+	self assert: 10 equals: (self netTransferValueFor: account)! !
+!ReportTest methodsFor: 'net transfer value tests' stamp: 'JPF 6/3/2021 07:27:07' prior: 50883132!
+test04ShouldInformCorrectValueForAPortfolioWithAReceptiveAccountAndAnotherPortfolioHavingAllTypeOfTransactions
+	
+	| portfolio portfolioChild account account2 account3 |
+	
+	account _ ReceptiveAccount new.
+	account2 _ ReceptiveAccount new.
+	account3 _ ReceptiveAccount new.
+	
+	portfolioChild _ Portfolio with: account2.
+	portfolio _ Portfolio with: portfolioChild with: account.
+	
+	account register: (Deposit for: 100).
+	account2 register: (Withdraw for: 50).
+	
+	account transfer: 50 to: account2.
+	account3 transfer: 100 to: account.
+	account2 transfer: 50 to: account3.
+	
+	self assert: 50 equals: (self netTransferValueFor: portfolio) ! !
+!ReportTest methodsFor: 'account summary tests' stamp: 'JPF 6/3/2021 07:27:46' prior: 50879074!
+test01ShouldInformBalance0ForAnAccountWithoutTransactions
+	
+	| account |
+	
+	account _ ReceptiveAccount new.
+	
+	self
+		assert: (OrderedCollection with: 'Balance = 0')
+		equals: (self accountSummaryFor: account)! !
+!ReportTest methodsFor: 'account summary tests' stamp: 'JPF 6/3/2021 07:28:23' prior: 50879283!
+test02ShouldInformBalance50AndA50DepositForAnAccountWithA50Deposit
+	
+	| account |
+	
+	account _ ReceptiveAccount new.
+	account register: (Deposit for: 50).
+	
+	self
+		assert: (OrderedCollection with: 'Depósito por 50.' with: 'Balance = 50')
+		equals: (self accountSummaryFor: account)! !
+!ReportTest methodsFor: 'account summary tests' stamp: 'JPF 6/3/2021 07:28:36' prior: 50879253!
+test03ShouldInformBalance0A50DepositA50WithdrawForAnAccountWithA50DepositAnd50Withdraw
+	
+	| account |
+	
+	account _ ReceptiveAccount new.
+	account register: (Deposit for: 50).
+	account register: (Withdraw for: 50).
+	
+	self 
+		assert:
+		(OrderedCollection
+			with: 'Depósito por 50.'
+			with: 'Extracción por 50.'
+			with: 'Balance = 0')
+		equals: (self accountSummaryFor: account)! !
+!ReportTest methodsFor: 'account summary tests' stamp: 'JPF 6/3/2021 07:28:44' prior: 50879426!
+test04ShouldInformBalance0A50DepositA50WithdrawA50TransferEntryA50TransferOutputForAnAccountWithThoseTransactions
+	
+	| account account2 |
+	
+	account _ ReceptiveAccount new.
+	account2 _ ReceptiveAccount new.
+	
+	account register: (Deposit for: 50).
+	account register: (Withdraw for: 50).
+	
+	account2 transfer: 50 to: account.
+	account transfer: 50 to: account2.
+	
+	self 
+		assert:
+		(OrderedCollection
+			with: 'Depósito por 50.'
+			with: 'Extracción por 50.'
+			with: 'Entrada por transferencia de 50.'
+			with: 'Salida por transferencia de 50.'
+			with: 'Balance = 0')
+		equals: (self accountSummaryFor: account)! !
+!ReportTest methodsFor: 'account summary tests' stamp: 'JPF 6/3/2021 07:28:58' prior: 50882164!
+test05ShouldInformCorrectBalanceForAPortfolioWithAReceptiveAccountAndAnotherPortfolioHavingAllTypeOfTransactions
+	
+	| portfolio portfolioChild account account2 |
+	
+	account _ ReceptiveAccount new.
+	account2 _ ReceptiveAccount new.
+	
+	portfolioChild _ Portfolio with: account2.
+	portfolio _ Portfolio with: portfolioChild with: account.
+	
+	account register: (Deposit for: 100).
+	account register: (Withdraw for: 50).
+	
+	account transfer: 50 to: account2.
+	
+	self 
+		assert:
+		(OrderedCollection
+			with: 'Entrada por transferencia de 50.'
+			with: 'Depósito por 100.'
+			with: 'Extracción por 50.'
+			with: 'Salida por transferencia de 50.'
+			with: 'Balance = 50')
+		equals: (self accountSummaryFor: portfolio)! !
+
+!testRun: #PortfolioTest #test01BalanceOfPortfolioWithoutAccountsIsZero stamp: 'JPF 6/3/2021 07:29:13'!
+PASSED!
+
+!testRun: #PortfolioTest #test02BalanceOfPortfolioWithAccountsIsSumOfAccountsBalance stamp: 'JPF 6/3/2021 07:29:13'!
+PASSED!
+
+!testRun: #PortfolioTest #test03BalanceOfPortfolioIsCalculatedRecursivelyOnPortfolios stamp: 'JPF 6/3/2021 07:29:13'!
+PASSED!
+
+!testRun: #PortfolioTest #test04PortfolioWithoutAccountsHasNoRegisteredTransaction stamp: 'JPF 6/3/2021 07:29:13'!
+PASSED!
+
+!testRun: #PortfolioTest #test05PortfolioHasRegisteredItsAccountsTransactions stamp: 'JPF 6/3/2021 07:29:13'!
+PASSED!
+
+!testRun: #PortfolioTest #test06PortfolioLooksForRegisteredTransactionsRecursively stamp: 'JPF 6/3/2021 07:29:13'!
+PASSED!
+
+!testRun: #PortfolioTest #test07PortfolioHasNoTransactionWhenHasNoAccounts stamp: 'JPF 6/3/2021 07:29:13'!
+PASSED!
+
+!testRun: #PortfolioTest #test08PortfolioTransactionsIncludesAllItsAccountsTransactions stamp: 'JPF 6/3/2021 07:29:13'!
+PASSED!
+
+!testRun: #PortfolioTest #test09PortfolioTransactionsAreCalculatedRecursively stamp: 'JPF 6/3/2021 07:29:13'!
+PASSED!
+
+!testRun: #PortfolioTest #test10PortfolioCanNotIncludeTheSameAccountMoreThanOnce stamp: 'JPF 6/3/2021 07:29:13'!
+PASSED!
+
+!testRun: #PortfolioTest #test11PortfolioCanNotIncludeAccountOfItsPortfolios stamp: 'JPF 6/3/2021 07:29:13'!
+PASSED!
+
+!testRun: #PortfolioTest #test12PortfolioCanNotIncludeItself stamp: 'JPF 6/3/2021 07:29:13'!
+PASSED!
+
+!testRun: #PortfolioTest #test13ComposedPortfolioCanNotHaveParentPortfolioAccount stamp: 'JPF 6/3/2021 07:29:13'!
+PASSED!
+
+!testRun: #PortfolioTest #test14ComposedPortfolioCanNotHaveAccountOfAnyRootParentRecursively stamp: 'JPF 6/3/2021 07:29:13'!
+PASSED!
+
+!testRun: #PortfolioTest #test15PortfolioCanNotIncludeAnyOfTheComposedAccountOfPortfolioToAdd stamp: 'JPF 6/3/2021 07:29:13'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test01ReceptiveAccountHaveZeroAsBalanceWhenCreated stamp: 'JPF 6/3/2021 07:29:13'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test02DepositIncreasesBalanceOnTransactionValue stamp: 'JPF 6/3/2021 07:29:13'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test03WithdrawDecreasesBalanceOnTransactionValue stamp: 'JPF 6/3/2021 07:29:13'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test04WithdrawValueMustBePositive stamp: 'JPF 6/3/2021 07:29:13'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test05ReceptiveAccountKnowsRegisteredTransactions stamp: 'JPF 6/3/2021 07:29:13'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test06ReceptiveAccountDoNotKnowNotRegisteredTransactions stamp: 'JPF 6/3/2021 07:29:13'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test07AccountKnowsItsTransactions stamp: 'JPF 6/3/2021 07:29:13'!
+PASSED!
+
+!testRun: #ReportTest #test01ShouldInform0ForAnAccountWithoutTransfers stamp: 'JPF 6/3/2021 07:29:13'!
+PASSED!
+
+!testRun: #ReportTest #test01ShouldInformBalance0ForAnAccountWithoutTransactions stamp: 'JPF 6/3/2021 07:29:13'!
+PASSED!
+
+!testRun: #ReportTest #test02ShouldInform50ForAnAccountWithA50TransferEntry stamp: 'JPF 6/3/2021 07:29:13'!
+PASSED!
+
+!testRun: #ReportTest #test02ShouldInformBalance50AndA50DepositForAnAccountWithA50Deposit stamp: 'JPF 6/3/2021 07:29:13'!
+PASSED!
+
+!testRun: #ReportTest #test03ShouldInform10ForAnAccountWithA50TransferEntryAnd40TransferOutput stamp: 'JPF 6/3/2021 07:29:13'!
+PASSED!
+
+!testRun: #ReportTest #test03ShouldInformBalance0A50DepositA50WithdrawForAnAccountWithA50DepositAnd50Withdraw stamp: 'JPF 6/3/2021 07:29:13'!
+PASSED!
+
+!testRun: #ReportTest #test04ShouldInformBalance0A50DepositA50WithdrawA50TransferEntryA50TransferOutputForAnAccountWithThoseTransactions stamp: 'JPF 6/3/2021 07:29:13'!
+PASSED!
+
+!testRun: #ReportTest #test04ShouldInformCorrectValueForAPortfolioWithAReceptiveAccountAndAnotherPortfolioHavingAllTypeOfTransactions stamp: 'JPF 6/3/2021 07:29:13'!
+PASSED!
+
+!testRun: #ReportTest #test05ShouldInformCorrectBalanceForAPortfolioWithAReceptiveAccountAndAnotherPortfolioHavingAllTypeOfTransactions stamp: 'JPF 6/3/2021 07:29:13'!
+PASSED!
+
+!testRun: #TransactionIteratorTest #test01IteratorForAnAccountWithoutTransactionsHasNotNext stamp: 'JPF 6/3/2021 07:29:13'!
+PASSED!
+
+!testRun: #TransactionIteratorTest #test02IteratorForAnAccountWithOneTransactionHasNext stamp: 'JPF 6/3/2021 07:29:13'!
+PASSED!
+
+!testRun: #TransactionIteratorTest #test03IteratorForAnAccountWithOneTransactionHasNotNextWhenWasAskedForNextOnce stamp: 'JPF 6/3/2021 07:29:13'!
+PASSED!
+
+!testRun: #TransactionIteratorTest #test04IteratorForAnAccountWithOneTransactionShouldReturnThatTransactionWhenAskForNext stamp: 'JPF 6/3/2021 07:29:13'!
+PASSED!
+
+!testRun: #TransactionIteratorTest #test05NextShouldRaiseAnErrorWhenHasNotNext stamp: 'JPF 6/3/2021 07:29:13'!
+PASSED!
+
+!testRun: #TransferTest #test01ShouldIncreaseTargetAccountBalanceAndDecreaseSourceAccountBalanceInTheSameAmount stamp: 'JPF 6/3/2021 07:29:13'!
+PASSED!
+
+!testRun: #TransferTest #test02ShouldNotAddDepositsToTargetAccountOrWithdrawToSourceAccount stamp: 'JPF 6/3/2021 07:29:13'!
+PASSED!
+
+!testRun: #TransferTest #test03ShouldReturnATransferWithTheTransferOutputAndTheTransferEntry stamp: 'JPF 6/3/2021 07:29:13'!
+PASSED!
+
+!testRun: #TransferTest #test04ShouldObtainTheSameTransferFromTheTransferOutputAndTheTransferEntry stamp: 'JPF 6/3/2021 07:29:13'!
+PASSED!
+
+!testRun: #TransferTest #test05ShouldRaiseAnErrorIfTheTargetAndSourceAccountAreTheSameAccount stamp: 'JPF 6/3/2021 07:29:13'!
+PASSED!
+
+!testRun: #TransferTest #test06ShouldRaiseAnErrorIfAnAccountTransferANegativeAmount stamp: 'JPF 6/3/2021 07:29:13'!
+PASSED!
+
+!testRun: #TransferTest #test07ShouldRaiseAnErrorIfAnAccountTransferZeroAsAmount stamp: 'JPF 6/3/2021 07:29:13'!
+PASSED!
+
+!methodRemoval: Account #netTransferValue stamp: 'JPF 6/3/2021 07:30:10'!
+netTransferValue
+
+	^ (NetTransferValueVisitor for: self) doOperation!
+
+!methodRemoval: Account #summary stamp: 'JPF 6/3/2021 07:30:10'!
+summary
+
+	^ (SummaryVisitor for: self) doOperation!
+
+!testRun: #PortfolioTest #test01BalanceOfPortfolioWithoutAccountsIsZero stamp: 'JPF 6/3/2021 07:30:13'!
+PASSED!
+
+!testRun: #PortfolioTest #test02BalanceOfPortfolioWithAccountsIsSumOfAccountsBalance stamp: 'JPF 6/3/2021 07:30:13'!
+PASSED!
+
+!testRun: #PortfolioTest #test03BalanceOfPortfolioIsCalculatedRecursivelyOnPortfolios stamp: 'JPF 6/3/2021 07:30:13'!
+PASSED!
+
+!testRun: #PortfolioTest #test04PortfolioWithoutAccountsHasNoRegisteredTransaction stamp: 'JPF 6/3/2021 07:30:13'!
+PASSED!
+
+!testRun: #PortfolioTest #test05PortfolioHasRegisteredItsAccountsTransactions stamp: 'JPF 6/3/2021 07:30:13'!
+PASSED!
+
+!testRun: #PortfolioTest #test06PortfolioLooksForRegisteredTransactionsRecursively stamp: 'JPF 6/3/2021 07:30:13'!
+PASSED!
+
+!testRun: #PortfolioTest #test07PortfolioHasNoTransactionWhenHasNoAccounts stamp: 'JPF 6/3/2021 07:30:13'!
+PASSED!
+
+!testRun: #PortfolioTest #test08PortfolioTransactionsIncludesAllItsAccountsTransactions stamp: 'JPF 6/3/2021 07:30:13'!
+PASSED!
+
+!testRun: #PortfolioTest #test09PortfolioTransactionsAreCalculatedRecursively stamp: 'JPF 6/3/2021 07:30:13'!
+PASSED!
+
+!testRun: #PortfolioTest #test10PortfolioCanNotIncludeTheSameAccountMoreThanOnce stamp: 'JPF 6/3/2021 07:30:13'!
+PASSED!
+
+!testRun: #PortfolioTest #test11PortfolioCanNotIncludeAccountOfItsPortfolios stamp: 'JPF 6/3/2021 07:30:13'!
+PASSED!
+
+!testRun: #PortfolioTest #test12PortfolioCanNotIncludeItself stamp: 'JPF 6/3/2021 07:30:13'!
+PASSED!
+
+!testRun: #PortfolioTest #test13ComposedPortfolioCanNotHaveParentPortfolioAccount stamp: 'JPF 6/3/2021 07:30:13'!
+PASSED!
+
+!testRun: #PortfolioTest #test14ComposedPortfolioCanNotHaveAccountOfAnyRootParentRecursively stamp: 'JPF 6/3/2021 07:30:13'!
+PASSED!
+
+!testRun: #PortfolioTest #test15PortfolioCanNotIncludeAnyOfTheComposedAccountOfPortfolioToAdd stamp: 'JPF 6/3/2021 07:30:13'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test01ReceptiveAccountHaveZeroAsBalanceWhenCreated stamp: 'JPF 6/3/2021 07:30:13'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test02DepositIncreasesBalanceOnTransactionValue stamp: 'JPF 6/3/2021 07:30:13'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test03WithdrawDecreasesBalanceOnTransactionValue stamp: 'JPF 6/3/2021 07:30:13'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test04WithdrawValueMustBePositive stamp: 'JPF 6/3/2021 07:30:13'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test05ReceptiveAccountKnowsRegisteredTransactions stamp: 'JPF 6/3/2021 07:30:13'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test06ReceptiveAccountDoNotKnowNotRegisteredTransactions stamp: 'JPF 6/3/2021 07:30:13'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test07AccountKnowsItsTransactions stamp: 'JPF 6/3/2021 07:30:13'!
+PASSED!
+
+!testRun: #ReportTest #test01ShouldInform0ForAnAccountWithoutTransfers stamp: 'JPF 6/3/2021 07:30:13'!
+PASSED!
+
+!testRun: #ReportTest #test01ShouldInformBalance0ForAnAccountWithoutTransactions stamp: 'JPF 6/3/2021 07:30:13'!
+PASSED!
+
+!testRun: #ReportTest #test02ShouldInform50ForAnAccountWithA50TransferEntry stamp: 'JPF 6/3/2021 07:30:13'!
+PASSED!
+
+!testRun: #ReportTest #test02ShouldInformBalance50AndA50DepositForAnAccountWithA50Deposit stamp: 'JPF 6/3/2021 07:30:13'!
+PASSED!
+
+!testRun: #ReportTest #test03ShouldInform10ForAnAccountWithA50TransferEntryAnd40TransferOutput stamp: 'JPF 6/3/2021 07:30:13'!
+PASSED!
+
+!testRun: #ReportTest #test03ShouldInformBalance0A50DepositA50WithdrawForAnAccountWithA50DepositAnd50Withdraw stamp: 'JPF 6/3/2021 07:30:13'!
+PASSED!
+
+!testRun: #ReportTest #test04ShouldInformBalance0A50DepositA50WithdrawA50TransferEntryA50TransferOutputForAnAccountWithThoseTransactions stamp: 'JPF 6/3/2021 07:30:13'!
+PASSED!
+
+!testRun: #ReportTest #test04ShouldInformCorrectValueForAPortfolioWithAReceptiveAccountAndAnotherPortfolioHavingAllTypeOfTransactions stamp: 'JPF 6/3/2021 07:30:13'!
+PASSED!
+
+!testRun: #ReportTest #test05ShouldInformCorrectBalanceForAPortfolioWithAReceptiveAccountAndAnotherPortfolioHavingAllTypeOfTransactions stamp: 'JPF 6/3/2021 07:30:13'!
+PASSED!
+
+!testRun: #TransactionIteratorTest #test01IteratorForAnAccountWithoutTransactionsHasNotNext stamp: 'JPF 6/3/2021 07:30:13'!
+PASSED!
+
+!testRun: #TransactionIteratorTest #test02IteratorForAnAccountWithOneTransactionHasNext stamp: 'JPF 6/3/2021 07:30:13'!
+PASSED!
+
+!testRun: #TransactionIteratorTest #test03IteratorForAnAccountWithOneTransactionHasNotNextWhenWasAskedForNextOnce stamp: 'JPF 6/3/2021 07:30:13'!
+PASSED!
+
+!testRun: #TransactionIteratorTest #test04IteratorForAnAccountWithOneTransactionShouldReturnThatTransactionWhenAskForNext stamp: 'JPF 6/3/2021 07:30:13'!
+PASSED!
+
+!testRun: #TransactionIteratorTest #test05NextShouldRaiseAnErrorWhenHasNotNext stamp: 'JPF 6/3/2021 07:30:13'!
+PASSED!
+
+!testRun: #TransferTest #test01ShouldIncreaseTargetAccountBalanceAndDecreaseSourceAccountBalanceInTheSameAmount stamp: 'JPF 6/3/2021 07:30:13'!
+PASSED!
+
+!testRun: #TransferTest #test02ShouldNotAddDepositsToTargetAccountOrWithdrawToSourceAccount stamp: 'JPF 6/3/2021 07:30:13'!
+PASSED!
+
+!testRun: #TransferTest #test03ShouldReturnATransferWithTheTransferOutputAndTheTransferEntry stamp: 'JPF 6/3/2021 07:30:13'!
+PASSED!
+
+!testRun: #TransferTest #test04ShouldObtainTheSameTransferFromTheTransferOutputAndTheTransferEntry stamp: 'JPF 6/3/2021 07:30:13'!
+PASSED!
+
+!testRun: #TransferTest #test05ShouldRaiseAnErrorIfTheTargetAndSourceAccountAreTheSameAccount stamp: 'JPF 6/3/2021 07:30:13'!
+PASSED!
+
+!testRun: #TransferTest #test06ShouldRaiseAnErrorIfAnAccountTransferANegativeAmount stamp: 'JPF 6/3/2021 07:30:13'!
+PASSED!
+
+!testRun: #TransferTest #test07ShouldRaiseAnErrorIfAnAccountTransferZeroAsAmount stamp: 'JPF 6/3/2021 07:30:13'!
+PASSED!
+
+----SNAPSHOT----(3 June 2021 07:30:28) Portfolio2.image priorSource: 17934519!
