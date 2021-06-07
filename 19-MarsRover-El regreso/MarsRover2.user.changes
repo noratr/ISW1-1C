@@ -5194,3 +5194,336 @@ PASSED!
 
 !testRun: #RotationWindowTest #test02ShouldShowTheLastMarsRoverHeadingWhenMarsRoverMakesACompleteTurnToBothSides stamp: 'JPF 6/5/2021 16:43:48'!
 PASSED!
+!MarsRoverHeadingNorth methodsFor: 'heading' stamp: 'JPF 6/6/2021 22:42:40'!
+headingFor: anObserver
+	
+	anObserver marsRoverHeadingNorth! !
+!MarsRoverHeadingWest methodsFor: 'heading' stamp: 'JPF 6/6/2021 22:42:40'!
+headingFor: anObserver
+	
+	anObserver marsRoverHeadingWest! !
+!MarsRoverHeadingSouth methodsFor: 'heading' stamp: 'JPF 6/6/2021 22:42:40'!
+headingFor: anObserver
+	
+	anObserver marsRoverHeadingSouth! !
+!MarsRoverHeadingEast methodsFor: 'heading' stamp: 'JPF 6/6/2021 22:42:40'!
+headingFor: anObserver
+	
+	anObserver marsRoverHeadingEast! !
+!MarsRoverHeading methodsFor: 'heading' stamp: 'JPF 6/6/2021 22:42:40'!
+headingFor: anObserver
+	
+	self subclassResponsibility! !
+!RotationWindow methodsFor: 'as yet unclassified' stamp: 'JPF 6/6/2021 22:42:40' prior: 50896855!
+rotationDone: newMarsRoverHeading
+
+	newMarsRoverHeading headingFor: self! !
+!RotationLog methodsFor: 'as yet unclassified' stamp: 'JPF 6/6/2021 22:42:40' prior: 50894878!
+rotationDone: aMarsRoverHeading
+
+	aMarsRoverHeading headingFor: self
+
+	! !
+
+!methodRemoval: MarsRoverHeadingNorth #heading: stamp: 'JPF 6/6/2021 22:42:40'!
+heading: anObserver
+	
+	anObserver marsRoverHeadingNorth!
+
+!methodRemoval: MarsRoverHeadingWest #heading: stamp: 'JPF 6/6/2021 22:42:40'!
+heading: anObserver
+	
+	anObserver marsRoverHeadingWest!
+
+!methodRemoval: MarsRoverHeadingSouth #heading: stamp: 'JPF 6/6/2021 22:42:40'!
+heading: anObserver
+	
+	anObserver marsRoverHeadingSouth!
+
+!methodRemoval: MarsRoverHeadingEast #heading: stamp: 'JPF 6/6/2021 22:42:40'!
+heading: anObserver
+	
+	anObserver marsRoverHeadingEast!
+
+!methodRemoval: MarsRoverHeading #heading: stamp: 'JPF 6/6/2021 22:42:40'!
+heading: anObserver
+	
+	self subclassResponsibility!
+
+!testRun: #MarsRoverObserverTest #test01ObserversShouldNotRegisterChangesMoreThanOnceEvenIfTheyAreAddedMoreThanOnceToMarsRover stamp: 'JPF 6/6/2021 22:42:47'!
+PASSED!
+
+!testRun: #MarsRoverTest #test01 stamp: 'JPF 6/6/2021 22:42:47'!
+PASSED!
+
+!testRun: #MarsRoverTest #test02 stamp: 'JPF 6/6/2021 22:42:47'!
+PASSED!
+
+!testRun: #MarsRoverTest #test03 stamp: 'JPF 6/6/2021 22:42:47'!
+PASSED!
+
+!testRun: #MarsRoverTest #test04 stamp: 'JPF 6/6/2021 22:42:47'!
+PASSED!
+
+!testRun: #MarsRoverTest #test05 stamp: 'JPF 6/6/2021 22:42:47'!
+PASSED!
+
+!testRun: #MarsRoverTest #test06 stamp: 'JPF 6/6/2021 22:42:47'!
+PASSED!
+
+!testRun: #MarsRoverTest #test07 stamp: 'JPF 6/6/2021 22:42:47'!
+PASSED!
+
+!testRun: #MarsRoverTest #test08 stamp: 'JPF 6/6/2021 22:42:47'!
+PASSED!
+
+!testRun: #MarsRoverTest #test09 stamp: 'JPF 6/6/2021 22:42:47'!
+PASSED!
+
+!testRun: #MarsRoverTest #test10 stamp: 'JPF 6/6/2021 22:42:47'!
+PASSED!
+
+!testRun: #MarsRoverTest #test11 stamp: 'JPF 6/6/2021 22:42:47'!
+PASSED!
+
+!testRun: #MarsRoverTest #test12 stamp: 'JPF 6/6/2021 22:42:47'!
+PASSED!
+
+!testRun: #MarsRoverTest #test13 stamp: 'JPF 6/6/2021 22:42:47'!
+PASSED!
+
+!testRun: #MarsRoverTest #test14 stamp: 'JPF 6/6/2021 22:42:47'!
+PASSED!
+
+!testRun: #MarsRoverTest #test15 stamp: 'JPF 6/6/2021 22:42:47'!
+PASSED!
+
+!testRun: #MarsRoverTest #test16 stamp: 'JPF 6/6/2021 22:42:47'!
+PASSED!
+
+!testRun: #PositionLogTest #test01ShouldBeEmptyWhenMarsRoverDidNotChangePosition stamp: 'JPF 6/6/2021 22:42:47'!
+PASSED!
+
+!testRun: #PositionLogTest #test02ShouldHaveAnEntryWhenMarsRoverMoveForward stamp: 'JPF 6/6/2021 22:42:47'!
+PASSED!
+
+!testRun: #PositionLogTest #test03ShouldHaveTwoEntriesWhenMarsRoverMoveForwardAndBackwards stamp: 'JPF 6/6/2021 22:42:47'!
+PASSED!
+
+!testRun: #PositionWindowTest #test01ShouldShowMarsRoverPositionHasNotChangedIfMarsRoverDidNotChangePosition stamp: 'JPF 6/6/2021 22:42:47'!
+PASSED!
+
+!testRun: #PositionWindowTest #test02ShouldShowNewMarsRoverPositionWhenMarsRoverMoveForward stamp: 'JPF 6/6/2021 22:42:47'!
+PASSED!
+
+!testRun: #PositionWindowTest #test03ShouldShowLastMarsRoverPositionWhenMarsRoverMoveForwardAndThenBackwards stamp: 'JPF 6/6/2021 22:42:47'!
+PASSED!
+
+!testRun: #RotationLogTest #test01ShouldBeEmptyWhenMarsRoverDidNotRotate stamp: 'JPF 6/6/2021 22:42:47'!
+PASSED!
+
+!testRun: #RotationLogTest #test02ShouldHaveWestWhenMarsRoverRotateLeft stamp: 'JPF 6/6/2021 22:42:47'!
+PASSED!
+
+!testRun: #RotationLogTest #test03ShouldHaveEastWhenMarsRoverRotateRight stamp: 'JPF 6/6/2021 22:42:47'!
+PASSED!
+
+!testRun: #RotationLogTest #test04ShouldHaveTheFourCardinalPointsWhenMarsRoverMakesACompleteTurn stamp: 'JPF 6/6/2021 22:42:47'!
+PASSED!
+
+!testRun: #RotationWindowTest #test01ShouldShowMarsRoverHeadingHasNotChangedIfMarsRoverDidNotRotate stamp: 'JPF 6/6/2021 22:42:47'!
+PASSED!
+
+!testRun: #RotationWindowTest #test02ShouldShowTheLastMarsRoverHeadingWhenMarsRoverMakesACompleteTurnToBothSides stamp: 'JPF 6/6/2021 22:42:47'!
+PASSED!
+!MarsRover methodsFor: 'position' stamp: 'JPF 6/6/2021 22:43:17' prior: 50897425!
+addToPosition: aDeltaToAdd
+	
+	position _ position + aDeltaToAdd.
+	positionObservers do: [ :positionObserver | positionObserver positionChanged: position ]
+	! !
+
+!methodRemoval: MarsRover #positionChanged stamp: 'JPF 6/6/2021 22:44:17'!
+positionChanged
+
+	positionLog ifNotNil: [ positionLog addEntry: position ].!
+
+!testRun: #MarsRoverObserverTest #test01ObserversShouldNotRegisterChangesMoreThanOnceEvenIfTheyAreAddedMoreThanOnceToMarsRover stamp: 'JPF 6/6/2021 22:44:32'!
+PASSED!
+
+!testRun: #MarsRoverTest #test01 stamp: 'JPF 6/6/2021 22:44:32'!
+PASSED!
+
+!testRun: #MarsRoverTest #test02 stamp: 'JPF 6/6/2021 22:44:32'!
+PASSED!
+
+!testRun: #MarsRoverTest #test03 stamp: 'JPF 6/6/2021 22:44:32'!
+PASSED!
+
+!testRun: #MarsRoverTest #test04 stamp: 'JPF 6/6/2021 22:44:32'!
+PASSED!
+
+!testRun: #MarsRoverTest #test05 stamp: 'JPF 6/6/2021 22:44:32'!
+PASSED!
+
+!testRun: #MarsRoverTest #test06 stamp: 'JPF 6/6/2021 22:44:32'!
+PASSED!
+
+!testRun: #MarsRoverTest #test07 stamp: 'JPF 6/6/2021 22:44:32'!
+PASSED!
+
+!testRun: #MarsRoverTest #test08 stamp: 'JPF 6/6/2021 22:44:32'!
+PASSED!
+
+!testRun: #MarsRoverTest #test09 stamp: 'JPF 6/6/2021 22:44:32'!
+PASSED!
+
+!testRun: #MarsRoverTest #test10 stamp: 'JPF 6/6/2021 22:44:32'!
+PASSED!
+
+!testRun: #MarsRoverTest #test11 stamp: 'JPF 6/6/2021 22:44:32'!
+PASSED!
+
+!testRun: #MarsRoverTest #test12 stamp: 'JPF 6/6/2021 22:44:32'!
+PASSED!
+
+!testRun: #MarsRoverTest #test13 stamp: 'JPF 6/6/2021 22:44:32'!
+PASSED!
+
+!testRun: #MarsRoverTest #test14 stamp: 'JPF 6/6/2021 22:44:32'!
+PASSED!
+
+!testRun: #MarsRoverTest #test15 stamp: 'JPF 6/6/2021 22:44:32'!
+PASSED!
+
+!testRun: #MarsRoverTest #test16 stamp: 'JPF 6/6/2021 22:44:32'!
+PASSED!
+
+!testRun: #PositionLogTest #test01ShouldBeEmptyWhenMarsRoverDidNotChangePosition stamp: 'JPF 6/6/2021 22:44:32'!
+PASSED!
+
+!testRun: #PositionLogTest #test02ShouldHaveAnEntryWhenMarsRoverMoveForward stamp: 'JPF 6/6/2021 22:44:32'!
+PASSED!
+
+!testRun: #PositionLogTest #test03ShouldHaveTwoEntriesWhenMarsRoverMoveForwardAndBackwards stamp: 'JPF 6/6/2021 22:44:32'!
+PASSED!
+
+!testRun: #PositionWindowTest #test01ShouldShowMarsRoverPositionHasNotChangedIfMarsRoverDidNotChangePosition stamp: 'JPF 6/6/2021 22:44:32'!
+PASSED!
+
+!testRun: #PositionWindowTest #test02ShouldShowNewMarsRoverPositionWhenMarsRoverMoveForward stamp: 'JPF 6/6/2021 22:44:32'!
+PASSED!
+
+!testRun: #PositionWindowTest #test03ShouldShowLastMarsRoverPositionWhenMarsRoverMoveForwardAndThenBackwards stamp: 'JPF 6/6/2021 22:44:32'!
+PASSED!
+
+!testRun: #RotationLogTest #test01ShouldBeEmptyWhenMarsRoverDidNotRotate stamp: 'JPF 6/6/2021 22:44:32'!
+PASSED!
+
+!testRun: #RotationLogTest #test02ShouldHaveWestWhenMarsRoverRotateLeft stamp: 'JPF 6/6/2021 22:44:32'!
+PASSED!
+
+!testRun: #RotationLogTest #test03ShouldHaveEastWhenMarsRoverRotateRight stamp: 'JPF 6/6/2021 22:44:32'!
+PASSED!
+
+!testRun: #RotationLogTest #test04ShouldHaveTheFourCardinalPointsWhenMarsRoverMakesACompleteTurn stamp: 'JPF 6/6/2021 22:44:32'!
+PASSED!
+
+!testRun: #RotationWindowTest #test01ShouldShowMarsRoverHeadingHasNotChangedIfMarsRoverDidNotRotate stamp: 'JPF 6/6/2021 22:44:32'!
+PASSED!
+
+!testRun: #RotationWindowTest #test02ShouldShowTheLastMarsRoverHeadingWhenMarsRoverMakesACompleteTurnToBothSides stamp: 'JPF 6/6/2021 22:44:32'!
+PASSED!
+!RotationLog methodsFor: 'observer' stamp: 'JPF 6/6/2021 22:48:14' prior: 50898786!
+rotationDone: newMarsRoverHeading
+
+	newMarsRoverHeading headingFor: self
+
+	! !
+
+!testRun: #MarsRoverObserverTest #test01ObserversShouldNotRegisterChangesMoreThanOnceEvenIfTheyAreAddedMoreThanOnceToMarsRover stamp: 'JPF 6/6/2021 22:48:24'!
+PASSED!
+
+!testRun: #MarsRoverTest #test01 stamp: 'JPF 6/6/2021 22:48:24'!
+PASSED!
+
+!testRun: #MarsRoverTest #test02 stamp: 'JPF 6/6/2021 22:48:24'!
+PASSED!
+
+!testRun: #MarsRoverTest #test03 stamp: 'JPF 6/6/2021 22:48:24'!
+PASSED!
+
+!testRun: #MarsRoverTest #test04 stamp: 'JPF 6/6/2021 22:48:24'!
+PASSED!
+
+!testRun: #MarsRoverTest #test05 stamp: 'JPF 6/6/2021 22:48:24'!
+PASSED!
+
+!testRun: #MarsRoverTest #test06 stamp: 'JPF 6/6/2021 22:48:24'!
+PASSED!
+
+!testRun: #MarsRoverTest #test07 stamp: 'JPF 6/6/2021 22:48:24'!
+PASSED!
+
+!testRun: #MarsRoverTest #test08 stamp: 'JPF 6/6/2021 22:48:24'!
+PASSED!
+
+!testRun: #MarsRoverTest #test09 stamp: 'JPF 6/6/2021 22:48:24'!
+PASSED!
+
+!testRun: #MarsRoverTest #test10 stamp: 'JPF 6/6/2021 22:48:24'!
+PASSED!
+
+!testRun: #MarsRoverTest #test11 stamp: 'JPF 6/6/2021 22:48:24'!
+PASSED!
+
+!testRun: #MarsRoverTest #test12 stamp: 'JPF 6/6/2021 22:48:24'!
+PASSED!
+
+!testRun: #MarsRoverTest #test13 stamp: 'JPF 6/6/2021 22:48:24'!
+PASSED!
+
+!testRun: #MarsRoverTest #test14 stamp: 'JPF 6/6/2021 22:48:24'!
+PASSED!
+
+!testRun: #MarsRoverTest #test15 stamp: 'JPF 6/6/2021 22:48:24'!
+PASSED!
+
+!testRun: #MarsRoverTest #test16 stamp: 'JPF 6/6/2021 22:48:24'!
+PASSED!
+
+!testRun: #PositionLogTest #test01ShouldBeEmptyWhenMarsRoverDidNotChangePosition stamp: 'JPF 6/6/2021 22:48:24'!
+PASSED!
+
+!testRun: #PositionLogTest #test02ShouldHaveAnEntryWhenMarsRoverMoveForward stamp: 'JPF 6/6/2021 22:48:24'!
+PASSED!
+
+!testRun: #PositionLogTest #test03ShouldHaveTwoEntriesWhenMarsRoverMoveForwardAndBackwards stamp: 'JPF 6/6/2021 22:48:24'!
+PASSED!
+
+!testRun: #PositionWindowTest #test01ShouldShowMarsRoverPositionHasNotChangedIfMarsRoverDidNotChangePosition stamp: 'JPF 6/6/2021 22:48:24'!
+PASSED!
+
+!testRun: #PositionWindowTest #test02ShouldShowNewMarsRoverPositionWhenMarsRoverMoveForward stamp: 'JPF 6/6/2021 22:48:24'!
+PASSED!
+
+!testRun: #PositionWindowTest #test03ShouldShowLastMarsRoverPositionWhenMarsRoverMoveForwardAndThenBackwards stamp: 'JPF 6/6/2021 22:48:24'!
+PASSED!
+
+!testRun: #RotationLogTest #test01ShouldBeEmptyWhenMarsRoverDidNotRotate stamp: 'JPF 6/6/2021 22:48:24'!
+PASSED!
+
+!testRun: #RotationLogTest #test02ShouldHaveWestWhenMarsRoverRotateLeft stamp: 'JPF 6/6/2021 22:48:24'!
+PASSED!
+
+!testRun: #RotationLogTest #test03ShouldHaveEastWhenMarsRoverRotateRight stamp: 'JPF 6/6/2021 22:48:24'!
+PASSED!
+
+!testRun: #RotationLogTest #test04ShouldHaveTheFourCardinalPointsWhenMarsRoverMakesACompleteTurn stamp: 'JPF 6/6/2021 22:48:24'!
+PASSED!
+
+!testRun: #RotationWindowTest #test01ShouldShowMarsRoverHeadingHasNotChangedIfMarsRoverDidNotRotate stamp: 'JPF 6/6/2021 22:48:24'!
+PASSED!
+
+!testRun: #RotationWindowTest #test02ShouldShowTheLastMarsRoverHeadingWhenMarsRoverMakesACompleteTurnToBothSides stamp: 'JPF 6/6/2021 22:48:24'!
+PASSED!

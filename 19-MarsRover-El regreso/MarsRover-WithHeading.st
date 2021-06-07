@@ -5,8 +5,40 @@ TestCase subclass: #MarsRoverObserverTest
 	poolDictionaries: ''
 	category: 'MarsRover-WithHeading'!
 
-!MarsRoverObserverTest methodsFor: 'tests' stamp: 'JPF 6/5/2021 16:31:15'!
-test01ObserversShouldNotRegisterChangesMoreThanOnceEvenIfTheyAreAddedMoreThanOnceToMarsRover! !
+!MarsRoverObserverTest methodsFor: 'tests' stamp: 'JPF 6/5/2021 16:43:36'!
+test01ObserversShouldNotRegisterChangesMoreThanOnceEvenIfTheyAreAddedMoreThanOnceToMarsRover
+
+	| marsRover positionLog rotationLog positionWindow rotationWindow |
+	
+	marsRover _ MarsRover at: 0@0 heading: #North.
+	
+	rotationWindow _ RotationWindow new.
+	rotationLog _ RotationLog new.
+	
+	positionWindow _ PositionWindow new.
+	positionLog _ PositionLog new.
+	
+	marsRover addRotationObserver: rotationLog.
+	marsRover addRotationObserver: rotationLog.
+	
+	marsRover addRotationObserver: rotationWindow.
+	marsRover addRotationObserver: rotationWindow.
+	
+	marsRover addPositionObserver: positionLog.
+	marsRover addPositionObserver: positionLog.
+	
+	marsRover addPositionObserver: positionWindow.
+	marsRover addPositionObserver: positionWindow.
+	
+	marsRover process: 'fr'.
+	
+	self assert: 'Mars Rover is heading East' equals: rotationWindow showHeading.
+	self assert: (OrderedCollection with: 'Mars Rover is heading East') equals: rotationLog log.
+	
+	self assert: (OrderedCollection with: 'Mars Rover is in position 0@1') equals: positionLog log.
+	self assert: 'Mars Rover position is 0@1' equals: positionWindow showPosition
+	
+	! !
 
 
 !classDefinition: #MarsRoverTest category: 'MarsRover-WithHeading'!
@@ -469,13 +501,13 @@ signalInvalidCommand
 	self error: self invalidCommandErrorDescription ! !
 
 
-!MarsRover methodsFor: 'initialization' stamp: 'JPF 6/5/2021 16:16:06'!
+!MarsRover methodsFor: 'initialization' stamp: 'JPF 6/5/2021 16:42:34'!
 initializeAt: aPosition heading: aHeading
 
 	position := aPosition.
 	head := aHeading.
-	positionObservers := OrderedCollection new.
-	rotationObservers := OrderedCollection new.! !
+	positionObservers := Set new.
+	rotationObservers := Set new.! !
 
 
 !MarsRover methodsFor: 'heading' stamp: 'JPF 6/5/2021 16:21:40'!
@@ -541,10 +573,10 @@ isRotateRightCommand: aCommand
 	^aCommand = $r! !
 
 
-!MarsRover methodsFor: 'position' stamp: 'JPF 6/5/2021 16:17:07'!
-addToPosition: aDelta
+!MarsRover methodsFor: 'position' stamp: 'JPF 6/6/2021 22:43:17'!
+addToPosition: aDeltaToAdd
 	
-	position _ position + aDelta.
+	position _ position + aDeltaToAdd.
 	positionObservers do: [ :positionObserver | positionObserver positionChanged: position ]
 	! !
 
@@ -579,11 +611,6 @@ moveWest
 	
 	self addToPosition: (-1@0)! !
 
-
-!MarsRover methodsFor: 'command processing' stamp: 'JPF 6/3/2021 21:11:03'!
-positionChanged
-
-	positionLog ifNotNil: [ positionLog addEntry: position ].! !
 
 !MarsRover methodsFor: 'command processing' stamp: 'HAW 6/30/2018 19:48:26'!
 process: aSequenceOfCommands
@@ -636,8 +663,8 @@ Object subclass: #MarsRoverHeading
 	poolDictionaries: ''
 	category: 'MarsRover-WithHeading'!
 
-!MarsRoverHeading methodsFor: 'heading' stamp: 'JPF 6/5/2021 14:49:56'!
-heading: anObserver
+!MarsRoverHeading methodsFor: 'heading' stamp: 'JPF 6/6/2021 22:42:40'!
+headingFor: anObserver
 	
 	self subclassResponsibility! !
 
@@ -713,8 +740,8 @@ moveForward: aMarsRover
 	^aMarsRover moveEast! !
 
 
-!MarsRoverHeadingEast methodsFor: 'heading' stamp: 'JPF 6/5/2021 14:50:25'!
-heading: anObserver
+!MarsRoverHeadingEast methodsFor: 'heading' stamp: 'JPF 6/6/2021 22:42:40'!
+headingFor: anObserver
 	
 	anObserver marsRoverHeadingEast! !
 
@@ -758,8 +785,8 @@ moveForward: aMarsRover
 	^aMarsRover moveNorth! !
 
 
-!MarsRoverHeadingNorth methodsFor: 'heading' stamp: 'JPF 6/5/2021 14:50:59'!
-heading: anObserver
+!MarsRoverHeadingNorth methodsFor: 'heading' stamp: 'JPF 6/6/2021 22:42:40'!
+headingFor: anObserver
 	
 	anObserver marsRoverHeadingNorth! !
 
@@ -803,8 +830,8 @@ moveForward: aMarsRover
 	^aMarsRover moveSouth! !
 
 
-!MarsRoverHeadingSouth methodsFor: 'heading' stamp: 'JPF 6/5/2021 14:59:20'!
-heading: anObserver
+!MarsRoverHeadingSouth methodsFor: 'heading' stamp: 'JPF 6/6/2021 22:42:40'!
+headingFor: anObserver
 	
 	anObserver marsRoverHeadingSouth! !
 
@@ -848,8 +875,8 @@ moveForward: aMarsRover
 	^aMarsRover moveWest! !
 
 
-!MarsRoverHeadingWest methodsFor: 'heading' stamp: 'JPF 6/5/2021 14:51:38'!
-heading: anObserver
+!MarsRoverHeadingWest methodsFor: 'heading' stamp: 'JPF 6/6/2021 22:42:40'!
+headingFor: anObserver
 	
 	anObserver marsRoverHeadingWest! !
 
@@ -978,10 +1005,10 @@ marsRoverHeadingWest
 
 	log add: 'Mars Rover is heading West'! !
 
-!RotationLog methodsFor: 'observer' stamp: 'JPF 6/5/2021 14:58:17'!
-rotationDone: aMarsRoverHeading
+!RotationLog methodsFor: 'observer' stamp: 'JPF 6/6/2021 22:48:14'!
+rotationDone: newMarsRoverHeading
 
-	aMarsRoverHeading heading: self
+	newMarsRoverHeading headingFor: self
 
 	! !
 
@@ -1029,7 +1056,7 @@ marsRoverHeadingWest
 
 	headingMessage _ 'Mars Rover is heading West'! !
 
-!RotationWindow methodsFor: 'observer' stamp: 'JPF 6/5/2021 16:05:13'!
+!RotationWindow methodsFor: 'observer' stamp: 'JPF 6/6/2021 22:42:40'!
 rotationDone: newMarsRoverHeading
 
-	newMarsRoverHeading heading: self! !
+	newMarsRoverHeading headingFor: self! !
