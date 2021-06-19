@@ -1,0 +1,1460 @@
+
+
+----SNAPSHOT----(17 June 2021 20:41:33) CaraInternaInterfaz.image priorSource: 17420214!
+
+----STARTUP---- (17 June 2021 20:44:11) as /Users/juan.ferrino/CuisUniversity/CaraInternaInterfaz.image!
+
+
+----End fileIn of /Users/juan.ferrino/ingenieria1/2021-1c/20-TusLibros/Iteracion2/TusLibros-33.st----!
+
+TestCase subclass: #FacadeTest
+	instanceVariableNames: 'testObjectsFactory'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'TusLibros'!
+
+!classDefinition: #FacadeTest category: 'TusLibros' stamp: 'JPF 6/17/2021 20:47:59'!
+TestCase subclass: #FacadeTest
+	instanceVariableNames: 'testObjectsFactory'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'TusLibros'!
+!FacadeTest methodsFor: 'setUp' stamp: 'JPF 6/17/2021 20:48:43' overrides: 16927572!
+setUp 
+
+	testObjectsFactory := StoreTestObjectsFactory new.! !
+!FacadeTest methodsFor: 'tests' stamp: 'JPF 6/17/2021 20:51:27'!
+test01ShouldFailToCreateCardWhenUserIdOrPasswordAreIncorrect! !
+
+!classDefinition: #UserValidationService category: 'TusLibros' stamp: 'JPF 6/17/2021 20:58:21'!
+Object subclass: #UserValidationService
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'TusLibros'!
+!FacadeTest methodsFor: 'tests' stamp: 'JPF 6/17/2021 20:58:01' prior: 50876914!
+test01ShouldFailToCreateCardWhenUserIdOrPasswordAreIncorrect
+
+	| clientId password storeFacade |
+	self 
+		should: [ storeFacade createCartFor: clientId withPassword: password ] 
+		raise: Error - MessageNotUnderstood 
+		withMessageText: UserValidationService userIdOrPasswordAreIncorrect! !
+
+!classDefinition: #StoreFacade category: 'TusLibros' stamp: 'JPF 6/17/2021 21:01:38'!
+Object subclass: #StoreFacade
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'TusLibros'!
+!FacadeTest methodsFor: 'tests' stamp: 'JPF 6/17/2021 21:01:33' prior: 50876926!
+test01ShouldFailToCreateCardWhenUserIdOrPasswordAreIncorrect
+
+	| clientId password storeFacade |
+	
+	storeFacade := StoreFacade validatingWith: testObjectsFactory createUserValidationServiceFail.
+	
+	self 
+		should: [ storeFacade createCartFor: clientId withPassword: password ] 
+		raise: Error - MessageNotUnderstood 
+		withMessageText: UserValidationService userIdOrPasswordAreIncorrect! !
+
+!testRun: #CartTest #test01NewCartsAreCreatedEmpty stamp: 'JPF 6/17/2021 21:06:32'!
+PASSED!
+
+!testRun: #CartTest #test02CanNotAddItemsThatDoNotBelongToStore stamp: 'JPF 6/17/2021 21:06:32'!
+PASSED!
+
+!testRun: #CartTest #test03AfterAddingAnItemTheCartIsNotEmptyAnymore stamp: 'JPF 6/17/2021 21:06:32'!
+PASSED!
+
+!testRun: #CartTest #test04CanNotAddNonPositiveNumberOfItems stamp: 'JPF 6/17/2021 21:06:32'!
+PASSED!
+
+!testRun: #CartTest #test05CanNotAddMoreThanOneItemNotSellByTheStore stamp: 'JPF 6/17/2021 21:06:32'!
+PASSED!
+
+!testRun: #CartTest #test06CartRemembersAddedItems stamp: 'JPF 6/17/2021 21:06:32'!
+PASSED!
+
+!testRun: #CartTest #test07CartDoesNotHoldNotAddedItems stamp: 'JPF 6/17/2021 21:06:32'!
+PASSED!
+
+!testRun: #CartTest #test08CartRemembersTheNumberOfAddedItems stamp: 'JPF 6/17/2021 21:06:32'!
+PASSED!
+
+!testRun: #CashierTest #test01CanNotCheckoutAnEmptyCart stamp: 'JPF 6/17/2021 21:06:32'!
+PASSED!
+
+!testRun: #CashierTest #test02CalculatedTotalIsCorrect stamp: 'JPF 6/17/2021 21:06:32'!
+PASSED!
+
+!testRun: #CashierTest #test03CanNotCheckoutWithAnExpiredCreditCart stamp: 'JPF 6/17/2021 21:06:32'!
+PASSED!
+
+!testRun: #CashierTest #test04CheckoutRegistersASale stamp: 'JPF 6/17/2021 21:06:32'!
+PASSED!
+
+!testRun: #CashierTest #test05CashierChargesCreditCardUsingMerchantProcessor stamp: 'JPF 6/17/2021 21:06:32'!
+PASSED!
+
+!testRun: #CashierTest #test06CashierDoesNotSaleWhenTheCreditCardHasNoCredit stamp: 'JPF 6/17/2021 21:06:32'!
+PASSED!
+
+!testRun: #FacadeTest #test01ShouldFailToCreateCardWhenUserIdOrPasswordAreIncorrect stamp: 'JPF 6/17/2021 21:06:32'!
+ERROR!
+
+!testRun: #FacadeTest #test01ShouldFailToCreateCardWhenUserIdOrPasswordAreIncorrect stamp: 'JPF 6/17/2021 21:06:32'!
+ERROR!
+
+!testRun: #CartTest #test01NewCartsAreCreatedEmpty stamp: 'JPF 6/17/2021 21:06:44'!
+PASSED!
+
+!testRun: #CartTest #test02CanNotAddItemsThatDoNotBelongToStore stamp: 'JPF 6/17/2021 21:06:44'!
+PASSED!
+
+!testRun: #CartTest #test03AfterAddingAnItemTheCartIsNotEmptyAnymore stamp: 'JPF 6/17/2021 21:06:44'!
+PASSED!
+
+!testRun: #CartTest #test04CanNotAddNonPositiveNumberOfItems stamp: 'JPF 6/17/2021 21:06:44'!
+PASSED!
+
+!testRun: #CartTest #test05CanNotAddMoreThanOneItemNotSellByTheStore stamp: 'JPF 6/17/2021 21:06:44'!
+PASSED!
+
+!testRun: #CartTest #test06CartRemembersAddedItems stamp: 'JPF 6/17/2021 21:06:44'!
+PASSED!
+
+!testRun: #CartTest #test07CartDoesNotHoldNotAddedItems stamp: 'JPF 6/17/2021 21:06:44'!
+PASSED!
+
+!testRun: #CartTest #test08CartRemembersTheNumberOfAddedItems stamp: 'JPF 6/17/2021 21:06:44'!
+PASSED!
+
+!testRun: #CashierTest #test01CanNotCheckoutAnEmptyCart stamp: 'JPF 6/17/2021 21:06:46'!
+PASSED!
+
+!testRun: #CashierTest #test02CalculatedTotalIsCorrect stamp: 'JPF 6/17/2021 21:06:46'!
+PASSED!
+
+!testRun: #CashierTest #test03CanNotCheckoutWithAnExpiredCreditCart stamp: 'JPF 6/17/2021 21:06:46'!
+PASSED!
+
+!testRun: #CashierTest #test04CheckoutRegistersASale stamp: 'JPF 6/17/2021 21:06:46'!
+PASSED!
+
+!testRun: #CashierTest #test05CashierChargesCreditCardUsingMerchantProcessor stamp: 'JPF 6/17/2021 21:06:46'!
+PASSED!
+
+!testRun: #CashierTest #test06CashierDoesNotSaleWhenTheCreditCardHasNoCredit stamp: 'JPF 6/17/2021 21:06:46'!
+PASSED!
+
+!testRun: #FacadeTest #test01ShouldFailToCreateCardWhenUserIdOrPasswordAreIncorrect stamp: 'JPF 6/17/2021 21:06:48'!
+ERROR!
+
+!testRun: #FacadeTest #test01ShouldFailToCreateCardWhenUserIdOrPasswordAreIncorrect stamp: 'JPF 6/17/2021 21:06:48'!
+ERROR!
+
+!testRun: #FacadeTest #test01ShouldFailToCreateCardWhenUserIdOrPasswordAreIncorrect stamp: 'JPF 6/17/2021 21:06:51'!
+ERROR!
+
+!testRun: #FacadeTest #test01ShouldFailToCreateCardWhenUserIdOrPasswordAreIncorrect stamp: 'JPF 6/17/2021 21:06:51'!
+ERROR!
+
+!testRun: #FacadeTest #test01ShouldFailToCreateCardWhenUserIdOrPasswordAreIncorrect stamp: 'JPF 6/17/2021 21:06:56'!
+ERROR!
+
+!testRun: #FacadeTest #test01ShouldFailToCreateCardWhenUserIdOrPasswordAreIncorrect stamp: 'JPF 6/17/2021 21:06:56'!
+ERROR!
+
+!testRun: #CashierTest #test01CanNotCheckoutAnEmptyCart stamp: 'JPF 6/17/2021 21:07:06'!
+PASSED!
+
+!testRun: #CashierTest #test02CalculatedTotalIsCorrect stamp: 'JPF 6/17/2021 21:07:06'!
+PASSED!
+
+!testRun: #CashierTest #test03CanNotCheckoutWithAnExpiredCreditCart stamp: 'JPF 6/17/2021 21:07:06'!
+PASSED!
+
+!testRun: #CashierTest #test04CheckoutRegistersASale stamp: 'JPF 6/17/2021 21:07:06'!
+PASSED!
+
+!testRun: #CashierTest #test05CashierChargesCreditCardUsingMerchantProcessor stamp: 'JPF 6/17/2021 21:07:06'!
+PASSED!
+
+!testRun: #CashierTest #test06CashierDoesNotSaleWhenTheCreditCardHasNoCredit stamp: 'JPF 6/17/2021 21:07:06'!
+PASSED!
+
+!testRun: #CartTest #test01NewCartsAreCreatedEmpty stamp: 'JPF 6/17/2021 21:07:08'!
+PASSED!
+
+!testRun: #CartTest #test02CanNotAddItemsThatDoNotBelongToStore stamp: 'JPF 6/17/2021 21:07:08'!
+PASSED!
+
+!testRun: #CartTest #test03AfterAddingAnItemTheCartIsNotEmptyAnymore stamp: 'JPF 6/17/2021 21:07:08'!
+PASSED!
+
+!testRun: #CartTest #test04CanNotAddNonPositiveNumberOfItems stamp: 'JPF 6/17/2021 21:07:08'!
+PASSED!
+
+!testRun: #CartTest #test05CanNotAddMoreThanOneItemNotSellByTheStore stamp: 'JPF 6/17/2021 21:07:08'!
+PASSED!
+
+!testRun: #CartTest #test06CartRemembersAddedItems stamp: 'JPF 6/17/2021 21:07:08'!
+PASSED!
+
+!testRun: #CartTest #test07CartDoesNotHoldNotAddedItems stamp: 'JPF 6/17/2021 21:07:08'!
+PASSED!
+
+!testRun: #CartTest #test08CartRemembersTheNumberOfAddedItems stamp: 'JPF 6/17/2021 21:07:08'!
+PASSED!
+
+!classRenamed: #FacadeTest as: #StoreFacadeTest stamp: 'JPF 6/17/2021 21:07:18'!
+Smalltalk renameClassNamed: #FacadeTest as: #StoreFacadeTest!
+!StoreFacadeTest methodsFor: 'tests' stamp: 'JPF 6/17/2021 21:07:41' prior: 50876945!
+test01ShouldFailToCreateCardWhenUserIdOrPasswordAreIncorrect
+
+	| clientId password storeFacade |
+	
+	storeFacade := StoreFacade validatingWith: self.
+	
+	self 
+		should: [ storeFacade createCartFor: clientId withPassword: password ] 
+		raise: Error - MessageNotUnderstood 
+		withMessageText: UserValidationService userIdOrPasswordAreIncorrect! !
+!StoreFacadeTest methodsFor: 'tests' stamp: 'JPF 6/17/2021 21:08:44' prior: 50877133!
+test01ShouldFailToCreateCardWhenUserIdOrPasswordAreIncorrect
+
+	| clientId password storeFacade |
+	
+	
+	
+	storeFacade := StoreFacade validatingWith: self.
+	
+	self 
+		should: [ storeFacade createCartFor: clientId withPassword: password ] 
+		raise: Error - MessageNotUnderstood 
+		withMessageText: UserValidationService userIdOrPasswordAreIncorrect! !
+
+!classDefinition: #StoreFacadeTest category: 'TusLibros' stamp: 'JPF 6/17/2021 21:13:02'!
+TestCase subclass: #StoreFacadeTest
+	instanceVariableNames: 'testObjectsFactory validateUserBehaviour'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'TusLibros'!
+!StoreFacadeTest methodsFor: 'tests' stamp: 'JPF 6/17/2021 21:15:22' prior: 50877147!
+test01ShouldFailToCreateCardWhenUserIdOrPasswordAreIncorrect
+
+	| clientId password validatedClientId validatedPassword storeFacade |
+	
+	clientId := 'clientId'.
+	password := 'password'.
+	
+	storeFacade := StoreFacade validatingWith: self.
+	
+	validateUserBehaviour := [ :clientIdArg :passwordArg |
+		validatedClientId := clientIdArg.
+		validatedPassword := passwordArg.
+		self error: UserValidationService userIdOrPasswordAreIncorrect.
+		].
+	
+	self 
+		should: [ storeFacade createCartFor: clientId withPassword: password ] 
+		raise: Error - MessageNotUnderstood 
+		withMessageText: UserValidationService userIdOrPasswordAreIncorrect.
+		
+	self assert: password = validatedPassword.
+	self assert: clientId = validatedClientId.! !
+!UserValidationService methodsFor: 'validation' stamp: 'JPF 6/17/2021 21:16:30'!
+validateUser: aUserId withPassword: aPassword! !
+!UserValidationService methodsFor: 'validation' stamp: 'JPF 6/17/2021 21:16:36' prior: 50877195!
+validateUser: aUserId withPassword: aPassword
+
+	self subclassResponsibility.! !
+!UserValidationService methodsFor: 'validation' stamp: 'JPF 6/17/2021 21:16:37' prior: 50877200!
+validateUser: aUserId withPassword: aPassword
+
+	self subclassResponsibility! !
+!UserValidationService methodsFor: 'validation' stamp: 'JPF 6/17/2021 21:16:43' prior: 50877206!
+validateUser: aClientId withPassword: aPassword
+
+	self subclassResponsibility! !
+
+!classRenamed: #UserValidationService as: #ClientValidationService stamp: 'JPF 6/17/2021 21:17:02'!
+Smalltalk renameClassNamed: #UserValidationService as: #ClientValidationService!
+!StoreFacadeTest methodsFor: 'as yet unclassified' stamp: 'JPF 6/17/2021 21:17:02' prior: 50877169!
+test01ShouldFailToCreateCardWhenUserIdOrPasswordAreIncorrect
+
+	| clientId password validatedClientId validatedPassword storeFacade |
+	
+	clientId := 'clientId'.
+	password := 'password'.
+	
+	storeFacade := StoreFacade validatingWith: self.
+	
+	validateUserBehaviour := [ :clientIdArg :passwordArg |
+		validatedClientId := clientIdArg.
+		validatedPassword := passwordArg.
+		self error: ClientValidationService userIdOrPasswordAreIncorrect.
+		].
+	
+	self 
+		should: [ storeFacade createCartFor: clientId withPassword: password ] 
+		raise: Error - MessageNotUnderstood 
+		withMessageText: ClientValidationService userIdOrPasswordAreIncorrect.
+		
+	self assert: password = validatedPassword.
+	self assert: clientId = validatedClientId.! !
+!StoreFacadeTest methodsFor: 'tests' stamp: 'JPF 6/17/2021 21:17:44' prior: 50877224!
+test01ShouldFailToCreateCardWhenUserIdOrPasswordAreIncorrect
+
+	| clientId password validatedClientId validatedPassword storeFacade |
+	
+	clientId := 'clientId'.
+	password := 'password'.
+	
+	storeFacade := StoreFacade validatingWith: self.
+	
+	validateUserBehaviour := [ :clientIdArg :passwordArg |
+		validatedClientId := clientIdArg.
+		validatedPassword := passwordArg.
+		self error: ClientValidationService clientIdOrPasswordAreIncorrect.
+		].
+	
+	self 
+		should: [ storeFacade createCartFor: clientId withPassword: password ] 
+		raise: Error - MessageNotUnderstood 
+		withMessageText: ClientValidationService clientIdOrPasswordAreIncorrect.
+		
+	self assert: password = validatedPassword.
+	self assert: clientId = validatedClientId.! !
+
+!classRenamed: #ClientValidationService as: #ClientValidator stamp: 'JPF 6/17/2021 21:18:57'!
+Smalltalk renameClassNamed: #ClientValidationService as: #ClientValidator!
+!StoreFacadeTest methodsFor: 'as yet unclassified' stamp: 'JPF 6/17/2021 21:18:57' prior: 50877250!
+test01ShouldFailToCreateCardWhenUserIdOrPasswordAreIncorrect
+
+	| clientId password validatedClientId validatedPassword storeFacade |
+	
+	clientId := 'clientId'.
+	password := 'password'.
+	
+	storeFacade := StoreFacade validatingWith: self.
+	
+	validateUserBehaviour := [ :clientIdArg :passwordArg |
+		validatedClientId := clientIdArg.
+		validatedPassword := passwordArg.
+		self error: ClientValidator clientIdOrPasswordAreIncorrect.
+		].
+	
+	self 
+		should: [ storeFacade createCartFor: clientId withPassword: password ] 
+		raise: Error - MessageNotUnderstood 
+		withMessageText: ClientValidator clientIdOrPasswordAreIncorrect.
+		
+	self assert: password = validatedPassword.
+	self assert: clientId = validatedClientId.! !
+!StoreFacadeTest methodsFor: 'client validator protocol' stamp: 'JPF 6/17/2021 21:20:02'!
+validateUser: aClientId withPassword: aPassword
+
+	validateUserBehaviour value: aClientId value: aPassword! !
+
+!testRun: #StoreFacadeTest #test01ShouldFailToCreateCardWhenUserIdOrPasswordAreIncorrect stamp: 'JPF 6/17/2021 21:20:30'!
+ERROR!
+!StoreFacade class methodsFor: 'instance creation' stamp: 'JPF 6/17/2021 21:20:41'!
+validatingWith: aStoreFacadeTest 
+	"DO NOT FORGET TO RENAME COLLABORATORS AND REMOVE THIS COMMENT!!!!"
+	self shouldBeImplemented.
+	^self new initializeValidatingWith: aStoreFacadeTest ! !
+!StoreFacade class methodsFor: 'instance creation' stamp: 'JPF 6/17/2021 21:21:03' prior: 50877319!
+validatingWith: aClientValidator 
+	
+	self shouldBeImplemented.
+	^self new initializeValidatingWith: aClientValidator ! !
+
+!testRun: #StoreFacadeTest #test01ShouldFailToCreateCardWhenUserIdOrPasswordAreIncorrect stamp: 'JPF 6/17/2021 21:21:05'!
+ERROR!
+!StoreFacade class methodsFor: 'error handling' stamp: 'JPF 6/17/2021 21:21:11' overrides: 16881409!
+error: aString 
+	self shouldBeImplemented.! !
+
+!methodRemoval: StoreFacade class #error: stamp: 'JPF 6/17/2021 21:21:41'!
+error: aString 
+	self shouldBeImplemented.!
+!StoreFacade class methodsFor: 'instance creation' stamp: 'JPF 6/17/2021 21:22:08' prior: 50877328!
+validatingWith: aClientValidator 
+	
+	^self new initializeValidatingWith: aClientValidator ! !
+
+!testRun: #StoreFacadeTest #test01ShouldFailToCreateCardWhenUserIdOrPasswordAreIncorrect stamp: 'JPF 6/17/2021 21:22:17'!
+ERROR!
+
+!testRun: #StoreFacadeTest #test01ShouldFailToCreateCardWhenUserIdOrPasswordAreIncorrect stamp: 'JPF 6/17/2021 21:22:17'!
+ERROR!
+
+!classDefinition: #StoreFacade category: 'TusLibros' stamp: 'JPF 6/17/2021 21:22:32'!
+Object subclass: #StoreFacade
+	instanceVariableNames: 'clientValidator'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'TusLibros'!
+!StoreFacade methodsFor: 'initialization' stamp: 'JPF 6/17/2021 21:22:32'!
+initializeValidatingWith: aClientValidator 
+	self shouldBeImplemented.
+	clientValidator := aClientValidator.! !
+!StoreFacade methodsFor: 'initialization' stamp: 'JPF 6/17/2021 21:22:38' prior: 50877369!
+initializeValidatingWith: aClientValidator 
+
+	clientValidator := aClientValidator.! !
+
+!testRun: #StoreFacadeTest #test01ShouldFailToCreateCardWhenUserIdOrPasswordAreIncorrect stamp: 'JPF 6/17/2021 21:22:43'!
+ERROR!
+!ClientValidator class methodsFor: 'error descriptions' stamp: 'JPF 6/17/2021 21:23:09'!
+clientIdOrPasswordAreIncorrect
+	self shouldBeImplemented.! !
+!ClientValidator class methodsFor: 'error descriptions' stamp: 'JPF 6/17/2021 21:23:45' prior: 50877386!
+clientIdOrPasswordAreIncorrect
+	
+	^ 'ClientId or password are incorrect'! !
+
+!testRun: #StoreFacadeTest #test01ShouldFailToCreateCardWhenUserIdOrPasswordAreIncorrect stamp: 'JPF 6/17/2021 21:23:49'!
+ERROR!
+!StoreFacade methodsFor: 'actions' stamp: 'JPF 6/17/2021 21:24:13'!
+createCartFor: aString withPassword: aString2 
+	self shouldBeImplemented.! !
+!StoreFacade methodsFor: 'actions' stamp: 'JPF 6/17/2021 21:24:38' prior: 50877401!
+createCartFor: aClientId withPassword: aPassword
+
+	
+	! !
+!StoreFacade methodsFor: 'actions' stamp: 'JPF 6/17/2021 21:24:58' prior: 50877407!
+createCartFor: aClientId withPassword: aPassword
+
+	clientValidator validateUser: aClientId withPassword: aPassword
+	! !
+
+!testRun: #StoreFacadeTest #test01ShouldFailToCreateCardWhenUserIdOrPasswordAreIncorrect stamp: 'JPF 6/17/2021 21:25:02'!
+PASSED!
+
+!testRun: #StoreFacadeTest #test01ShouldFailToCreateCardWhenUserIdOrPasswordAreIncorrect stamp: 'JPF 6/17/2021 21:25:08'!
+PASSED!
+!StoreFacadeTest methodsFor: 'setUp' stamp: 'JPF 6/17/2021 21:25:58' prior: 50876910 overrides: 16927572!
+setUp 
+
+	testObjectsFactory := StoreTestObjectsFactory new.
+	validateUserBehaviour := [ :clientIdArg :passwordArg | ].! !
+!StoreFacadeTest methodsFor: 'tests' stamp: 'JPF 6/17/2021 21:28:50'!
+test01ShouldFailToCreateCartWhenUserIdOrPasswordAreIncorrect
+
+	| clientId password validatedClientId validatedPassword storeFacade |
+	
+	clientId := 'clientId'.
+	password := 'password'.
+	
+	storeFacade := StoreFacade validatingWith: self.
+	
+	validateUserBehaviour := [ :clientIdArg :passwordArg |
+		validatedClientId := clientIdArg.
+		validatedPassword := passwordArg.
+		self error: ClientValidator clientIdOrPasswordAreIncorrect.
+		].
+	
+	self 
+		should: [ storeFacade createCartFor: clientId withPassword: password ] 
+		raise: Error - MessageNotUnderstood 
+		withMessageText: ClientValidator clientIdOrPasswordAreIncorrect.
+		
+	self assert: password = validatedPassword.
+	self assert: clientId = validatedClientId.! !
+
+!methodRemoval: StoreFacadeTest #test01ShouldFailToCreateCardWhenUserIdOrPasswordAreIncorrect stamp: 'JPF 6/17/2021 21:28:50'!
+test01ShouldFailToCreateCardWhenUserIdOrPasswordAreIncorrect
+
+	| clientId password validatedClientId validatedPassword storeFacade |
+	
+	clientId := 'clientId'.
+	password := 'password'.
+	
+	storeFacade := StoreFacade validatingWith: self.
+	
+	validateUserBehaviour := [ :clientIdArg :passwordArg |
+		validatedClientId := clientIdArg.
+		validatedPassword := passwordArg.
+		self error: ClientValidator clientIdOrPasswordAreIncorrect.
+		].
+	
+	self 
+		should: [ storeFacade createCartFor: clientId withPassword: password ] 
+		raise: Error - MessageNotUnderstood 
+		withMessageText: ClientValidator clientIdOrPasswordAreIncorrect.
+		
+	self assert: password = validatedPassword.
+	self assert: clientId = validatedClientId.!
+!StoreFacadeTest methodsFor: 'tests' stamp: 'JPF 6/17/2021 21:45:51'!
+test02ShouldCreateACartAndBeEmptyWhenListed
+
+	| clientId password validatedClientId validatedPassword storeFacade |
+	
+	clientId := 'clientId'.
+	password := 'password'.
+	
+	storeFacade := StoreFacade validatingWith: self.
+	
+	validateUserBehaviour := [ :clientIdArg :passwordArg |
+		validatedClientId := clientIdArg.
+		validatedPassword := passwordArg.
+		self error: ClientValidator clientIdOrPasswordAreIncorrect.
+		].
+	
+	self 
+		should: [ storeFacade createCartFor: clientId withPassword: password ] 
+		raise: Error - MessageNotUnderstood 
+		withMessageText: ClientValidator clientIdOrPasswordAreIncorrect.
+		
+	self assert: password = validatedPassword.
+	self assert: clientId = validatedClientId.! !
+
+----QUIT----(18 June 2021 08:13:47) CaraInternaInterfaz.image priorSource: 17429945!
+
+----STARTUP---- (19 June 2021 08:57:16) as /Users/juan.ferrino/CuisUniversity/CaraInternaInterfaz.image!
+
+!StoreFacadeTest methodsFor: 'tests' stamp: 'JPF 6/19/2021 09:07:31' prior: 50877485!
+test02ShouldCreateACartAndBeEmptyWhenListed
+
+	| validatedClientId validatedPassword storeFacade |
+
+	
+	storeFacade := StoreFacade validatingWith: self.
+
+	
+	self 
+		should: [ storeFacade createCartFor: testObjectsFactory clientId withPassword: testObjectsFactory password ] 
+		raise: Error - MessageNotUnderstood 
+		withMessageText: ClientValidator clientIdOrPasswordAreIncorrect.
+! !
+!StoreFacadeTest methodsFor: 'tests' stamp: 'JPF 6/19/2021 09:07:48' prior: 50877516!
+test02ShouldCreateACartAndBeEmptyWhenListed
+
+	| storeFacade |
+
+	
+	storeFacade := StoreFacade validatingWith: self.
+
+	
+	self 
+		should: [ storeFacade createCartFor: testObjectsFactory clientId withPassword: testObjectsFactory password ] 
+		raise: Error - MessageNotUnderstood 
+		withMessageText: ClientValidator clientIdOrPasswordAreIncorrect.
+! !
+!StoreFacadeTest methodsFor: 'tests' stamp: 'JPF 6/19/2021 09:08:37' prior: 50877531!
+test02ShouldCreateACartAndBeEmptyWhenListed
+
+	| storeFacade |
+	
+	storeFacade := StoreFacade validatingWith: self.
+	
+	self 
+		should: [ storeFacade createCartFor: testObjectsFactory clientId withPassword: testObjectsFactory password ] 
+		raise: Error - MessageNotUnderstood 
+		withMessageText: ClientValidator clientIdOrPasswordAreIncorrect.
+! !
+!StoreFacadeTest methodsFor: 'tests' stamp: 'JPF 6/19/2021 09:12:45' prior: 50877545!
+test02ShouldCreateACartAndBeEmptyWhenListed
+
+	| storeFacade cart cartId |
+	
+	storeFacade := StoreFacade validatingWith: self.
+	
+	cartId := storeFacade createCartFor: testObjectsFactory clientId withPassword: testObjectsFactory password.
+	
+	cart := storeFacade listCart: cartId.
+	
+	self assert: cart isEmpty! !
+
+!testRun: #StoreFacadeTest #test02ShouldCreateACartAndBeEmptyWhenListed stamp: 'JPF 6/19/2021 09:13:10'!
+ERROR!
+!StoreTestObjectsFactory methodsFor: 'client' stamp: 'JPF 6/19/2021 09:13:21'!
+clientId
+	self shouldBeImplemented.! !
+!StoreTestObjectsFactory methodsFor: 'client' stamp: 'JPF 6/19/2021 09:13:36' prior: 50877575!
+clientId
+	
+	^ 'clientId'.! !
+
+!testRun: #StoreFacadeTest #test02ShouldCreateACartAndBeEmptyWhenListed stamp: 'JPF 6/19/2021 09:13:44'!
+ERROR!
+!StoreTestObjectsFactory methodsFor: 'client' stamp: 'JPF 6/19/2021 09:13:52'!
+password
+	self shouldBeImplemented.! !
+!StoreTestObjectsFactory methodsFor: 'client' stamp: 'JPF 6/19/2021 09:14:08' prior: 50877587!
+password
+	
+	^ 'password'.! !
+
+!testRun: #StoreFacadeTest #test02ShouldCreateACartAndBeEmptyWhenListed stamp: 'JPF 6/19/2021 09:14:24'!
+ERROR!
+!StoreFacade methodsFor: 'queries' stamp: 'JPF 6/19/2021 09:14:58'!
+listCart: aStoreFacade 
+	self shouldBeImplemented.! !
+!StoreFacade methodsFor: 'queries' stamp: 'JPF 6/19/2021 09:15:32' prior: 50877599!
+listCart: aCartId
+	
+	^ OrderedCollection new.! !
+
+!testRun: #StoreFacadeTest #test02ShouldCreateACartAndBeEmptyWhenListed stamp: 'JPF 6/19/2021 09:15:44'!
+PASSED!
+
+!testRun: #StoreFacadeTest #test01ShouldFailToCreateCartWhenUserIdOrPasswordAreIncorrect stamp: 'JPF 6/19/2021 09:15:44'!
+PASSED!
+
+!testRun: #StoreFacadeTest #test02ShouldCreateACartAndBeEmptyWhenListed stamp: 'JPF 6/19/2021 09:15:44'!
+PASSED!
+!StoreFacadeTest methodsFor: 'tests' stamp: 'JPF 6/19/2021 09:20:13'!
+test03ShouldAddAnItemToTheCart
+
+	| storeFacade cart cartId |
+	
+	storeFacade := StoreFacade validatingWith: self.
+	
+	cartId := storeFacade createCartFor: testObjectsFactory clientId withPassword: testObjectsFactory password.
+	
+	storeFacade add: 3 of: testObjectsFactory itemSellByTheStore to: cartId.
+	
+	cart := storeFacade listCart: cartId.
+	
+	self assert: cart isEmpty! !
+!StoreFacadeTest methodsFor: 'tests' stamp: 'JPF 6/19/2021 09:20:43' prior: 50877619!
+test03ShouldAddAnItemToTheCart
+
+	| storeFacade cart cartId |
+	
+	storeFacade := StoreFacade validatingWith: self.
+	
+	cartId := storeFacade createCartFor: testObjectsFactory clientId withPassword: testObjectsFactory password.
+	
+	storeFacade add: 3 of: testObjectsFactory itemSellByTheStore to: cartId.
+	
+	cart := storeFacade listCart: cartId.
+	
+	self assert: cart size = 3.! !
+!StoreFacadeTest methodsFor: 'tests' stamp: 'JPF 6/19/2021 09:22:40' prior: 50877634!
+test03ShouldAddAnItemToTheCart
+
+	| storeFacade cart cartId |
+	
+	storeFacade := StoreFacade validatingWith: self.
+	
+	cartId := storeFacade createCartFor: testObjectsFactory clientId withPassword: testObjectsFactory password.
+	
+	storeFacade add: 3 of: testObjectsFactory itemSellByTheStore to: cartId.
+	
+	cart := storeFacade listCart: cartId.
+	
+	self assert: cart size = 3.
+	
+	cart do: [ :cartItem | self assert: cartItem = testObjectsFactory itemNotSellByTheStore ]! !
+
+!testRun: #StoreFacadeTest #test03ShouldAddAnItemToTheCart stamp: 'JPF 6/19/2021 09:23:12'!
+ERROR!
+!StoreFacade methodsFor: 'actions' stamp: 'JPF 6/19/2021 09:23:29'!
+add: aSmallInteger of: aString to: aStoreFacade 
+	self shouldBeImplemented.! !
+
+!classDefinition: #StoreFacade category: 'TusLibros' stamp: 'JPF 6/19/2021 09:28:00'!
+Object subclass: #StoreFacade
+	instanceVariableNames: 'clientValidator cartRepository'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'TusLibros'!
+!StoreFacade methodsFor: 'actions' stamp: 'JPF 6/19/2021 09:27:53' prior: 50877669!
+add: aQuantity of: anItem to: aCartId 
+	
+	| cart |
+	cart := cartRepository at: aCartId.
+	
+	cart add: aQuantity of: anItem.! !
+!StoreFacade methodsFor: 'actions' stamp: 'JPF 6/19/2021 09:28:07' prior: 50877682!
+add: aQuantity of: anItem to: aCartId 
+	
+	| cart |
+	
+	cart := cartRepository at: aCartId.
+	
+	cart add: aQuantity of: anItem.! !
+
+!testRun: #StoreFacadeTest #test03ShouldAddAnItemToTheCart stamp: 'JPF 6/19/2021 09:28:55'!
+ERROR!
+!StoreFacade methodsFor: 'initialization' stamp: 'JPF 6/19/2021 09:30:02' prior: 50877376!
+initializeValidatingWith: aClientValidator 
+
+	clientValidator := aClientValidator.
+	cartRepository := Dictionary new.! !
+!StoreFacade methodsFor: 'actions' stamp: 'JPF 6/19/2021 09:32:08' prior: 50877412!
+createCartFor: aClientId withPassword: aPassword
+
+	clientValidator validateUser: aClientId withPassword: aPassword.
+	
+	cartRepository at: self nextCartId put: OrderedCollection new.! !
+
+sequence := 1.!
+
+id := sequence.!
+
+sequence := sequence + 1.!
+
+id.!
+
+sequence.!
+
+!classDefinition: #StoreFacade category: 'TusLibros' stamp: 'JPF 6/19/2021 09:36:30'!
+Object subclass: #StoreFacade
+	instanceVariableNames: 'clientValidator cartRepository cartSequence'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'TusLibros'!
+!StoreFacade methodsFor: 'private' stamp: 'JPF 6/19/2021 09:36:53'!
+nextCartId
+	
+	| cartId |
+	cartId := cartSequence.
+	cartSequence := cartSequence + 1.
+	
+	^ cartId! !
+!StoreFacade methodsFor: 'private' stamp: 'JPF 6/19/2021 09:36:58' prior: 50877725!
+nextCartId
+	
+	| cartId |
+	
+	cartId := cartSequence.
+	cartSequence := cartSequence + 1.
+	
+	^ cartId! !
+!StoreFacade methodsFor: 'initialization' stamp: 'JPF 6/19/2021 09:37:19' prior: 50877699!
+initializeValidatingWith: aClientValidator 
+
+	clientValidator := aClientValidator.
+	cartRepository := Dictionary new.
+	cartSequence := 1.! !
+
+!classDefinition: #StoreFacade category: 'TusLibros' stamp: 'JPF 6/19/2021 09:37:26'!
+Object subclass: #StoreFacade
+	instanceVariableNames: 'clientValidator cartRepository cartIdSequence'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'TusLibros'!
+!StoreFacade methodsFor: 'as yet unclassified' stamp: 'JPF 6/19/2021 09:37:26' prior: 50877731!
+nextCartId
+	
+	| cartId |
+	
+	cartId := cartIdSequence.
+	cartIdSequence := cartIdSequence + 1.
+	
+	^ cartId! !
+!StoreFacade methodsFor: 'as yet unclassified' stamp: 'JPF 6/19/2021 09:37:26' prior: 50877738!
+initializeValidatingWith: aClientValidator 
+
+	clientValidator := aClientValidator.
+	cartRepository := Dictionary new.
+	cartIdSequence := 1.! !
+
+!testRun: #StoreFacadeTest #test01ShouldFailToCreateCartWhenUserIdOrPasswordAreIncorrect stamp: 'JPF 6/19/2021 09:37:45'!
+PASSED!
+
+!testRun: #StoreFacadeTest #test02ShouldCreateACartAndBeEmptyWhenListed stamp: 'JPF 6/19/2021 09:37:45'!
+PASSED!
+
+!testRun: #StoreFacadeTest #test03ShouldAddAnItemToTheCart stamp: 'JPF 6/19/2021 09:37:45'!
+ERROR!
+
+!testRun: #StoreFacadeTest #test03ShouldAddAnItemToTheCart stamp: 'JPF 6/19/2021 09:37:45'!
+ERROR!
+!StoreFacade methodsFor: 'actions' stamp: 'JPF 6/19/2021 09:40:09' prior: 50877706!
+createCartFor: aClientId withPassword: aPassword
+
+	| cartId |
+	clientValidator validateUser: aClientId withPassword: aPassword.
+	
+	cartId := self nextCartId.
+	
+	cartRepository at: cartId put: OrderedCollection new.
+	
+	^ cartId! !
+!StoreFacade methodsFor: 'actions' stamp: 'JPF 6/19/2021 09:40:15' prior: 50877782!
+createCartFor: aClientId withPassword: aPassword
+
+	| cartId |
+	
+	clientValidator validateUser: aClientId withPassword: aPassword.
+	
+	cartId := self nextCartId.
+	
+	cartRepository at: cartId put: OrderedCollection new.
+	
+	^ cartId! !
+
+!testRun: #StoreFacadeTest #test01ShouldFailToCreateCartWhenUserIdOrPasswordAreIncorrect stamp: 'JPF 6/19/2021 09:40:45'!
+PASSED!
+
+!testRun: #StoreFacadeTest #test02ShouldCreateACartAndBeEmptyWhenListed stamp: 'JPF 6/19/2021 09:40:45'!
+PASSED!
+
+!testRun: #StoreFacadeTest #test03ShouldAddAnItemToTheCart stamp: 'JPF 6/19/2021 09:40:45'!
+ERROR!
+
+!testRun: #StoreFacadeTest #test03ShouldAddAnItemToTheCart stamp: 'JPF 6/19/2021 09:40:45'!
+ERROR!
+!StoreFacade methodsFor: 'actions' stamp: 'JPF 6/19/2021 09:41:44' prior: 50877792!
+createCartFor: aClientId withPassword: aPassword
+
+	| cartId |
+	
+	clientValidator validateUser: aClientId withPassword: aPassword.
+	
+	cartId := self nextCartId.
+	
+	cartRepository at: cartId put: Cart new.
+	
+	^ cartId! !
+
+!classDefinition: #StoreFacade category: 'TusLibros' stamp: 'JPF 6/19/2021 09:43:02'!
+Object subclass: #StoreFacade
+	instanceVariableNames: 'clientValidator cartRepository cartIdSequence catalog'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'TusLibros'!
+!StoreFacade methodsFor: 'actions' stamp: 'JPF 6/19/2021 09:42:56' prior: 50877816!
+createCartFor: aClientId withPassword: aPassword
+
+	| cartId |
+	
+	clientValidator validateUser: aClientId withPassword: aPassword.
+	
+	cartId := self nextCartId.
+	
+	cartRepository at: cartId put: (Cart acceptingItemsOf: catalog).
+	
+	^ cartId! !
+!StoreFacade class methodsFor: 'instance creation' stamp: 'JPF 6/19/2021 09:46:42'!
+validatingWith: aClientValidator having: aCatalog  
+	
+	^self new initializeValidatingWith: aClientValidator ! !
+!StoreFacadeTest methodsFor: 'as yet unclassified' stamp: 'JPF 6/19/2021 09:46:42' prior: 50877434!
+test01ShouldFailToCreateCartWhenUserIdOrPasswordAreIncorrect
+
+	| clientId password validatedClientId validatedPassword storeFacade |
+	
+	clientId := 'clientId'.
+	password := 'password'.
+	
+	storeFacade := StoreFacade validatingWith: self having: (self halt).
+	
+	validateUserBehaviour := [ :clientIdArg :passwordArg |
+		validatedClientId := clientIdArg.
+		validatedPassword := passwordArg.
+		self error: ClientValidator clientIdOrPasswordAreIncorrect.
+		].
+	
+	self 
+		should: [ storeFacade createCartFor: clientId withPassword: password ] 
+		raise: Error - MessageNotUnderstood 
+		withMessageText: ClientValidator clientIdOrPasswordAreIncorrect.
+		
+	self assert: password = validatedPassword.
+	self assert: clientId = validatedClientId.! !
+!StoreFacadeTest methodsFor: 'as yet unclassified' stamp: 'JPF 6/19/2021 09:46:42' prior: 50877559!
+test02ShouldCreateACartAndBeEmptyWhenListed
+
+	| storeFacade cart cartId |
+	
+	storeFacade := StoreFacade validatingWith: self having: (self halt).
+	
+	cartId := storeFacade createCartFor: testObjectsFactory clientId withPassword: testObjectsFactory password.
+	
+	cart := storeFacade listCart: cartId.
+	
+	self assert: cart isEmpty! !
+!StoreFacadeTest methodsFor: 'as yet unclassified' stamp: 'JPF 6/19/2021 09:46:42' prior: 50877649!
+test03ShouldAddAnItemToTheCart
+
+	| storeFacade cart cartId |
+	
+	storeFacade := StoreFacade validatingWith: self having: (self halt).
+	
+	cartId := storeFacade createCartFor: testObjectsFactory clientId withPassword: testObjectsFactory password.
+	
+	storeFacade add: 3 of: testObjectsFactory itemSellByTheStore to: cartId.
+	
+	cart := storeFacade listCart: cartId.
+	
+	self assert: cart size = 3.
+	
+	cart do: [ :cartItem | self assert: cartItem = testObjectsFactory itemNotSellByTheStore ]! !
+
+!methodRemoval: StoreFacade class #validatingWith: stamp: 'JPF 6/19/2021 09:46:42'!
+validatingWith: aClientValidator 
+	
+	^self new initializeValidatingWith: aClientValidator !
+!StoreFacadeTest methodsFor: 'tests' stamp: 'JPF 6/19/2021 09:47:56' prior: 50877852!
+test01ShouldFailToCreateCartWhenUserIdOrPasswordAreIncorrect
+
+	| clientId password validatedClientId validatedPassword storeFacade |
+	
+	clientId := 'clientId'.
+	password := 'password'.
+	
+	storeFacade := StoreFacade validatingWith: self having: testObjectsFactory defaultCatalog.
+	
+	validateUserBehaviour := [ :clientIdArg :passwordArg |
+		validatedClientId := clientIdArg.
+		validatedPassword := passwordArg.
+		self error: ClientValidator clientIdOrPasswordAreIncorrect.
+		].
+	
+	self 
+		should: [ storeFacade createCartFor: clientId withPassword: password ] 
+		raise: Error - MessageNotUnderstood 
+		withMessageText: ClientValidator clientIdOrPasswordAreIncorrect.
+		
+	self assert: password = validatedPassword.
+	self assert: clientId = validatedClientId.! !
+!StoreFacadeTest methodsFor: 'tests' stamp: 'JPF 6/19/2021 09:48:13' prior: 50877879!
+test02ShouldCreateACartAndBeEmptyWhenListed
+
+	| storeFacade cart cartId |
+	
+	storeFacade := StoreFacade validatingWith: self having: testObjectsFactory defaultCatalog.
+	
+	cartId := storeFacade createCartFor: testObjectsFactory clientId withPassword: testObjectsFactory password.
+	
+	cart := storeFacade listCart: cartId.
+	
+	self assert: cart isEmpty! !
+!StoreFacadeTest methodsFor: 'tests' stamp: 'JPF 6/19/2021 09:48:24' prior: 50877893!
+test03ShouldAddAnItemToTheCart
+
+	| storeFacade cart cartId |
+	
+	storeFacade := StoreFacade validatingWith: self having: testObjectsFactory defaultCatalog.
+	
+	cartId := storeFacade createCartFor: testObjectsFactory clientId withPassword: testObjectsFactory password.
+	
+	storeFacade add: 3 of: testObjectsFactory itemSellByTheStore to: cartId.
+	
+	cart := storeFacade listCart: cartId.
+	
+	self assert: cart size = 3.
+	
+	cart do: [ :cartItem | self assert: cartItem = testObjectsFactory itemNotSellByTheStore ]! !
+!StoreFacade methodsFor: 'initialization' stamp: 'JPF 6/19/2021 09:49:43'!
+initializeValidatingWith: aClientValidator having: aCatalog  
+
+	clientValidator := aClientValidator.
+	cartRepository := Dictionary new.
+	cartIdSequence := 1.! !
+!StoreFacade class methodsFor: 'as yet unclassified' stamp: 'JPF 6/19/2021 09:49:43' prior: 50877845!
+validatingWith: aClientValidator having: aCatalog  
+	
+	^self new initializeValidatingWith: aClientValidator having: aCatalog ! !
+
+!methodRemoval: StoreFacade #initializeValidatingWith: stamp: 'JPF 6/19/2021 09:49:43'!
+initializeValidatingWith: aClientValidator 
+
+	clientValidator := aClientValidator.
+	cartRepository := Dictionary new.
+	cartIdSequence := 1.!
+!StoreFacade methodsFor: 'initialization' stamp: 'JPF 6/19/2021 09:50:00' prior: 50877977!
+initializeValidatingWith: aClientValidator having: aCatalog  
+
+	clientValidator := aClientValidator.
+	catalog := aCatalog.
+	cartRepository := Dictionary new.
+	cartIdSequence := 1.! !
+
+!testRun: #StoreFacadeTest #test01ShouldFailToCreateCartWhenUserIdOrPasswordAreIncorrect stamp: 'JPF 6/19/2021 09:50:17'!
+PASSED!
+
+!testRun: #StoreFacadeTest #test02ShouldCreateACartAndBeEmptyWhenListed stamp: 'JPF 6/19/2021 09:50:17'!
+PASSED!
+
+!testRun: #StoreFacadeTest #test03ShouldAddAnItemToTheCart stamp: 'JPF 6/19/2021 09:50:17'!
+FAILURE!
+
+!testRun: #StoreFacadeTest #test03ShouldAddAnItemToTheCart stamp: 'JPF 6/19/2021 09:50:17'!
+FAILURE!
+!StoreFacade methodsFor: 'queries' stamp: 'JPF 6/19/2021 09:53:10' prior: 50877604!
+listCart: aCartId
+	
+	^ (cartRepository at: aCartId) items.! !
+
+!testRun: #StoreFacadeTest #test01ShouldFailToCreateCartWhenUserIdOrPasswordAreIncorrect stamp: 'JPF 6/19/2021 09:54:06'!
+PASSED!
+
+!testRun: #StoreFacadeTest #test02ShouldCreateACartAndBeEmptyWhenListed stamp: 'JPF 6/19/2021 09:54:06'!
+ERROR!
+
+!testRun: #StoreFacadeTest #test03ShouldAddAnItemToTheCart stamp: 'JPF 6/19/2021 09:54:06'!
+ERROR!
+
+!testRun: #StoreFacadeTest #test02ShouldCreateACartAndBeEmptyWhenListed stamp: 'JPF 6/19/2021 09:54:18'!
+ERROR!
+!Cart methodsFor: 'accessing' stamp: 'JPF 6/19/2021 09:54:33'!
+items
+	self shouldBeImplemented.
+	^items! !
+!Cart methodsFor: 'accessing' stamp: 'JPF 6/19/2021 09:54:38' prior: 50878043!
+items
+
+	^items! !
+!Cart methodsFor: 'accessing' stamp: 'JPF 6/19/2021 09:55:04' prior: 50878047!
+items
+
+	^items copy! !
+!Cart methodsFor: 'accessing' stamp: 'JPF 6/19/2021 09:55:07' prior: 50878051!
+items
+
+	^ items copy! !
+!Cart methodsFor: 'accessing' stamp: 'JPF 6/19/2021 09:55:09' prior: 50878055!
+items
+
+	^ items copy.! !
+!Cart methodsFor: 'accessing' stamp: 'JPF 6/19/2021 09:55:11' prior: 50878059!
+items
+
+	^ items copy! !
+
+!testRun: #StoreFacadeTest #test01ShouldFailToCreateCartWhenUserIdOrPasswordAreIncorrect stamp: 'JPF 6/19/2021 09:55:16'!
+PASSED!
+
+!testRun: #StoreFacadeTest #test02ShouldCreateACartAndBeEmptyWhenListed stamp: 'JPF 6/19/2021 09:55:16'!
+PASSED!
+
+!testRun: #StoreFacadeTest #test03ShouldAddAnItemToTheCart stamp: 'JPF 6/19/2021 09:55:16'!
+FAILURE!
+
+!testRun: #StoreFacadeTest #test03ShouldAddAnItemToTheCart stamp: 'JPF 6/19/2021 09:55:16'!
+FAILURE!
+!StoreFacadeTest methodsFor: 'tests' stamp: 'JPF 6/19/2021 09:55:45' prior: 50877958!
+test03ShouldAddAnItemToTheCart
+
+	| storeFacade cart cartId |
+	
+	storeFacade := StoreFacade validatingWith: self having: testObjectsFactory defaultCatalog.
+	
+	cartId := storeFacade createCartFor: testObjectsFactory clientId withPassword: testObjectsFactory password.
+	
+	storeFacade add: 3 of: testObjectsFactory itemSellByTheStore to: cartId.
+	
+	cart := storeFacade listCart: cartId.
+	
+	self assert: cart size = 3.
+	
+	cart do: [ :cartItem | self assert: cartItem = testObjectsFactory itemSellByTheStore ]! !
+!StoreFacadeTest methodsFor: 'tests' stamp: 'JPF 6/19/2021 09:55:55' prior: 50878081!
+test03ShouldAddAnItemToTheCart
+
+	| storeFacade cartItems cartId |
+	
+	storeFacade := StoreFacade validatingWith: self having: testObjectsFactory defaultCatalog.
+	
+	cartId := storeFacade createCartFor: testObjectsFactory clientId withPassword: testObjectsFactory password.
+	
+	storeFacade add: 3 of: testObjectsFactory itemSellByTheStore to: cartId.
+	
+	cartItems := storeFacade listCart: cartId.
+	
+	self assert: cartItems size = 3.
+	
+	cartItems do: [ :cartItem | self assert: cartItem = testObjectsFactory itemSellByTheStore ]! !
+
+!testRun: #StoreFacadeTest #test01ShouldFailToCreateCartWhenUserIdOrPasswordAreIncorrect stamp: 'JPF 6/19/2021 09:56:11'!
+PASSED!
+
+!testRun: #StoreFacadeTest #test02ShouldCreateACartAndBeEmptyWhenListed stamp: 'JPF 6/19/2021 09:56:11'!
+PASSED!
+
+!testRun: #StoreFacadeTest #test03ShouldAddAnItemToTheCart stamp: 'JPF 6/19/2021 09:56:11'!
+PASSED!
+!StoreFacadeTest methodsFor: 'tests' stamp: 'JPF 6/19/2021 09:59:36'!
+test04ShouldFailWhenAddsItemsToAnInexistentCart
+
+	| storeFacade |
+	
+	storeFacade := StoreFacade validatingWith: self having: testObjectsFactory defaultCatalog.
+	
+	self 
+		should: [ storeFacade add: 3 of: testObjectsFactory itemSellByTheStore to: 0 ]
+		raise: Error - MessageNotUnderstood.
+		
+	
+	! !
+!StoreFacadeTest methodsFor: 'tests' stamp: 'JPF 6/19/2021 10:00:37' prior: 50878130!
+test04ShouldFailWhenAddsItemsToAnInexistentCart
+
+	| storeFacade |
+	
+	storeFacade := StoreFacade validatingWith: self having: testObjectsFactory defaultCatalog.
+	
+	self 
+		should: [ storeFacade add: 3 of: testObjectsFactory itemSellByTheStore to: 0 ]
+		raise: Error - MessageNotUnderstood
+		withMessageText: StoreFacade inexistentCart.
+		
+	
+	! !
+!StoreFacadeTest methodsFor: 'tests' stamp: 'JPF 6/19/2021 10:01:01' prior: 50878143!
+test04ShouldFailWhenAddsItemsToAnInexistentCart
+
+	| storeFacade |
+	
+	storeFacade := StoreFacade validatingWith: self having: testObjectsFactory defaultCatalog.
+	
+	self 
+		should: [ storeFacade add: 3 of: testObjectsFactory itemSellByTheStore to: 0 ]
+		raise: Error - MessageNotUnderstood
+		withMessageText: StoreFacade inexistentCartErrorMessage.
+		
+	
+	! !
+
+!testRun: #StoreFacadeTest #test04ShouldFailWhenAddsItemsToAnInexistentCart stamp: 'JPF 6/19/2021 10:01:06'!
+ERROR!
+
+!testRun: #StoreFacadeTest #test04ShouldFailWhenAddsItemsToAnInexistentCart stamp: 'JPF 6/19/2021 10:01:06'!
+ERROR!
+!StoreFacade class methodsFor: 'error descriptions' stamp: 'JPF 6/19/2021 10:01:18'!
+inexistentCartErrorMessage
+	self shouldBeImplemented.! !
+!StoreFacade class methodsFor: 'error descriptions' stamp: 'JPF 6/19/2021 10:01:36' prior: 50878179!
+inexistentCartErrorMessage
+	
+	^ 'Inexistent cart'! !
+
+!testRun: #StoreFacadeTest #test04ShouldFailWhenAddsItemsToAnInexistentCart stamp: 'JPF 6/19/2021 10:01:40'!
+FAILURE!
+!StoreFacade methodsFor: 'actions' stamp: 'JPF 6/19/2021 10:02:37' prior: 50877689!
+add: aQuantity of: anItem to: aCartId 
+	
+	| cart |
+	
+	cart := cartRepository at: aCartId ifAbsent: [ self error: StoreFacade inexistentCartErrorMessage ].
+	
+	cart add: aQuantity of: anItem.! !
+
+!testRun: #StoreFacadeTest #test01ShouldFailToCreateCartWhenUserIdOrPasswordAreIncorrect stamp: 'JPF 6/19/2021 10:02:53'!
+PASSED!
+
+!testRun: #StoreFacadeTest #test02ShouldCreateACartAndBeEmptyWhenListed stamp: 'JPF 6/19/2021 10:02:53'!
+PASSED!
+
+!testRun: #StoreFacadeTest #test03ShouldAddAnItemToTheCart stamp: 'JPF 6/19/2021 10:02:53'!
+PASSED!
+
+!testRun: #StoreFacadeTest #test04ShouldFailWhenAddsItemsToAnInexistentCart stamp: 'JPF 6/19/2021 10:02:53'!
+PASSED!
+!StoreFacadeTest methodsFor: 'tests' stamp: 'JPF 6/19/2021 10:03:30'!
+test04ShouldFailWhenTryToAddItemsToAnInexistentCart
+
+	| storeFacade |
+	
+	storeFacade := StoreFacade validatingWith: self having: testObjectsFactory defaultCatalog.
+	
+	self 
+		should: [ storeFacade add: 3 of: testObjectsFactory itemSellByTheStore to: 0 ]
+		raise: Error - MessageNotUnderstood
+		withMessageText: StoreFacade inexistentCartErrorMessage.
+		
+	
+	! !
+
+!methodRemoval: StoreFacadeTest #test04ShouldFailWhenAddsItemsToAnInexistentCart stamp: 'JPF 6/19/2021 10:03:30'!
+test04ShouldFailWhenAddsItemsToAnInexistentCart
+
+	| storeFacade |
+	
+	storeFacade := StoreFacade validatingWith: self having: testObjectsFactory defaultCatalog.
+	
+	self 
+		should: [ storeFacade add: 3 of: testObjectsFactory itemSellByTheStore to: 0 ]
+		raise: Error - MessageNotUnderstood
+		withMessageText: StoreFacade inexistentCartErrorMessage.
+		
+	
+	!
+!StoreFacadeTest methodsFor: 'tests' stamp: 'JPF 6/19/2021 10:04:05'!
+test05ShouldFailWhenTryToListAnInexistentCart
+
+	| storeFacade |
+	
+	storeFacade := StoreFacade validatingWith: self having: testObjectsFactory defaultCatalog.
+	
+	self 
+		should: [ storeFacade listCart: 0 ]
+		raise: Error - MessageNotUnderstood
+		withMessageText: StoreFacade inexistentCartErrorMessage.
+		
+	
+	! !
+
+!testRun: #StoreFacadeTest #test01ShouldFailToCreateCartWhenUserIdOrPasswordAreIncorrect stamp: 'JPF 6/19/2021 10:04:10'!
+PASSED!
+
+!testRun: #StoreFacadeTest #test02ShouldCreateACartAndBeEmptyWhenListed stamp: 'JPF 6/19/2021 10:04:10'!
+PASSED!
+
+!testRun: #StoreFacadeTest #test03ShouldAddAnItemToTheCart stamp: 'JPF 6/19/2021 10:04:10'!
+PASSED!
+
+!testRun: #StoreFacadeTest #test04ShouldFailWhenTryToAddItemsToAnInexistentCart stamp: 'JPF 6/19/2021 10:04:10'!
+PASSED!
+
+!testRun: #StoreFacadeTest #test05ShouldFailWhenTryToListAnInexistentCart stamp: 'JPF 6/19/2021 10:04:10'!
+FAILURE!
+
+!testRun: #StoreFacadeTest #test05ShouldFailWhenTryToListAnInexistentCart stamp: 'JPF 6/19/2021 10:04:10'!
+FAILURE!
+!StoreFacade methodsFor: 'queries' stamp: 'JPF 6/19/2021 10:05:11' prior: 50878024!
+listCart: aCartId
+	
+	^ (cartRepository at: aCartId ifAbsent: [ self error: self class inexistentCartErrorMessage ]) items.! !
+
+!testRun: #StoreFacadeTest #test01ShouldFailToCreateCartWhenUserIdOrPasswordAreIncorrect stamp: 'JPF 6/19/2021 10:05:20'!
+PASSED!
+
+!testRun: #StoreFacadeTest #test02ShouldCreateACartAndBeEmptyWhenListed stamp: 'JPF 6/19/2021 10:05:20'!
+PASSED!
+
+!testRun: #StoreFacadeTest #test03ShouldAddAnItemToTheCart stamp: 'JPF 6/19/2021 10:05:20'!
+PASSED!
+
+!testRun: #StoreFacadeTest #test04ShouldFailWhenTryToAddItemsToAnInexistentCart stamp: 'JPF 6/19/2021 10:05:20'!
+PASSED!
+
+!testRun: #StoreFacadeTest #test05ShouldFailWhenTryToListAnInexistentCart stamp: 'JPF 6/19/2021 10:05:20'!
+PASSED!
+!StoreFacade methodsFor: 'queries' stamp: 'JPF 6/19/2021 10:05:54'!
+findCart: aCartId
+
+	^ cartRepository at: aCartId ifAbsent: [ self error: self class inexistentCartErrorMessage ]! !
+!StoreFacade methodsFor: 'queries' stamp: 'JPF 6/19/2021 10:05:54' prior: 50878279!
+listCart: aCartId
+	
+	^ (self findCart: aCartId) items.! !
+!StoreFacade methodsFor: 'actions' stamp: 'JPF 6/19/2021 10:06:39' prior: 50878192!
+add: aQuantity of: anItem to: aCartId 
+	
+	| cart |
+	
+	cart := self findCart: aCartId.
+	
+	cart add: aQuantity of: anItem.! !
+
+!testRun: #StoreFacadeTest #test01ShouldFailToCreateCartWhenUserIdOrPasswordAreIncorrect stamp: 'JPF 6/19/2021 10:06:45'!
+PASSED!
+
+!testRun: #StoreFacadeTest #test02ShouldCreateACartAndBeEmptyWhenListed stamp: 'JPF 6/19/2021 10:06:45'!
+PASSED!
+
+!testRun: #StoreFacadeTest #test03ShouldAddAnItemToTheCart stamp: 'JPF 6/19/2021 10:06:45'!
+PASSED!
+
+!testRun: #StoreFacadeTest #test04ShouldFailWhenTryToAddItemsToAnInexistentCart stamp: 'JPF 6/19/2021 10:06:45'!
+PASSED!
+
+!testRun: #StoreFacadeTest #test05ShouldFailWhenTryToListAnInexistentCart stamp: 'JPF 6/19/2021 10:06:45'!
+PASSED!
+!StoreFacade methodsFor: 'private' stamp: 'JPF 6/19/2021 10:08:46' prior: 50877754!
+nextCartId
+	
+	"| cartId |
+	
+	cartId := cartIdSequence.
+	cartIdSequence := cartIdSequence + 1.
+	
+	^ cartId"
+	
+	^ 1.! !
+
+!testRun: #StoreFacadeTest #test01ShouldFailToCreateCartWhenUserIdOrPasswordAreIncorrect stamp: 'JPF 6/19/2021 10:08:49'!
+PASSED!
+
+!testRun: #StoreFacadeTest #test02ShouldCreateACartAndBeEmptyWhenListed stamp: 'JPF 6/19/2021 10:08:49'!
+PASSED!
+
+!testRun: #StoreFacadeTest #test03ShouldAddAnItemToTheCart stamp: 'JPF 6/19/2021 10:08:49'!
+PASSED!
+
+!testRun: #StoreFacadeTest #test04ShouldFailWhenTryToAddItemsToAnInexistentCart stamp: 'JPF 6/19/2021 10:08:49'!
+PASSED!
+
+!testRun: #StoreFacadeTest #test05ShouldFailWhenTryToListAnInexistentCart stamp: 'JPF 6/19/2021 10:08:49'!
+PASSED!
+!StoreFacadeTest methodsFor: 'tests' stamp: 'JPF 6/19/2021 10:11:50'!
+test06ShouldAddAnItemToTheCorrectCart
+
+	| storeFacade cartItemsNotEmpty cartIdToAdd cartIdEmpty cartItemsEmpty |
+	
+	storeFacade := StoreFacade validatingWith: self having: testObjectsFactory defaultCatalog.
+	
+	cartIdToAdd := storeFacade createCartFor: testObjectsFactory clientId withPassword: testObjectsFactory password.
+	storeFacade add: 3 of: testObjectsFactory itemSellByTheStore to: cartIdToAdd.
+	cartItemsNotEmpty := storeFacade listCart: cartIdToAdd.
+	
+	cartIdEmpty := storeFacade createCartFor: testObjectsFactory clientId withPassword: testObjectsFactory password.
+	cartItemsEmpty := storeFacade listCart: cartIdEmpty.
+	
+	self assert: cartItemsNotEmpty size = 3.
+	
+	cartItemsNotEmpty do: [ :cartItem | self assert: cartItem = testObjectsFactory itemSellByTheStore ]! !
+!StoreFacadeTest methodsFor: 'tests' stamp: 'JPF 6/19/2021 10:12:50' prior: 50878366!
+test06ShouldAddAnItemToTheCorrectCart
+
+	| storeFacade cartItemsNotEmpty cartIdToAdd cartIdEmpty cartItemsEmpty |
+	
+	storeFacade := StoreFacade validatingWith: self having: testObjectsFactory defaultCatalog.
+	
+	cartIdEmpty := storeFacade createCartFor: testObjectsFactory clientId withPassword: testObjectsFactory password.
+	cartIdToAdd := storeFacade createCartFor: testObjectsFactory clientId withPassword: testObjectsFactory password.
+	
+	storeFacade add: 3 of: testObjectsFactory itemSellByTheStore to: cartIdToAdd.
+	cartItemsNotEmpty := storeFacade listCart: cartIdToAdd.
+	
+	
+	cartItemsEmpty := storeFacade listCart: cartIdEmpty.
+
+	self assert: cartItemsNotEmpty size = 3.
+	cartItemsNotEmpty do: [ :cartItem | self assert: cartItem = testObjectsFactory itemSellByTheStore ]! !
+!StoreFacadeTest methodsFor: 'tests' stamp: 'JPF 6/19/2021 10:13:11' prior: 50878394!
+test06ShouldAddAnItemToTheCorrectCart
+
+	| storeFacade cartItemsNotEmpty cartIdToAdd cartIdEmpty cartItemsEmpty |
+	
+	storeFacade := StoreFacade validatingWith: self having: testObjectsFactory defaultCatalog.
+	
+	cartIdEmpty := storeFacade createCartFor: testObjectsFactory clientId withPassword: testObjectsFactory password.
+	cartIdToAdd := storeFacade createCartFor: testObjectsFactory clientId withPassword: testObjectsFactory password.
+	
+	storeFacade add: 3 of: testObjectsFactory itemSellByTheStore to: cartIdToAdd.
+	cartItemsNotEmpty := storeFacade listCart: cartIdToAdd.
+	
+	
+	cartItemsEmpty := storeFacade listCart: cartIdEmpty.
+
+	self assert: cartItemsNotEmpty size = 3.
+	cartItemsNotEmpty do: [ :cartItem | self assert: cartItem = testObjectsFactory itemSellByTheStore ].
+	
+	self assert: cartItemsEmpty isEmpty! !
+
+!testRun: #StoreFacadeTest #test06ShouldAddAnItemToTheCorrectCart stamp: 'JPF 6/19/2021 10:13:14'!
+FAILURE!
+
+!testRun: #StoreFacadeTest #test06ShouldAddAnItemToTheCorrectCart stamp: 'JPF 6/19/2021 10:13:14'!
+FAILURE!
+!StoreFacadeTest methodsFor: 'tests' stamp: 'JPF 6/19/2021 10:13:39' prior: 50878422!
+test06ShouldAddAnItemToTheCorrectCart
+
+	| storeFacade cartItemsNotEmpty cartIdToAdd cartIdEmpty cartItemsEmpty |
+	
+	storeFacade := StoreFacade validatingWith: self having: testObjectsFactory defaultCatalog.
+	
+	cartIdEmpty := storeFacade createCartFor: testObjectsFactory clientId withPassword: testObjectsFactory password.
+	cartIdToAdd := storeFacade createCartFor: testObjectsFactory clientId withPassword: testObjectsFactory password.
+	
+	storeFacade add: 3 of: testObjectsFactory itemSellByTheStore to: cartIdToAdd.
+	cartItemsNotEmpty := storeFacade listCart: cartIdToAdd.
+	
+	cartItemsEmpty := storeFacade listCart: cartIdEmpty.
+
+	self assert: cartItemsNotEmpty size = 3.
+	cartItemsNotEmpty do: [ :cartItem | self assert: cartItem = testObjectsFactory itemSellByTheStore ].
+	
+	self assert: cartItemsEmpty isEmpty! !
+!StoreFacade methodsFor: 'private' stamp: 'JPF 6/19/2021 10:13:57' prior: 50878341!
+nextCartId
+	
+	| cartId |
+	
+	cartId := cartIdSequence.
+	cartIdSequence := cartIdSequence + 1.
+	
+	^ cartId! !
+
+!testRun: #StoreFacadeTest #test01ShouldFailToCreateCartWhenUserIdOrPasswordAreIncorrect stamp: 'JPF 6/19/2021 10:14:00'!
+PASSED!
+
+!testRun: #StoreFacadeTest #test02ShouldCreateACartAndBeEmptyWhenListed stamp: 'JPF 6/19/2021 10:14:00'!
+PASSED!
+
+!testRun: #StoreFacadeTest #test03ShouldAddAnItemToTheCart stamp: 'JPF 6/19/2021 10:14:00'!
+PASSED!
+
+!testRun: #StoreFacadeTest #test04ShouldFailWhenTryToAddItemsToAnInexistentCart stamp: 'JPF 6/19/2021 10:14:00'!
+PASSED!
+
+!testRun: #StoreFacadeTest #test05ShouldFailWhenTryToListAnInexistentCart stamp: 'JPF 6/19/2021 10:14:00'!
+PASSED!
+
+!testRun: #StoreFacadeTest #test06ShouldAddAnItemToTheCorrectCart stamp: 'JPF 6/19/2021 10:14:00'!
+PASSED!
+
+!testRun: #CartTest #test01NewCartsAreCreatedEmpty stamp: 'JPF 6/19/2021 10:19:18'!
+PASSED!
+
+!testRun: #CartTest #test02CanNotAddItemsThatDoNotBelongToStore stamp: 'JPF 6/19/2021 10:19:18'!
+PASSED!
+
+!testRun: #CartTest #test03AfterAddingAnItemTheCartIsNotEmptyAnymore stamp: 'JPF 6/19/2021 10:19:18'!
+PASSED!
+
+!testRun: #CartTest #test04CanNotAddNonPositiveNumberOfItems stamp: 'JPF 6/19/2021 10:19:18'!
+PASSED!
+
+!testRun: #CartTest #test05CanNotAddMoreThanOneItemNotSellByTheStore stamp: 'JPF 6/19/2021 10:19:18'!
+PASSED!
+
+!testRun: #CartTest #test06CartRemembersAddedItems stamp: 'JPF 6/19/2021 10:19:18'!
+PASSED!
+
+!testRun: #CartTest #test07CartDoesNotHoldNotAddedItems stamp: 'JPF 6/19/2021 10:19:18'!
+PASSED!
+
+!testRun: #CartTest #test08CartRemembersTheNumberOfAddedItems stamp: 'JPF 6/19/2021 10:19:18'!
+PASSED!
+
+!testRun: #CashierTest #test01CanNotCheckoutAnEmptyCart stamp: 'JPF 6/19/2021 10:19:18'!
+PASSED!
+
+!testRun: #CashierTest #test02CalculatedTotalIsCorrect stamp: 'JPF 6/19/2021 10:19:18'!
+PASSED!
+
+!testRun: #CashierTest #test03CanNotCheckoutWithAnExpiredCreditCart stamp: 'JPF 6/19/2021 10:19:18'!
+PASSED!
+
+!testRun: #CashierTest #test04CheckoutRegistersASale stamp: 'JPF 6/19/2021 10:19:18'!
+PASSED!
+
+!testRun: #CashierTest #test05CashierChargesCreditCardUsingMerchantProcessor stamp: 'JPF 6/19/2021 10:19:18'!
+PASSED!
+
+!testRun: #CashierTest #test06CashierDoesNotSaleWhenTheCreditCardHasNoCredit stamp: 'JPF 6/19/2021 10:19:18'!
+PASSED!
+
+!testRun: #StoreFacadeTest #test01ShouldFailToCreateCartWhenUserIdOrPasswordAreIncorrect stamp: 'JPF 6/19/2021 10:19:18'!
+PASSED!
+
+!testRun: #StoreFacadeTest #test02ShouldCreateACartAndBeEmptyWhenListed stamp: 'JPF 6/19/2021 10:19:18'!
+PASSED!
+
+!testRun: #StoreFacadeTest #test03ShouldAddAnItemToTheCart stamp: 'JPF 6/19/2021 10:19:18'!
+PASSED!
+
+!testRun: #StoreFacadeTest #test04ShouldFailWhenTryToAddItemsToAnInexistentCart stamp: 'JPF 6/19/2021 10:19:18'!
+PASSED!
+
+!testRun: #StoreFacadeTest #test05ShouldFailWhenTryToListAnInexistentCart stamp: 'JPF 6/19/2021 10:19:18'!
+PASSED!
+
+!testRun: #StoreFacadeTest #test06ShouldAddAnItemToTheCorrectCart stamp: 'JPF 6/19/2021 10:19:18'!
+PASSED!
+
+----SNAPSHOT----(19 June 2021 10:48:13) CaraInternaInterfaz.image priorSource: 17467483!
