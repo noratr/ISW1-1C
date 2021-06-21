@@ -100,12 +100,12 @@ setUp
 
 !classDefinition: #CashierTest category: 'TusLibros'!
 TestCase subclass: #CashierTest
-	instanceVariableNames: 'testObjectsFactory debitBehavior'
+	instanceVariableNames: 'testObjectsFactory'
 	classVariableNames: ''
 	poolDictionaries: ''
 	category: 'TusLibros'!
 
-!CashierTest methodsFor: 'tests' stamp: 'HernanWilkinson 6/17/2013 18:50'!
+!CashierTest methodsFor: 'tests' stamp: 'JPF 6/21/2021 11:20:37'!
 test01CanNotCheckoutAnEmptyCart
 
 	| salesBook |
@@ -115,32 +115,37 @@ test01CanNotCheckoutAnEmptyCart
 		should: [ Cashier 
 			toCheckout: testObjectsFactory createCart 
 			charging: testObjectsFactory notExpiredCreditCard 
-			throught: self
+			throught: testObjectsFactory createMerchantProcessor
 			on: testObjectsFactory today
-			registeringOn:  salesBook ]
+			registeringOn:  salesBook
+			generatingTransactionIdWith: testObjectsFactory transactionIdGenerator ]
 		raise: Error - MessageNotUnderstood
 		withExceptionDo: [ :anError |
 			self assert: anError messageText = Cashier cartCanNotBeEmptyErrorMessage.
 			self assert: salesBook isEmpty ]! !
 
-!CashierTest methodsFor: 'tests' stamp: 'HernanWilkinson 6/17/2013 18:51'!
+!CashierTest methodsFor: 'tests' stamp: 'JPF 6/21/2021 12:33:17'!
 test02CalculatedTotalIsCorrect
 
-	| cart cashier |
+	| cart cashier salesBook transactionId |
 	
 	cart := testObjectsFactory createCart.
 	cart add: 2 of: testObjectsFactory itemSellByTheStore.
+	salesBook := OrderedDictionary new.
 	
 	cashier :=  Cashier
 		toCheckout: cart 
 		charging: testObjectsFactory notExpiredCreditCard 
-		throught: self
+		throught: testObjectsFactory createMerchantProcessor
 		on: testObjectsFactory today 
-		registeringOn: OrderedCollection new.
+		registeringOn: salesBook
+		generatingTransactionIdWith: testObjectsFactory transactionIdGenerator.
 		
-	self assert: cashier checkOut = (testObjectsFactory itemSellByTheStorePrice * 2)! !
+	transactionId := cashier checkOut.
+		
+	self assert: (salesBook at: transactionId) total = (testObjectsFactory itemSellByTheStorePrice * 2)! !
 
-!CashierTest methodsFor: 'tests' stamp: 'HernanWilkinson 6/17/2013 18:51'!
+!CashierTest methodsFor: 'tests' stamp: 'JPF 6/21/2021 11:20:42'!
 test03CanNotCheckoutWithAnExpiredCreditCart
 
 	| cart salesBook |
@@ -153,77 +158,82 @@ test03CanNotCheckoutWithAnExpiredCreditCart
 		should: [ Cashier 
 				toCheckout: cart 
 				charging: testObjectsFactory expiredCreditCard 
-				throught: self
+				throught: testObjectsFactory createMerchantProcessor
 				on: testObjectsFactory today
-				registeringOn: salesBook ]
+				registeringOn: salesBook
+				generatingTransactionIdWith: testObjectsFactory transactionIdGenerator ]
 		raise: Error - MessageNotUnderstood
 		withExceptionDo: [ :anError | 
 			self assert: anError messageText = Cashier canNotChargeAnExpiredCreditCardErrorMessage.
 			self assert: salesBook isEmpty ]! !
 
-!CashierTest methodsFor: 'tests' stamp: 'HernanWilkinson 6/17/2013 19:04'!
+!CashierTest methodsFor: 'tests' stamp: 'JPF 6/21/2021 12:37:10'!
 test04CheckoutRegistersASale
 
-	| cart cashier salesBook total |
+	| cart cashier salesBook |
 
 	cart := testObjectsFactory createCart.
 	cart add: testObjectsFactory itemSellByTheStore.
-	salesBook := OrderedCollection new.
+	salesBook := OrderedDictionary new.
  
-	cashier:= Cashier 
+	cashier := Cashier 
 		toCheckout: cart 
 		charging: testObjectsFactory notExpiredCreditCard
-		throught: self
+		throught: testObjectsFactory createMerchantProcessor
 		on: testObjectsFactory today
-		registeringOn: salesBook.
+		registeringOn: salesBook
+		generatingTransactionIdWith: testObjectsFactory transactionIdGenerator.
 		
-	total := cashier checkOut.
-					
-	self assert: salesBook size = 1.
-	self assert: salesBook first total = total.! !
+	cashier checkOut.
 
-!CashierTest methodsFor: 'tests' stamp: 'HernanWilkinson 6/17/2013 19:00'!
+	self assert: salesBook size = 1.! !
+
+!CashierTest methodsFor: 'tests' stamp: 'JPF 6/21/2021 12:39:01'!
 test05CashierChargesCreditCardUsingMerchantProcessor
 
-	| cart cashier salesBook total creditCard debitedAmout debitedCreditCard  |
+	| cart cashier salesBook creditCard debitedAmout debitedCreditCard  transactionId |
 
 	cart := testObjectsFactory createCart.
 	cart add: testObjectsFactory itemSellByTheStore.
 	creditCard := testObjectsFactory notExpiredCreditCard.
-	salesBook := OrderedCollection new.
- 
-	cashier:= Cashier 
-		toCheckout: cart 
-		charging: creditCard
-		throught: self
-		on: testObjectsFactory today
-		registeringOn: salesBook.
-		
-	debitBehavior := [ :anAmount :aCreditCard | 
+	salesBook := OrderedDictionary new.
+	
+	testObjectsFactory debitBehavior: [ :anAmount :aCreditCard | 
 		debitedAmout := anAmount.
 		debitedCreditCard := aCreditCard ].
-	total := cashier checkOut.
+	
+ 	cashier:= Cashier 
+		toCheckout: cart 
+		charging: creditCard
+		throught: testObjectsFactory createMerchantProcessor
+		on: testObjectsFactory today
+		registeringOn: salesBook
+		generatingTransactionIdWith: testObjectsFactory transactionIdGenerator.	
+		
+	transactionId := cashier checkOut.
 					
 	self assert: debitedCreditCard = creditCard.
-	self assert: debitedAmout = total.! !
+	self assert: debitedAmout = (salesBook at: transactionId) total.! !
 
-!CashierTest methodsFor: 'tests' stamp: 'HernanWilkinson 6/17/2013 18:59'!
+!CashierTest methodsFor: 'tests' stamp: 'JPF 6/21/2021 12:48:27'!
 test06CashierDoesNotSaleWhenTheCreditCardHasNoCredit
 
 	| cart cashier salesBook creditCard |
 
+	testObjectsFactory debitBehavior: [ :anAmount :aCreditCard | self error: Cashier creditCardHasNoCreditErrorMessage].
 	cart := testObjectsFactory createCart.
 	cart add: testObjectsFactory itemSellByTheStore.
 	creditCard := testObjectsFactory notExpiredCreditCard.
-	salesBook := OrderedCollection new.
- 	debitBehavior := [ :anAmount :aCreditCard | self error: Cashier creditCardHasNoCreditErrorMessage].
+	salesBook := OrderedDictionary new.
+ 	
 	
 	cashier:= Cashier 
 		toCheckout: cart 
 		charging: creditCard
-		throught: self
+		throught: testObjectsFactory createMerchantProcessor
 		on: testObjectsFactory today
-		registeringOn: salesBook.
+		registeringOn: salesBook
+		generatingTransactionIdWith: testObjectsFactory transactionIdGenerator.
 		
 	self 
 		should: [cashier checkOut ]
@@ -233,41 +243,105 @@ test06CashierDoesNotSaleWhenTheCreditCardHasNoCredit
 			self assert: salesBook isEmpty ]! !
 
 
-!CashierTest methodsFor: 'setup' stamp: 'HernanWilkinson 6/17/2013 19:03'!
+!CashierTest methodsFor: 'setup' stamp: 'JPF 6/20/2021 13:16:56'!
 setUp 
 
-	testObjectsFactory := StoreTestObjectsFactory new.
-	debitBehavior := [ :anAmount :aCreditCard | ]! !
-
-
-!CashierTest methodsFor: 'merchant processor protocol' stamp: 'HernanWilkinson 6/17/2013 19:02'!
-debit: anAmount from: aCreditCard 
-
-	^debitBehavior value: anAmount value: aCreditCard ! !
+	testObjectsFactory := StoreTestObjectsFactory new! !
 
 
-!classDefinition: #StoreFacadeTest category: 'TusLibros'!
-TestCase subclass: #StoreFacadeTest
-	instanceVariableNames: 'testObjectsFactory validateUserBehaviour'
+!classDefinition: #CreditCardTest category: 'TusLibros'!
+TestCase subclass: #CreditCardTest
+	instanceVariableNames: 'testObjectsFactory'
 	classVariableNames: ''
 	poolDictionaries: ''
 	category: 'TusLibros'!
 
-!StoreFacadeTest methodsFor: 'tests' stamp: 'JPF 6/19/2021 09:47:56'!
-test01ShouldFailToCreateCartWhenUserIdOrPasswordAreIncorrect
+!CreditCardTest methodsFor: 'setUp' stamp: 'JPF 6/20/2021 10:50:30'!
+setUp
+
+	testObjectsFactory := StoreTestObjectsFactory new.! !
+
+
+!CreditCardTest methodsFor: 'tests' stamp: 'JPF 6/20/2021 11:04:47'!
+test01ShouldFailWhenTheNameIsEmpty
+
+	self 
+		should: [ 
+			CreditCard
+				withNumber: testObjectsFactory validCreditCardNumber
+				of: ''
+				expiringOn: testObjectsFactory notExpiredCreditCardMonth ]
+		raise: Error - MessageNotUnderstood 
+		withMessageText: CreditCard canNotCreateACreditCardWithEmptyName.! !
+
+!CreditCardTest methodsFor: 'tests' stamp: 'JPF 6/20/2021 11:10:50'!
+test02ShouldFailWhenTheNameIsAllWithespaceCharacters
+
+	self 
+		should: [ 
+			CreditCard
+				withNumber: testObjectsFactory validCreditCardNumber
+				of: '       '
+				expiringOn: testObjectsFactory notExpiredCreditCardMonth ]
+		raise: Error - MessageNotUnderstood 
+		withMessageText: CreditCard canNotCreateACreditCardWithAllWithespaceCharacters! !
+
+!CreditCardTest methodsFor: 'tests' stamp: 'JPF 6/20/2021 11:14:27'!
+test03ShouldFailWhenTheNameHasMoreThan30Characters
+
+	self 
+		should: [ 
+			CreditCard
+				withNumber: testObjectsFactory validCreditCardNumber
+				of: 'NameWithMoreThanThirtyCharacter'
+				expiringOn: testObjectsFactory notExpiredCreditCardMonth ]
+		raise: Error - MessageNotUnderstood 
+		withMessageText: CreditCard canNotCreateACreditCardWithANameWithMoreThan30Characters.! !
+
+!CreditCardTest methodsFor: 'tests' stamp: 'JPF 6/20/2021 11:17:25'!
+test04ShouldFailWhenTheNumberHasNot16Digits
+
+	self 
+		should: [ 
+			CreditCard
+				withNumber: 11118888111188881
+				of: testObjectsFactory validCreditCardName
+				expiringOn: testObjectsFactory notExpiredCreditCardMonth ]
+		raise: Error - MessageNotUnderstood 
+		withMessageText: CreditCard canNotCreateACreditCardWithANumberThatHasNot16Digits.
+		
+	self 
+		should: [ 
+			CreditCard
+				withNumber: 111188881111888
+				of: testObjectsFactory validCreditCardName
+				expiringOn: testObjectsFactory notExpiredCreditCardMonth ]
+		raise: Error - MessageNotUnderstood 
+		withMessageText: CreditCard canNotCreateACreditCardWithANumberThatHasNot16Digits.! !
+
+
+!classDefinition: #StoreFacadeTest category: 'TusLibros'!
+TestCase subclass: #StoreFacadeTest
+	instanceVariableNames: 'testObjectsFactory'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'TusLibros'!
+
+!StoreFacadeTest methodsFor: 'tests' stamp: 'JPF 6/20/2021 12:08:30'!
+test01ShouldFailToCreateCartWhenClientIdOrPasswordAreIncorrect
 
 	| clientId password validatedClientId validatedPassword storeFacade |
 	
 	clientId := 'clientId'.
 	password := 'password'.
 	
-	storeFacade := StoreFacade validatingWith: self having: testObjectsFactory defaultCatalog.
-	
-	validateUserBehaviour := [ :clientIdArg :passwordArg |
+	testObjectsFactory validateUserBehaviour: [ :clientIdArg :passwordArg |
 		validatedClientId := clientIdArg.
 		validatedPassword := passwordArg.
 		self error: ClientValidator clientIdOrPasswordAreIncorrect.
 		].
+	
+	storeFacade := testObjectsFactory createStoreFacade.
 	
 	self 
 		should: [ storeFacade createCartFor: clientId withPassword: password ] 
@@ -277,42 +351,41 @@ test01ShouldFailToCreateCartWhenUserIdOrPasswordAreIncorrect
 	self assert: password = validatedPassword.
 	self assert: clientId = validatedClientId.! !
 
-!StoreFacadeTest methodsFor: 'tests' stamp: 'JPF 6/19/2021 09:48:13'!
+!StoreFacadeTest methodsFor: 'tests' stamp: 'JPF 6/21/2021 14:09:07'!
 test02ShouldCreateACartAndBeEmptyWhenListed
 
-	| storeFacade cart cartId |
+	| storeFacade cartDetail cartId |
 	
-	storeFacade := StoreFacade validatingWith: self having: testObjectsFactory defaultCatalog.
+	storeFacade := testObjectsFactory createStoreFacade.
 	
 	cartId := storeFacade createCartFor: testObjectsFactory clientId withPassword: testObjectsFactory password.
 	
-	cart := storeFacade listCart: cartId.
+	cartDetail := storeFacade listCart: cartId.
 	
-	self assert: cart isEmpty! !
+	self assert: cartDetail isEmpty! !
 
-!StoreFacadeTest methodsFor: 'tests' stamp: 'JPF 6/19/2021 09:55:55'!
+!StoreFacadeTest methodsFor: 'tests' stamp: 'JPF 6/21/2021 14:09:54'!
 test03ShouldAddAnItemToTheCart
 
-	| storeFacade cartItems cartId |
+	| storeFacade cartDetail cartId |
 	
-	storeFacade := StoreFacade validatingWith: self having: testObjectsFactory defaultCatalog.
+	storeFacade := testObjectsFactory createStoreFacade.
 	
 	cartId := storeFacade createCartFor: testObjectsFactory clientId withPassword: testObjectsFactory password.
 	
 	storeFacade add: 3 of: testObjectsFactory itemSellByTheStore to: cartId.
 	
-	cartItems := storeFacade listCart: cartId.
+	cartDetail := storeFacade listCart: cartId.
 	
-	self assert: cartItems size = 3.
-	
-	cartItems do: [ :cartItem | self assert: cartItem = testObjectsFactory itemSellByTheStore ]! !
+	self assert: cartDetail size = 1.
+	self assert: (cartDetail at: testObjectsFactory itemSellByTheStore) = 3.! !
 
-!StoreFacadeTest methodsFor: 'tests' stamp: 'JPF 6/19/2021 10:03:30'!
+!StoreFacadeTest methodsFor: 'tests' stamp: 'JPF 6/20/2021 10:17:52'!
 test04ShouldFailWhenTryToAddItemsToAnInexistentCart
 
 	| storeFacade |
 	
-	storeFacade := StoreFacade validatingWith: self having: testObjectsFactory defaultCatalog.
+	storeFacade := testObjectsFactory createStoreFacade.
 	
 	self 
 		should: [ storeFacade add: 3 of: testObjectsFactory itemSellByTheStore to: 0 ]
@@ -322,12 +395,12 @@ test04ShouldFailWhenTryToAddItemsToAnInexistentCart
 	
 	! !
 
-!StoreFacadeTest methodsFor: 'tests' stamp: 'JPF 6/19/2021 10:04:05'!
+!StoreFacadeTest methodsFor: 'tests' stamp: 'JPF 6/20/2021 10:18:01'!
 test05ShouldFailWhenTryToListAnInexistentCart
 
 	| storeFacade |
 	
-	storeFacade := StoreFacade validatingWith: self having: testObjectsFactory defaultCatalog.
+	storeFacade := testObjectsFactory createStoreFacade.
 	
 	self 
 		should: [ storeFacade listCart: 0 ]
@@ -337,38 +410,246 @@ test05ShouldFailWhenTryToListAnInexistentCart
 	
 	! !
 
-!StoreFacadeTest methodsFor: 'tests' stamp: 'JPF 6/19/2021 10:13:39'!
+!StoreFacadeTest methodsFor: 'tests' stamp: 'JPF 6/21/2021 14:10:42'!
 test06ShouldAddAnItemToTheCorrectCart
 
-	| storeFacade cartItemsNotEmpty cartIdToAdd cartIdEmpty cartItemsEmpty |
+	| storeFacade cartDetailNotEmpty cartIdToAdd cartIdEmpty cartDetailEmpty |
 	
-	storeFacade := StoreFacade validatingWith: self having: testObjectsFactory defaultCatalog.
+	storeFacade := testObjectsFactory createStoreFacade.
 	
 	cartIdEmpty := storeFacade createCartFor: testObjectsFactory clientId withPassword: testObjectsFactory password.
 	cartIdToAdd := storeFacade createCartFor: testObjectsFactory clientId withPassword: testObjectsFactory password.
 	
 	storeFacade add: 3 of: testObjectsFactory itemSellByTheStore to: cartIdToAdd.
-	cartItemsNotEmpty := storeFacade listCart: cartIdToAdd.
+	cartDetailNotEmpty := storeFacade listCart: cartIdToAdd.
 	
-	cartItemsEmpty := storeFacade listCart: cartIdEmpty.
+	cartDetailEmpty := storeFacade listCart: cartIdEmpty.
 
-	self assert: cartItemsNotEmpty size = 3.
-	cartItemsNotEmpty do: [ :cartItem | self assert: cartItem = testObjectsFactory itemSellByTheStore ].
+	self assert: cartDetailNotEmpty size = 1.
+	self assert: (cartDetailNotEmpty at: testObjectsFactory itemSellByTheStore) = 3.
+
+	self assert: cartDetailEmpty isEmpty! !
+
+!StoreFacadeTest methodsFor: 'tests' stamp: 'JPF 6/21/2021 11:01:08'!
+test07ShouldReturnADifferentTransactionIdPerCheckout
+
+	| storeFacade cartId1 cartId2 transactionId1 transactionId2 clientId |
 	
-	self assert: cartItemsEmpty isEmpty! !
+	clientId := testObjectsFactory clientId.
+	
+	storeFacade := testObjectsFactory createStoreFacade.
+
+	cartId1 := storeFacade createCartFor: clientId withPassword: testObjectsFactory password.
+	storeFacade add: 3 of: testObjectsFactory itemSellByTheStore to: cartId1.
+	transactionId1 := storeFacade
+		checkOutCart: cartId1
+		payingWithCardNumber: testObjectsFactory validCreditCardNumber 
+		of: testObjectsFactory validCreditCardName
+		expiringOn: testObjectsFactory notExpiredCreditCardMonth
+		for: clientId.
+	
+	cartId2 := storeFacade createCartFor: clientId withPassword: testObjectsFactory password.
+	storeFacade add: 2 of: testObjectsFactory itemSellByTheStore to: cartId2.
+	
+	transactionId2 := storeFacade
+		checkOutCart: cartId2
+		payingWithCardNumber: testObjectsFactory validCreditCardNumber 
+		of: testObjectsFactory validCreditCardName
+		expiringOn: testObjectsFactory notExpiredCreditCardMonth
+		for: clientId.
+		
+	self deny: transactionId1 = transactionId2.
+	
+	
+
+! !
+
+!StoreFacadeTest methodsFor: 'tests' stamp: 'JPF 6/21/2021 11:02:17'!
+test08ShouldFailWhenTryToCheckoutTheSameCartTwice
+
+	| storeFacade cartId clientId |
+	
+	clientId := testObjectsFactory clientId.
+	storeFacade := testObjectsFactory createStoreFacade.
+
+	cartId := storeFacade createCartFor: clientId withPassword: testObjectsFactory password.
+	storeFacade add: 3 of: testObjectsFactory itemSellByTheStore to: cartId.
+	storeFacade
+		checkOutCart: cartId
+		payingWithCardNumber: testObjectsFactory validCreditCardNumber 
+		of: testObjectsFactory validCreditCardName
+		expiringOn: testObjectsFactory notExpiredCreditCardMonth
+		for: clientId.
+		
+	self
+		should: [
+		storeFacade
+			checkOutCart: cartId
+			payingWithCardNumber: testObjectsFactory validCreditCardNumber 
+			of: testObjectsFactory validCreditCardName
+			expiringOn: testObjectsFactory notExpiredCreditCardMonth
+			for: clientId ]
+		raise: Error - MessageNotUnderstood 
+		withMessageText: StoreFacade inexistentCartErrorMessage
+	
+	
+	
+
+! !
+
+!StoreFacadeTest methodsFor: 'tests' stamp: 'JPF 6/20/2021 12:09:50'!
+test09ShouldFailWhenListPurchasesForAnIncorrectClientIdOrPassword
+
+	| clientId password validatedClientId validatedPassword storeFacade |
+	
+	clientId := 'clientId'.
+	password := 'password'.
+	
+	testObjectsFactory validateUserBehaviour: [ :clientIdArg :passwordArg |
+		validatedClientId := clientIdArg.
+		validatedPassword := passwordArg.
+		self error: ClientValidator clientIdOrPasswordAreIncorrect.
+		].
+	
+	storeFacade := testObjectsFactory createStoreFacade.
+	
+	self 
+		should: [ storeFacade listPurchasesOf: clientId withPassword: password ] 
+		raise: Error - MessageNotUnderstood 
+		withMessageText: ClientValidator clientIdOrPasswordAreIncorrect.
+		
+	self assert: password = validatedPassword.
+	self assert: clientId = validatedClientId.
+	
+	
+	
+
+! !
+
+!StoreFacadeTest methodsFor: 'tests' stamp: 'JPF 6/20/2021 12:28:41'!
+test10ShouldReturnEmptyListOfPurchasesWhenClientDidNotMakeAnyPurchase
+
+	| storeFacade cartId  purchasesByClient |
+	
+	storeFacade := testObjectsFactory createStoreFacade.
+
+	cartId := storeFacade createCartFor: testObjectsFactory clientId withPassword: testObjectsFactory password.
+	storeFacade add: 3 of: testObjectsFactory itemSellByTheStore to: cartId.
+	storeFacade add: 1 of: testObjectsFactory itemSellByTheStore2 to: cartId.
+
+	purchasesByClient := storeFacade
+		listPurchasesOf: testObjectsFactory
+		clientId withPassword: testObjectsFactory password.
+		
+	self assert: purchasesByClient isEmpty.
+	
+		
+	! !
+
+!StoreFacadeTest methodsFor: 'tests' stamp: 'JPF 6/21/2021 12:30:04'!
+test11ShouldListClientPurchases
+
+	| storeFacade cartId1  cartId2 purchasesDetailOfClient clientId |
+	
+	clientId := testObjectsFactory clientId.
+	storeFacade := testObjectsFactory createStoreFacade.
+
+	cartId1 := storeFacade createCartFor: clientId withPassword: testObjectsFactory password.
+	storeFacade add: 3 of: testObjectsFactory itemSellByTheStore to: cartId1.
+	storeFacade add: 1 of: testObjectsFactory itemSellByTheStore2 to: cartId1.
+	storeFacade
+		checkOutCart: cartId1
+		payingWithCardNumber: testObjectsFactory validCreditCardNumber 
+		of: testObjectsFactory validCreditCardName
+		expiringOn: testObjectsFactory notExpiredCreditCardMonth
+		for: clientId.
+		
+	cartId2 := storeFacade createCartFor: clientId withPassword: testObjectsFactory password.
+	storeFacade add: 1 of: testObjectsFactory itemSellByTheStore to: cartId2.
+	storeFacade add: 2 of: testObjectsFactory itemSellByTheStore2 to: cartId2.
+	storeFacade
+		checkOutCart: cartId2
+		payingWithCardNumber: testObjectsFactory validCreditCardNumber 
+		of: testObjectsFactory validCreditCardName
+		expiringOn: testObjectsFactory notExpiredCreditCardMonth
+		for: clientId.
+		
+	purchasesDetailOfClient := storeFacade
+		listPurchasesOf: testObjectsFactory
+		clientId withPassword: testObjectsFactory password.
+		
+	self assert: 100 equals: purchasesDetailOfClient total.
+	self assert: 2 equals: purchasesDetailOfClient items size.
+	
+	self assert: 4 equals: (purchasesDetailOfClient items at: testObjectsFactory itemSellByTheStore).
+	self assert: 3 equals: (purchasesDetailOfClient items at: testObjectsFactory itemSellByTheStore2).
+
+		
+	! !
+
+!StoreFacadeTest methodsFor: 'tests' stamp: 'JPF 6/21/2021 14:02:15'!
+test12ShouldFailWhenTryToAccessACartAfter30MinutesFromTheLastAccess
+
+	| storeFacade cartId  clientId today |
+	
+	clientId := testObjectsFactory clientId.
+	storeFacade := testObjectsFactory createStoreFacade.
+	
+	today := testObjectsFactory today.
+
+	testObjectsFactory clockBehaviour: [ today ].
+	cartId := storeFacade createCartFor: clientId withPassword: testObjectsFactory password.
+	testObjectsFactory clockBehaviour: [ today + (Duration minutes: 30) ].
+	self 
+		should: [ storeFacade listCart: cartId ]
+		raise: Error - MessageNotUnderstood
+		withMessageText: StoreFacade inexistentCartErrorMessage.
+	
+	testObjectsFactory clockBehaviour: [ today ].	
+	cartId := storeFacade createCartFor: clientId withPassword: testObjectsFactory password.
+	testObjectsFactory clockBehaviour: [ today + (Duration minutes: 30) ].
+	self 
+		should: [ storeFacade add: 1 of: testObjectsFactory itemSellByTheStore to: cartId ]
+		raise: Error - MessageNotUnderstood
+		withMessageText: StoreFacade inexistentCartErrorMessage.
+	
+	testObjectsFactory clockBehaviour: [ today ].	
+	cartId := storeFacade createCartFor: clientId withPassword: testObjectsFactory password.
+	testObjectsFactory clockBehaviour: [ today + (Duration minutes: 29) ].
+	storeFacade add: 3 of: testObjectsFactory itemSellByTheStore to: cartId.
+	testObjectsFactory clockBehaviour: [ today + (Duration minutes: 59) ].
+	self 
+		should: [ storeFacade listCart: cartId ]
+		raise: Error - MessageNotUnderstood
+		withMessageText: StoreFacade inexistentCartErrorMessage.
+	
+	testObjectsFactory clockBehaviour: [ today ].	
+	cartId := storeFacade createCartFor: clientId withPassword: testObjectsFactory password.
+	testObjectsFactory clockBehaviour: [ today + (Duration minutes: 29) ].
+	storeFacade listCart: cartId.
+	testObjectsFactory clockBehaviour: [ today + (Duration minutes: 59) ].
+	self 
+		should: [ storeFacade add: 3 of: testObjectsFactory itemSellByTheStore to: cartId ]
+		raise: Error - MessageNotUnderstood
+		withMessageText: StoreFacade inexistentCartErrorMessage.
+		
+	testObjectsFactory clockBehaviour: [ today + (Duration minutes: 62) ].
+	self 
+		should: [ storeFacade listCart: cartId. ]
+		raise: Error - MessageNotUnderstood
+		withMessageText: StoreFacade inexistentCartErrorMessage.
+		
+	
+
+		
+	! !
 
 
-!StoreFacadeTest methodsFor: 'setUp' stamp: 'JPF 6/17/2021 21:25:58'!
+!StoreFacadeTest methodsFor: 'setUp' stamp: 'JPF 6/20/2021 10:09:01'!
 setUp 
 
 	testObjectsFactory := StoreTestObjectsFactory new.
-	validateUserBehaviour := [ :clientIdArg :passwordArg | ].! !
-
-
-!StoreFacadeTest methodsFor: 'client validator protocol' stamp: 'JPF 6/17/2021 21:20:02'!
-validateUser: aClientId withPassword: aPassword
-
-	validateUserBehaviour value: aClientId value: aPassword! !
+	! !
 
 
 !classDefinition: #Cart category: 'TusLibros'!
@@ -400,7 +681,7 @@ assertIsValidQuantity: aQuantity
 	aQuantity strictlyPositive ifFalse: [ self error: self invalidQuantityErrorMessage ]! !
 
 
-!Cart methodsFor: 'initialization' stamp: 'HernanWilkinson 6/17/2013 17:48'!
+!Cart methodsFor: 'initialization' stamp: 'JPF 6/20/2021 13:52:16'!
 initializeAcceptingItemsOf: aCatalog
 
 	catalog := aCatalog.
@@ -444,10 +725,18 @@ add: aQuantity of: anItem
 	1 to: aQuantity do: [ :aNumber | items add: anItem ]! !
 
 
-!Cart methodsFor: 'accessing' stamp: 'JPF 6/19/2021 09:55:11'!
-items
+!Cart methodsFor: 'accessing' stamp: 'JPF 6/21/2021 10:08:03'!
+cartDetail
 
-	^ items copy! !
+	| cartDetail |
+	
+	cartDetail := OrderedDictionary new.
+
+	items do: [ :item |
+		cartDetail at: item put: (items occurrencesOf: item)
+		].
+	
+	^ cartDetail! !
 
 "-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- "!
 
@@ -463,7 +752,7 @@ acceptingItemsOf: aCatalog
 
 !classDefinition: #Cashier category: 'TusLibros'!
 Object subclass: #Cashier
-	instanceVariableNames: 'cart salesBook merchantProcessor creditCard total'
+	instanceVariableNames: 'cart salesBook merchantProcessor creditCard total transactionIdGenerator'
 	classVariableNames: ''
 	poolDictionaries: ''
 	category: 'TusLibros'!
@@ -474,10 +763,10 @@ calculateTotal
 	total := cart total.
 	! !
 
-!Cashier methodsFor: 'checkout - private' stamp: 'HernanWilkinson 6/17/2013 19:07'!
+!Cashier methodsFor: 'checkout - private' stamp: 'JPF 6/21/2021 10:04:02'!
 createSale
 
-	^ Sale of: total
+	^ Sale of: cart cartDetail totalizing: total.
 ! !
 
 !Cashier methodsFor: 'checkout - private' stamp: 'HernanWilkinson 6/17/2013 19:06'!
@@ -486,29 +775,40 @@ debitTotal
 	merchantProcessor debit: total from: creditCard.
 	! !
 
-!Cashier methodsFor: 'checkout - private' stamp: 'HernanWilkinson 6/17/2013 19:06'!
+!Cashier methodsFor: 'checkout - private' stamp: 'JPF 6/21/2021 11:16:32'!
 registerSale
 
-	salesBook add: self createSale! !
+	| sale transactionId |
+	
+	sale := self createSale.
+	transactionId := transactionIdGenerator nextTransactionId.
+
+	salesBook at: transactionId put: sale.
+	
+	^ transactionId.! !
 
 
-!Cashier methodsFor: 'checkout' stamp: 'HernanWilkinson 6/17/2013 19:06'!
+!Cashier methodsFor: 'checkout' stamp: 'JPF 6/21/2021 10:48:29'!
 checkOut
 
+	| transactionId |
+	
 	self calculateTotal.
 	self debitTotal.
-	self registerSale.
+	transactionId := self registerSale.
 
-	^ total! !
+	^ transactionId.! !
 
 
-!Cashier methodsFor: 'initialization' stamp: 'HernanWilkinson 6/17/2013 18:53'!
-initializeToCheckout: aCart charging: aCreditCard throught: aMerchantProcessor registeringOn: aSalesBook
+!Cashier methodsFor: 'initialization' stamp: 'JPF 6/21/2021 11:32:39'!
+initializeToCheckout: aCart charging: aCreditCard throught: aMerchantProcessor registeringOn: aSalesBook generatingTransactionIdWith: aTransactionIdGenerator 
 	
 	cart := aCart.
 	creditCard := aCreditCard.
 	merchantProcessor := aMerchantProcessor.
-	salesBook := aSalesBook! !
+	salesBook := aSalesBook.
+	transactionIdGenerator := aTransactionIdGenerator.! !
+
 
 "-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- "!
 
@@ -527,13 +827,13 @@ assertIsNotExpired: aCreditCard on: aDate
 	(aCreditCard isExpiredOn: aDate) ifTrue: [ self error: self canNotChargeAnExpiredCreditCardErrorMessage ]! !
 
 
-!Cashier class methodsFor: 'instance creation' stamp: 'HernanWilkinson 6/17/2013 18:51'!
-toCheckout: aCart charging: aCreditCard throught: aMerchantProcessor on: aDate registeringOn: aSalesBook
+!Cashier class methodsFor: 'instance creation' stamp: 'JPF 6/21/2021 11:31:57'!
+toCheckout: aCart charging: aCreditCard throught: aMerchantProcessor on: aDate registeringOn: aSalesBook generatingTransactionIdWith: aTransactionIdGenerator 
 	
 	self assertIsNotEmpty: aCart.
 	self assertIsNotExpired: aCreditCard on: aDate.
 	
-	^self new initializeToCheckout: aCart charging: aCreditCard throught: aMerchantProcessor registeringOn: aSalesBook! !
+	^self new initializeToCheckout: aCart charging: aCreditCard throught: aMerchantProcessor registeringOn: aSalesBook generatingTransactionIdWith: aTransactionIdGenerator! !
 
 
 !Cashier class methodsFor: 'error messages' stamp: 'HernanWilkinson 6/17/2013 18:21'!
@@ -559,8 +859,8 @@ Object subclass: #ClientValidator
 	poolDictionaries: ''
 	category: 'TusLibros'!
 
-!ClientValidator methodsFor: 'validation' stamp: 'JPF 6/17/2021 21:16:43'!
-validateUser: aClientId withPassword: aPassword
+!ClientValidator methodsFor: 'validation' stamp: 'JPF 6/20/2021 12:12:26'!
+validateClient: aClientId withPassword: aPassword
 
 	self subclassResponsibility! !
 
@@ -578,7 +878,7 @@ clientIdOrPasswordAreIncorrect
 
 !classDefinition: #CreditCard category: 'TusLibros'!
 Object subclass: #CreditCard
-	instanceVariableNames: 'expiration'
+	instanceVariableNames: 'expiration number name'
 	classVariableNames: ''
 	poolDictionaries: ''
 	category: 'TusLibros'!
@@ -589,10 +889,47 @@ isExpiredOn: aDate
 	^expiration start < (Month month: aDate monthIndex year: aDate yearNumber) start ! !
 
 
-!CreditCard methodsFor: 'initialization' stamp: 'HernanWilkinson 6/17/2013 18:38'!
-initializeExpiringOn: aMonth 
+!CreditCard methodsFor: 'initialization' stamp: 'JPF 6/20/2021 11:20:07'!
+initializeWithNumber: aCreditCardNumber of: aName expiringOn: aMonth
+
+	self assertNameIsValid: aName.
+	self assertCreditCardNumberIsValid: aCreditCardNumber.
 	
-	expiration := aMonth ! !
+	expiration := aMonth.
+	number := aCreditCardNumber.
+	name := aName.! !
+
+
+!CreditCard methodsFor: 'assertions' stamp: 'JPF 6/20/2021 11:20:07'!
+assertCreditCardNumberIsValid: aCreditCardNumber
+
+	^ (aCreditCardNumber numberOfDigitsInBase: 10) ~= 16
+		ifTrue: [ self error: self class canNotCreateACreditCardWithANumberThatHasNot16Digits ]! !
+
+!CreditCard methodsFor: 'assertions' stamp: 'JPF 6/20/2021 11:21:40'!
+assertNameHasNotMoreThan30Characters: aName
+
+	^ aName size > 30 
+		ifTrue: [ self error: self class canNotCreateACreditCardWithANameWithMoreThan30Characters ]! !
+
+!CreditCard methodsFor: 'assertions' stamp: 'JPF 6/20/2021 11:21:14'!
+assertNameHasNotOnlyWithspaceCharacters: aName
+
+	^ aName withBlanksTrimmed isEmpty
+		ifTrue: [ self error: self class canNotCreateACreditCardWithAllWithespaceCharacters ]! !
+
+!CreditCard methodsFor: 'assertions' stamp: 'JPF 6/20/2021 11:20:39'!
+assertNameIsNotEmpty: aName
+
+	^ aName isEmpty 
+		ifTrue: [ self error: self class canNotCreateACreditCardWithEmptyName ]! !
+
+!CreditCard methodsFor: 'assertions' stamp: 'JPF 6/20/2021 11:21:40'!
+assertNameIsValid: aName
+
+	self assertNameIsNotEmpty: aName.
+	self assertNameHasNotOnlyWithspaceCharacters: aName.
+	self assertNameHasNotMoreThan30Characters: aName! !
 
 "-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- "!
 
@@ -600,15 +937,78 @@ initializeExpiringOn: aMonth
 CreditCard class
 	instanceVariableNames: ''!
 
-!CreditCard class methodsFor: 'instance creation' stamp: 'HernanWilkinson 6/17/2013 18:38'!
-expiringOn: aMonth 
+!CreditCard class methodsFor: 'instance creation' stamp: 'JPF 6/20/2021 11:00:04'!
+withNumber: aCreditCardNumber of: aName expiringOn: aMonth 
 	
-	^self new initializeExpiringOn: aMonth! !
+	^self new initializeWithNumber: aCreditCardNumber of: aName expiringOn: aMonth.! !
+
+
+!CreditCard class methodsFor: 'error descriptions' stamp: 'JPF 6/20/2021 11:15:08'!
+canNotCreateACreditCardWithANameWithMoreThan30Characters
+	
+	^ 'Credit card can not have a name with more than 30 characters'! !
+
+!CreditCard class methodsFor: 'error descriptions' stamp: 'JPF 6/20/2021 11:18:10'!
+canNotCreateACreditCardWithANumberThatHasNot16Digits
+	
+	^ 'Credit card number should have 16 digits'! !
+
+!CreditCard class methodsFor: 'error descriptions' stamp: 'JPF 6/20/2021 11:11:46'!
+canNotCreateACreditCardWithAllWithespaceCharacters
+	
+	^ 'Credit card can not have a name with all whitespaces characters'! !
+
+!CreditCard class methodsFor: 'error descriptions' stamp: 'JPF 6/20/2021 10:54:45'!
+canNotCreateACreditCardWithEmptyName
+	
+	^ 'Credit card can not have an empty name'! !
+
+
+!classDefinition: #PurchasesDetail category: 'TusLibros'!
+Object subclass: #PurchasesDetail
+	instanceVariableNames: 'items total'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'TusLibros'!
+
+!PurchasesDetail methodsFor: 'initialization' stamp: 'JPF 6/21/2021 12:27:13'!
+initializeWith: quantityByItem totalizing: aTotal 
+
+	items := quantityByItem.
+	total := aTotal.! !
+
+
+!PurchasesDetail methodsFor: 'accessing' stamp: 'JPF 6/21/2021 12:28:35'!
+items
+	
+	^items! !
+
+!PurchasesDetail methodsFor: 'accessing' stamp: 'JPF 6/21/2021 12:27:38'!
+total
+	
+	^total! !
+
+
+!PurchasesDetail methodsFor: 'testing' stamp: 'JPF 6/21/2021 12:40:10'!
+isEmpty
+	
+	^ items isEmpty! !
+
+"-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- "!
+
+!classDefinition: 'PurchasesDetail class' category: 'TusLibros'!
+PurchasesDetail class
+	instanceVariableNames: ''!
+
+!PurchasesDetail class methodsFor: 'instance creation' stamp: 'JPF 6/21/2021 12:25:33'!
+with: items totalizing: aTotal
+	
+	^self new initializeWith: items totalizing: aTotal.! !
 
 
 !classDefinition: #Sale category: 'TusLibros'!
 Object subclass: #Sale
-	instanceVariableNames: 'total'
+	instanceVariableNames: 'total items'
 	classVariableNames: ''
 	poolDictionaries: ''
 	category: 'TusLibros'!
@@ -619,10 +1019,18 @@ total
 	^ total! !
 
 
-!Sale methodsFor: 'initialization' stamp: 'HernanWilkinson 6/17/2013 18:47'!
-initializeTotal: aTotal
+!Sale methodsFor: 'initialization' stamp: 'JPF 6/21/2021 11:23:15'!
+initializeOf: itemsOfSale totalizing: aTotal
 
-	total := aTotal ! !
+	total := aTotal.
+	items := itemsOfSale.
+	! !
+
+
+!Sale methodsFor: 'accessing' stamp: 'JPF 6/21/2021 12:21:50'!
+items
+	
+	^ items! !
 
 "-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- "!
 
@@ -630,33 +1038,46 @@ initializeTotal: aTotal
 Sale class
 	instanceVariableNames: ''!
 
-!Sale class methodsFor: 'instance creation' stamp: 'HernanWilkinson 6/17/2013 18:47'!
-of: aTotal
+!Sale class methodsFor: 'instance creation' stamp: 'JPF 6/20/2021 13:03:02'!
+of: items totalizing: aTotal
 
 	"should assert total is not negative or 0!!"
-	^self new initializeTotal: aTotal ! !
+	^self new initializeOf: items totalizing: aTotal! !
 
 
 !classDefinition: #StoreFacade category: 'TusLibros'!
 Object subclass: #StoreFacade
-	instanceVariableNames: 'clientValidator cartRepository cartIdSequence catalog'
+	instanceVariableNames: 'clientValidator cartRepository cartIdSequence catalog transactionIdSequence merchantProcessor salesBook transactionsByClient transactionIdGenerator clock lastCartAccessRegistry'
 	classVariableNames: ''
 	poolDictionaries: ''
 	category: 'TusLibros'!
 
-!StoreFacade methodsFor: 'initialization' stamp: 'JPF 6/19/2021 09:50:00'!
-initializeValidatingWith: aClientValidator having: aCatalog  
+!StoreFacade methodsFor: 'initialization' stamp: 'JPF 6/21/2021 13:57:30'!
+initializeValidatingWith: aClientValidator having: aCatalog processingPaymentsWith: aMerchantProcessor accessingTimeThrough: aClock  
 
 	clientValidator := aClientValidator.
 	catalog := aCatalog.
 	cartRepository := Dictionary new.
-	cartIdSequence := 1.! !
+	cartIdSequence := 1.
+	transactionIdSequence :=1.
+	salesBook := OrderedDictionary new.
+	transactionsByClient := Dictionary new.
+	merchantProcessor := aMerchantProcessor.
+	clock := aClock.
+	lastCartAccessRegistry := Dictionary new.! !
 
 
-!StoreFacade methodsFor: 'private' stamp: 'JPF 6/19/2021 10:05:54'!
+!StoreFacade methodsFor: 'private' stamp: 'JPF 6/21/2021 14:05:15'!
 findCart: aCartId
 
-	^ cartRepository at: aCartId ifAbsent: [ self error: self class inexistentCartErrorMessage ]! !
+	| cart |
+	
+	cart := cartRepository at: aCartId ifAbsent: [ self error: self class inexistentCartErrorMessage ].
+	self assertCartWasAccessedInTheLast30Minutes: aCartId.
+	self updateLastAccessFor: aCartId.
+	
+	^ cart
+	! !
 
 !StoreFacade methodsFor: 'private' stamp: 'JPF 6/19/2021 10:13:57'!
 nextCartId
@@ -668,6 +1089,26 @@ nextCartId
 	
 	^ cartId! !
 
+!StoreFacade methodsFor: 'private' stamp: 'JPF 6/20/2021 11:54:44'!
+nextTransactionId
+
+	| transactionId |
+	
+	transactionId := transactionIdSequence.
+	transactionIdSequence := transactionIdSequence + 1.
+	
+	^ transactionId! !
+
+!StoreFacade methodsFor: 'private' stamp: 'JPF 6/20/2021 12:04:05'!
+removeCart: aCartId
+
+	^ cartRepository removeKey: aCartId! !
+
+!StoreFacade methodsFor: 'private' stamp: 'JPF 6/21/2021 14:05:15'!
+updateLastAccessFor: aCartId
+
+	^ lastCartAccessRegistry at: aCartId put: clock now! !
+
 
 !StoreFacade methodsFor: 'actions' stamp: 'JPF 6/19/2021 10:06:39'!
 add: aQuantity of: anItem to: aCartId 
@@ -678,24 +1119,93 @@ add: aQuantity of: anItem to: aCartId
 	
 	cart add: aQuantity of: anItem.! !
 
-!StoreFacade methodsFor: 'actions' stamp: 'JPF 6/19/2021 09:42:56'!
+!StoreFacade methodsFor: 'actions' stamp: 'JPF 6/21/2021 11:16:04'!
+checkOutCart: aCartId payingWithCardNumber: aCreditCardNumber of: aName expiringOn: aMonth for: aClientId 
+
+	| cart cashier aDateAndTime transactionId transactionsOfClient |
+	
+	aDateAndTime := DateAndTime now.
+
+	cart := self findCart: aCartId.
+	
+	cashier := Cashier 
+		toCheckout: cart 
+		charging: (CreditCard 
+			withNumber: aCreditCardNumber
+			of: aName
+			expiringOn: aMonth)
+		throught: merchantProcessor
+		on: aDateAndTime
+		registeringOn: salesBook
+		generatingTransactionIdWith: self.
+		
+	transactionId := cashier checkOut.
+	
+	transactionsOfClient := transactionsByClient at: aClientId ifAbsent: [ OrderedCollection new ].
+	transactionsOfClient add: transactionId.
+	transactionsByClient at: aClientId put: transactionsOfClient.
+		
+	self removeCart: aCartId.
+	
+	^ transactionId.! !
+
+!StoreFacade methodsFor: 'actions' stamp: 'JPF 6/21/2021 14:06:58'!
 createCartFor: aClientId withPassword: aPassword
 
 	| cartId |
 	
-	clientValidator validateUser: aClientId withPassword: aPassword.
+	clientValidator validateClient: aClientId withPassword: aPassword.
 	
 	cartId := self nextCartId.
 	
-	cartRepository at: cartId put: (Cart acceptingItemsOf: catalog).
+	self createNewCart: cartId.
+	self updateLastAccessFor: cartId.
 	
 	^ cartId! !
 
+!StoreFacade methodsFor: 'actions' stamp: 'JPF 6/21/2021 14:06:58'!
+createNewCart: cartId
 
-!StoreFacade methodsFor: 'queries' stamp: 'JPF 6/19/2021 10:05:54'!
+	^ cartRepository at: cartId put: (Cart acceptingItemsOf: catalog)! !
+
+!StoreFacade methodsFor: 'actions' stamp: 'JPF 6/21/2021 12:24:32'!
+listPurchasesOf: aClientId withPassword: aPassword
+
+	| transactionsOfClient purchasesDetailTotal purchasesDetailItems |
+	
+	clientValidator validateClient: aClientId withPassword: aPassword.
+	
+	transactionsOfClient := transactionsByClient at: aClientId ifAbsent: [ OrderedCollection new ].
+	
+	purchasesDetailTotal := 0.
+	purchasesDetailItems := OrderedDictionary new.
+	
+	transactionsOfClient do: [ :transactionId || sale |
+		sale := salesBook at: transactionId.
+		sale items associationsDo: [ :saleItem || purchasesDetailItemQuantity |
+			purchasesDetailItemQuantity := purchasesDetailItems at: saleItem key ifAbsent: [ 0 ].
+			purchasesDetailItems at: saleItem key put: purchasesDetailItemQuantity + saleItem value
+			].
+		purchasesDetailTotal := purchasesDetailTotal + sale total.
+		].
+	
+	^ PurchasesDetail with: purchasesDetailItems totalizing: purchasesDetailTotal! !
+
+
+!StoreFacade methodsFor: 'queries' stamp: 'JPF 6/21/2021 10:04:02'!
 listCart: aCartId
 	
-	^ (self findCart: aCartId) items.! !
+	^ (self findCart: aCartId) cartDetail.! !
+
+
+!StoreFacade methodsFor: 'assertions' stamp: 'JPF 6/21/2021 14:04:09'!
+assertCartWasAccessedInTheLast30Minutes: aCartId
+
+	^ (clock now - (lastCartAccessRegistry at: aCartId)) >= (Duration minutes: 30) ifTrue: [
+		cartRepository removeKey: aCartId.
+		lastCartAccessRegistry removeKey: aCartId.
+		self error: self class inexistentCartErrorMessage
+		]! !
 
 "-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- "!
 
@@ -703,10 +1213,10 @@ listCart: aCartId
 StoreFacade class
 	instanceVariableNames: ''!
 
-!StoreFacade class methodsFor: 'instance creation' stamp: 'JPF 6/19/2021 09:49:43'!
-validatingWith: aClientValidator having: aCatalog  
+!StoreFacade class methodsFor: 'instance creation' stamp: 'JPF 6/21/2021 13:46:04'!
+validatingWith: aClientValidator having: aCatalog processingPaymentsWith: aMerchantProcessor accessingTimeThrough: aClock    
 	
-	^self new initializeValidatingWith: aClientValidator having: aCatalog ! !
+	^self new initializeValidatingWith: aClientValidator having: aCatalog processingPaymentsWith: aMerchantProcessor accessingTimeThrough: aClock ! !
 
 
 !StoreFacade class methodsFor: 'error descriptions' stamp: 'JPF 6/19/2021 10:01:36'!
@@ -717,7 +1227,7 @@ inexistentCartErrorMessage
 
 !classDefinition: #StoreTestObjectsFactory category: 'TusLibros'!
 Object subclass: #StoreTestObjectsFactory
-	instanceVariableNames: 'today'
+	instanceVariableNames: 'today validateClientBehaviour debitBehavior transactionIdSequence clockBehaviour'
 	classVariableNames: ''
 	poolDictionaries: ''
 	category: 'TusLibros'!
@@ -732,6 +1242,16 @@ itemSellByTheStore
 	
 	^ 'validBook'! !
 
+!StoreTestObjectsFactory methodsFor: 'items' stamp: 'JPF 6/20/2021 12:23:57'!
+itemSellByTheStore2
+	
+	^ 'validBook2'! !
+
+!StoreTestObjectsFactory methodsFor: 'items' stamp: 'JPF 6/20/2021 12:24:09'!
+itemSellByTheStore2Price
+	
+	^20! !
+
 !StoreTestObjectsFactory methodsFor: 'items' stamp: 'HernanWilkinson 6/17/2013 18:08'!
 itemSellByTheStorePrice
 	
@@ -743,29 +1263,55 @@ createCart
 	
 	^Cart acceptingItemsOf: self defaultCatalog! !
 
-!StoreTestObjectsFactory methodsFor: 'cart' stamp: 'HernanWilkinson 6/17/2013 18:08'!
+!StoreTestObjectsFactory methodsFor: 'cart' stamp: 'JPF 6/20/2021 12:24:34'!
 defaultCatalog
 	
 	^ Dictionary new
 		at: self itemSellByTheStore put: self itemSellByTheStorePrice;
+		at: self itemSellByTheStore2 put: self itemSellByTheStore2Price;
 		yourself ! !
 
 
-!StoreTestObjectsFactory methodsFor: 'credit card' stamp: 'HernanWilkinson 6/17/2013 18:37'!
+!StoreTestObjectsFactory methodsFor: 'credit card' stamp: 'JPF 6/20/2021 11:27:35'!
 expiredCreditCard
 	
-	^CreditCard expiringOn: (Month month: today monthIndex year: today yearNumber - 1)! !
+	^ CreditCard
+		withNumber: self validCreditCardNumber 
+		of: self validCreditCardName
+		expiringOn: (Month month: today monthIndex year: today yearNumber - 1)! !
 
-!StoreTestObjectsFactory methodsFor: 'credit card' stamp: 'HernanWilkinson 6/17/2013 18:36'!
+!StoreTestObjectsFactory methodsFor: 'credit card' stamp: 'JPF 6/20/2021 11:01:12'!
 notExpiredCreditCard
 	
-	^CreditCard expiringOn: (Month month: today monthIndex year: today yearNumber + 1)! !
+	^CreditCard
+		withNumber: self validCreditCardNumber
+		of: self validCreditCardName
+		expiringOn: self notExpiredCreditCardMonth! !
+
+!StoreTestObjectsFactory methodsFor: 'credit card' stamp: 'JPF 6/20/2021 10:36:28'!
+notExpiredCreditCardMonth
+
+	^ Month month: today monthIndex year: today yearNumber + 1! !
+
+!StoreTestObjectsFactory methodsFor: 'credit card' stamp: 'JPF 6/20/2021 11:01:52'!
+validCreditCardName
+	
+	^ 'Valid Name'! !
+
+!StoreTestObjectsFactory methodsFor: 'credit card' stamp: 'JPF 6/20/2021 11:24:53'!
+validCreditCardNumber
+	
+	^ 1111888811118888! !
 
 
-!StoreTestObjectsFactory methodsFor: 'initialization' stamp: 'HernanWilkinson 6/17/2013 18:37'!
+!StoreTestObjectsFactory methodsFor: 'initialization' stamp: 'JPF 6/21/2021 13:42:49'!
 initialize
 
-	today := DateAndTime now! !
+	today := DateAndTime now.
+	validateClientBehaviour := [ :clientIdArg :passwordArg | ].
+	debitBehavior := [ :anAmount :aCreditCard | ].
+	clockBehaviour := [ DateAndTime now ].
+	transactionIdSequence := 1.! !
 
 
 !StoreTestObjectsFactory methodsFor: 'date' stamp: 'HernanWilkinson 6/17/2013 18:37'!
@@ -783,3 +1329,68 @@ clientId
 password
 	
 	^ 'password'.! !
+
+
+!StoreTestObjectsFactory methodsFor: 'storeFacade' stamp: 'JPF 6/21/2021 13:45:08'!
+createStoreFacade
+	
+	^ StoreFacade validatingWith: self having: self defaultCatalog processingPaymentsWith: self accessingTimeThrough: self.! !
+
+
+!StoreTestObjectsFactory methodsFor: 'client validator protocol' stamp: 'JPF 6/20/2021 12:12:58'!
+validateClient: aClientId withPassword: aPassword
+
+	validateClientBehaviour value: aClientId value: aPassword! !
+
+!StoreTestObjectsFactory methodsFor: 'client validator protocol' stamp: 'JPF 6/20/2021 12:13:08'!
+validateUserBehaviour: aValidateClientBehaviour
+
+	validateClientBehaviour := aValidateClientBehaviour ! !
+
+
+!StoreTestObjectsFactory methodsFor: 'merchantProcessor' stamp: 'JPF 6/20/2021 13:21:05'!
+createMerchantProcessor
+
+	^ self! !
+
+
+!StoreTestObjectsFactory methodsFor: 'merchant processor protocol' stamp: 'JPF 6/20/2021 13:16:36'!
+debit: anAmount from: aCreditCard 
+
+	^debitBehavior value: anAmount value: aCreditCard ! !
+
+!StoreTestObjectsFactory methodsFor: 'merchant processor protocol' stamp: 'JPF 6/20/2021 13:18:01'!
+debitBehavior: aDebitBehavior
+
+	debitBehavior := aDebitBehavior! !
+
+
+!StoreTestObjectsFactory methodsFor: 'transactionIdGenerator' stamp: 'JPF 6/21/2021 11:20:00'!
+transactionIdGenerator
+
+	^ self! !
+
+
+!StoreTestObjectsFactory methodsFor: 'transaction id generator protocol' stamp: 'JPF 6/21/2021 11:18:49'!
+nextTransactionId
+
+	| transactionId |
+	
+	transactionId := transactionIdSequence.
+	transactionIdSequence := transactionIdSequence + 1.
+	
+	^ transactionId
+
+	! !
+
+
+!StoreTestObjectsFactory methodsFor: 'clock protocol' stamp: 'JPF 6/21/2021 13:58:51'!
+clockBehaviour: aClockBehaviour 
+	
+	clockBehaviour := aClockBehaviour! !
+
+!StoreTestObjectsFactory methodsFor: 'clock protocol' stamp: 'JPF 6/21/2021 13:42:05'!
+now
+
+	^ clockBehaviour value
+! !
