@@ -430,7 +430,7 @@ test06ShouldAddAnItemToTheCorrectCart
 
 	self assert: cartDetailEmpty isEmpty! !
 
-!StoreFacadeTest methodsFor: 'tests' stamp: 'JPF 6/21/2021 11:01:08'!
+!StoreFacadeTest methodsFor: 'tests' stamp: 'JPF 6/21/2021 22:08:48'!
 test07ShouldReturnADifferentTransactionIdPerCheckout
 
 	| storeFacade cartId1 cartId2 transactionId1 transactionId2 clientId |
@@ -446,7 +446,7 @@ test07ShouldReturnADifferentTransactionIdPerCheckout
 		payingWithCardNumber: testObjectsFactory validCreditCardNumber 
 		of: testObjectsFactory validCreditCardName
 		expiringOn: testObjectsFactory notExpiredCreditCardMonth
-		for: clientId.
+		.
 	
 	cartId2 := storeFacade createCartFor: clientId withPassword: testObjectsFactory password.
 	storeFacade add: 2 of: testObjectsFactory itemSellByTheStore to: cartId2.
@@ -456,7 +456,7 @@ test07ShouldReturnADifferentTransactionIdPerCheckout
 		payingWithCardNumber: testObjectsFactory validCreditCardNumber 
 		of: testObjectsFactory validCreditCardName
 		expiringOn: testObjectsFactory notExpiredCreditCardMonth
-		for: clientId.
+		.
 		
 	self deny: transactionId1 = transactionId2.
 	
@@ -464,7 +464,7 @@ test07ShouldReturnADifferentTransactionIdPerCheckout
 
 ! !
 
-!StoreFacadeTest methodsFor: 'tests' stamp: 'JPF 6/21/2021 11:02:17'!
+!StoreFacadeTest methodsFor: 'tests' stamp: 'JPF 6/21/2021 22:08:48'!
 test08ShouldFailWhenTryToCheckoutTheSameCartTwice
 
 	| storeFacade cartId clientId |
@@ -479,7 +479,7 @@ test08ShouldFailWhenTryToCheckoutTheSameCartTwice
 		payingWithCardNumber: testObjectsFactory validCreditCardNumber 
 		of: testObjectsFactory validCreditCardName
 		expiringOn: testObjectsFactory notExpiredCreditCardMonth
-		for: clientId.
+		.
 		
 	self
 		should: [
@@ -488,7 +488,7 @@ test08ShouldFailWhenTryToCheckoutTheSameCartTwice
 			payingWithCardNumber: testObjectsFactory validCreditCardNumber 
 			of: testObjectsFactory validCreditCardName
 			expiringOn: testObjectsFactory notExpiredCreditCardMonth
-			for: clientId ]
+			]
 		raise: Error - MessageNotUnderstood 
 		withMessageText: StoreFacade inexistentCartErrorMessage
 	
@@ -546,10 +546,10 @@ test10ShouldReturnEmptyListOfPurchasesWhenClientDidNotMakeAnyPurchase
 		
 	! !
 
-!StoreFacadeTest methodsFor: 'tests' stamp: 'JPF 6/21/2021 12:30:04'!
+!StoreFacadeTest methodsFor: 'tests' stamp: 'JPF 6/21/2021 22:08:48'!
 test11ShouldListClientPurchases
 
-	| storeFacade cartId1  cartId2 purchasesDetailOfClient clientId |
+	| storeFacade cartId1  cartId2 purchasesDetailOfClient clientId anotherClientId anotherClientCartId |
 	
 	clientId := testObjectsFactory clientId.
 	storeFacade := testObjectsFactory createStoreFacade.
@@ -562,7 +562,7 @@ test11ShouldListClientPurchases
 		payingWithCardNumber: testObjectsFactory validCreditCardNumber 
 		of: testObjectsFactory validCreditCardName
 		expiringOn: testObjectsFactory notExpiredCreditCardMonth
-		for: clientId.
+		.
 		
 	cartId2 := storeFacade createCartFor: clientId withPassword: testObjectsFactory password.
 	storeFacade add: 1 of: testObjectsFactory itemSellByTheStore to: cartId2.
@@ -572,7 +572,19 @@ test11ShouldListClientPurchases
 		payingWithCardNumber: testObjectsFactory validCreditCardNumber 
 		of: testObjectsFactory validCreditCardName
 		expiringOn: testObjectsFactory notExpiredCreditCardMonth
-		for: clientId.
+		.
+		
+	anotherClientId := 'anotherClientId'.
+	
+	anotherClientCartId := storeFacade createCartFor: anotherClientId withPassword: testObjectsFactory password.
+	storeFacade add: 1 of: testObjectsFactory itemSellByTheStore to: anotherClientCartId.
+	storeFacade add: 1 of: testObjectsFactory itemSellByTheStore2 to: anotherClientCartId.
+	storeFacade
+		checkOutCart: anotherClientCartId
+		payingWithCardNumber: testObjectsFactory validCreditCardNumber 
+		of: testObjectsFactory validCreditCardName
+		expiringOn: testObjectsFactory notExpiredCreditCardMonth
+		.
 		
 	purchasesDetailOfClient := storeFacade
 		listPurchasesOf: testObjectsFactory
@@ -1047,12 +1059,12 @@ of: items totalizing: aTotal
 
 !classDefinition: #StoreFacade category: 'TusLibros'!
 Object subclass: #StoreFacade
-	instanceVariableNames: 'clientValidator cartRepository cartIdSequence catalog transactionIdSequence merchantProcessor salesBook transactionsByClient transactionIdGenerator clock lastCartAccessRegistry'
+	instanceVariableNames: 'clientValidator cartRepository cartIdSequence catalog transactionIdSequence merchantProcessor salesBook transactionsByClient transactionIdGenerator clock lastCartAccessRegistry clientOfCarts'
 	classVariableNames: ''
 	poolDictionaries: ''
 	category: 'TusLibros'!
 
-!StoreFacade methodsFor: 'initialization' stamp: 'JPF 6/21/2021 13:57:30'!
+!StoreFacade methodsFor: 'initialization' stamp: 'JPF 6/21/2021 22:15:27'!
 initializeValidatingWith: aClientValidator having: aCatalog processingPaymentsWith: aMerchantProcessor accessingTimeThrough: aClock  
 
 	clientValidator := aClientValidator.
@@ -1064,8 +1076,15 @@ initializeValidatingWith: aClientValidator having: aCatalog processingPaymentsWi
 	transactionsByClient := Dictionary new.
 	merchantProcessor := aMerchantProcessor.
 	clock := aClock.
-	lastCartAccessRegistry := Dictionary new.! !
+	lastCartAccessRegistry := Dictionary new.
+	clientOfCarts := Dictionary new.! !
 
+
+!StoreFacade methodsFor: 'private' stamp: 'JPF 6/21/2021 22:53:30'!
+createNewCart: cartId for: aClientId 
+
+	cartRepository at: cartId put: (Cart acceptingItemsOf: catalog).
+	clientOfCarts at: cartId put: aClientId.! !
 
 !StoreFacade methodsFor: 'private' stamp: 'JPF 6/21/2021 14:05:15'!
 findCart: aCartId
@@ -1078,6 +1097,11 @@ findCart: aCartId
 	
 	^ cart
 	! !
+
+!StoreFacade methodsFor: 'private' stamp: 'JPF 6/21/2021 22:42:44'!
+getClientOf: aCartId
+
+	^ clientOfCarts removeKey: aCartId! !
 
 !StoreFacade methodsFor: 'private' stamp: 'JPF 6/19/2021 10:13:57'!
 nextCartId
@@ -1099,10 +1123,33 @@ nextTransactionId
 	
 	^ transactionId! !
 
-!StoreFacade methodsFor: 'private' stamp: 'JPF 6/20/2021 12:04:05'!
-removeCart: aCartId
+!StoreFacade methodsFor: 'private' stamp: 'JPF 6/21/2021 22:44:27'!
+register: aTransactionId for: aClientId
 
-	^ cartRepository removeKey: aCartId! !
+	| transactionsOfClient |
+	
+	transactionsOfClient := transactionsByClient at: aClientId ifAbsent: [ OrderedCollection new ].
+	transactionsOfClient add: aTransactionId.
+	transactionsByClient at: aClientId put: transactionsOfClient.
+! !
+
+!StoreFacade methodsFor: 'private' stamp: 'JPF 6/21/2021 22:45:18'!
+registerSaleForTheClientOf: aCartId with: aTransactionId
+
+	| clientId |
+	
+	clientId := self getClientOf: aCartId.
+	
+	self register: aTransactionId for: clientId.
+	
+	self removeCart: aCartId.
+! !
+
+!StoreFacade methodsFor: 'private' stamp: 'JPF 6/21/2021 22:49:00'!
+removeCart: aCartId
+	
+	cartRepository removeKey: aCartId.
+	lastCartAccessRegistry removeKey: aCartId.! !
 
 !StoreFacade methodsFor: 'private' stamp: 'JPF 6/21/2021 14:05:15'!
 updateLastAccessFor: aCartId
@@ -1119,13 +1166,11 @@ add: aQuantity of: anItem to: aCartId
 	
 	cart add: aQuantity of: anItem.! !
 
-!StoreFacade methodsFor: 'actions' stamp: 'JPF 6/21/2021 11:16:04'!
-checkOutCart: aCartId payingWithCardNumber: aCreditCardNumber of: aName expiringOn: aMonth for: aClientId 
+!StoreFacade methodsFor: 'actions' stamp: 'JPF 6/21/2021 22:41:34'!
+checkOutCart: aCartId payingWithCardNumber: aCreditCardNumber of: aName expiringOn: aMonth  
 
-	| cart cashier aDateAndTime transactionId transactionsOfClient |
+	| cart cashier transactionId |
 	
-	aDateAndTime := DateAndTime now.
-
 	cart := self findCart: aCartId.
 	
 	cashier := Cashier 
@@ -1135,21 +1180,17 @@ checkOutCart: aCartId payingWithCardNumber: aCreditCardNumber of: aName expiring
 			of: aName
 			expiringOn: aMonth)
 		throught: merchantProcessor
-		on: aDateAndTime
+		on: clock now
 		registeringOn: salesBook
 		generatingTransactionIdWith: self.
 		
 	transactionId := cashier checkOut.
 	
-	transactionsOfClient := transactionsByClient at: aClientId ifAbsent: [ OrderedCollection new ].
-	transactionsOfClient add: transactionId.
-	transactionsByClient at: aClientId put: transactionsOfClient.
-		
-	self removeCart: aCartId.
+	self registerSaleForTheClientOf: aCartId with: transactionId .
 	
 	^ transactionId.! !
 
-!StoreFacade methodsFor: 'actions' stamp: 'JPF 6/21/2021 14:06:58'!
+!StoreFacade methodsFor: 'actions' stamp: 'JPF 6/21/2021 22:53:52'!
 createCartFor: aClientId withPassword: aPassword
 
 	| cartId |
@@ -1158,24 +1199,24 @@ createCartFor: aClientId withPassword: aPassword
 	
 	cartId := self nextCartId.
 	
-	self createNewCart: cartId.
+	self createNewCart: cartId for: aClientId.
 	self updateLastAccessFor: cartId.
 	
 	^ cartId! !
 
-!StoreFacade methodsFor: 'actions' stamp: 'JPF 6/21/2021 14:06:58'!
-createNewCart: cartId
+!StoreFacade methodsFor: 'actions' stamp: 'JPF 6/21/2021 22:56:39'!
+getTransactionsOf: aClientId
 
-	^ cartRepository at: cartId put: (Cart acceptingItemsOf: catalog)! !
+	^ transactionsByClient at: aClientId ifAbsent: [ OrderedCollection new ]! !
 
-!StoreFacade methodsFor: 'actions' stamp: 'JPF 6/21/2021 12:24:32'!
+!StoreFacade methodsFor: 'actions' stamp: 'JPF 6/21/2021 22:56:39'!
 listPurchasesOf: aClientId withPassword: aPassword
 
 	| transactionsOfClient purchasesDetailTotal purchasesDetailItems |
 	
 	clientValidator validateClient: aClientId withPassword: aPassword.
 	
-	transactionsOfClient := transactionsByClient at: aClientId ifAbsent: [ OrderedCollection new ].
+	transactionsOfClient := self getTransactionsOf: aClientId.
 	
 	purchasesDetailTotal := 0.
 	purchasesDetailItems := OrderedDictionary new.
@@ -1198,12 +1239,11 @@ listCart: aCartId
 	^ (self findCart: aCartId) cartDetail.! !
 
 
-!StoreFacade methodsFor: 'assertions' stamp: 'JPF 6/21/2021 14:04:09'!
+!StoreFacade methodsFor: 'assertions' stamp: 'JPF 6/21/2021 22:49:18'!
 assertCartWasAccessedInTheLast30Minutes: aCartId
 
 	^ (clock now - (lastCartAccessRegistry at: aCartId)) >= (Duration minutes: 30) ifTrue: [
-		cartRepository removeKey: aCartId.
-		lastCartAccessRegistry removeKey: aCartId.
+		self removeCart: aCartId.
 		self error: self class inexistentCartErrorMessage
 		]! !
 

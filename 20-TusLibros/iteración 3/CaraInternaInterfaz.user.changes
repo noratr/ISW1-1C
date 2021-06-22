@@ -8546,3 +8546,1762 @@ test06ShouldAddAnItemToTheCorrectCart
 	self assert: cartDetailEmpty isEmpty! !
 
 ----SNAPSHOT----(21 June 2021 14:13:17) CaraInternaInterfaz.image priorSource: 17687012!
+
+----QUIT----(21 June 2021 14:15:06) CaraInternaInterfaz.image priorSource: 17772188!
+
+----STARTUP---- (21 June 2021 21:44:07) as /Users/juan.ferrino/CuisUniversity/CaraInternaInterfaz.image!
+
+!StoreFacadeTest methodsFor: 'tests' stamp: 'JPF 6/21/2021 21:49:59' prior: 50884532!
+test11ShouldListClientPurchases
+
+	| storeFacade cartId1  cartId2 purchasesDetailOfClient clientId anotherClientId anotherClientCartId |
+	
+	clientId := testObjectsFactory clientId.
+	storeFacade := testObjectsFactory createStoreFacade.
+
+	cartId1 := storeFacade createCartFor: clientId withPassword: testObjectsFactory password.
+	storeFacade add: 3 of: testObjectsFactory itemSellByTheStore to: cartId1.
+	storeFacade add: 1 of: testObjectsFactory itemSellByTheStore2 to: cartId1.
+	storeFacade
+		checkOutCart: cartId1
+		payingWithCardNumber: testObjectsFactory validCreditCardNumber 
+		of: testObjectsFactory validCreditCardName
+		expiringOn: testObjectsFactory notExpiredCreditCardMonth
+		for: clientId.
+		
+	cartId2 := storeFacade createCartFor: clientId withPassword: testObjectsFactory password.
+	storeFacade add: 1 of: testObjectsFactory itemSellByTheStore to: cartId2.
+	storeFacade add: 2 of: testObjectsFactory itemSellByTheStore2 to: cartId2.
+	storeFacade
+		checkOutCart: cartId2
+		payingWithCardNumber: testObjectsFactory validCreditCardNumber 
+		of: testObjectsFactory validCreditCardName
+		expiringOn: testObjectsFactory notExpiredCreditCardMonth
+		for: clientId.
+	
+	anotherClientCartId := storeFacade createCartFor: anotherClientId withPassword: testObjectsFactory password.
+	storeFacade add: 1 of: testObjectsFactory itemSellByTheStore to: anotherClientCartId.
+	storeFacade add: 1 of: testObjectsFactory itemSellByTheStore2 to: anotherClientCartId.
+	storeFacade
+		checkOutCart: anotherClientCartId
+		payingWithCardNumber: testObjectsFactory validCreditCardNumber 
+		of: testObjectsFactory validCreditCardName
+		expiringOn: testObjectsFactory notExpiredCreditCardMonth
+		for: anotherClientId.
+		
+	purchasesDetailOfClient := storeFacade
+		listPurchasesOf: testObjectsFactory
+		clientId withPassword: testObjectsFactory password.
+		
+	self assert: 100 equals: purchasesDetailOfClient total.
+	self assert: 2 equals: purchasesDetailOfClient items size.
+	
+	self assert: 4 equals: (purchasesDetailOfClient items at: testObjectsFactory itemSellByTheStore).
+	self assert: 3 equals: (purchasesDetailOfClient items at: testObjectsFactory itemSellByTheStore2).
+
+		
+	! !
+!StoreFacadeTest methodsFor: 'tests' stamp: 'JPF 6/21/2021 21:50:40' prior: 50887041!
+test11ShouldListClientPurchases
+
+	| storeFacade cartId1  cartId2 purchasesDetailOfClient clientId anotherClientId anotherClientCartId |
+	
+	clientId := testObjectsFactory clientId.
+	storeFacade := testObjectsFactory createStoreFacade.
+
+	cartId1 := storeFacade createCartFor: clientId withPassword: testObjectsFactory password.
+	storeFacade add: 3 of: testObjectsFactory itemSellByTheStore to: cartId1.
+	storeFacade add: 1 of: testObjectsFactory itemSellByTheStore2 to: cartId1.
+	storeFacade
+		checkOutCart: cartId1
+		payingWithCardNumber: testObjectsFactory validCreditCardNumber 
+		of: testObjectsFactory validCreditCardName
+		expiringOn: testObjectsFactory notExpiredCreditCardMonth
+		for: clientId.
+		
+	cartId2 := storeFacade createCartFor: clientId withPassword: testObjectsFactory password.
+	storeFacade add: 1 of: testObjectsFactory itemSellByTheStore to: cartId2.
+	storeFacade add: 2 of: testObjectsFactory itemSellByTheStore2 to: cartId2.
+	storeFacade
+		checkOutCart: cartId2
+		payingWithCardNumber: testObjectsFactory validCreditCardNumber 
+		of: testObjectsFactory validCreditCardName
+		expiringOn: testObjectsFactory notExpiredCreditCardMonth
+		for: clientId.
+		
+	anotherClientId := 'anotherClientId'.
+	
+	anotherClientCartId := storeFacade createCartFor: anotherClientId withPassword: testObjectsFactory password.
+	storeFacade add: 1 of: testObjectsFactory itemSellByTheStore to: anotherClientCartId.
+	storeFacade add: 1 of: testObjectsFactory itemSellByTheStore2 to: anotherClientCartId.
+	storeFacade
+		checkOutCart: anotherClientCartId
+		payingWithCardNumber: testObjectsFactory validCreditCardNumber 
+		of: testObjectsFactory validCreditCardName
+		expiringOn: testObjectsFactory notExpiredCreditCardMonth
+		for: anotherClientId.
+		
+	purchasesDetailOfClient := storeFacade
+		listPurchasesOf: testObjectsFactory
+		clientId withPassword: testObjectsFactory password.
+		
+	self assert: 100 equals: purchasesDetailOfClient total.
+	self assert: 2 equals: purchasesDetailOfClient items size.
+	
+	self assert: 4 equals: (purchasesDetailOfClient items at: testObjectsFactory itemSellByTheStore).
+	self assert: 3 equals: (purchasesDetailOfClient items at: testObjectsFactory itemSellByTheStore2).
+
+		
+	! !
+
+!testRun: #StoreFacadeTest #test01ShouldFailToCreateCartWhenClientIdOrPasswordAreIncorrect stamp: 'JPF 6/21/2021 21:51:44'!
+PASSED!
+
+!testRun: #StoreFacadeTest #test02ShouldCreateACartAndBeEmptyWhenListed stamp: 'JPF 6/21/2021 21:51:44'!
+PASSED!
+
+!testRun: #StoreFacadeTest #test03ShouldAddAnItemToTheCart stamp: 'JPF 6/21/2021 21:51:44'!
+PASSED!
+
+!testRun: #StoreFacadeTest #test04ShouldFailWhenTryToAddItemsToAnInexistentCart stamp: 'JPF 6/21/2021 21:51:44'!
+PASSED!
+
+!testRun: #StoreFacadeTest #test05ShouldFailWhenTryToListAnInexistentCart stamp: 'JPF 6/21/2021 21:51:44'!
+PASSED!
+
+!testRun: #StoreFacadeTest #test06ShouldAddAnItemToTheCorrectCart stamp: 'JPF 6/21/2021 21:51:44'!
+PASSED!
+
+!testRun: #StoreFacadeTest #test07ShouldReturnADifferentTransactionIdPerCheckout stamp: 'JPF 6/21/2021 21:51:44'!
+PASSED!
+
+!testRun: #StoreFacadeTest #test08ShouldFailWhenTryToCheckoutTheSameCartTwice stamp: 'JPF 6/21/2021 21:51:44'!
+PASSED!
+
+!testRun: #StoreFacadeTest #test09ShouldFailWhenListPurchasesForAnIncorrectClientIdOrPassword stamp: 'JPF 6/21/2021 21:51:44'!
+PASSED!
+
+!testRun: #StoreFacadeTest #test10ShouldReturnEmptyListOfPurchasesWhenClientDidNotMakeAnyPurchase stamp: 'JPF 6/21/2021 21:51:44'!
+PASSED!
+
+!testRun: #StoreFacadeTest #test11ShouldListClientPurchases stamp: 'JPF 6/21/2021 21:51:44'!
+PASSED!
+
+!testRun: #StoreFacadeTest #test12ShouldFailWhenTryToAccessACartAfter30MinutesFromTheLastAccess stamp: 'JPF 6/21/2021 21:51:44'!
+PASSED!
+!StoreFacade methodsFor: 'actions' stamp: 'JPF 6/21/2021 22:07:45' prior: 50883611!
+checkOutCart: aCartId payingWithCardNumber: aCreditCardNumber of: aName expiringOn: aMonth for: aClientId 
+
+	| cart cashier aDateAndTime transactionId transactionsOfClient |
+	
+	aDateAndTime := DateAndTime now.
+
+	cart := self findCart: aCartId.
+	
+	cashier := Cashier 
+		toCheckout: cart 
+		charging: (CreditCard 
+			withNumber: aCreditCardNumber
+			of: aName
+			expiringOn: aMonth)
+		throught: merchantProcessor
+		on: aDateAndTime
+		registeringOn: salesBook
+		generatingTransactionIdWith: self.
+		
+	transactionId := cashier checkOut.
+	
+	transactionsOfClient := transactionsByClient at: aClientId ifAbsent: [ OrderedCollection new ].
+	transactionsOfClient add: transactionId.
+	transactionsByClient at: aClientId put: transactionsOfClient.
+		
+	self removeCart: aCartId.
+	
+	^ transactionId.! !
+!StoreFacade methodsFor: 'actions' stamp: 'JPF 6/21/2021 22:08:31' prior: 50887229!
+checkOutCart: aCartId payingWithCardNumber: aCreditCardNumber of: aName expiringOn: aMonth for: aClientId 
+
+	| cart cashier aDateAndTime transactionId transactionsOfClient |
+	
+	aDateAndTime := DateAndTime now.
+
+	cart := self findCart: aCartId.
+	
+	cashier := Cashier 
+		toCheckout: cart 
+		charging: (CreditCard 
+			withNumber: aCreditCardNumber
+			of: aName
+			expiringOn: aMonth)
+		throught: merchantProcessor
+		on: aDateAndTime
+		registeringOn: salesBook
+		generatingTransactionIdWith: self.
+		
+	transactionId := cashier checkOut.
+	
+	transactionsOfClient := transactionsByClient at: 1 ifAbsent: [ OrderedCollection new ].
+	transactionsOfClient add: transactionId.
+	transactionsByClient at: 1 put: transactionsOfClient.
+		
+	self removeCart: aCartId.
+	
+	^ transactionId.! !
+!StoreFacade methodsFor: 'actions' stamp: 'JPF 6/21/2021 22:08:48'!
+checkOutCart: aCartId payingWithCardNumber: aCreditCardNumber of: aName expiringOn: aMonth  
+
+	| cart cashier aDateAndTime transactionId transactionsOfClient |
+	
+	aDateAndTime := DateAndTime now.
+
+	cart := self findCart: aCartId.
+	
+	cashier := Cashier 
+		toCheckout: cart 
+		charging: (CreditCard 
+			withNumber: aCreditCardNumber
+			of: aName
+			expiringOn: aMonth)
+		throught: merchantProcessor
+		on: aDateAndTime
+		registeringOn: salesBook
+		generatingTransactionIdWith: self.
+		
+	transactionId := cashier checkOut.
+	
+	transactionsOfClient := transactionsByClient at: 1 ifAbsent: [ OrderedCollection new ].
+	transactionsOfClient add: transactionId.
+	transactionsByClient at: 1 put: transactionsOfClient.
+		
+	self removeCart: aCartId.
+	
+	^ transactionId.! !
+!StoreFacadeTest methodsFor: 'as yet unclassified' stamp: 'JPF 6/21/2021 22:08:48' prior: 50882936!
+test07ShouldReturnADifferentTransactionIdPerCheckout
+
+	| storeFacade cartId1 cartId2 transactionId1 transactionId2 clientId |
+	
+	clientId := testObjectsFactory clientId.
+	
+	storeFacade := testObjectsFactory createStoreFacade.
+
+	cartId1 := storeFacade createCartFor: clientId withPassword: testObjectsFactory password.
+	storeFacade add: 3 of: testObjectsFactory itemSellByTheStore to: cartId1.
+	transactionId1 := storeFacade
+		checkOutCart: cartId1
+		payingWithCardNumber: testObjectsFactory validCreditCardNumber 
+		of: testObjectsFactory validCreditCardName
+		expiringOn: testObjectsFactory notExpiredCreditCardMonth
+		.
+	
+	cartId2 := storeFacade createCartFor: clientId withPassword: testObjectsFactory password.
+	storeFacade add: 2 of: testObjectsFactory itemSellByTheStore to: cartId2.
+	
+	transactionId2 := storeFacade
+		checkOutCart: cartId2
+		payingWithCardNumber: testObjectsFactory validCreditCardNumber 
+		of: testObjectsFactory validCreditCardName
+		expiringOn: testObjectsFactory notExpiredCreditCardMonth
+		.
+		
+	self deny: transactionId1 = transactionId2.
+	
+	
+
+! !
+!StoreFacadeTest methodsFor: 'as yet unclassified' stamp: 'JPF 6/21/2021 22:08:48' prior: 50887112!
+test11ShouldListClientPurchases
+
+	| storeFacade cartId1  cartId2 purchasesDetailOfClient clientId anotherClientId anotherClientCartId |
+	
+	clientId := testObjectsFactory clientId.
+	storeFacade := testObjectsFactory createStoreFacade.
+
+	cartId1 := storeFacade createCartFor: clientId withPassword: testObjectsFactory password.
+	storeFacade add: 3 of: testObjectsFactory itemSellByTheStore to: cartId1.
+	storeFacade add: 1 of: testObjectsFactory itemSellByTheStore2 to: cartId1.
+	storeFacade
+		checkOutCart: cartId1
+		payingWithCardNumber: testObjectsFactory validCreditCardNumber 
+		of: testObjectsFactory validCreditCardName
+		expiringOn: testObjectsFactory notExpiredCreditCardMonth
+		.
+		
+	cartId2 := storeFacade createCartFor: clientId withPassword: testObjectsFactory password.
+	storeFacade add: 1 of: testObjectsFactory itemSellByTheStore to: cartId2.
+	storeFacade add: 2 of: testObjectsFactory itemSellByTheStore2 to: cartId2.
+	storeFacade
+		checkOutCart: cartId2
+		payingWithCardNumber: testObjectsFactory validCreditCardNumber 
+		of: testObjectsFactory validCreditCardName
+		expiringOn: testObjectsFactory notExpiredCreditCardMonth
+		.
+		
+	anotherClientId := 'anotherClientId'.
+	
+	anotherClientCartId := storeFacade createCartFor: anotherClientId withPassword: testObjectsFactory password.
+	storeFacade add: 1 of: testObjectsFactory itemSellByTheStore to: anotherClientCartId.
+	storeFacade add: 1 of: testObjectsFactory itemSellByTheStore2 to: anotherClientCartId.
+	storeFacade
+		checkOutCart: anotherClientCartId
+		payingWithCardNumber: testObjectsFactory validCreditCardNumber 
+		of: testObjectsFactory validCreditCardName
+		expiringOn: testObjectsFactory notExpiredCreditCardMonth
+		.
+		
+	purchasesDetailOfClient := storeFacade
+		listPurchasesOf: testObjectsFactory
+		clientId withPassword: testObjectsFactory password.
+		
+	self assert: 100 equals: purchasesDetailOfClient total.
+	self assert: 2 equals: purchasesDetailOfClient items size.
+	
+	self assert: 4 equals: (purchasesDetailOfClient items at: testObjectsFactory itemSellByTheStore).
+	self assert: 3 equals: (purchasesDetailOfClient items at: testObjectsFactory itemSellByTheStore2).
+
+		
+	! !
+!StoreFacadeTest methodsFor: 'as yet unclassified' stamp: 'JPF 6/21/2021 22:08:48' prior: 50882974!
+test08ShouldFailWhenTryToCheckoutTheSameCartTwice
+
+	| storeFacade cartId clientId |
+	
+	clientId := testObjectsFactory clientId.
+	storeFacade := testObjectsFactory createStoreFacade.
+
+	cartId := storeFacade createCartFor: clientId withPassword: testObjectsFactory password.
+	storeFacade add: 3 of: testObjectsFactory itemSellByTheStore to: cartId.
+	storeFacade
+		checkOutCart: cartId
+		payingWithCardNumber: testObjectsFactory validCreditCardNumber 
+		of: testObjectsFactory validCreditCardName
+		expiringOn: testObjectsFactory notExpiredCreditCardMonth
+		.
+		
+	self
+		should: [
+		storeFacade
+			checkOutCart: cartId
+			payingWithCardNumber: testObjectsFactory validCreditCardNumber 
+			of: testObjectsFactory validCreditCardName
+			expiringOn: testObjectsFactory notExpiredCreditCardMonth
+			]
+		raise: Error - MessageNotUnderstood 
+		withMessageText: StoreFacade inexistentCartErrorMessage
+	
+	
+	
+
+! !
+
+!methodRemoval: StoreFacade #checkOutCart:payingWithCardNumber:of:expiringOn:for: stamp: 'JPF 6/21/2021 22:08:48'!
+checkOutCart: aCartId payingWithCardNumber: aCreditCardNumber of: aName expiringOn: aMonth for: aClientId 
+
+	| cart cashier aDateAndTime transactionId transactionsOfClient |
+	
+	aDateAndTime := DateAndTime now.
+
+	cart := self findCart: aCartId.
+	
+	cashier := Cashier 
+		toCheckout: cart 
+		charging: (CreditCard 
+			withNumber: aCreditCardNumber
+			of: aName
+			expiringOn: aMonth)
+		throught: merchantProcessor
+		on: aDateAndTime
+		registeringOn: salesBook
+		generatingTransactionIdWith: self.
+		
+	transactionId := cashier checkOut.
+	
+	transactionsOfClient := transactionsByClient at: 1 ifAbsent: [ OrderedCollection new ].
+	transactionsOfClient add: transactionId.
+	transactionsByClient at: 1 put: transactionsOfClient.
+		
+	self removeCart: aCartId.
+	
+	^ transactionId.!
+!StoreFacade methodsFor: 'actions' stamp: 'JPF 6/21/2021 22:09:10' prior: 50887284!
+checkOutCart: aCartId payingWithCardNumber: aCreditCardNumber of: aName expiringOn: aMonth  
+
+	| cart cashier aDateAndTime transactionId transactionsOfClient clientId |
+	
+	aDateAndTime := DateAndTime now.
+
+	cart := self findCart: aCartId.
+	
+	cashier := Cashier 
+		toCheckout: cart 
+		charging: (CreditCard 
+			withNumber: aCreditCardNumber
+			of: aName
+			expiringOn: aMonth)
+		throught: merchantProcessor
+		on: aDateAndTime
+		registeringOn: salesBook
+		generatingTransactionIdWith: self.
+		
+	transactionId := cashier checkOut.
+	
+	transactionsOfClient := transactionsByClient at: 1 ifAbsent: [ OrderedCollection new ].
+	transactionsOfClient add: transactionId.
+	transactionsByClient at: 1 put: transactionsOfClient.
+		
+	self removeCart: aCartId.
+	
+	^ transactionId.! !
+
+!classDefinition: #StoreFacade category: 'TusLibros' stamp: 'JPF 6/21/2021 22:14:04'!
+Object subclass: #StoreFacade
+	instanceVariableNames: 'clientValidator cartRepository cartIdSequence catalog transactionIdSequence merchantProcessor salesBook transactionsByClient transactionIdGenerator clock lastCartAccessRegistry clientOfCarts'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'TusLibros'!
+!StoreFacade methodsFor: 'actions' stamp: 'JPF 6/21/2021 22:14:02' prior: 50887478!
+checkOutCart: aCartId payingWithCardNumber: aCreditCardNumber of: aName expiringOn: aMonth  
+
+	| cart cashier aDateAndTime transactionId transactionsOfClient clientId |
+	
+	aDateAndTime := DateAndTime now.
+
+	cart := self findCart: aCartId.
+	
+	cashier := Cashier 
+		toCheckout: cart 
+		charging: (CreditCard 
+			withNumber: aCreditCardNumber
+			of: aName
+			expiringOn: aMonth)
+		throught: merchantProcessor
+		on: aDateAndTime
+		registeringOn: salesBook
+		generatingTransactionIdWith: self.
+		
+	transactionId := cashier checkOut.
+	
+	clientId := clientOfCarts at: aCartId.
+	
+	transactionsOfClient := transactionsByClient at: clientId ifAbsent: [ OrderedCollection new ].
+	transactionsOfClient add: transactionId.
+	transactionsByClient at: clientId put: transactionsOfClient.
+		
+	self removeCart: aCartId.
+	
+	^ transactionId.! !
+!StoreFacade methodsFor: 'actions' stamp: 'JPF 6/21/2021 22:15:02' prior: 50886830!
+createCartFor: aClientId withPassword: aPassword
+
+	| cartId |
+	
+	clientValidator validateClient: aClientId withPassword: aPassword.
+	
+	cartId := self nextCartId.
+	
+	self createNewCart: cartId.
+	self updateLastAccessFor: cartId.
+	clientOfCarts at: cartId put: aClientId 
+	
+	^ cartId! !
+!StoreFacade methodsFor: 'initialization' stamp: 'JPF 6/21/2021 22:15:27' prior: 50886289!
+initializeValidatingWith: aClientValidator having: aCatalog processingPaymentsWith: aMerchantProcessor accessingTimeThrough: aClock  
+
+	clientValidator := aClientValidator.
+	catalog := aCatalog.
+	cartRepository := Dictionary new.
+	cartIdSequence := 1.
+	transactionIdSequence :=1.
+	salesBook := OrderedDictionary new.
+	transactionsByClient := Dictionary new.
+	merchantProcessor := aMerchantProcessor.
+	clock := aClock.
+	lastCartAccessRegistry := Dictionary new.
+	clientOfCarts := Dictionary new.! !
+
+!testRun: #CartTest #test01NewCartsAreCreatedEmpty stamp: 'JPF 6/21/2021 22:15:31'!
+PASSED!
+
+!testRun: #CartTest #test02CanNotAddItemsThatDoNotBelongToStore stamp: 'JPF 6/21/2021 22:15:31'!
+PASSED!
+
+!testRun: #CartTest #test03AfterAddingAnItemTheCartIsNotEmptyAnymore stamp: 'JPF 6/21/2021 22:15:31'!
+PASSED!
+
+!testRun: #CartTest #test04CanNotAddNonPositiveNumberOfItems stamp: 'JPF 6/21/2021 22:15:31'!
+PASSED!
+
+!testRun: #CartTest #test05CanNotAddMoreThanOneItemNotSellByTheStore stamp: 'JPF 6/21/2021 22:15:31'!
+PASSED!
+
+!testRun: #CartTest #test06CartRemembersAddedItems stamp: 'JPF 6/21/2021 22:15:31'!
+PASSED!
+
+!testRun: #CartTest #test07CartDoesNotHoldNotAddedItems stamp: 'JPF 6/21/2021 22:15:31'!
+PASSED!
+
+!testRun: #CartTest #test08CartRemembersTheNumberOfAddedItems stamp: 'JPF 6/21/2021 22:15:31'!
+PASSED!
+
+!testRun: #CashierTest #test01CanNotCheckoutAnEmptyCart stamp: 'JPF 6/21/2021 22:15:31'!
+PASSED!
+
+!testRun: #CashierTest #test02CalculatedTotalIsCorrect stamp: 'JPF 6/21/2021 22:15:31'!
+PASSED!
+
+!testRun: #CashierTest #test03CanNotCheckoutWithAnExpiredCreditCart stamp: 'JPF 6/21/2021 22:15:31'!
+PASSED!
+
+!testRun: #CashierTest #test04CheckoutRegistersASale stamp: 'JPF 6/21/2021 22:15:31'!
+PASSED!
+
+!testRun: #CashierTest #test05CashierChargesCreditCardUsingMerchantProcessor stamp: 'JPF 6/21/2021 22:15:31'!
+PASSED!
+
+!testRun: #CashierTest #test06CashierDoesNotSaleWhenTheCreditCardHasNoCredit stamp: 'JPF 6/21/2021 22:15:31'!
+PASSED!
+
+!testRun: #CreditCardTest #test01ShouldFailWhenTheNameIsEmpty stamp: 'JPF 6/21/2021 22:15:31'!
+PASSED!
+
+!testRun: #CreditCardTest #test02ShouldFailWhenTheNameIsAllWithespaceCharacters stamp: 'JPF 6/21/2021 22:15:31'!
+PASSED!
+
+!testRun: #CreditCardTest #test03ShouldFailWhenTheNameHasMoreThan30Characters stamp: 'JPF 6/21/2021 22:15:31'!
+PASSED!
+
+!testRun: #CreditCardTest #test04ShouldFailWhenTheNumberHasNot16Digits stamp: 'JPF 6/21/2021 22:15:31'!
+PASSED!
+
+!testRun: #StoreFacadeTest #test01ShouldFailToCreateCartWhenClientIdOrPasswordAreIncorrect stamp: 'JPF 6/21/2021 22:15:31'!
+PASSED!
+
+!testRun: #StoreFacadeTest #test02ShouldCreateACartAndBeEmptyWhenListed stamp: 'JPF 6/21/2021 22:15:31'!
+ERROR!
+
+!testRun: #StoreFacadeTest #test03ShouldAddAnItemToTheCart stamp: 'JPF 6/21/2021 22:15:31'!
+ERROR!
+
+!testRun: #StoreFacadeTest #test04ShouldFailWhenTryToAddItemsToAnInexistentCart stamp: 'JPF 6/21/2021 22:15:31'!
+PASSED!
+
+!testRun: #StoreFacadeTest #test05ShouldFailWhenTryToListAnInexistentCart stamp: 'JPF 6/21/2021 22:15:31'!
+PASSED!
+
+!testRun: #StoreFacadeTest #test06ShouldAddAnItemToTheCorrectCart stamp: 'JPF 6/21/2021 22:15:31'!
+ERROR!
+
+!testRun: #StoreFacadeTest #test07ShouldReturnADifferentTransactionIdPerCheckout stamp: 'JPF 6/21/2021 22:15:31'!
+ERROR!
+
+!testRun: #StoreFacadeTest #test08ShouldFailWhenTryToCheckoutTheSameCartTwice stamp: 'JPF 6/21/2021 22:15:31'!
+ERROR!
+
+!testRun: #StoreFacadeTest #test09ShouldFailWhenListPurchasesForAnIncorrectClientIdOrPassword stamp: 'JPF 6/21/2021 22:15:31'!
+PASSED!
+
+!testRun: #StoreFacadeTest #test10ShouldReturnEmptyListOfPurchasesWhenClientDidNotMakeAnyPurchase stamp: 'JPF 6/21/2021 22:15:31'!
+ERROR!
+
+!testRun: #StoreFacadeTest #test11ShouldListClientPurchases stamp: 'JPF 6/21/2021 22:15:31'!
+ERROR!
+
+!testRun: #StoreFacadeTest #test12ShouldFailWhenTryToAccessACartAfter30MinutesFromTheLastAccess stamp: 'JPF 6/21/2021 22:15:31'!
+ERROR!
+
+!testRun: #StoreFacadeTest #test02ShouldCreateACartAndBeEmptyWhenListed stamp: 'JPF 6/21/2021 22:15:36'!
+ERROR!
+!StoreFacade methodsFor: 'actions' stamp: 'JPF 6/21/2021 22:15:47' prior: 50887547!
+createCartFor: aClientId withPassword: aPassword
+
+	| cartId |
+	
+	clientValidator validateClient: aClientId withPassword: aPassword.
+	
+	cartId := self nextCartId.
+	
+	self createNewCart: cartId.
+	self updateLastAccessFor: cartId.
+	clientOfCarts at: cartId put: aClientId.
+	
+	^ cartId! !
+
+!testRun: #CartTest #test01NewCartsAreCreatedEmpty stamp: 'JPF 6/21/2021 22:15:55'!
+PASSED!
+
+!testRun: #CartTest #test02CanNotAddItemsThatDoNotBelongToStore stamp: 'JPF 6/21/2021 22:15:55'!
+PASSED!
+
+!testRun: #CartTest #test03AfterAddingAnItemTheCartIsNotEmptyAnymore stamp: 'JPF 6/21/2021 22:15:55'!
+PASSED!
+
+!testRun: #CartTest #test04CanNotAddNonPositiveNumberOfItems stamp: 'JPF 6/21/2021 22:15:55'!
+PASSED!
+
+!testRun: #CartTest #test05CanNotAddMoreThanOneItemNotSellByTheStore stamp: 'JPF 6/21/2021 22:15:55'!
+PASSED!
+
+!testRun: #CartTest #test06CartRemembersAddedItems stamp: 'JPF 6/21/2021 22:15:55'!
+PASSED!
+
+!testRun: #CartTest #test07CartDoesNotHoldNotAddedItems stamp: 'JPF 6/21/2021 22:15:55'!
+PASSED!
+
+!testRun: #CartTest #test08CartRemembersTheNumberOfAddedItems stamp: 'JPF 6/21/2021 22:15:55'!
+PASSED!
+
+!testRun: #CashierTest #test01CanNotCheckoutAnEmptyCart stamp: 'JPF 6/21/2021 22:15:55'!
+PASSED!
+
+!testRun: #CashierTest #test02CalculatedTotalIsCorrect stamp: 'JPF 6/21/2021 22:15:55'!
+PASSED!
+
+!testRun: #CashierTest #test03CanNotCheckoutWithAnExpiredCreditCart stamp: 'JPF 6/21/2021 22:15:55'!
+PASSED!
+
+!testRun: #CashierTest #test04CheckoutRegistersASale stamp: 'JPF 6/21/2021 22:15:55'!
+PASSED!
+
+!testRun: #CashierTest #test05CashierChargesCreditCardUsingMerchantProcessor stamp: 'JPF 6/21/2021 22:15:55'!
+PASSED!
+
+!testRun: #CashierTest #test06CashierDoesNotSaleWhenTheCreditCardHasNoCredit stamp: 'JPF 6/21/2021 22:15:55'!
+PASSED!
+
+!testRun: #CreditCardTest #test01ShouldFailWhenTheNameIsEmpty stamp: 'JPF 6/21/2021 22:15:55'!
+PASSED!
+
+!testRun: #CreditCardTest #test02ShouldFailWhenTheNameIsAllWithespaceCharacters stamp: 'JPF 6/21/2021 22:15:55'!
+PASSED!
+
+!testRun: #CreditCardTest #test03ShouldFailWhenTheNameHasMoreThan30Characters stamp: 'JPF 6/21/2021 22:15:55'!
+PASSED!
+
+!testRun: #CreditCardTest #test04ShouldFailWhenTheNumberHasNot16Digits stamp: 'JPF 6/21/2021 22:15:55'!
+PASSED!
+
+!testRun: #StoreFacadeTest #test01ShouldFailToCreateCartWhenClientIdOrPasswordAreIncorrect stamp: 'JPF 6/21/2021 22:15:55'!
+PASSED!
+
+!testRun: #StoreFacadeTest #test02ShouldCreateACartAndBeEmptyWhenListed stamp: 'JPF 6/21/2021 22:15:55'!
+PASSED!
+
+!testRun: #StoreFacadeTest #test03ShouldAddAnItemToTheCart stamp: 'JPF 6/21/2021 22:15:55'!
+PASSED!
+
+!testRun: #StoreFacadeTest #test04ShouldFailWhenTryToAddItemsToAnInexistentCart stamp: 'JPF 6/21/2021 22:15:55'!
+PASSED!
+
+!testRun: #StoreFacadeTest #test05ShouldFailWhenTryToListAnInexistentCart stamp: 'JPF 6/21/2021 22:15:55'!
+PASSED!
+
+!testRun: #StoreFacadeTest #test06ShouldAddAnItemToTheCorrectCart stamp: 'JPF 6/21/2021 22:15:55'!
+PASSED!
+
+!testRun: #StoreFacadeTest #test07ShouldReturnADifferentTransactionIdPerCheckout stamp: 'JPF 6/21/2021 22:15:55'!
+PASSED!
+
+!testRun: #StoreFacadeTest #test08ShouldFailWhenTryToCheckoutTheSameCartTwice stamp: 'JPF 6/21/2021 22:15:55'!
+PASSED!
+
+!testRun: #StoreFacadeTest #test09ShouldFailWhenListPurchasesForAnIncorrectClientIdOrPassword stamp: 'JPF 6/21/2021 22:15:55'!
+PASSED!
+
+!testRun: #StoreFacadeTest #test10ShouldReturnEmptyListOfPurchasesWhenClientDidNotMakeAnyPurchase stamp: 'JPF 6/21/2021 22:15:55'!
+PASSED!
+
+!testRun: #StoreFacadeTest #test11ShouldListClientPurchases stamp: 'JPF 6/21/2021 22:15:55'!
+PASSED!
+
+!testRun: #StoreFacadeTest #test12ShouldFailWhenTryToAccessACartAfter30MinutesFromTheLastAccess stamp: 'JPF 6/21/2021 22:15:55'!
+PASSED!
+!StoreFacade methodsFor: 'actions' stamp: 'JPF 6/21/2021 22:18:05' prior: 50887518!
+checkOutCart: aCartId payingWithCardNumber: aCreditCardNumber of: aName expiringOn: aMonth  
+
+	| cart cashier aDateAndTime transactionId transactionsOfClient clientId |
+	
+	aDateAndTime := DateAndTime now.
+
+	cart := self findCart: aCartId.
+	
+	cashier := Cashier 
+		toCheckout: cart 
+		charging: (CreditCard 
+			withNumber: aCreditCardNumber
+			of: aName
+			expiringOn: aMonth)
+		throught: merchantProcessor
+		on: aDateAndTime
+		registeringOn: salesBook
+		generatingTransactionIdWith: self.
+		
+	transactionId := cashier checkOut.
+	
+	clientId := clientOfCarts removeKey: aCartId.
+	
+	transactionsOfClient := transactionsByClient at: clientId ifAbsent: [ OrderedCollection new ].
+	transactionsOfClient add: transactionId.
+	transactionsByClient at: clientId put: transactionsOfClient.
+		
+	self removeCart: aCartId.
+	
+	^ transactionId.! !
+
+!testRun: #CartTest #test01NewCartsAreCreatedEmpty stamp: 'JPF 6/21/2021 22:18:10'!
+PASSED!
+
+!testRun: #CartTest #test02CanNotAddItemsThatDoNotBelongToStore stamp: 'JPF 6/21/2021 22:18:10'!
+PASSED!
+
+!testRun: #CartTest #test03AfterAddingAnItemTheCartIsNotEmptyAnymore stamp: 'JPF 6/21/2021 22:18:10'!
+PASSED!
+
+!testRun: #CartTest #test04CanNotAddNonPositiveNumberOfItems stamp: 'JPF 6/21/2021 22:18:10'!
+PASSED!
+
+!testRun: #CartTest #test05CanNotAddMoreThanOneItemNotSellByTheStore stamp: 'JPF 6/21/2021 22:18:10'!
+PASSED!
+
+!testRun: #CartTest #test06CartRemembersAddedItems stamp: 'JPF 6/21/2021 22:18:10'!
+PASSED!
+
+!testRun: #CartTest #test07CartDoesNotHoldNotAddedItems stamp: 'JPF 6/21/2021 22:18:10'!
+PASSED!
+
+!testRun: #CartTest #test08CartRemembersTheNumberOfAddedItems stamp: 'JPF 6/21/2021 22:18:10'!
+PASSED!
+
+!testRun: #CashierTest #test01CanNotCheckoutAnEmptyCart stamp: 'JPF 6/21/2021 22:18:10'!
+PASSED!
+
+!testRun: #CashierTest #test02CalculatedTotalIsCorrect stamp: 'JPF 6/21/2021 22:18:10'!
+PASSED!
+
+!testRun: #CashierTest #test03CanNotCheckoutWithAnExpiredCreditCart stamp: 'JPF 6/21/2021 22:18:10'!
+PASSED!
+
+!testRun: #CashierTest #test04CheckoutRegistersASale stamp: 'JPF 6/21/2021 22:18:10'!
+PASSED!
+
+!testRun: #CashierTest #test05CashierChargesCreditCardUsingMerchantProcessor stamp: 'JPF 6/21/2021 22:18:10'!
+PASSED!
+
+!testRun: #CashierTest #test06CashierDoesNotSaleWhenTheCreditCardHasNoCredit stamp: 'JPF 6/21/2021 22:18:10'!
+PASSED!
+
+!testRun: #CreditCardTest #test01ShouldFailWhenTheNameIsEmpty stamp: 'JPF 6/21/2021 22:18:10'!
+PASSED!
+
+!testRun: #CreditCardTest #test02ShouldFailWhenTheNameIsAllWithespaceCharacters stamp: 'JPF 6/21/2021 22:18:10'!
+PASSED!
+
+!testRun: #CreditCardTest #test03ShouldFailWhenTheNameHasMoreThan30Characters stamp: 'JPF 6/21/2021 22:18:10'!
+PASSED!
+
+!testRun: #CreditCardTest #test04ShouldFailWhenTheNumberHasNot16Digits stamp: 'JPF 6/21/2021 22:18:10'!
+PASSED!
+
+!testRun: #StoreFacadeTest #test01ShouldFailToCreateCartWhenClientIdOrPasswordAreIncorrect stamp: 'JPF 6/21/2021 22:18:10'!
+PASSED!
+
+!testRun: #StoreFacadeTest #test02ShouldCreateACartAndBeEmptyWhenListed stamp: 'JPF 6/21/2021 22:18:10'!
+PASSED!
+
+!testRun: #StoreFacadeTest #test03ShouldAddAnItemToTheCart stamp: 'JPF 6/21/2021 22:18:10'!
+PASSED!
+
+!testRun: #StoreFacadeTest #test04ShouldFailWhenTryToAddItemsToAnInexistentCart stamp: 'JPF 6/21/2021 22:18:10'!
+PASSED!
+
+!testRun: #StoreFacadeTest #test05ShouldFailWhenTryToListAnInexistentCart stamp: 'JPF 6/21/2021 22:18:10'!
+PASSED!
+
+!testRun: #StoreFacadeTest #test06ShouldAddAnItemToTheCorrectCart stamp: 'JPF 6/21/2021 22:18:10'!
+PASSED!
+
+!testRun: #StoreFacadeTest #test07ShouldReturnADifferentTransactionIdPerCheckout stamp: 'JPF 6/21/2021 22:18:10'!
+PASSED!
+
+!testRun: #StoreFacadeTest #test08ShouldFailWhenTryToCheckoutTheSameCartTwice stamp: 'JPF 6/21/2021 22:18:10'!
+PASSED!
+
+!testRun: #StoreFacadeTest #test09ShouldFailWhenListPurchasesForAnIncorrectClientIdOrPassword stamp: 'JPF 6/21/2021 22:18:10'!
+PASSED!
+
+!testRun: #StoreFacadeTest #test10ShouldReturnEmptyListOfPurchasesWhenClientDidNotMakeAnyPurchase stamp: 'JPF 6/21/2021 22:18:10'!
+PASSED!
+
+!testRun: #StoreFacadeTest #test11ShouldListClientPurchases stamp: 'JPF 6/21/2021 22:18:10'!
+PASSED!
+
+!testRun: #StoreFacadeTest #test12ShouldFailWhenTryToAccessACartAfter30MinutesFromTheLastAccess stamp: 'JPF 6/21/2021 22:18:10'!
+PASSED!
+!StoreFacade methodsFor: 'actions' stamp: 'JPF 6/21/2021 22:21:50' prior: 50887803!
+checkOutCart: aCartId payingWithCardNumber: aCreditCardNumber of: aName expiringOn: aMonth  
+
+	| cart cashier transactionId transactionsOfClient clientId |
+	
+	cart := self findCart: aCartId.
+	
+	cashier := Cashier 
+		toCheckout: cart 
+		charging: (CreditCard 
+			withNumber: aCreditCardNumber
+			of: aName
+			expiringOn: aMonth)
+		throught: merchantProcessor
+		on: clock now
+		registeringOn: salesBook
+		generatingTransactionIdWith: self.
+		
+	transactionId := cashier checkOut.
+	
+	clientId := clientOfCarts removeKey: aCartId.
+	
+	transactionsOfClient := transactionsByClient at: clientId ifAbsent: [ OrderedCollection new ].
+	transactionsOfClient add: transactionId.
+	transactionsByClient at: clientId put: transactionsOfClient.
+		
+	self removeCart: aCartId.
+	
+	^ transactionId.! !
+
+!testRun: #CartTest #test01NewCartsAreCreatedEmpty stamp: 'JPF 6/21/2021 22:22:00'!
+PASSED!
+
+!testRun: #CartTest #test02CanNotAddItemsThatDoNotBelongToStore stamp: 'JPF 6/21/2021 22:22:00'!
+PASSED!
+
+!testRun: #CartTest #test03AfterAddingAnItemTheCartIsNotEmptyAnymore stamp: 'JPF 6/21/2021 22:22:00'!
+PASSED!
+
+!testRun: #CartTest #test04CanNotAddNonPositiveNumberOfItems stamp: 'JPF 6/21/2021 22:22:00'!
+PASSED!
+
+!testRun: #CartTest #test05CanNotAddMoreThanOneItemNotSellByTheStore stamp: 'JPF 6/21/2021 22:22:00'!
+PASSED!
+
+!testRun: #CartTest #test06CartRemembersAddedItems stamp: 'JPF 6/21/2021 22:22:00'!
+PASSED!
+
+!testRun: #CartTest #test07CartDoesNotHoldNotAddedItems stamp: 'JPF 6/21/2021 22:22:00'!
+PASSED!
+
+!testRun: #CartTest #test08CartRemembersTheNumberOfAddedItems stamp: 'JPF 6/21/2021 22:22:00'!
+PASSED!
+
+!testRun: #CashierTest #test01CanNotCheckoutAnEmptyCart stamp: 'JPF 6/21/2021 22:22:00'!
+PASSED!
+
+!testRun: #CashierTest #test02CalculatedTotalIsCorrect stamp: 'JPF 6/21/2021 22:22:00'!
+PASSED!
+
+!testRun: #CashierTest #test03CanNotCheckoutWithAnExpiredCreditCart stamp: 'JPF 6/21/2021 22:22:00'!
+PASSED!
+
+!testRun: #CashierTest #test04CheckoutRegistersASale stamp: 'JPF 6/21/2021 22:22:00'!
+PASSED!
+
+!testRun: #CashierTest #test05CashierChargesCreditCardUsingMerchantProcessor stamp: 'JPF 6/21/2021 22:22:00'!
+PASSED!
+
+!testRun: #CashierTest #test06CashierDoesNotSaleWhenTheCreditCardHasNoCredit stamp: 'JPF 6/21/2021 22:22:00'!
+PASSED!
+
+!testRun: #CreditCardTest #test01ShouldFailWhenTheNameIsEmpty stamp: 'JPF 6/21/2021 22:22:00'!
+PASSED!
+
+!testRun: #CreditCardTest #test02ShouldFailWhenTheNameIsAllWithespaceCharacters stamp: 'JPF 6/21/2021 22:22:00'!
+PASSED!
+
+!testRun: #CreditCardTest #test03ShouldFailWhenTheNameHasMoreThan30Characters stamp: 'JPF 6/21/2021 22:22:00'!
+PASSED!
+
+!testRun: #CreditCardTest #test04ShouldFailWhenTheNumberHasNot16Digits stamp: 'JPF 6/21/2021 22:22:00'!
+PASSED!
+
+!testRun: #StoreFacadeTest #test01ShouldFailToCreateCartWhenClientIdOrPasswordAreIncorrect stamp: 'JPF 6/21/2021 22:22:00'!
+PASSED!
+
+!testRun: #StoreFacadeTest #test02ShouldCreateACartAndBeEmptyWhenListed stamp: 'JPF 6/21/2021 22:22:00'!
+PASSED!
+
+!testRun: #StoreFacadeTest #test03ShouldAddAnItemToTheCart stamp: 'JPF 6/21/2021 22:22:00'!
+PASSED!
+
+!testRun: #StoreFacadeTest #test04ShouldFailWhenTryToAddItemsToAnInexistentCart stamp: 'JPF 6/21/2021 22:22:00'!
+PASSED!
+
+!testRun: #StoreFacadeTest #test05ShouldFailWhenTryToListAnInexistentCart stamp: 'JPF 6/21/2021 22:22:00'!
+PASSED!
+
+!testRun: #StoreFacadeTest #test06ShouldAddAnItemToTheCorrectCart stamp: 'JPF 6/21/2021 22:22:00'!
+PASSED!
+
+!testRun: #StoreFacadeTest #test07ShouldReturnADifferentTransactionIdPerCheckout stamp: 'JPF 6/21/2021 22:22:00'!
+PASSED!
+
+!testRun: #StoreFacadeTest #test08ShouldFailWhenTryToCheckoutTheSameCartTwice stamp: 'JPF 6/21/2021 22:22:00'!
+PASSED!
+
+!testRun: #StoreFacadeTest #test09ShouldFailWhenListPurchasesForAnIncorrectClientIdOrPassword stamp: 'JPF 6/21/2021 22:22:00'!
+PASSED!
+
+!testRun: #StoreFacadeTest #test10ShouldReturnEmptyListOfPurchasesWhenClientDidNotMakeAnyPurchase stamp: 'JPF 6/21/2021 22:22:00'!
+PASSED!
+
+!testRun: #StoreFacadeTest #test11ShouldListClientPurchases stamp: 'JPF 6/21/2021 22:22:00'!
+PASSED!
+
+!testRun: #StoreFacadeTest #test12ShouldFailWhenTryToAccessACartAfter30MinutesFromTheLastAccess stamp: 'JPF 6/21/2021 22:22:00'!
+PASSED!
+!StoreFacade methodsFor: 'actions' stamp: 'JPF 6/21/2021 22:25:20' prior: 50887937!
+checkOutCart: aCartId payingWithCardNumber: aCreditCardNumber of: aName expiringOn: aMonth  
+
+	| cart cashier transactionId transactionsOfClient clientId |
+	
+	cart := self findCart: aCartId.
+	
+	cashier := Cashier 
+		toCheckout: cart 
+		charging: (CreditCard 
+			withNumber: aCreditCardNumber
+			of: aName
+			expiringOn: aMonth)
+		throught: merchantProcessor
+		on: clock now
+		registeringOn: salesBook
+		generatingTransactionIdWith: self.
+		
+	transactionId := cashier checkOut.
+	
+	clientId := clientOfCarts removeKey: aCartId.
+	
+	transactionsOfClient := transactionsByClient at: clientId ifAbsent: [ OrderedCollection new ].
+	transactionsOfClient add: transactionId.
+	transactionsByClient at: clientId put: transactionsOfClient.
+		
+	self removeCart: aCartId.
+	
+	^ transactionId.! !
+!StoreFacade methodsFor: 'actions' stamp: 'JPF 6/21/2021 22:28:49'!
+register: aTransactionId for: clientId
+
+	| transactionsOfClient |
+	transactionsOfClient := transactionsByClient at: clientId ifAbsent: [ OrderedCollection new ].
+	transactionsOfClient add: aTransactionId.
+	transactionsByClient at: clientId put: transactionsOfClient.
+! !
+!StoreFacade methodsFor: 'actions' stamp: 'JPF 6/21/2021 22:28:56' prior: 50888097!
+register: aTransactionId for: clientId
+
+	| transactionsOfClient |
+	
+	transactionsOfClient := transactionsByClient at: clientId ifAbsent: [ OrderedCollection new ].
+	transactionsOfClient add: aTransactionId.
+	transactionsByClient at: clientId put: transactionsOfClient.
+! !
+!StoreFacade methodsFor: 'actions' stamp: 'JPF 6/21/2021 22:29:08' prior: 50888109!
+register: aTransactionId for: aClientId
+
+	| transactionsOfClient |
+	
+	transactionsOfClient := transactionsByClient at: aClientId ifAbsent: [ OrderedCollection new ].
+	transactionsOfClient add: aTransactionId.
+	transactionsByClient at: aClientId put: transactionsOfClient.
+! !
+!StoreFacade methodsFor: 'actions' stamp: 'JPF 6/21/2021 22:30:06' prior: 50888070!
+checkOutCart: aCartId payingWithCardNumber: aCreditCardNumber of: aName expiringOn: aMonth  
+
+	| cart cashier transactionId clientId |
+	
+	cart := self findCart: aCartId.
+	
+	cashier := Cashier 
+		toCheckout: cart 
+		charging: (CreditCard 
+			withNumber: aCreditCardNumber
+			of: aName
+			expiringOn: aMonth)
+		throught: merchantProcessor
+		on: clock now
+		registeringOn: salesBook
+		generatingTransactionIdWith: self.
+		
+	transactionId := cashier checkOut.
+	
+	clientId := clientOfCarts removeKey: aCartId.
+	
+	self register: transactionId for: clientId.
+		
+	self removeCart: aCartId.
+	
+	^ transactionId.! !
+
+!testRun: #StoreFacadeTest #test01ShouldFailToCreateCartWhenClientIdOrPasswordAreIncorrect stamp: 'JPF 6/21/2021 22:30:17'!
+PASSED!
+
+!testRun: #StoreFacadeTest #test02ShouldCreateACartAndBeEmptyWhenListed stamp: 'JPF 6/21/2021 22:30:17'!
+PASSED!
+
+!testRun: #StoreFacadeTest #test03ShouldAddAnItemToTheCart stamp: 'JPF 6/21/2021 22:30:17'!
+PASSED!
+
+!testRun: #StoreFacadeTest #test04ShouldFailWhenTryToAddItemsToAnInexistentCart stamp: 'JPF 6/21/2021 22:30:17'!
+PASSED!
+
+!testRun: #StoreFacadeTest #test05ShouldFailWhenTryToListAnInexistentCart stamp: 'JPF 6/21/2021 22:30:17'!
+PASSED!
+
+!testRun: #StoreFacadeTest #test06ShouldAddAnItemToTheCorrectCart stamp: 'JPF 6/21/2021 22:30:17'!
+PASSED!
+
+!testRun: #StoreFacadeTest #test07ShouldReturnADifferentTransactionIdPerCheckout stamp: 'JPF 6/21/2021 22:30:17'!
+PASSED!
+
+!testRun: #StoreFacadeTest #test08ShouldFailWhenTryToCheckoutTheSameCartTwice stamp: 'JPF 6/21/2021 22:30:17'!
+PASSED!
+
+!testRun: #StoreFacadeTest #test09ShouldFailWhenListPurchasesForAnIncorrectClientIdOrPassword stamp: 'JPF 6/21/2021 22:30:17'!
+PASSED!
+
+!testRun: #StoreFacadeTest #test10ShouldReturnEmptyListOfPurchasesWhenClientDidNotMakeAnyPurchase stamp: 'JPF 6/21/2021 22:30:17'!
+PASSED!
+
+!testRun: #StoreFacadeTest #test11ShouldListClientPurchases stamp: 'JPF 6/21/2021 22:30:17'!
+PASSED!
+
+!testRun: #StoreFacadeTest #test12ShouldFailWhenTryToAccessACartAfter30MinutesFromTheLastAccess stamp: 'JPF 6/21/2021 22:30:17'!
+PASSED!
+!StoreFacade methodsFor: 'actions' stamp: 'JPF 6/21/2021 22:35:05'!
+registerSaleOf: aTransactionId with: aClientId
+
+	| transactionsOfClient |
+	
+	transactionsOfClient := transactionsByClient at: aClientId ifAbsent: [ OrderedCollection new ].
+	transactionsOfClient add: aTransactionId.
+	transactionsByClient at: aClientId put: transactionsOfClient.
+! !
+!StoreFacade methodsFor: 'as yet unclassified' stamp: 'JPF 6/21/2021 22:35:05' prior: 50888133!
+checkOutCart: aCartId payingWithCardNumber: aCreditCardNumber of: aName expiringOn: aMonth  
+
+	| cart cashier transactionId clientId |
+	
+	cart := self findCart: aCartId.
+	
+	cashier := Cashier 
+		toCheckout: cart 
+		charging: (CreditCard 
+			withNumber: aCreditCardNumber
+			of: aName
+			expiringOn: aMonth)
+		throught: merchantProcessor
+		on: clock now
+		registeringOn: salesBook
+		generatingTransactionIdWith: self.
+		
+	transactionId := cashier checkOut.
+	
+	clientId := clientOfCarts removeKey: aCartId.
+	
+	self registerSaleOf: transactionId with: clientId.
+		
+	self removeCart: aCartId.
+	
+	^ transactionId.! !
+
+!methodRemoval: StoreFacade #register:for: stamp: 'JPF 6/21/2021 22:35:05'!
+register: aTransactionId for: aClientId
+
+	| transactionsOfClient |
+	
+	transactionsOfClient := transactionsByClient at: aClientId ifAbsent: [ OrderedCollection new ].
+	transactionsOfClient add: aTransactionId.
+	transactionsByClient at: aClientId put: transactionsOfClient.
+!
+
+	| transactionsOfClie!
+!StoreFacade methodsFor: 'actions' stamp: 'JPF 6/21/2021 22:37:40' prior: 50888200!
+registerSaleOf: aCartId with: aTransactionId
+
+	| transactionsOfClient clientId |
+	
+	clientId := clientOfCarts removeKey: aCartId.
+	
+	transactionsOfClient := transactionsByClient at: clientId ifAbsent: [ OrderedCollection new ].
+	transactionsOfClient add: aTransactionId.
+	transactionsByClient at: clientId put: transactionsOfClient.
+	
+	self removeCart: aCartId.
+! !
+!StoreFacade methodsFor: 'actions' stamp: 'JPF 6/21/2021 22:38:17' prior: 50888212!
+checkOutCart: aCartId payingWithCardNumber: aCreditCardNumber of: aName expiringOn: aMonth  
+
+	| cart cashier transactionId |
+	
+	cart := self findCart: aCartId.
+	
+	cashier := Cashier 
+		toCheckout: cart 
+		charging: (CreditCard 
+			withNumber: aCreditCardNumber
+			of: aName
+			expiringOn: aMonth)
+		throught: merchantProcessor
+		on: clock now
+		registeringOn: salesBook
+		generatingTransactionIdWith: self.
+		
+	transactionId := cashier checkOut.
+	
+	self registerSaleOf: aCartId with: transactionId .
+	
+	^ transactionId.! !
+
+!testRun: #CartTest #test01NewCartsAreCreatedEmpty stamp: 'JPF 6/21/2021 22:38:32'!
+PASSED!
+
+!testRun: #CartTest #test02CanNotAddItemsThatDoNotBelongToStore stamp: 'JPF 6/21/2021 22:38:32'!
+PASSED!
+
+!testRun: #CartTest #test03AfterAddingAnItemTheCartIsNotEmptyAnymore stamp: 'JPF 6/21/2021 22:38:32'!
+PASSED!
+
+!testRun: #CartTest #test04CanNotAddNonPositiveNumberOfItems stamp: 'JPF 6/21/2021 22:38:32'!
+PASSED!
+
+!testRun: #CartTest #test05CanNotAddMoreThanOneItemNotSellByTheStore stamp: 'JPF 6/21/2021 22:38:32'!
+PASSED!
+
+!testRun: #CartTest #test06CartRemembersAddedItems stamp: 'JPF 6/21/2021 22:38:32'!
+PASSED!
+
+!testRun: #CartTest #test07CartDoesNotHoldNotAddedItems stamp: 'JPF 6/21/2021 22:38:32'!
+PASSED!
+
+!testRun: #CartTest #test08CartRemembersTheNumberOfAddedItems stamp: 'JPF 6/21/2021 22:38:32'!
+PASSED!
+
+!testRun: #CashierTest #test01CanNotCheckoutAnEmptyCart stamp: 'JPF 6/21/2021 22:38:32'!
+PASSED!
+
+!testRun: #CashierTest #test02CalculatedTotalIsCorrect stamp: 'JPF 6/21/2021 22:38:32'!
+PASSED!
+
+!testRun: #CashierTest #test03CanNotCheckoutWithAnExpiredCreditCart stamp: 'JPF 6/21/2021 22:38:32'!
+PASSED!
+
+!testRun: #CashierTest #test04CheckoutRegistersASale stamp: 'JPF 6/21/2021 22:38:32'!
+PASSED!
+
+!testRun: #CashierTest #test05CashierChargesCreditCardUsingMerchantProcessor stamp: 'JPF 6/21/2021 22:38:32'!
+PASSED!
+
+!testRun: #CashierTest #test06CashierDoesNotSaleWhenTheCreditCardHasNoCredit stamp: 'JPF 6/21/2021 22:38:32'!
+PASSED!
+
+!testRun: #CreditCardTest #test01ShouldFailWhenTheNameIsEmpty stamp: 'JPF 6/21/2021 22:38:32'!
+PASSED!
+
+!testRun: #CreditCardTest #test02ShouldFailWhenTheNameIsAllWithespaceCharacters stamp: 'JPF 6/21/2021 22:38:32'!
+PASSED!
+
+!testRun: #CreditCardTest #test03ShouldFailWhenTheNameHasMoreThan30Characters stamp: 'JPF 6/21/2021 22:38:32'!
+PASSED!
+
+!testRun: #CreditCardTest #test04ShouldFailWhenTheNumberHasNot16Digits stamp: 'JPF 6/21/2021 22:38:32'!
+PASSED!
+
+!testRun: #StoreFacadeTest #test01ShouldFailToCreateCartWhenClientIdOrPasswordAreIncorrect stamp: 'JPF 6/21/2021 22:38:32'!
+PASSED!
+
+!testRun: #StoreFacadeTest #test02ShouldCreateACartAndBeEmptyWhenListed stamp: 'JPF 6/21/2021 22:38:32'!
+PASSED!
+
+!testRun: #StoreFacadeTest #test03ShouldAddAnItemToTheCart stamp: 'JPF 6/21/2021 22:38:32'!
+PASSED!
+
+!testRun: #StoreFacadeTest #test04ShouldFailWhenTryToAddItemsToAnInexistentCart stamp: 'JPF 6/21/2021 22:38:32'!
+PASSED!
+
+!testRun: #StoreFacadeTest #test05ShouldFailWhenTryToListAnInexistentCart stamp: 'JPF 6/21/2021 22:38:32'!
+PASSED!
+
+!testRun: #StoreFacadeTest #test06ShouldAddAnItemToTheCorrectCart stamp: 'JPF 6/21/2021 22:38:32'!
+PASSED!
+
+!testRun: #StoreFacadeTest #test07ShouldReturnADifferentTransactionIdPerCheckout stamp: 'JPF 6/21/2021 22:38:32'!
+PASSED!
+
+!testRun: #StoreFacadeTest #test08ShouldFailWhenTryToCheckoutTheSameCartTwice stamp: 'JPF 6/21/2021 22:38:32'!
+PASSED!
+
+!testRun: #StoreFacadeTest #test09ShouldFailWhenListPurchasesForAnIncorrectClientIdOrPassword stamp: 'JPF 6/21/2021 22:38:32'!
+PASSED!
+
+!testRun: #StoreFacadeTest #test10ShouldReturnEmptyListOfPurchasesWhenClientDidNotMakeAnyPurchase stamp: 'JPF 6/21/2021 22:38:32'!
+PASSED!
+
+!testRun: #StoreFacadeTest #test11ShouldListClientPurchases stamp: 'JPF 6/21/2021 22:38:32'!
+PASSED!
+
+!testRun: #StoreFacadeTest #test12ShouldFailWhenTryToAccessACartAfter30MinutesFromTheLastAccess stamp: 'JPF 6/21/2021 22:38:32'!
+PASSED!
+!StoreFacade methodsFor: 'private' stamp: 'JPF 6/21/2021 22:41:34'!
+registerSaleForTheClientOf: aCartId with: aTransactionId
+
+	| transactionsOfClient clientId |
+	
+	clientId := clientOfCarts removeKey: aCartId.
+	
+	transactionsOfClient := transactionsByClient at: clientId ifAbsent: [ OrderedCollection new ].
+	transactionsOfClient add: aTransactionId.
+	transactionsByClient at: clientId put: transactionsOfClient.
+	
+	self removeCart: aCartId.
+! !
+!StoreFacade methodsFor: 'as yet unclassified' stamp: 'JPF 6/21/2021 22:41:34' prior: 50888261!
+checkOutCart: aCartId payingWithCardNumber: aCreditCardNumber of: aName expiringOn: aMonth  
+
+	| cart cashier transactionId |
+	
+	cart := self findCart: aCartId.
+	
+	cashier := Cashier 
+		toCheckout: cart 
+		charging: (CreditCard 
+			withNumber: aCreditCardNumber
+			of: aName
+			expiringOn: aMonth)
+		throught: merchantProcessor
+		on: clock now
+		registeringOn: salesBook
+		generatingTransactionIdWith: self.
+		
+	transactionId := cashier checkOut.
+	
+	self registerSaleForTheClientOf: aCartId with: transactionId .
+	
+	^ transactionId.! !
+
+!methodRemoval: StoreFacade #registerSaleOf:with: stamp: 'JPF 6/21/2021 22:41:34'!
+registerSaleOf: aCartId with: aTransactionId
+
+	| transactionsOfClient clientId |
+	
+	clientId := clientOfCarts removeKey: aCartId.
+	
+	transactionsOfClient := transactionsByClient at: clientId ifAbsent: [ OrderedCollection new ].
+	transactionsOfClient add: aTransactionId.
+	transactionsByClient at: clientId put: transactionsOfClient.
+	
+	self removeCart: aCartId.
+!
+!StoreFacade methodsFor: 'private' stamp: 'JPF 6/21/2021 22:42:44'!
+getClientOf: aCartId
+
+	^ clientOfCarts removeKey: aCartId! !
+!StoreFacade methodsFor: 'private' stamp: 'JPF 6/21/2021 22:42:44' prior: 50888385!
+registerSaleForTheClientOf: aCartId with: aTransactionId
+
+	| transactionsOfClient clientId |
+	
+	clientId := self getClientOf: aCartId.
+	
+	transactionsOfClient := transactionsByClient at: clientId ifAbsent: [ OrderedCollection new ].
+	transactionsOfClient add: aTransactionId.
+	transactionsByClient at: clientId put: transactionsOfClient.
+	
+	self removeCart: aCartId.
+! !
+!StoreFacade methodsFor: 'private' stamp: 'JPF 6/21/2021 22:44:21'!
+register: aTransactionId for: aClientId
+
+	| transactionsOfClient |
+	transactionsOfClient := transactionsByClient at: aClientId ifAbsent: [ OrderedCollection new ].
+	transactionsOfClient add: aTransactionId.
+	transactionsByClient at: aClientId put: transactionsOfClient.
+! !
+!StoreFacade methodsFor: 'private' stamp: 'JPF 6/21/2021 22:44:27' prior: 50888452!
+register: aTransactionId for: aClientId
+
+	| transactionsOfClient |
+	
+	transactionsOfClient := transactionsByClient at: aClientId ifAbsent: [ OrderedCollection new ].
+	transactionsOfClient add: aTransactionId.
+	transactionsByClient at: aClientId put: transactionsOfClient.
+! !
+!StoreFacade methodsFor: 'private' stamp: 'JPF 6/21/2021 22:45:18' prior: 50888438!
+registerSaleForTheClientOf: aCartId with: aTransactionId
+
+	| clientId |
+	
+	clientId := self getClientOf: aCartId.
+	
+	self register: aTransactionId for: clientId.
+	
+	self removeCart: aCartId.
+! !
+
+!testRun: #CartTest #test01NewCartsAreCreatedEmpty stamp: 'JPF 6/21/2021 22:45:59'!
+PASSED!
+
+!testRun: #CartTest #test02CanNotAddItemsThatDoNotBelongToStore stamp: 'JPF 6/21/2021 22:45:59'!
+PASSED!
+
+!testRun: #CartTest #test03AfterAddingAnItemTheCartIsNotEmptyAnymore stamp: 'JPF 6/21/2021 22:45:59'!
+PASSED!
+
+!testRun: #CartTest #test04CanNotAddNonPositiveNumberOfItems stamp: 'JPF 6/21/2021 22:45:59'!
+PASSED!
+
+!testRun: #CartTest #test05CanNotAddMoreThanOneItemNotSellByTheStore stamp: 'JPF 6/21/2021 22:45:59'!
+PASSED!
+
+!testRun: #CartTest #test06CartRemembersAddedItems stamp: 'JPF 6/21/2021 22:45:59'!
+PASSED!
+
+!testRun: #CartTest #test07CartDoesNotHoldNotAddedItems stamp: 'JPF 6/21/2021 22:45:59'!
+PASSED!
+
+!testRun: #CartTest #test08CartRemembersTheNumberOfAddedItems stamp: 'JPF 6/21/2021 22:45:59'!
+PASSED!
+
+!testRun: #CashierTest #test01CanNotCheckoutAnEmptyCart stamp: 'JPF 6/21/2021 22:45:59'!
+PASSED!
+
+!testRun: #CashierTest #test02CalculatedTotalIsCorrect stamp: 'JPF 6/21/2021 22:45:59'!
+PASSED!
+
+!testRun: #CashierTest #test03CanNotCheckoutWithAnExpiredCreditCart stamp: 'JPF 6/21/2021 22:45:59'!
+PASSED!
+
+!testRun: #CashierTest #test04CheckoutRegistersASale stamp: 'JPF 6/21/2021 22:45:59'!
+PASSED!
+
+!testRun: #CashierTest #test05CashierChargesCreditCardUsingMerchantProcessor stamp: 'JPF 6/21/2021 22:45:59'!
+PASSED!
+
+!testRun: #CashierTest #test06CashierDoesNotSaleWhenTheCreditCardHasNoCredit stamp: 'JPF 6/21/2021 22:45:59'!
+PASSED!
+
+!testRun: #CreditCardTest #test01ShouldFailWhenTheNameIsEmpty stamp: 'JPF 6/21/2021 22:45:59'!
+PASSED!
+
+!testRun: #CreditCardTest #test02ShouldFailWhenTheNameIsAllWithespaceCharacters stamp: 'JPF 6/21/2021 22:45:59'!
+PASSED!
+
+!testRun: #CreditCardTest #test03ShouldFailWhenTheNameHasMoreThan30Characters stamp: 'JPF 6/21/2021 22:45:59'!
+PASSED!
+
+!testRun: #CreditCardTest #test04ShouldFailWhenTheNumberHasNot16Digits stamp: 'JPF 6/21/2021 22:45:59'!
+PASSED!
+
+!testRun: #StoreFacadeTest #test01ShouldFailToCreateCartWhenClientIdOrPasswordAreIncorrect stamp: 'JPF 6/21/2021 22:45:59'!
+PASSED!
+
+!testRun: #StoreFacadeTest #test02ShouldCreateACartAndBeEmptyWhenListed stamp: 'JPF 6/21/2021 22:45:59'!
+PASSED!
+
+!testRun: #StoreFacadeTest #test03ShouldAddAnItemToTheCart stamp: 'JPF 6/21/2021 22:45:59'!
+PASSED!
+
+!testRun: #StoreFacadeTest #test04ShouldFailWhenTryToAddItemsToAnInexistentCart stamp: 'JPF 6/21/2021 22:45:59'!
+PASSED!
+
+!testRun: #StoreFacadeTest #test05ShouldFailWhenTryToListAnInexistentCart stamp: 'JPF 6/21/2021 22:45:59'!
+PASSED!
+
+!testRun: #StoreFacadeTest #test06ShouldAddAnItemToTheCorrectCart stamp: 'JPF 6/21/2021 22:45:59'!
+PASSED!
+
+!testRun: #StoreFacadeTest #test07ShouldReturnADifferentTransactionIdPerCheckout stamp: 'JPF 6/21/2021 22:45:59'!
+PASSED!
+
+!testRun: #StoreFacadeTest #test08ShouldFailWhenTryToCheckoutTheSameCartTwice stamp: 'JPF 6/21/2021 22:45:59'!
+PASSED!
+
+!testRun: #StoreFacadeTest #test09ShouldFailWhenListPurchasesForAnIncorrectClientIdOrPassword stamp: 'JPF 6/21/2021 22:45:59'!
+PASSED!
+
+!testRun: #StoreFacadeTest #test10ShouldReturnEmptyListOfPurchasesWhenClientDidNotMakeAnyPurchase stamp: 'JPF 6/21/2021 22:45:59'!
+PASSED!
+
+!testRun: #StoreFacadeTest #test11ShouldListClientPurchases stamp: 'JPF 6/21/2021 22:45:59'!
+PASSED!
+
+!testRun: #StoreFacadeTest #test12ShouldFailWhenTryToAccessACartAfter30MinutesFromTheLastAccess stamp: 'JPF 6/21/2021 22:45:59'!
+PASSED!
+!StoreFacade methodsFor: 'assertions' stamp: 'JPF 6/21/2021 22:48:15' prior: 50886773!
+assertCartWasAccessedInTheLast30Minutes: aCartId
+
+	^ (clock now - (lastCartAccessRegistry at: aCartId)) >= (Duration minutes: 30) ifTrue: [
+		
+		self removeCart: aCartId.
+		self error: self class inexistentCartErrorMessage
+		]! !
+!StoreFacade methodsFor: 'private' stamp: 'JPF 6/21/2021 22:49:00' prior: 50880639!
+removeCart: aCartId
+	
+	cartRepository removeKey: aCartId.
+	lastCartAccessRegistry removeKey: aCartId.! !
+
+!testRun: #CartTest #test01NewCartsAreCreatedEmpty stamp: 'JPF 6/21/2021 22:49:07'!
+PASSED!
+
+!testRun: #CartTest #test02CanNotAddItemsThatDoNotBelongToStore stamp: 'JPF 6/21/2021 22:49:07'!
+PASSED!
+
+!testRun: #CartTest #test03AfterAddingAnItemTheCartIsNotEmptyAnymore stamp: 'JPF 6/21/2021 22:49:07'!
+PASSED!
+
+!testRun: #CartTest #test04CanNotAddNonPositiveNumberOfItems stamp: 'JPF 6/21/2021 22:49:07'!
+PASSED!
+
+!testRun: #CartTest #test05CanNotAddMoreThanOneItemNotSellByTheStore stamp: 'JPF 6/21/2021 22:49:07'!
+PASSED!
+
+!testRun: #CartTest #test06CartRemembersAddedItems stamp: 'JPF 6/21/2021 22:49:07'!
+PASSED!
+
+!testRun: #CartTest #test07CartDoesNotHoldNotAddedItems stamp: 'JPF 6/21/2021 22:49:07'!
+PASSED!
+
+!testRun: #CartTest #test08CartRemembersTheNumberOfAddedItems stamp: 'JPF 6/21/2021 22:49:07'!
+PASSED!
+
+!testRun: #CashierTest #test01CanNotCheckoutAnEmptyCart stamp: 'JPF 6/21/2021 22:49:07'!
+PASSED!
+
+!testRun: #CashierTest #test02CalculatedTotalIsCorrect stamp: 'JPF 6/21/2021 22:49:07'!
+PASSED!
+
+!testRun: #CashierTest #test03CanNotCheckoutWithAnExpiredCreditCart stamp: 'JPF 6/21/2021 22:49:07'!
+PASSED!
+
+!testRun: #CashierTest #test04CheckoutRegistersASale stamp: 'JPF 6/21/2021 22:49:07'!
+PASSED!
+
+!testRun: #CashierTest #test05CashierChargesCreditCardUsingMerchantProcessor stamp: 'JPF 6/21/2021 22:49:07'!
+PASSED!
+
+!testRun: #CashierTest #test06CashierDoesNotSaleWhenTheCreditCardHasNoCredit stamp: 'JPF 6/21/2021 22:49:07'!
+PASSED!
+
+!testRun: #CreditCardTest #test01ShouldFailWhenTheNameIsEmpty stamp: 'JPF 6/21/2021 22:49:07'!
+PASSED!
+
+!testRun: #CreditCardTest #test02ShouldFailWhenTheNameIsAllWithespaceCharacters stamp: 'JPF 6/21/2021 22:49:07'!
+PASSED!
+
+!testRun: #CreditCardTest #test03ShouldFailWhenTheNameHasMoreThan30Characters stamp: 'JPF 6/21/2021 22:49:07'!
+PASSED!
+
+!testRun: #CreditCardTest #test04ShouldFailWhenTheNumberHasNot16Digits stamp: 'JPF 6/21/2021 22:49:07'!
+PASSED!
+
+!testRun: #StoreFacadeTest #test01ShouldFailToCreateCartWhenClientIdOrPasswordAreIncorrect stamp: 'JPF 6/21/2021 22:49:07'!
+PASSED!
+
+!testRun: #StoreFacadeTest #test02ShouldCreateACartAndBeEmptyWhenListed stamp: 'JPF 6/21/2021 22:49:07'!
+PASSED!
+
+!testRun: #StoreFacadeTest #test03ShouldAddAnItemToTheCart stamp: 'JPF 6/21/2021 22:49:07'!
+PASSED!
+
+!testRun: #StoreFacadeTest #test04ShouldFailWhenTryToAddItemsToAnInexistentCart stamp: 'JPF 6/21/2021 22:49:07'!
+PASSED!
+
+!testRun: #StoreFacadeTest #test05ShouldFailWhenTryToListAnInexistentCart stamp: 'JPF 6/21/2021 22:49:07'!
+PASSED!
+
+!testRun: #StoreFacadeTest #test06ShouldAddAnItemToTheCorrectCart stamp: 'JPF 6/21/2021 22:49:07'!
+PASSED!
+
+!testRun: #StoreFacadeTest #test07ShouldReturnADifferentTransactionIdPerCheckout stamp: 'JPF 6/21/2021 22:49:07'!
+PASSED!
+
+!testRun: #StoreFacadeTest #test08ShouldFailWhenTryToCheckoutTheSameCartTwice stamp: 'JPF 6/21/2021 22:49:07'!
+PASSED!
+
+!testRun: #StoreFacadeTest #test09ShouldFailWhenListPurchasesForAnIncorrectClientIdOrPassword stamp: 'JPF 6/21/2021 22:49:07'!
+PASSED!
+
+!testRun: #StoreFacadeTest #test10ShouldReturnEmptyListOfPurchasesWhenClientDidNotMakeAnyPurchase stamp: 'JPF 6/21/2021 22:49:07'!
+PASSED!
+
+!testRun: #StoreFacadeTest #test11ShouldListClientPurchases stamp: 'JPF 6/21/2021 22:49:07'!
+PASSED!
+
+!testRun: #StoreFacadeTest #test12ShouldFailWhenTryToAccessACartAfter30MinutesFromTheLastAccess stamp: 'JPF 6/21/2021 22:49:07'!
+PASSED!
+!StoreFacade methodsFor: 'assertions' stamp: 'JPF 6/21/2021 22:49:18' prior: 50888591!
+assertCartWasAccessedInTheLast30Minutes: aCartId
+
+	^ (clock now - (lastCartAccessRegistry at: aCartId)) >= (Duration minutes: 30) ifTrue: [
+		self removeCart: aCartId.
+		self error: self class inexistentCartErrorMessage
+		]! !
+!StoreFacade methodsFor: 'actions' stamp: 'JPF 6/21/2021 22:50:54'!
+createNewCart: cartId for: aClientId 
+
+	^ cartRepository at: cartId put: (Cart acceptingItemsOf: catalog)! !
+!StoreFacade methodsFor: 'as yet unclassified' stamp: 'JPF 6/21/2021 22:50:54' prior: 50887686!
+createCartFor: aClientId withPassword: aPassword
+
+	| cartId |
+	
+	clientValidator validateClient: aClientId withPassword: aPassword.
+	
+	cartId := self nextCartId.
+	
+	self createNewCart: cartId for: aClientId.
+	self updateLastAccessFor: cartId.
+	clientOfCarts at: cartId put: aClientId.
+	
+	^ cartId! !
+
+!methodRemoval: StoreFacade #createNewCart: stamp: 'JPF 6/21/2021 22:50:54'!
+createNewCart: cartId
+
+	^ cartRepository at: cartId put: (Cart acceptingItemsOf: catalog)!
+!StoreFacade methodsFor: 'actions' stamp: 'JPF 6/21/2021 22:52:57' prior: 50888730!
+createCartFor: aClientId withPassword: aPassword
+
+	| cartId |
+	
+	clientValidator validateClient: aClientId withPassword: aPassword.
+	
+	cartId := self nextCartId.
+	
+	self createNewCart: cartId for: aClientId.
+	self updateLastAccessFor: cartId.
+	
+	
+	^ cartId! !
+!StoreFacade methodsFor: 'actions' stamp: 'JPF 6/21/2021 22:53:30' prior: 50888723!
+createNewCart: cartId for: aClientId 
+
+	cartRepository at: cartId put: (Cart acceptingItemsOf: catalog).
+	clientOfCarts at: cartId put: aClientId.! !
+!StoreFacade methodsFor: 'actions' stamp: 'JPF 6/21/2021 22:53:52' prior: 50888748!
+createCartFor: aClientId withPassword: aPassword
+
+	| cartId |
+	
+	clientValidator validateClient: aClientId withPassword: aPassword.
+	
+	cartId := self nextCartId.
+	
+	self createNewCart: cartId for: aClientId.
+	self updateLastAccessFor: cartId.
+	
+	^ cartId! !
+
+!testRun: #CartTest #test01NewCartsAreCreatedEmpty stamp: 'JPF 6/21/2021 22:54:00'!
+PASSED!
+
+!testRun: #CartTest #test02CanNotAddItemsThatDoNotBelongToStore stamp: 'JPF 6/21/2021 22:54:00'!
+PASSED!
+
+!testRun: #CartTest #test03AfterAddingAnItemTheCartIsNotEmptyAnymore stamp: 'JPF 6/21/2021 22:54:00'!
+PASSED!
+
+!testRun: #CartTest #test04CanNotAddNonPositiveNumberOfItems stamp: 'JPF 6/21/2021 22:54:00'!
+PASSED!
+
+!testRun: #CartTest #test05CanNotAddMoreThanOneItemNotSellByTheStore stamp: 'JPF 6/21/2021 22:54:00'!
+PASSED!
+
+!testRun: #CartTest #test06CartRemembersAddedItems stamp: 'JPF 6/21/2021 22:54:00'!
+PASSED!
+
+!testRun: #CartTest #test07CartDoesNotHoldNotAddedItems stamp: 'JPF 6/21/2021 22:54:00'!
+PASSED!
+
+!testRun: #CartTest #test08CartRemembersTheNumberOfAddedItems stamp: 'JPF 6/21/2021 22:54:00'!
+PASSED!
+
+!testRun: #CashierTest #test01CanNotCheckoutAnEmptyCart stamp: 'JPF 6/21/2021 22:54:00'!
+PASSED!
+
+!testRun: #CashierTest #test02CalculatedTotalIsCorrect stamp: 'JPF 6/21/2021 22:54:00'!
+PASSED!
+
+!testRun: #CashierTest #test03CanNotCheckoutWithAnExpiredCreditCart stamp: 'JPF 6/21/2021 22:54:00'!
+PASSED!
+
+!testRun: #CashierTest #test04CheckoutRegistersASale stamp: 'JPF 6/21/2021 22:54:00'!
+PASSED!
+
+!testRun: #CashierTest #test05CashierChargesCreditCardUsingMerchantProcessor stamp: 'JPF 6/21/2021 22:54:00'!
+PASSED!
+
+!testRun: #CashierTest #test06CashierDoesNotSaleWhenTheCreditCardHasNoCredit stamp: 'JPF 6/21/2021 22:54:00'!
+PASSED!
+
+!testRun: #CreditCardTest #test01ShouldFailWhenTheNameIsEmpty stamp: 'JPF 6/21/2021 22:54:00'!
+PASSED!
+
+!testRun: #CreditCardTest #test02ShouldFailWhenTheNameIsAllWithespaceCharacters stamp: 'JPF 6/21/2021 22:54:00'!
+PASSED!
+
+!testRun: #CreditCardTest #test03ShouldFailWhenTheNameHasMoreThan30Characters stamp: 'JPF 6/21/2021 22:54:00'!
+PASSED!
+
+!testRun: #CreditCardTest #test04ShouldFailWhenTheNumberHasNot16Digits stamp: 'JPF 6/21/2021 22:54:00'!
+PASSED!
+
+!testRun: #StoreFacadeTest #test01ShouldFailToCreateCartWhenClientIdOrPasswordAreIncorrect stamp: 'JPF 6/21/2021 22:54:00'!
+PASSED!
+
+!testRun: #StoreFacadeTest #test02ShouldCreateACartAndBeEmptyWhenListed stamp: 'JPF 6/21/2021 22:54:00'!
+PASSED!
+
+!testRun: #StoreFacadeTest #test03ShouldAddAnItemToTheCart stamp: 'JPF 6/21/2021 22:54:00'!
+PASSED!
+
+!testRun: #StoreFacadeTest #test04ShouldFailWhenTryToAddItemsToAnInexistentCart stamp: 'JPF 6/21/2021 22:54:00'!
+PASSED!
+
+!testRun: #StoreFacadeTest #test05ShouldFailWhenTryToListAnInexistentCart stamp: 'JPF 6/21/2021 22:54:00'!
+PASSED!
+
+!testRun: #StoreFacadeTest #test06ShouldAddAnItemToTheCorrectCart stamp: 'JPF 6/21/2021 22:54:00'!
+PASSED!
+
+!testRun: #StoreFacadeTest #test07ShouldReturnADifferentTransactionIdPerCheckout stamp: 'JPF 6/21/2021 22:54:00'!
+PASSED!
+
+!testRun: #StoreFacadeTest #test08ShouldFailWhenTryToCheckoutTheSameCartTwice stamp: 'JPF 6/21/2021 22:54:00'!
+PASSED!
+
+!testRun: #StoreFacadeTest #test09ShouldFailWhenListPurchasesForAnIncorrectClientIdOrPassword stamp: 'JPF 6/21/2021 22:54:00'!
+PASSED!
+
+!testRun: #StoreFacadeTest #test10ShouldReturnEmptyListOfPurchasesWhenClientDidNotMakeAnyPurchase stamp: 'JPF 6/21/2021 22:54:00'!
+PASSED!
+
+!testRun: #StoreFacadeTest #test11ShouldListClientPurchases stamp: 'JPF 6/21/2021 22:54:00'!
+PASSED!
+
+!testRun: #StoreFacadeTest #test12ShouldFailWhenTryToAccessACartAfter30MinutesFromTheLastAccess stamp: 'JPF 6/21/2021 22:54:00'!
+PASSED!
+!StoreFacade methodsFor: 'actions' stamp: 'JPF 6/21/2021 22:56:39'!
+getTransactionsOf: aClientId
+
+	^ transactionsByClient at: aClientId ifAbsent: [ OrderedCollection new ]! !
+!StoreFacade methodsFor: 'actions' stamp: 'JPF 6/21/2021 22:56:39' prior: 50884390!
+listPurchasesOf: aClientId withPassword: aPassword
+
+	| transactionsOfClient purchasesDetailTotal purchasesDetailItems |
+	
+	clientValidator validateClient: aClientId withPassword: aPassword.
+	
+	transactionsOfClient := self getTransactionsOf: aClientId.
+	
+	purchasesDetailTotal := 0.
+	purchasesDetailItems := OrderedDictionary new.
+	
+	transactionsOfClient do: [ :transactionId || sale |
+		sale := salesBook at: transactionId.
+		sale items associationsDo: [ :saleItem || purchasesDetailItemQuantity |
+			purchasesDetailItemQuantity := purchasesDetailItems at: saleItem key ifAbsent: [ 0 ].
+			purchasesDetailItems at: saleItem key put: purchasesDetailItemQuantity + saleItem value
+			].
+		purchasesDetailTotal := purchasesDetailTotal + sale total.
+		].
+	
+	^ PurchasesDetail with: purchasesDetailItems totalizing: purchasesDetailTotal! !
+
+!testRun: #CartTest #test01NewCartsAreCreatedEmpty stamp: 'JPF 6/21/2021 22:57:13'!
+PASSED!
+
+!testRun: #CartTest #test02CanNotAddItemsThatDoNotBelongToStore stamp: 'JPF 6/21/2021 22:57:13'!
+PASSED!
+
+!testRun: #CartTest #test03AfterAddingAnItemTheCartIsNotEmptyAnymore stamp: 'JPF 6/21/2021 22:57:13'!
+PASSED!
+
+!testRun: #CartTest #test04CanNotAddNonPositiveNumberOfItems stamp: 'JPF 6/21/2021 22:57:13'!
+PASSED!
+
+!testRun: #CartTest #test05CanNotAddMoreThanOneItemNotSellByTheStore stamp: 'JPF 6/21/2021 22:57:13'!
+PASSED!
+
+!testRun: #CartTest #test06CartRemembersAddedItems stamp: 'JPF 6/21/2021 22:57:13'!
+PASSED!
+
+!testRun: #CartTest #test07CartDoesNotHoldNotAddedItems stamp: 'JPF 6/21/2021 22:57:13'!
+PASSED!
+
+!testRun: #CartTest #test08CartRemembersTheNumberOfAddedItems stamp: 'JPF 6/21/2021 22:57:13'!
+PASSED!
+
+!testRun: #CashierTest #test01CanNotCheckoutAnEmptyCart stamp: 'JPF 6/21/2021 22:57:13'!
+PASSED!
+
+!testRun: #CashierTest #test02CalculatedTotalIsCorrect stamp: 'JPF 6/21/2021 22:57:13'!
+PASSED!
+
+!testRun: #CashierTest #test03CanNotCheckoutWithAnExpiredCreditCart stamp: 'JPF 6/21/2021 22:57:13'!
+PASSED!
+
+!testRun: #CashierTest #test04CheckoutRegistersASale stamp: 'JPF 6/21/2021 22:57:13'!
+PASSED!
+
+!testRun: #CashierTest #test05CashierChargesCreditCardUsingMerchantProcessor stamp: 'JPF 6/21/2021 22:57:13'!
+PASSED!
+
+!testRun: #CashierTest #test06CashierDoesNotSaleWhenTheCreditCardHasNoCredit stamp: 'JPF 6/21/2021 22:57:13'!
+PASSED!
+
+!testRun: #CreditCardTest #test01ShouldFailWhenTheNameIsEmpty stamp: 'JPF 6/21/2021 22:57:13'!
+PASSED!
+
+!testRun: #CreditCardTest #test02ShouldFailWhenTheNameIsAllWithespaceCharacters stamp: 'JPF 6/21/2021 22:57:13'!
+PASSED!
+
+!testRun: #CreditCardTest #test03ShouldFailWhenTheNameHasMoreThan30Characters stamp: 'JPF 6/21/2021 22:57:13'!
+PASSED!
+
+!testRun: #CreditCardTest #test04ShouldFailWhenTheNumberHasNot16Digits stamp: 'JPF 6/21/2021 22:57:13'!
+PASSED!
+
+!testRun: #StoreFacadeTest #test01ShouldFailToCreateCartWhenClientIdOrPasswordAreIncorrect stamp: 'JPF 6/21/2021 22:57:13'!
+PASSED!
+
+!testRun: #StoreFacadeTest #test02ShouldCreateACartAndBeEmptyWhenListed stamp: 'JPF 6/21/2021 22:57:13'!
+PASSED!
+
+!testRun: #StoreFacadeTest #test03ShouldAddAnItemToTheCart stamp: 'JPF 6/21/2021 22:57:13'!
+PASSED!
+
+!testRun: #StoreFacadeTest #test04ShouldFailWhenTryToAddItemsToAnInexistentCart stamp: 'JPF 6/21/2021 22:57:13'!
+PASSED!
+
+!testRun: #StoreFacadeTest #test05ShouldFailWhenTryToListAnInexistentCart stamp: 'JPF 6/21/2021 22:57:13'!
+PASSED!
+
+!testRun: #StoreFacadeTest #test06ShouldAddAnItemToTheCorrectCart stamp: 'JPF 6/21/2021 22:57:13'!
+PASSED!
+
+!testRun: #StoreFacadeTest #test07ShouldReturnADifferentTransactionIdPerCheckout stamp: 'JPF 6/21/2021 22:57:13'!
+PASSED!
+
+!testRun: #StoreFacadeTest #test08ShouldFailWhenTryToCheckoutTheSameCartTwice stamp: 'JPF 6/21/2021 22:57:13'!
+PASSED!
+
+!testRun: #StoreFacadeTest #test09ShouldFailWhenListPurchasesForAnIncorrectClientIdOrPassword stamp: 'JPF 6/21/2021 22:57:13'!
+PASSED!
+
+!testRun: #StoreFacadeTest #test10ShouldReturnEmptyListOfPurchasesWhenClientDidNotMakeAnyPurchase stamp: 'JPF 6/21/2021 22:57:13'!
+PASSED!
+
+!testRun: #StoreFacadeTest #test11ShouldListClientPurchases stamp: 'JPF 6/21/2021 22:57:13'!
+PASSED!
+
+!testRun: #StoreFacadeTest #test12ShouldFailWhenTryToAccessACartAfter30MinutesFromTheLastAccess stamp: 'JPF 6/21/2021 22:57:13'!
+PASSED!
+
+----QUIT----(21 June 2021 22:57:41) CaraInternaInterfaz.image priorSource: 17772278!
