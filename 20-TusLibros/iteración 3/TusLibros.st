@@ -983,11 +983,20 @@ Object subclass: #PurchasesDetail
 	poolDictionaries: ''
 	category: 'TusLibros'!
 
-!PurchasesDetail methodsFor: 'initialization' stamp: 'JPF 6/21/2021 12:27:13'!
-initializeWith: quantityByItem totalizing: aTotal 
-
-	items := quantityByItem.
-	total := aTotal.! !
+!PurchasesDetail methodsFor: 'initialization' stamp: 'JPF 6/23/2021 18:25:13'!
+initializeFor: sales
+	
+	total := 0.
+	items := OrderedDictionary new.
+	
+	sales do: [ :sale |
+		sale items associationsDo: [ :saleItem || purchasesDetailItemQuantity |
+			purchasesDetailItemQuantity := items at: saleItem key ifAbsent: [ 0 ].
+			items at: saleItem key put: purchasesDetailItemQuantity + saleItem value
+			].
+		total := total + sale total.
+		].
+! !
 
 
 !PurchasesDetail methodsFor: 'accessing' stamp: 'JPF 6/21/2021 12:28:35'!
@@ -1012,10 +1021,10 @@ isEmpty
 PurchasesDetail class
 	instanceVariableNames: ''!
 
-!PurchasesDetail class methodsFor: 'instance creation' stamp: 'JPF 6/21/2021 12:25:33'!
-with: items totalizing: aTotal
+!PurchasesDetail class methodsFor: 'instance creation' stamp: 'JPF 6/23/2021 18:25:13'!
+for: sales
 	
-	^self new initializeWith: items totalizing: aTotal.! !
+	^self new initializeFor: sales! !
 
 
 !classDefinition: #Sale category: 'TusLibros'!
@@ -1079,14 +1088,41 @@ initializeValidatingWith: aClientValidator having: aCatalog processingPaymentsWi
 	lastCartAccessRegistry := Dictionary new.
 	clientOfCarts := Dictionary new.! !
 
+!StoreFacade methodsFor: 'initialization' stamp: 'JPF 6/23/2021 17:21:02'!
+saleCorrespondingTo: transactionId
 
-!StoreFacade methodsFor: 'private' stamp: 'JPF 6/21/2021 22:53:30'!
+	^ salesBook at: transactionId! !
+
+
+!StoreFacade methodsFor: 'private - id generation' stamp: 'JPF 6/19/2021 10:13:57'!
+nextCartId
+	
+	| cartId |
+	
+	cartId := cartIdSequence.
+	cartIdSequence := cartIdSequence + 1.
+	
+	^ cartId! !
+
+!StoreFacade methodsFor: 'private - id generation' stamp: 'JPF 6/20/2021 11:54:44'!
+nextTransactionId
+
+	| transactionId |
+	
+	transactionId := transactionIdSequence.
+	transactionIdSequence := transactionIdSequence + 1.
+	
+	^ transactionId! !
+
+
+!StoreFacade methodsFor: 'private - cart' stamp: 'JPF 6/23/2021 17:28:20'!
 createNewCart: cartId for: aClientId 
 
 	cartRepository at: cartId put: (Cart acceptingItemsOf: catalog).
-	clientOfCarts at: cartId put: aClientId.! !
+	clientOfCarts at: cartId put: aClientId.
+	self updateLastAccessFor: cartId.! !
 
-!StoreFacade methodsFor: 'private' stamp: 'JPF 6/21/2021 14:05:15'!
+!StoreFacade methodsFor: 'private - cart' stamp: 'JPF 6/21/2021 14:05:15'!
 findCart: aCartId
 
 	| cart |
@@ -1098,32 +1134,19 @@ findCart: aCartId
 	^ cart
 	! !
 
-!StoreFacade methodsFor: 'private' stamp: 'JPF 6/21/2021 22:42:44'!
-getClientOf: aCartId
-
-	^ clientOfCarts removeKey: aCartId! !
-
-!StoreFacade methodsFor: 'private' stamp: 'JPF 6/19/2021 10:13:57'!
-nextCartId
+!StoreFacade methodsFor: 'private - cart' stamp: 'JPF 6/21/2021 22:49:00'!
+removeCart: aCartId
 	
-	| cartId |
-	
-	cartId := cartIdSequence.
-	cartIdSequence := cartIdSequence + 1.
-	
-	^ cartId! !
+	cartRepository removeKey: aCartId.
+	lastCartAccessRegistry removeKey: aCartId.! !
 
-!StoreFacade methodsFor: 'private' stamp: 'JPF 6/20/2021 11:54:44'!
-nextTransactionId
+!StoreFacade methodsFor: 'private - cart' stamp: 'JPF 6/21/2021 14:05:15'!
+updateLastAccessFor: aCartId
 
-	| transactionId |
-	
-	transactionId := transactionIdSequence.
-	transactionIdSequence := transactionIdSequence + 1.
-	
-	^ transactionId! !
+	^ lastCartAccessRegistry at: aCartId put: clock now! !
 
-!StoreFacade methodsFor: 'private' stamp: 'JPF 6/21/2021 22:44:27'!
+
+!StoreFacade methodsFor: 'private - client' stamp: 'JPF 6/21/2021 22:44:27'!
 register: aTransactionId for: aClientId
 
 	| transactionsOfClient |
@@ -1133,28 +1156,31 @@ register: aTransactionId for: aClientId
 	transactionsByClient at: aClientId put: transactionsOfClient.
 ! !
 
-!StoreFacade methodsFor: 'private' stamp: 'JPF 6/21/2021 22:45:18'!
+!StoreFacade methodsFor: 'private - client' stamp: 'JPF 6/23/2021 17:13:48'!
 registerSaleForTheClientOf: aCartId with: aTransactionId
 
 	| clientId |
 	
-	clientId := self getClientOf: aCartId.
+	clientId := clientOfCarts removeKey: aCartId.
 	
 	self register: aTransactionId for: clientId.
 	
 	self removeCart: aCartId.
 ! !
 
-!StoreFacade methodsFor: 'private' stamp: 'JPF 6/21/2021 22:49:00'!
-removeCart: aCartId
+!StoreFacade methodsFor: 'private - client' stamp: 'JPF 6/23/2021 18:20:03'!
+salesOf: aClientId
+
+	| transactionsOfClient |
 	
-	cartRepository removeKey: aCartId.
-	lastCartAccessRegistry removeKey: aCartId.! !
+	transactionsOfClient := self transactionsOf: aClientId.
+	^ transactionsOfClient collect: [ :transactionId | self saleCorrespondingTo: transactionId ]! !
 
-!StoreFacade methodsFor: 'private' stamp: 'JPF 6/21/2021 14:05:15'!
-updateLastAccessFor: aCartId
+!StoreFacade methodsFor: 'private - client' stamp: 'JPF 6/23/2021 18:19:40'!
+transactionsOf: aClientId
 
-	^ lastCartAccessRegistry at: aCartId put: clock now! !
+	^ transactionsByClient at: aClientId ifAbsent: [ OrderedCollection new ].
+	! !
 
 
 !StoreFacade methodsFor: 'actions' stamp: 'JPF 6/19/2021 10:06:39'!
@@ -1190,7 +1216,7 @@ checkOutCart: aCartId payingWithCardNumber: aCreditCardNumber of: aName expiring
 	
 	^ transactionId.! !
 
-!StoreFacade methodsFor: 'actions' stamp: 'JPF 6/21/2021 22:53:52'!
+!StoreFacade methodsFor: 'actions' stamp: 'JPF 6/23/2021 17:28:07'!
 createCartFor: aClientId withPassword: aPassword
 
 	| cartId |
@@ -1200,43 +1226,21 @@ createCartFor: aClientId withPassword: aPassword
 	cartId := self nextCartId.
 	
 	self createNewCart: cartId for: aClientId.
-	self updateLastAccessFor: cartId.
 	
 	^ cartId! !
-
-!StoreFacade methodsFor: 'actions' stamp: 'JPF 6/21/2021 22:56:39'!
-getTransactionsOf: aClientId
-
-	^ transactionsByClient at: aClientId ifAbsent: [ OrderedCollection new ]! !
-
-!StoreFacade methodsFor: 'actions' stamp: 'JPF 6/21/2021 22:56:39'!
-listPurchasesOf: aClientId withPassword: aPassword
-
-	| transactionsOfClient purchasesDetailTotal purchasesDetailItems |
-	
-	clientValidator validateClient: aClientId withPassword: aPassword.
-	
-	transactionsOfClient := self getTransactionsOf: aClientId.
-	
-	purchasesDetailTotal := 0.
-	purchasesDetailItems := OrderedDictionary new.
-	
-	transactionsOfClient do: [ :transactionId || sale |
-		sale := salesBook at: transactionId.
-		sale items associationsDo: [ :saleItem || purchasesDetailItemQuantity |
-			purchasesDetailItemQuantity := purchasesDetailItems at: saleItem key ifAbsent: [ 0 ].
-			purchasesDetailItems at: saleItem key put: purchasesDetailItemQuantity + saleItem value
-			].
-		purchasesDetailTotal := purchasesDetailTotal + sale total.
-		].
-	
-	^ PurchasesDetail with: purchasesDetailItems totalizing: purchasesDetailTotal! !
 
 
 !StoreFacade methodsFor: 'queries' stamp: 'JPF 6/21/2021 10:04:02'!
 listCart: aCartId
 	
 	^ (self findCart: aCartId) cartDetail.! !
+
+!StoreFacade methodsFor: 'queries' stamp: 'JPF 6/23/2021 18:24:55'!
+listPurchasesOf: aClientId withPassword: aPassword
+
+	clientValidator validateClient: aClientId withPassword: aPassword.
+	
+	^ PurchasesDetail for: (self salesOf: aClientId)! !
 
 
 !StoreFacade methodsFor: 'assertions' stamp: 'JPF 6/21/2021 22:49:18'!
