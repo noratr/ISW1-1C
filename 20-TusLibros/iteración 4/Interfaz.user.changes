@@ -1,0 +1,5140 @@
+
+
+----SNAPSHOT----(24 June 2021 19:51:34) Interfaz.image priorSource: 17895769!
+
+----End fileIn of /Users/juan.ferrino/CuisUniversity/Packages/System/Collections-CompactArrays.pck.st----!
+
+----End fileIn of /Users/juan.ferrino/CuisUniversity/Packages/Features/Compression.pck.st----!
+
+----End fileIn of /Users/juan.ferrino/CuisUniversity/Packages/Features/Sound.pck.st----!
+
+----End fileIn of /Users/juan.ferrino/CuisUniversity/Packages/Features/Cryptography-DigitalSignatures.pck.st----!
+
+----End fileIn of /Users/juan.ferrino/CuisUniversity/Packages/Features/Identities-UUID.pck.st----!
+
+----End fileIn of /Users/juan.ferrino/CuisUniversity/Packages/System/Network-Kernel.pck.st----!
+
+----End fileIn of /Users/juan.ferrino/ingenieria1/2021-1c/20-TusLibros/Iteracion 4/WebClient.pck.st----!
+
+----End fileIn of /Users/juan.ferrino/ingenieria1/2021-1c/20-TusLibros/Iteracion 4/StringsServicesServer.st----!
+
+----End fileIn of /Users/juan.ferrino/ingenieria1/2021-1c/20-TusLibros/Iteracion3/TusLibros-80.st----!
+
+!testRun: #CartTest #test01NewCartsAreCreatedEmpty stamp: 'JPF 6/24/2021 21:04:52'!
+PASSED!
+
+!testRun: #CartTest #test02CanNotAddItemsThatDoNotBelongToStore stamp: 'JPF 6/24/2021 21:04:52'!
+PASSED!
+
+!testRun: #CartTest #test03AfterAddingAnItemTheCartIsNotEmptyAnymore stamp: 'JPF 6/24/2021 21:04:52'!
+PASSED!
+
+!testRun: #CartTest #test04CanNotAddNonPositiveNumberOfItems stamp: 'JPF 6/24/2021 21:04:52'!
+PASSED!
+
+!testRun: #CartTest #test05CanNotAddMoreThanOneItemNotSellByTheStore stamp: 'JPF 6/24/2021 21:04:52'!
+PASSED!
+
+!testRun: #CartTest #test06CartRemembersAddedItems stamp: 'JPF 6/24/2021 21:04:52'!
+PASSED!
+
+!testRun: #CartTest #test07CartDoesNotHoldNotAddedItems stamp: 'JPF 6/24/2021 21:04:52'!
+PASSED!
+
+!testRun: #CartTest #test08CartRemembersTheNumberOfAddedItems stamp: 'JPF 6/24/2021 21:04:52'!
+PASSED!
+
+!testRun: #CashierTest #test01CanNotCheckoutAnEmptyCart stamp: 'JPF 6/24/2021 21:04:52'!
+PASSED!
+
+!testRun: #CashierTest #test02CalculatedTotalIsCorrect stamp: 'JPF 6/24/2021 21:04:52'!
+PASSED!
+
+!testRun: #CashierTest #test03CanNotCheckoutWithAnExpiredCreditCart stamp: 'JPF 6/24/2021 21:04:52'!
+PASSED!
+
+!testRun: #CashierTest #test04CheckoutRegistersASale stamp: 'JPF 6/24/2021 21:04:52'!
+PASSED!
+
+!testRun: #CashierTest #test05CashierChargesCreditCardUsingMerchantProcessor stamp: 'JPF 6/24/2021 21:04:52'!
+PASSED!
+
+!testRun: #CashierTest #test06CashierDoesNotSaleWhenTheCreditCardHasNoCredit stamp: 'JPF 6/24/2021 21:04:52'!
+PASSED!
+
+!testRun: #TusLibrosSystemFacadeTest #test01CanCreateCartWithValidUserAndPassword stamp: 'JPF 6/24/2021 21:04:52'!
+PASSED!
+
+!testRun: #TusLibrosSystemFacadeTest #test02CanNotCreateCartWithInvalidUser stamp: 'JPF 6/24/2021 21:04:52'!
+PASSED!
+
+!testRun: #TusLibrosSystemFacadeTest #test03CanNotCreateCartWithInvalidPassword stamp: 'JPF 6/24/2021 21:04:52'!
+PASSED!
+
+!testRun: #TusLibrosSystemFacadeTest #test04CanAddItemsToACreatedCart stamp: 'JPF 6/24/2021 21:04:52'!
+PASSED!
+
+!testRun: #TusLibrosSystemFacadeTest #test05CanNotAddItemToNotCreatedCart stamp: 'JPF 6/24/2021 21:04:52'!
+PASSED!
+
+!testRun: #TusLibrosSystemFacadeTest #test06CanNotAddItemNotSellByTheStore stamp: 'JPF 6/24/2021 21:04:52'!
+PASSED!
+
+!testRun: #TusLibrosSystemFacadeTest #test07ListCartOfAnEmptyCartReturnsAnEmptyBag stamp: 'JPF 6/24/2021 21:04:52'!
+PASSED!
+
+!testRun: #TusLibrosSystemFacadeTest #test08CanNotListCartOfInvalidCartId stamp: 'JPF 6/24/2021 21:04:52'!
+PASSED!
+
+!testRun: #TusLibrosSystemFacadeTest #test09ListCartReturnsTheRightNumberOfItems stamp: 'JPF 6/24/2021 21:04:52'!
+PASSED!
+
+!testRun: #TusLibrosSystemFacadeTest #test10CanCheckoutACart stamp: 'JPF 6/24/2021 21:04:52'!
+PASSED!
+
+!testRun: #TusLibrosSystemFacadeTest #test11CanNotCheckoutANotCreatedCart stamp: 'JPF 6/24/2021 21:04:52'!
+PASSED!
+
+!testRun: #TusLibrosSystemFacadeTest #test12CanNotCheckoutAnEmptyCart stamp: 'JPF 6/24/2021 21:04:52'!
+PASSED!
+
+!testRun: #TusLibrosSystemFacadeTest #test13CanNotCheckoutWithAnExpiredCreditCard stamp: 'JPF 6/24/2021 21:04:52'!
+PASSED!
+
+!testRun: #TusLibrosSystemFacadeTest #test14ListPurchasesIncludesBoughtItems stamp: 'JPF 6/24/2021 21:04:52'!
+PASSED!
+
+!testRun: #TusLibrosSystemFacadeTest #test15CanNotListPurchasesOfInvalidCustomer stamp: 'JPF 6/24/2021 21:04:52'!
+PASSED!
+
+!testRun: #TusLibrosSystemFacadeTest #test16CanNotListPurchasesOfValidCustomerWithInvalidPassword stamp: 'JPF 6/24/2021 21:04:52'!
+PASSED!
+
+!testRun: #TusLibrosSystemFacadeTest #test17CanNotAddToCartWhenSessionIsExpired stamp: 'JPF 6/24/2021 21:04:52'!
+PASSED!
+
+!testRun: #TusLibrosSystemFacadeTest #test18CanNotListCartWhenSessionIsExpired stamp: 'JPF 6/24/2021 21:04:52'!
+PASSED!
+
+!testRun: #TusLibrosSystemFacadeTest #test19CanNotCheckOutCartWhenSessionIsExpired stamp: 'JPF 6/24/2021 21:04:52'!
+PASSED!
+
+----QUIT----(24 June 2021 21:13:02) Interfaz.image priorSource: 17898719!
+
+----STARTUP---- (24 June 2021 21:13:21) as /Users/juan.ferrino/CuisUniversity/Interfaz.image!
+
+
+Object subclass: #TusLibrosRestInterface
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'TusLibros-Server'!
+
+!classDefinition: #TusLibrosRestInterface category: 'TusLibros-Server' stamp: 'JPF 6/24/2021 21:14:58'!
+Object subclass: #TusLibrosRestInterface
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'TusLibros-Server'!
+!TusLibrosRestInterface class methodsFor: 'no messages' stamp: 'JPF 6/24/2021 21:15:53'!
+listeningOn: aPortNumber
+
+	^self new initializeWith: aPortNumber.! !
+!TusLibrosRestInterface methodsFor: 'initialization' stamp: 'JPF 6/24/2021 21:16:50'!
+initializeWith: aPortNumber! !
+
+!classDefinition: #TusLibrosRestInterface category: 'TusLibros-Server' stamp: 'JPF 6/24/2021 21:18:35'!
+Object subclass: #TusLibrosRestInterface
+	instanceVariableNames: 'port'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'TusLibros-Server'!
+
+!classDefinition: #TusLibrosRestInterface category: 'TusLibros-Server' stamp: 'JPF 6/24/2021 21:18:36'!
+Object subclass: #TusLibrosRestInterface
+	instanceVariableNames: 'port webServer'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'TusLibros-Server'!
+!TusLibrosRestInterface methodsFor: 'initialization' stamp: 'JPF 6/24/2021 21:18:31' prior: 50929624!
+initializeWith: aPortNumber
+	
+	port:= aPortNumber.
+	
+	webServer := WebServer new listenOn: self port.
+	
+	webServer addService: '/hello' action:[:request |	
+		
+		request send200Response: 'hello'].! !
+!TusLibrosRestInterface methodsFor: 'accessing' stamp: 'JPF 6/24/2021 21:19:05'!
+port
+	
+	^ port! !
+
+TusLibrosRestInterface listeningOn: 8080!
+!TusLibrosRestInterface methodsFor: 'initialization' stamp: 'JPF 6/24/2021 21:20:49' prior: 50929645!
+initializeWith: aPortNumber
+	
+	port:= aPortNumber.
+	
+	webServer := WebServer new listenOn: self port.
+	
+	webServer addService: '/chau' action:[:request |	
+		
+		request send200Response: 'hello'].! !
+!TusLibrosRestInterface methodsFor: 'nil' stamp: 'JPF 6/24/2021 21:21:52'!
+destroy! !
+!TusLibrosRestInterface methodsFor: 'as yet unclassified' stamp: 'JPF 6/24/2021 21:22:18' prior: 50929669!
+destroy
+
+	webServer ifNotNil:[webServer destroy]! !
+
+----QUIT----(24 June 2021 21:23:28) Interfaz.image priorSource: 19134393!
+
+----STARTUP---- (24 June 2021 21:23:39) as /Users/juan.ferrino/CuisUniversity/Interfaz.image!
+
+
+server := TusLibrosRestInterface listeningOn: 8080.!
+
+server destroy.!
+!TusLibrosRestInterface methodsFor: 'initialization' stamp: 'JPF 6/24/2021 21:25:09' prior: 50929660!
+initializeWith: aPortNumber
+	
+	port:= aPortNumber.
+	
+	webServer := WebServer new listenOn: self port.
+	
+	webServer addService: '/hello' action:[:request |	
+		
+		request send200Response: 'chau'].! !
+!TusLibrosRestInterface methodsFor: 'initialization' stamp: 'JPF 6/24/2021 21:25:32' prior: 50929686!
+initializeWith: aPortNumber
+	
+	port:= aPortNumber.
+	
+	webServer := WebServer new listenOn: self port.
+	
+	webServer addService: '/chau' action:[:request |	
+		
+		request send200Response: 'chau'].! !
+
+server := TusLibrosRestInterface listeningOn: 8080.!
+!TusLibrosRestInterface methodsFor: 'initialization' stamp: 'JPF 6/24/2021 21:27:46' prior: 50929696!
+initializeWith: aPortNumber
+	
+	port:= aPortNumber.
+	
+	webServer := WebServer new listenOn: self port.
+	
+	webServer addService: '/hello' action:[:request |	
+		
+		request send200Response: 'hello'].! !
+
+server!
+
+server!
+
+server := TusLibrosRestInterface listeningOn: 8080.!
+
+server destroy.!
+
+server destroy.!
+
+!classDefinition: #TusLibrosRestInterface category: 'TusLibros-Server' stamp: 'JPF 6/24/2021 21:36:56'!
+Object subclass: #TusLibrosRestInterface
+	instanceVariableNames: 'port webServer tusLibrosSystemFacade'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'TusLibros-Server'!
+!TusLibrosRestInterface methodsFor: 'initialization' stamp: 'JPF 6/24/2021 21:37:29' prior: 50929708!
+initializeWith: aPortNumber
+
+	tusLibrosSystemFacade := TusLibrosSystemFacade
+		authenticatingWith: ''
+		acceptingItemsOf: ''
+		registeringOn: ''
+		debitingThrought: ''
+		measuringTimeWith: ''.
+	
+	port:= aPortNumber.
+	
+	webServer := WebServer new listenOn: self port.
+	
+	webServer addService: '/hello' action:[:request |	
+		
+		request send200Response: 'hello'].! !
+
+Clock subclass: #SystemClock
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'TusLibros-Model'!
+
+!classDefinition: #SystemClock category: 'TusLibros-Model' stamp: 'JPF 6/24/2021 21:41:00'!
+Clock subclass: #SystemClock
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'TusLibros-Model'!
+!SystemClock methodsFor: 'time' stamp: 'JPF 6/24/2021 21:41:18' overrides: 50928172!
+now! !
+!SystemClock methodsFor: 'time' stamp: 'JPF 6/24/2021 21:41:21' overrides: 50928176!
+today! !
+!SystemClock methodsFor: 'time' stamp: 'JPF 6/24/2021 21:41:44' prior: 50929756 overrides: 50928172!
+now! !
+!SystemClock methodsFor: 'time' stamp: 'JPF 6/24/2021 21:44:12' prior: 50929763 overrides: 50928172!
+now
+
+	^ DateAndTime now! !
+!SystemClock methodsFor: 'time' stamp: 'JPF 6/24/2021 21:44:25' prior: 50929759 overrides: 50928176!
+today
+	
+	^ Date today! !
+
+DateAndTime  now.!
+
+Date today.!
+
+DateAndTime now date.!
+!TusLibrosRestInterface methodsFor: 'initialization' stamp: 'JPF 6/24/2021 21:46:15' prior: 50929730!
+initializeWith: aPortNumber
+
+	tusLibrosSystemFacade := TusLibrosSystemFacade
+		authenticatingWith: ''
+		acceptingItemsOf: ''
+		registeringOn: ''
+		debitingThrought: ''
+		measuringTimeWith: SystemClock new.
+	
+	port:= aPortNumber.
+	
+	webServer := WebServer new listenOn: self port.
+	
+	webServer addService: '/hello' action:[:request |	
+		
+		request send200Response: 'hello'].! !
+
+MerchantProcessor subclass: #MerchantProcessorStub
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'TusLibros-Model'!
+
+!classDefinition: #MerchantProcessorStub category: 'TusLibros-Model' stamp: 'JPF 6/24/2021 21:47:31'!
+MerchantProcessor subclass: #MerchantProcessorStub
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'TusLibros-Model'!
+!MerchantProcessorStub methodsFor: 'no messages' stamp: 'JPF 6/24/2021 21:47:47' overrides: 50928279!
+debit: anAmount from: aCreditCard! !
+!TusLibrosRestInterface methodsFor: 'initialization' stamp: 'JPF 6/24/2021 21:48:31' prior: 50929777!
+initializeWith: aPortNumber
+
+	tusLibrosSystemFacade := TusLibrosSystemFacade
+		authenticatingWith: ''
+		acceptingItemsOf: ''
+		registeringOn: ''
+		debitingThrought: MerchantProcessorStub new
+		measuringTimeWith: SystemClock new.
+	
+	port:= aPortNumber.
+	
+	webServer := WebServer new listenOn: self port.
+	
+	webServer addService: '/hello' action:[:request |	
+		
+		request send200Response: 'hello'].! !
+!TusLibrosRestInterface methodsFor: 'initialization' stamp: 'JPF 6/24/2021 21:53:45' prior: 50929810!
+initializeWith: aPortNumber
+
+	tusLibrosSystemFacade := TusLibrosSystemFacade
+		authenticatingWith: ''
+		acceptingItemsOf: ''
+		registeringOn: OrderedCollection new
+		debitingThrought: MerchantProcessorStub new
+		measuringTimeWith: SystemClock new.
+	
+	port:= aPortNumber.
+	
+	webServer := WebServer new listenOn: self port.
+	
+	webServer addService: '/hello' action:[:request |	
+		
+		request send200Response: 'hello'].! !
+
+Object subclass: #TusLibrosSystemFactory
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'TusLibros-Model'!
+
+!classDefinition: #TusLibrosSystemFactory category: 'TusLibros-Model' stamp: 'JPF 6/24/2021 21:56:09'!
+Object subclass: #TusLibrosSystemFactory
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'TusLibros-Model'!
+!TusLibrosSystemFactory methodsFor: 'factory protocol' stamp: 'JPF 6/24/2021 21:57:44'!
+createClock
+
+	self subclassResponsibility! !
+!TusLibrosSystemFactory methodsFor: 'factory protocol' stamp: 'JPF 6/24/2021 21:57:59'!
+createSalesBook
+
+	self subclassResponsibility! !
+!TusLibrosSystemFactory methodsFor: 'factory protocol' stamp: 'JPF 6/24/2021 21:58:11'!
+createMerchantProcessor
+
+	self subclassResponsibility! !
+!TusLibrosSystemFactory methodsFor: 'factory protocol' stamp: 'JPF 6/24/2021 21:58:23'!
+createCatalog
+
+	self subclassResponsibility! !
+
+----QUIT----(24 June 2021 22:17:27) Interfaz.image priorSource: 19136851!
+
+----STARTUP---- (26 June 2021 10:01:27) as /Users/juan.ferrino/CuisUniversity/Interfaz.image!
+
+!TusLibrosSystemFactory methodsFor: 'factory protocol' stamp: 'JPF 6/26/2021 10:06:33'!
+createFacade
+	
+	! !
+!TusLibrosSystemFactory methodsFor: 'factory protocol' stamp: 'JPF 6/26/2021 10:07:14' prior: 50929880!
+createFacade
+	
+	^ TusLibrosSystemFacade
+		authenticatingWith: ''
+		acceptingItemsOf: ''
+		registeringOn: OrderedCollection new
+		debitingThrought: MerchantProcessorStub new
+		measuringTimeWith: SystemClock new.
+	! !
+
+TusLibrosSystemFactory subclass: #TusLibrosDefaultFactory
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'TusLibros-Model'!
+
+!classDefinition: #TusLibrosDefaultFactory category: 'TusLibros-Model' stamp: 'JPF 6/26/2021 10:08:10'!
+TusLibrosSystemFactory subclass: #TusLibrosDefaultFactory
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'TusLibros-Model'!
+!TusLibrosDefaultFactory methodsFor: 'factory protocol' stamp: 'JPF 6/26/2021 10:08:23' overrides: 50929870!
+createCatalog! !
+!TusLibrosDefaultFactory methodsFor: 'factory protocol' stamp: 'JPF 6/26/2021 10:08:31' overrides: 50929860!
+createSalesBook! !
+!TusLibrosDefaultFactory methodsFor: 'factory protocol' stamp: 'JPF 6/26/2021 10:08:40' overrides: 50929865!
+createMerchantProcessor! !
+!TusLibrosDefaultFactory methodsFor: 'factory protocol' stamp: 'JPF 6/26/2021 10:08:58' prior: 50929916 overrides: 50929865!
+createMerchantProcessor
+
+	^ MerchantProcessorStub new! !
+!TusLibrosDefaultFactory methodsFor: 'factory protocol' stamp: 'JPF 6/26/2021 10:09:12' overrides: 50929855!
+createClock
+
+	^ MerchantProcessorStub new! !
+!TusLibrosDefaultFactory methodsFor: 'factory protocol' stamp: 'JPF 6/26/2021 10:09:19' prior: 50929927 overrides: 50929855!
+createClock
+
+	^ SystemClock new! !
+!TusLibrosDefaultFactory methodsFor: 'factory protocol' stamp: 'JPF 6/26/2021 10:09:40' prior: 50929912 overrides: 50929860!
+createSalesBook
+	
+	^ OrderedCollection new! !
+!TusLibrosSystemFactory methodsFor: 'factory protocol' stamp: 'JPF 6/26/2021 10:12:27'!
+createValidUserAndPasswords
+	
+	^ self subclassResponsibility ! !
+!TusLibrosDefaultFactory methodsFor: 'factory protocol' stamp: 'JPF 6/26/2021 10:13:41' overrides: 50929943!
+createValidUserAndPasswords
+
+	^ Dictionary new
+		at: 'Juan Ferrino' put: '1234';
+		at: 'Nora Trinchero' put: '1234';
+		yourself! !
+!TusLibrosSystemFactory methodsFor: 'factory protocol' stamp: 'JPF 6/26/2021 10:15:23' prior: 50929884!
+createFacade
+	
+	^ TusLibrosSystemFacade
+		authenticatingWith: self createValidUserAndPasswords
+		acceptingItemsOf: ''
+		registeringOn: OrderedCollection new
+		debitingThrought: MerchantProcessorStub new
+		measuringTimeWith: SystemClock new.
+	! !
+!TusLibrosSystemFactory methodsFor: 'factory protocol' stamp: 'JPF 6/26/2021 10:16:05' prior: 50929957!
+createFacade
+	
+	^ TusLibrosSystemFacade
+		authenticatingWith: self createValidUserAndPasswords
+		acceptingItemsOf: self createCatalog 
+		registeringOn: self createSalesBook 
+		debitingThrought: self createMerchantProcessor 
+		measuringTimeWith: self createClock
+	! !
+!TusLibrosDefaultFactory methodsFor: 'factory protocol' stamp: 'JPF 6/26/2021 10:18:25' prior: 50929908 overrides: 50929870!
+createCatalog
+
+	^ Dictionary new
+		at: '' put: 10;
+		at: '' put: 20;
+		at: '' put: 30;
+		at: '' put: 20;
+		at: '' put: 25;
+		yourself! !
+!TusLibrosDefaultFactory methodsFor: 'factory protocol' stamp: 'JPF 6/26/2021 10:21:28' prior: 50929981 overrides: 50929870!
+createCatalog
+
+	^ Dictionary new
+		at: 'Smalltalk, Objects and Design' put: 10;
+		at: 'Design Patterns' put: 20;
+		at: 'Object Thinking' put: 30;
+		at: 'History of Programming Languages' put: 20;
+		at: 'The Innovators' put: 25;
+		yourself! !
+!TusLibrosRestInterface methodsFor: 'initialization' stamp: 'JPF 6/26/2021 10:22:42' prior: 50929826!
+initializeWith: aPortNumber
+
+	tusLibrosSystemFacade := TusLibrosDefaultFactory new createFacade.
+	
+	port:= aPortNumber.
+	
+	webServer := WebServer new listenOn: self port.
+	
+	webServer addService: '/hello' action:[:request |	
+		
+		request send200Response: 'hello'].! !
+!TusLibrosRestInterface methodsFor: 'initialization' stamp: 'JPF 6/26/2021 10:24:02' prior: 50930001!
+initializeWith: aPortNumber
+
+	tusLibrosSystemFacade := TusLibrosDefaultFactory new createFacade.
+	
+	port:= aPortNumber.
+	
+	webServer := WebServer new listenOn: self port.
+	
+	webServer addService: '/createCart' action:[:request |	
+		
+		request send200Response: 'hello'].! !
+!TusLibrosRestInterface methodsFor: 'initialization' stamp: 'JPF 6/26/2021 10:25:27' prior: 50930013!
+initializeWith: aPortNumber
+
+	tusLibrosSystemFacade := TusLibrosDefaultFactory new createFacade.
+	
+	port:= aPortNumber.
+	
+	webServer := WebServer new listenOn: self port.
+	
+	webServer addService: '/createCart' action:[:request | | password user |	
+		
+		tusLibrosSystemFacade createCartFor: user authenticatedWith: password.
+		
+		request send200Response: 'hello'].! !
+!TusLibrosRestInterface methodsFor: 'initialization' stamp: 'JPF 6/26/2021 10:27:49' prior: 50930025!
+initializeWith: aPortNumber
+
+	tusLibrosSystemFacade := TusLibrosDefaultFactory new createFacade.
+	
+	port:= aPortNumber.
+	
+	webServer := WebServer new listenOn: self port.
+	
+	webServer addService: '/createCart' action:[:request | | password clientId |	
+		
+		clientId := request fields at: 'clientId'.
+		password := request fields at: 'password'.
+		
+		tusLibrosSystemFacade createCartFor: clientId authenticatedWith: password.
+		
+		request send200Response: 'hello'].! !
+!TusLibrosRestInterface methodsFor: 'initialization' stamp: 'JPF 6/26/2021 10:28:33' prior: 50930040!
+initializeWith: aPortNumber
+
+	tusLibrosSystemFacade := TusLibrosDefaultFactory new createFacade.
+	
+	port:= aPortNumber.
+	
+	webServer := WebServer new listenOn: self port.
+	
+	webServer addService: '/createCart' action:[:request | | password clientId cartId |	
+		
+		clientId := request fields at: 'clientId'.
+		password := request fields at: 'password'.
+		
+		cartId := tusLibrosSystemFacade createCartFor: clientId authenticatedWith: password.
+		
+		request send200Response: cartId].! !
+
+server := TusLibrosRestInterface listeningOn: 8080.!
+!TusLibrosRestInterface methodsFor: 'initialization' stamp: 'JPF 6/26/2021 10:35:16' prior: 50930058!
+initializeWith: aPortNumber
+
+	tusLibrosSystemFacade := TusLibrosDefaultFactory new createFacade.
+	
+	port:= aPortNumber.
+	
+	webServer := WebServer new listenOn: self port.
+	
+	webServer addService: '/createCart' action:[:request | | password clientId cartId |	
+		self halt.
+		clientId := request fields at: 'clientId'.
+		password := request fields at: 'password'.
+		
+		cartId := tusLibrosSystemFacade createCartFor: clientId authenticatedWith: password.
+		
+		request send200Response: cartId].! !
+
+server destroy.!
+
+server := TusLibrosRestInterface listeningOn: 8080.!
+!TusLibrosRestInterface methodsFor: 'initialization' stamp: 'JPF 6/26/2021 10:43:59' prior: 50930078!
+initializeWith: aPortNumber
+
+	tusLibrosSystemFacade := TusLibrosDefaultFactory new createFacade.
+	
+	port:= aPortNumber.
+	
+	webServer := WebServer new listenOn: self port.
+	
+	webServer addService: '/createCart' action:[:request | | password clientId cartId |	
+		self halt.
+		clientId := request fields at: 'clientId'.
+		password := request fields at: 'password'.
+		
+		cartId := tusLibrosSystemFacade createCartFor: clientId authenticatedWith: password.
+		
+		request send200Response: cartId asString].! !
+!TusLibrosRestInterface methodsFor: 'initialization' stamp: 'JPF 6/26/2021 10:44:05' prior: 50930099!
+initializeWith: aPortNumber
+
+	tusLibrosSystemFacade := TusLibrosDefaultFactory new createFacade.
+	
+	port:= aPortNumber.
+	
+	webServer := WebServer new listenOn: self port.
+	
+	webServer addService: '/createCart' action:[:request | | password clientId cartId |	
+		
+		clientId := request fields at: 'clientId'.
+		password := request fields at: 'password'.
+		
+		cartId := tusLibrosSystemFacade createCartFor: clientId authenticatedWith: password.
+		
+		request send200Response: cartId asString].! !
+
+server destroy.!
+
+server := TusLibrosRestInterface listeningOn: 8080.!
+!TusLibrosRestInterface methodsFor: 'initialization' stamp: 'JPF 6/26/2021 10:48:45' prior: 50930118!
+initializeWith: aPortNumber
+
+	tusLibrosSystemFacade := TusLibrosDefaultFactory new createFacade.
+	
+	port:= aPortNumber.
+	
+	webServer := WebServer new listenOn: self port.
+	
+	webServer addService: '/createCart' action:[:request | | password clientId cartId |	
+		
+		[clientId := request fields at: 'clientId'.
+		password := request fields at: 'password'.
+		cartId := tusLibrosSystemFacade createCartFor: clientId authenticatedWith: password.
+		request send200Response: cartId asString]
+		on: Error
+		do: [ :anError |
+			request send400Response: (anError messageText) ]
+	].! !
+
+server destroy.!
+
+server := TusLibrosRestInterface listeningOn: 8080.!
+!TusLibrosRestInterface methodsFor: 'initialization' stamp: 'JPF 6/26/2021 10:50:50' prior: 50930139!
+initializeWith: aPortNumber
+
+	tusLibrosSystemFacade := TusLibrosDefaultFactory new createFacade.
+	
+	port:= aPortNumber.
+	
+	webServer := WebServer new listenOn: self port.
+	
+	webServer addService: '/createCart' action:[:request | | password clientId cartId |	
+		
+		[clientId := request fields at: 'clientId'.
+		password := request fields at: 'password'.
+		cartId := tusLibrosSystemFacade createCartFor: clientId authenticatedWith: password.
+		request send200Response: cartId asString]
+		on: Error
+		do: [ :anError |
+			request send400Response: (anError messageText) ]].! !
+!TusLibrosRestInterface methodsFor: 'initialization' stamp: 'JPF 6/26/2021 10:52:01' prior: 50930163!
+initializeWith: aPortNumber
+
+	tusLibrosSystemFacade := TusLibrosDefaultFactory new createFacade.
+	
+	port:= aPortNumber.
+	
+	webServer := WebServer new listenOn: self port.
+	
+	webServer addService: '/createCart' action:[:request | | password clientId cartId |	
+		
+		[clientId := request fields at: 'clientId'.
+		password := request fields at: 'password'.
+		cartId := tusLibrosSystemFacade createCartFor: clientId authenticatedWith: password.
+		request send200Response: cartId asString]
+		on: Error
+		do: [ :anError |
+			request send400Response: (anError messageText) ]].
+	
+	webServer addService: '/addToCart' action:[:request | | book clientId cartId |	
+		
+		[clientId := request fields at: 'clientId'.
+		book := request fields at: 'password'.
+		cartId := tusLibrosSystemFacade createCartFor: clientId authenticatedWith: book.
+		request send200Response: cartId asString]
+		on: Error
+		do: [ :anError |
+			request send400Response: (anError messageText) ]].! !
+!TusLibrosRestInterface methodsFor: 'initialization' stamp: 'JPF 6/26/2021 10:53:30' prior: 50930185!
+initializeWith: aPortNumber
+
+	tusLibrosSystemFacade := TusLibrosDefaultFactory new createFacade.
+	
+	port:= aPortNumber.
+	
+	webServer := WebServer new listenOn: self port.
+	
+	webServer addService: '/createCart' action:[:request | | password clientId cartId |	
+		
+		[clientId := request fields at: 'clientId'.
+		password := request fields at: 'password'.
+		cartId := tusLibrosSystemFacade createCartFor: clientId authenticatedWith: password.
+		request send200Response: cartId asString]
+		on: Error
+		do: [ :anError |
+			request send400Response: (anError messageText) ]].
+	
+	webServer addService: '/addToCart' action:[:request | | book quantity cartId |	
+		
+		[cartId := request fields at: 'cartId'.
+		book := request fields at: 'book'.
+		quantity := request fields at: 'quantity'.
+		
+		
+		request send200Response: cartId asString]
+		on: Error
+		do: [ :anError |
+			request send400Response: (anError messageText) ]].! !
+!TusLibrosRestInterface methodsFor: 'initialization' stamp: 'JPF 6/26/2021 10:54:28' prior: 50930219!
+initializeWith: aPortNumber
+
+	tusLibrosSystemFacade := TusLibrosDefaultFactory new createFacade.
+	
+	port:= aPortNumber.
+	
+	webServer := WebServer new listenOn: self port.
+	
+	webServer addService: '/createCart' action:[:request | | password clientId cartId |	
+		
+		[clientId := request fields at: 'clientId'.
+		password := request fields at: 'password'.
+		
+		cartId := tusLibrosSystemFacade createCartFor: clientId authenticatedWith: password.
+		
+		request send200Response: cartId asString]
+		on: Error
+		do: [ :anError |
+			request send400Response: (anError messageText) ]].
+	
+	webServer addService: '/addToCart' action:[:request | | book quantity cartId |	
+		
+		[cartId := request fields at: 'cartId'.
+		book := request fields at: 'book'.
+		quantity := request fields at: 'quantity'.
+		
+		
+		request send200Response: cartId asString]
+		on: Error
+		do: [ :anError |
+			request send400Response: (anError messageText) ]].! !
+!TusLibrosRestInterface methodsFor: 'initialization' stamp: 'JPF 6/26/2021 10:56:20' prior: 50930251!
+initializeWith: aPortNumber
+
+	tusLibrosSystemFacade := TusLibrosDefaultFactory new createFacade.
+	
+	port:= aPortNumber.
+	
+	webServer := WebServer new listenOn: self port.
+	
+	webServer addService: '/createCart' action:[:request | | password clientId cartId |	
+		
+		[clientId := request fields at: 'clientId'.
+		password := request fields at: 'password'.
+		
+		cartId := tusLibrosSystemFacade createCartFor: clientId authenticatedWith: password.
+		
+		request send200Response: cartId asString]
+		on: Error
+		do: [ :anError |
+			request send400Response: (anError messageText) ]].
+	
+	webServer addService: '/addToCart' action:[:request | | book quantity cartId |	
+		
+		[cartId := request fields at: 'cartId'.
+		book := request fields at: 'book'.
+		quantity := request fields at: 'quantity'.
+		
+		tusLibrosSystemFacade add: quantity asNumber of: book toCartIdentifiedAs: cartId asNumber.
+		
+		request send200Response: cartId asString]
+		on: Error
+		do: [ :anError |
+			request send400Response: (anError messageText) ]].! !
+!TusLibrosRestInterface methodsFor: 'initialization' stamp: 'JPF 6/26/2021 10:56:32' prior: 50930284!
+initializeWith: aPortNumber
+
+	tusLibrosSystemFacade := TusLibrosDefaultFactory new createFacade.
+	
+	port:= aPortNumber.
+	
+	webServer := WebServer new listenOn: self port.
+	
+	webServer addService: '/createCart' action:[:request | | password clientId cartId |	
+		
+		[clientId := request fields at: 'clientId'.
+		password := request fields at: 'password'.
+		
+		cartId := tusLibrosSystemFacade createCartFor: clientId authenticatedWith: password.
+		
+		request send200Response: cartId asString]
+		on: Error
+		do: [ :anError |
+			request send400Response: (anError messageText) ]].
+	
+	webServer addService: '/addToCart' action:[:request | | book quantity cartId |	
+		
+		[cartId := request fields at: 'cartId'.
+		book := request fields at: 'book'.
+		quantity := request fields at: 'quantity'.
+		
+		tusLibrosSystemFacade add: quantity asNumber of: book toCartIdentifiedAs: cartId asNumber.
+		
+		request send200Response: 'OK']
+		on: Error
+		do: [ :anError |
+			request send400Response: (anError messageText) ]].! !
+!TusLibrosRestInterface methodsFor: 'initialization' stamp: 'JPF 6/26/2021 10:56:55' prior: 50930319!
+initializeWith: aPortNumber
+
+	tusLibrosSystemFacade := TusLibrosDefaultFactory new createFacade.
+	
+	port:= aPortNumber.
+	
+	webServer := WebServer new listenOn: self port.
+	
+	webServer addService: '/createCart' action:[:request | | password clientId cartId |	
+		
+		[clientId := request fields at: 'clientId'.
+		password := request fields at: 'password'.
+		
+		cartId := tusLibrosSystemFacade createCartFor: clientId authenticatedWith: password.
+		
+		request send200Response: cartId asString]
+		on: Error
+		do: [ :anError |
+			request send400Response: (anError messageText) ]].
+	
+	webServer addService: '/addToCart' action:[:request | | book quantity cartId |	
+		
+		[cartId := request fields at: 'cartId'.
+		book := request fields at: 'book'.
+		quantity := request fields at: 'quantity'.
+		
+		tusLibrosSystemFacade
+			add: quantity asNumber
+			of: book
+			toCartIdentifiedAs: cartId asNumber.
+		
+		request send200Response: 'OK']
+		on: Error
+		do: [ :anError |
+			request send400Response: (anError messageText) ]].! !
+!TusLibrosRestInterface methodsFor: 'initialization' stamp: 'JPF 6/26/2021 10:57:25' prior: 50930354!
+initializeWith: aPortNumber
+
+	tusLibrosSystemFacade := TusLibrosDefaultFactory new createFacade.
+	
+	port:= aPortNumber.
+	
+	webServer := WebServer new listenOn: self port.
+	
+	webServer addService: '/createCart' action:[ :request | | password clientId cartId |	
+		
+		[clientId := request fields at: 'clientId'.
+		password := request fields at: 'password'.
+		
+		cartId := tusLibrosSystemFacade createCartFor: clientId authenticatedWith: password.
+		
+		request send200Response: cartId asString]
+		on: Error
+		do: [ :anError |
+			request send400Response: (anError messageText) ]].
+	
+	webServer addService: '/addToCart' action:[ :request | | book quantity cartId |	
+		
+		[cartId := request fields at: 'cartId'.
+		book := request fields at: 'book'.
+		quantity := request fields at: 'quantity'.
+		
+		tusLibrosSystemFacade
+			add: quantity asNumber
+			of: book
+			toCartIdentifiedAs: cartId asNumber.
+		
+		request send200Response: 'OK']
+		on: Error
+		do: [ :anError |
+			request send400Response: (anError messageText) ]].! !
+
+server destroy.!
+
+server := TusLibrosRestInterface listeningOn: 8080.!
+!TusLibrosRestInterface methodsFor: 'initialization' stamp: 'JPF 6/26/2021 11:05:53'!
+handle: request With: aBlock
+		
+	[aBlock value: request]
+	on: Error
+	do: [ :anError |
+		request send400Response: (anError messageText) ]! !
+!TusLibrosRestInterface methodsFor: 'private' stamp: 'JPF 6/26/2021 11:08:56'!
+handle: request with: aBlock
+		
+	[aBlock value: request]
+	on: Error
+	do: [ :anError |
+		request send400Response: (anError messageText) ]! !
+
+!methodRemoval: TusLibrosRestInterface #handle:With: stamp: 'JPF 6/26/2021 11:08:56'!
+handle: request With: aBlock
+		
+	[aBlock value: request]
+	on: Error
+	do: [ :anError |
+		request send400Response: (anError messageText) ]!
+!TusLibrosRestInterface methodsFor: 'private' stamp: 'JPF 6/26/2021 11:09:23' prior: 50930433!
+handle: request with: aBlock
+		
+	[aBlock value]
+	on: Error
+	do: [ :anError |
+		request send400Response: (anError messageText) ]! !
+!TusLibrosRestInterface methodsFor: 'initialization' stamp: 'JPF 6/26/2021 11:10:04' prior: 50930389!
+initializeWith: aPortNumber
+
+	tusLibrosSystemFacade := TusLibrosDefaultFactory new createFacade.
+	
+	port:= aPortNumber.
+	
+	webServer := WebServer new listenOn: self port.
+	
+	webServer addService: '/createCart' action:[ :request | | password clientId cartId |	
+		
+		self handle: request with: [clientId := request fields at: 'clientId'.
+		password := request fields at: 'password'.
+		
+		cartId := tusLibrosSystemFacade createCartFor: clientId authenticatedWith: password.
+		
+		request send200Response: cartId asString]].
+	
+	webServer addService: '/addToCart' action:[ :request | | book quantity cartId |	
+		
+		[cartId := request fields at: 'cartId'.
+		book := request fields at: 'book'.
+		quantity := request fields at: 'quantity'.
+		
+		tusLibrosSystemFacade
+			add: quantity asNumber
+			of: book
+			toCartIdentifiedAs: cartId asNumber.
+		
+		request send200Response: 'OK']
+		on: Error
+		do: [ :anError |
+			request send400Response: (anError messageText) ]].! !
+!TusLibrosRestInterface methodsFor: 'initialization' stamp: 'JPF 6/26/2021 11:10:40' prior: 50930456!
+initializeWith: aPortNumber
+
+	tusLibrosSystemFacade := TusLibrosDefaultFactory new createFacade.
+	
+	port:= aPortNumber.
+	
+	webServer := WebServer new listenOn: self port.
+	
+	webServer addService: '/createCart' action:[ :request | | password clientId cartId |	
+		
+		self 
+			handle: request
+			with: [
+				clientId := request fields at: 'clientId'.
+				password := request fields at: 'password'.
+		
+				cartId := tusLibrosSystemFacade createCartFor: clientId authenticatedWith: password.
+		
+				request send200Response: cartId asString]].
+	
+	webServer addService: '/addToCart' action:[ :request | | book quantity cartId |	
+		
+		[cartId := request fields at: 'cartId'.
+		book := request fields at: 'book'.
+		quantity := request fields at: 'quantity'.
+		
+		tusLibrosSystemFacade
+			add: quantity asNumber
+			of: book
+			toCartIdentifiedAs: cartId asNumber.
+		
+		request send200Response: 'OK']
+		on: Error
+		do: [ :anError |
+			request send400Response: (anError messageText) ]].! !
+!TusLibrosRestInterface methodsFor: 'initialization' stamp: 'JPF 6/26/2021 11:13:22'!
+createCart: request
+		
+	| cartId clientId password |
+	clientId := request fields at: 'clientId'.
+	password := request fields at: 'password'.
+
+	cartId := tusLibrosSystemFacade createCartFor: clientId authenticatedWith: password.
+
+	request send200Response: cartId asString! !
+!TusLibrosRestInterface methodsFor: 'initialization' stamp: 'JPF 6/26/2021 11:13:34' prior: 50930524!
+createCart: request
+		
+	| cartId clientId password |
+	
+	clientId := request fields at: 'clientId'.
+	password := request fields at: 'password'.
+
+	cartId := tusLibrosSystemFacade createCartFor: clientId authenticatedWith: password.
+
+	request send200Response: cartId asString! !
+!TusLibrosRestInterface methodsFor: 'initialization' stamp: 'JPF 6/26/2021 11:14:19'!
+handleCreateCart: request
+		
+	| cartId clientId password |
+	
+	clientId := request fields at: 'clientId'.
+	password := request fields at: 'password'.
+
+	cartId := tusLibrosSystemFacade createCartFor: clientId authenticatedWith: password.
+
+	request send200Response: cartId asString! !
+
+!methodRemoval: TusLibrosRestInterface #createCart: stamp: 'JPF 6/26/2021 11:14:19'!
+createCart: request
+		
+	| cartId clientId password |
+	
+	clientId := request fields at: 'clientId'.
+	password := request fields at: 'password'.
+
+	cartId := tusLibrosSystemFacade createCartFor: clientId authenticatedWith: password.
+
+	request send200Response: cartId asString!
+!TusLibrosRestInterface methodsFor: 'initialization' stamp: 'JPF 6/26/2021 11:16:24' prior: 50930548!
+handleCreateCart: request
+
+	self handle: request with: [	| cartId clientId password |
+	
+	clientId := request fields at: 'clientId'.
+	password := request fields at: 'password'.
+
+	cartId := tusLibrosSystemFacade createCartFor: clientId authenticatedWith: password.
+
+	request send200Response: cartId asString
+	]! !
+!TusLibrosRestInterface methodsFor: 'initialization' stamp: 'JPF 6/26/2021 11:16:36' prior: 50930572!
+handleCreateCart: request
+
+	self handle: request with: [	| cartId clientId password |
+	
+		clientId := request fields at: 'clientId'.
+		password := request fields at: 'password'.
+
+		cartId := tusLibrosSystemFacade createCartFor: clientId authenticatedWith: password.
+
+		request send200Response: cartId asString
+	]! !
+!TusLibrosRestInterface methodsFor: 'initialization' stamp: 'JPF 6/26/2021 11:16:38' prior: 50930585!
+handleCreateCart: request
+
+	self handle: request with: [	 | cartId clientId password |
+	
+		clientId := request fields at: 'clientId'.
+		password := request fields at: 'password'.
+
+		cartId := tusLibrosSystemFacade createCartFor: clientId authenticatedWith: password.
+
+		request send200Response: cartId asString
+	]! !
+!TusLibrosRestInterface methodsFor: 'initialization' stamp: 'JPF 6/26/2021 11:17:52' prior: 50930490!
+initializeWith: aPortNumber
+
+	tusLibrosSystemFacade := TusLibrosDefaultFactory new createFacade.
+	
+	port:= aPortNumber.
+	
+	webServer := WebServer new listenOn: self port.
+	
+	webServer addService: '/createCart' action:[ :request | self handleCreateCart: request].
+	
+	webServer addService: '/addToCart' action:[ :request | | book quantity cartId |	
+		
+		[cartId := request fields at: 'cartId'.
+		book := request fields at: 'book'.
+		quantity := request fields at: 'quantity'.
+		
+		tusLibrosSystemFacade
+			add: quantity asNumber
+			of: book
+			toCartIdentifiedAs: cartId asNumber.
+		
+		request send200Response: 'OK']
+		on: Error
+		do: [ :anError |
+			request send400Response: (anError messageText) ]].! !
+!TusLibrosRestInterface methodsFor: 'initialization' stamp: 'JPF 6/26/2021 11:17:54' prior: 50930613!
+initializeWith: aPortNumber
+
+	tusLibrosSystemFacade := TusLibrosDefaultFactory new createFacade.
+	
+	port:= aPortNumber.
+	
+	webServer := WebServer new listenOn: self port.
+	
+	webServer addService: '/createCart' action:[ :request | self handleCreateCart: request ].
+	
+	webServer addService: '/addToCart' action:[ :request | | book quantity cartId |	
+		
+		[cartId := request fields at: 'cartId'.
+		book := request fields at: 'book'.
+		quantity := request fields at: 'quantity'.
+		
+		tusLibrosSystemFacade
+			add: quantity asNumber
+			of: book
+			toCartIdentifiedAs: cartId asNumber.
+		
+		request send200Response: 'OK']
+		on: Error
+		do: [ :anError |
+			request send400Response: (anError messageText) ]].! !
+!TusLibrosRestInterface methodsFor: 'initialization' stamp: 'JPF 6/26/2021 11:18:43'!
+handleAddToCart: request
+
+	self handle: request with: [	 | cartId clientId password |
+	
+		clientId := request fields at: 'clientId'.
+		password := request fields at: 'password'.
+
+		cartId := tusLibrosSystemFacade createCartFor: clientId authenticatedWith: password.
+
+		request send200Response: cartId asString
+	]! !
+!TusLibrosRestInterface methodsFor: 'initialization' stamp: 'JPF 6/26/2021 11:20:02' prior: 50930664!
+handleAddToCart: request
+
+	self handle: request with: [	 | book quantity cartId |	
+		
+		cartId := request fields at: 'cartId'.
+		book := request fields at: 'book'.
+		quantity := request fields at: 'quantity'.
+		
+		tusLibrosSystemFacade
+			add: quantity asNumber
+			of: book
+			toCartIdentifiedAs: cartId asNumber.
+		
+		request send200Response: 'OK'
+	]! !
+!TusLibrosRestInterface methodsFor: 'initialization' stamp: 'JPF 6/26/2021 11:21:10' prior: 50930639!
+initializeWith: aPortNumber
+
+	tusLibrosSystemFacade := TusLibrosDefaultFactory new createFacade.
+	
+	port:= aPortNumber.
+	
+	webServer := WebServer new listenOn: self port.
+	
+	webServer addService: '/createCart' action:[ :request | self handleCreateCart: request ].
+	
+	webServer addService: '/addToCart' action:[ :request | self handleAddToCart: request ].! !
+
+----SNAPSHOT----(26 June 2021 11:25:11) Interfaz.image priorSource: 19143150!
+
+server := TusLibrosRestInterface listeningOn: 8080.!
+
+server destroy.!
+
+server := TusLibrosRestInterface listeningOn: 8080.!
+!TusLibrosRestInterface methodsFor: 'initialization' stamp: 'JPF 6/26/2021 11:30:25' prior: 50930693!
+initializeWith: aPortNumber
+
+	tusLibrosSystemFacade := TusLibrosDefaultFactory new createFacade.
+	
+	port:= aPortNumber.
+	
+	webServer :=
+		WebServer new listenOn: self port;
+		addService: '/createCart' action:[ :request | self handleCreateCart: request ];
+		addService: '/addToCart' action:[ :request | self handleAddToCart: request ];
+		addService: '/listCart' action:[ :request | self handleListCart: request ].! !
+!TusLibrosRestInterface methodsFor: 'handlers' stamp: 'JPF 6/26/2021 11:30:39'!
+handleListCart: request
+
+	self handle: request with: [	 | book quantity cartId |	
+		
+		cartId := request fields at: 'cartId'.
+		book := request fields at: 'book'.
+		quantity := request fields at: 'quantity'.
+		
+		tusLibrosSystemFacade
+			add: quantity asNumber
+			of: book
+			toCartIdentifiedAs: cartId asNumber.
+		
+		request send200Response: 'OK'
+	]! !
+!TusLibrosRestInterface methodsFor: 'handlers' stamp: 'JPF 6/26/2021 11:31:30' prior: 50930730!
+handleListCart: request
+
+	self handle: request with: [	 | cartId cart |	
+		
+		cartId := request fields at: 'cartId'.
+		
+		cart := tusLibrosSystemFacade listCartIdentifiedAs: cartId.
+		
+		request send200Response: 'OK'
+	]! !
+!TusLibrosRestInterface methodsFor: 'handlers' stamp: 'JPF 6/26/2021 11:34:09' prior: 50930745!
+handleListCart: request
+
+	self handle: request with: [	 | cartId cartContent |	
+		
+		cartId := request fields at: 'cartId'.
+		
+		cartContent := tusLibrosSystemFacade listCartIdentifiedAs: cartId.
+		
+		request send200Response: 'OK'
+	]! !
+!TusLibrosRestInterface methodsFor: 'handlers' stamp: 'JPF 6/26/2021 11:35:30' prior: 50930755!
+handleListCart: request
+
+	self handle: request with: [	 | cartId cartContent |	
+		
+		cartId := request fields at: 'cartId'.
+		
+		cartContent := tusLibrosSystemFacade listCartIdentifiedAs: cartId.
+		
+		request send200Response: WebUtils 
+	]! !
+!TusLibrosRestInterface methodsFor: 'handlers' stamp: 'JPF 6/26/2021 11:36:28' prior: 50930766!
+handleListCart: request
+
+	self handle: request with: [	 | cartId cartContent |	
+		
+		cartId := request fields at: 'cartId'.
+		
+		cartContent := tusLibrosSystemFacade listCartIdentifiedAs: cartId.
+		
+		request send200Response: (WebUtils jsonEncode: cartContent).
+	]! !
+
+server := TusLibrosRestInterface listeningOn: 8080.!
+
+server destroy.!
+
+server := TusLibrosRestInterface listeningOn: 8080.!
+
+server := TusLibrosRestInterface listeningOn: 8080.!
+
+server destroy.!
+
+----QUIT----(26 June 2021 11:41:31) Interfaz.image priorSource: 19169797!
+
+----STARTUP---- (26 June 2021 11:41:42) as /Users/juan.ferrino/CuisUniversity/Interfaz.image!
+
+
+server := TusLibrosRestInterface listeningOn: 8080.!
+!TusLibrosRestInterface methodsFor: 'handlers' stamp: 'JPF 6/26/2021 11:45:00' prior: 50930777!
+handleListCart: request
+
+	self handle: request with: [	 | cartId cartContent |	
+		
+		cartId := request fields at: 'cartId'.
+		
+		cartContent := tusLibrosSystemFacade listCartIdentifiedAs: cartId asNumber.
+		
+		request send200Response: (WebUtils jsonEncode: cartContent).
+	]! !
+
+server destroy.!
+
+server := TusLibrosRestInterface listeningOn: 8080.!
+!TusLibrosRestInterface methodsFor: 'handlers' stamp: 'JPF 6/26/2021 11:48:46' prior: 50930802!
+handleListCart: request
+
+	self handle: request with: [	 | cartId cartContent |	
+		
+		cartId := request fields at: 'cartId'.
+		
+		cartContent := tusLibrosSystemFacade listCartIdentifiedAs: cartId asNumber.
+		
+		request send200Response: (WebUtils jsonEncode: cartContent).
+	]! !
+
+TestCase subclass: #TusLibrosRestInterfaceTest
+	instanceVariableNames: 'port webServer tusLibrosSystemFacade'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'TusLibros-Server'!
+
+!classDefinition: #TusLibrosRestInterfaceTest category: 'TusLibros-Server' stamp: 'JPF 6/26/2021 11:49:10'!
+TestCase subclass: #TusLibrosRestInterfaceTest
+	instanceVariableNames: 'port webServer tusLibrosSystemFacade'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'TusLibros-Server'!
+!TusLibrosRestInterfaceTest methodsFor: 'tests' stamp: 'JPF 6/26/2021 11:50:41'!
+test01ShouldConvertABagToADictionaryOfOcurrences! !
+
+!classRenamed: #TusLibrosRestInterfaceTest as: #MapperTest stamp: 'JPF 6/26/2021 11:51:25'!
+Smalltalk renameClassNamed: #TusLibrosRestInterfaceTest as: #MapperTest!
+!MapperTest methodsFor: 'tests' stamp: 'JPF 6/26/2021 11:52:26' prior: 50930843!
+test01ShouldConvertABagToADictionaryOfOcurrences
+
+	! !
+!MapperTest methodsFor: 'tests' stamp: 'JPF 6/26/2021 11:52:47'!
+test01ShouldConvertAnEmptyBagToAEmptyDictionary
+
+	! !
+
+!methodRemoval: MapperTest #test01ShouldConvertABagToADictionaryOfOcurrences stamp: 'JPF 6/26/2021 11:52:47'!
+test01ShouldConvertABagToADictionaryOfOcurrences
+
+	!
+
+!classDefinition: #Mapper category: 'TusLibros-Server' stamp: 'JPF 6/26/2021 11:54:23'!
+Object subclass: #Mapper
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'TusLibros-Server'!
+!MapperTest methodsFor: 'tests' stamp: 'JPF 6/26/2021 11:54:12' prior: 50930857!
+test01ShouldConvertAnEmptyBagToAEmptyDictionary
+
+	self assert: (Mapper bagToDictionayOfOcurrences: (Bag new)) = Dictionary new.
+
+	! !
+
+!testRun: #MapperTest #test01ShouldConvertAnEmptyBagToAEmptyDictionary stamp: 'JPF 6/26/2021 11:54:31'!
+ERROR!
+!Mapper class methodsFor: 'mapping' stamp: 'JPF 6/26/2021 11:54:50'!
+bagToDictionayOfOcurrences: aBag 
+	self shouldBeImplemented.! !
+!Mapper class methodsFor: 'mapping' stamp: 'JPF 6/26/2021 11:55:01' prior: 50930884!
+bagToDictionayOfOcurrences: aBag 
+	^ Dictionary new.! !
+!Mapper class methodsFor: 'mapping' stamp: 'JPF 6/26/2021 11:55:03' prior: 50930889!
+bagToDictionayOfOcurrences: aBag 
+	
+	^ Dictionary new.! !
+
+!testRun: #MapperTest #test01ShouldConvertAnEmptyBagToAEmptyDictionary stamp: 'JPF 6/26/2021 11:55:04'!
+PASSED!
+
+!testRun: #MapperTest #test01ShouldConvertAnEmptyBagToAEmptyDictionary stamp: 'JPF 6/26/2021 11:55:04'!
+PASSED!
+!MapperTest methodsFor: 'tests' stamp: 'JPF 6/26/2021 11:55:59'!
+test02ShouldConvertABagWithItemsToTheCorrespondingDictionaryOfOcurrences
+
+	self assert: (Mapper bagToDictionayOfOcurrences: (Bag new)) = Dictionary new.
+
+	! !
+!MapperTest methodsFor: 'tests' stamp: 'JPF 6/26/2021 11:57:11' prior: 50930905!
+test02ShouldConvertABagWithItemsToTheCorrespondingDictionaryOfOcurrences
+
+	| bag |
+	bag := Bag with: 'item1' with: 'item2' with: 'item1' with: 'item1' with: 'item2' with: 'item3'.
+
+	self assert: (Mapper bagToDictionayOfOcurrences: (Bag new)) = Dictionary new.
+
+	! !
+!MapperTest methodsFor: 'tests' stamp: 'JPF 6/26/2021 11:58:33' prior: 50930913!
+test02ShouldConvertABagWithItemsToTheCorrespondingDictionaryOfOcurrences
+
+	| bag expectedDictionary |
+	
+	bag := Bag with: 'item1' with: 'item2' with: 'item1' with: 'item1' with: 'item2' with: 'item3'.
+	expectedDictionary := Dictionary with: ('item1'->3) with: ('item2'->2) with: ('item3'->1).
+
+	self assert: (Mapper bagToDictionayOfOcurrences: (Bag new)) = Dictionary new.
+
+	! !
+!MapperTest methodsFor: 'tests' stamp: 'JPF 6/26/2021 11:58:54' prior: 50930924!
+test02ShouldConvertABagWithItemsToTheCorrespondingDictionaryOfOcurrences
+
+	| bag expectedDictionary |
+	
+	bag := Bag with: 'item1' with: 'item2' with: 'item1' with: 'item1' with: 'item2' with: 'item3'.
+	expectedDictionary := Dictionary with: ('item1'->3) with: ('item2'->2) with: ('item3'->1).
+
+	self assert: (Mapper bagToDictionayOfOcurrences: bag) = expectedDictionary
+
+	! !
+
+!testRun: #MapperTest #test02ShouldConvertABagWithItemsToTheCorrespondingDictionaryOfOcurrences stamp: 'JPF 6/26/2021 11:58:57'!
+FAILURE!
+
+!classDefinition: 'Mapper class' category: 'TusLibros-Server' stamp: 'JPF 6/26/2021 12:00:06'!
+Mapper class
+	instanceVariableNames: 'dictionary'!
+!Mapper class methodsFor: 'mapping' stamp: 'JPF 6/26/2021 12:00:04' prior: 50930894!
+bagToDictionayOfOcurrences: aBag 
+	
+	dictionary := Dictionary new.! !
+
+Mapper class
+	instanceVariableNames: ''!
+!Mapper class methodsFor: 'mapping' stamp: 'JPF 6/26/2021 12:00:58' prior: 50930963!
+bagToDictionayOfOcurrences: aBag 
+	
+	Dictionary new.! !
+
+Mapper class
+	instanceVariableNames: ''!
+
+!classDefinition: 'Mapper class' category: 'TusLibros-Server' stamp: 'JPF 6/26/2021 12:01:05'!
+Mapper class
+	instanceVariableNames: ''!
+!Mapper class methodsFor: 'mapping' stamp: 'JPF 6/26/2021 12:01:20' prior: 50930970!
+bagToDictionayOfOcurrences: aBag 
+	
+	| dictionary |
+	dictionary := Dictionary new.! !
+!Mapper class methodsFor: 'mapping' stamp: 'JPF 6/26/2021 12:02:27' prior: 50930980!
+bagToDictionayOfOcurrences: aBag 
+	
+	| dictionary |
+	
+	dictionary := Dictionary new.
+	
+	aBag do: [ :item | dictionary at: item put: (aBag ocurrencesOf: item)]! !
+!Mapper class methodsFor: 'mapping' stamp: 'JPF 6/26/2021 12:03:30' prior: 50930986!
+bagToDictionayOfOcurrences: aBag 
+	
+	| dictionary |
+	
+	dictionary := Dictionary new.
+	
+	aBag do: [ :item | dictionary at: item put: (aBag occurrencesOf: item)]! !
+!Mapper class methodsFor: 'mapping' stamp: 'JPF 6/26/2021 12:03:47' prior: 50930994!
+bagToDictionayOfOcurrences: aBag 
+	
+	| dictionary |
+	
+	dictionary := Dictionary new.
+	
+	aBag do: [ :item | dictionary at: item put: (aBag occurrencesOf: item)].
+	
+	^ dictionary! !
+
+!testRun: #MapperTest #test02ShouldConvertABagWithItemsToTheCorrespondingDictionaryOfOcurrences stamp: 'JPF 6/26/2021 12:03:56'!
+PASSED!
+
+!testRun: #MapperTest #test01ShouldConvertAnEmptyBagToAEmptyDictionary stamp: 'JPF 6/26/2021 12:03:56'!
+PASSED!
+
+!testRun: #MapperTest #test02ShouldConvertABagWithItemsToTheCorrespondingDictionaryOfOcurrences stamp: 'JPF 6/26/2021 12:03:56'!
+PASSED!
+!TusLibrosRestInterface methodsFor: 'handlers' stamp: 'JPF 6/26/2021 12:06:05' prior: 50930816!
+handleListCart: request
+
+	self handle: request with: [	 | cartId cartContent itemsOcurrences response |	
+		
+		cartId := request fields at: 'cartId'.
+		
+		cartContent := tusLibrosSystemFacade listCartIdentifiedAs: cartId asNumber.
+		
+		itemsOcurrences := Mapper bagToDictionayOfOcurrences: (WebUtils jsonEncode: cartContent).
+		
+		response := nil.
+		
+		request send200Response: ''.
+	]! !
+!TusLibrosRestInterface methodsFor: 'handlers' stamp: 'JPF 6/26/2021 12:06:34' prior: 50931023!
+handleListCart: request
+
+	self handle: request with: [	 | cartId cartContent itemsOcurrences response |	
+		
+		cartId := request fields at: 'cartId'.
+		
+		cartContent := tusLibrosSystemFacade listCartIdentifiedAs: cartId asNumber.
+		
+		itemsOcurrences := Mapper bagToDictionayOfOcurrences: cartContent.
+		
+		response := nil.
+		
+		request send200Response: ''.
+	]! !
+!TusLibrosRestInterface methodsFor: 'handlers' stamp: 'JPF 6/26/2021 12:11:18' prior: 50931039!
+handleListCart: request
+
+	self handle: request with: [	 | cartId cartContent itemsOcurrences response |	
+		
+		cartId := request fields at: 'cartId'.
+		
+		cartContent := tusLibrosSystemFacade listCartIdentifiedAs: cartId asNumber.
+		
+		itemsOcurrences := Mapper bagToDictionayOfOcurrences: cartContent.
+		
+		response := String streamContents:[ :s| WebUtils jsonMap: itemsOcurrences on: s].
+		
+		request send200Response: ''.
+	]! !
+!TusLibrosRestInterface methodsFor: 'handlers' stamp: 'JPF 6/26/2021 12:11:29' prior: 50931054!
+handleListCart: request
+
+	self handle: request with: [	 | cartId cartContent itemsOcurrences response |	
+		
+		cartId := request fields at: 'cartId'.
+		
+		cartContent := tusLibrosSystemFacade listCartIdentifiedAs: cartId asNumber.
+		
+		itemsOcurrences := Mapper bagToDictionayOfOcurrences: cartContent.
+		
+		response := String streamContents:[ :s| WebUtils jsonMap: itemsOcurrences on: s].
+		
+		request send200Response: response.
+	]! !
+
+server destroy.!
+
+server := TusLibrosRestInterface listeningOn: 8080.!
+!TusLibrosRestInterface methodsFor: 'initialization' stamp: 'JPF 6/26/2021 12:16:37' prior: 50930714!
+initializeWith: aPortNumber
+
+	tusLibrosSystemFacade := TusLibrosDefaultFactory new createFacade.
+	
+	port:= aPortNumber.
+	
+	webServer :=
+		WebServer new listenOn: self port;
+		addService: '/createCart' action:[ :request | self handleCreateCart: request ];
+		addService: '/addToCart' action:[ :request | self handleAddToCart: request ];
+		addService: '/listCart' action:[ :request | self handleListCart: request ];
+		addService: '/addToCart' action:[ :request | self handleListPurchases: request ].! !
+!TusLibrosRestInterface methodsFor: 'handlers' stamp: 'JPF 6/26/2021 12:16:58'!
+handleListPurchases: request
+
+	self handle: request with: [	 | cartId cartContent itemsOcurrences response |	
+		
+		cartId := request fields at: 'cartId'.
+		
+		cartContent := tusLibrosSystemFacade listCartIdentifiedAs: cartId asNumber.
+		
+		itemsOcurrences := Mapper bagToDictionayOfOcurrences: cartContent.
+		
+		response := String streamContents:[ :s| WebUtils jsonMap: itemsOcurrences on: s].
+		
+		request send200Response: response.
+	]! !
+!TusLibrosRestInterface methodsFor: 'handlers' stamp: 'JPF 6/26/2021 12:17:17' prior: 50931110!
+handleListPurchases: request
+
+	self handle: request with: [	 | cartId purchases itemsOcurrences response |	
+		
+		cartId := request fields at: 'cartId'.
+		
+		purchases := tusLibrosSystemFacade listCartIdentifiedAs: cartId asNumber.
+		
+		itemsOcurrences := Mapper bagToDictionayOfOcurrences: purchases.
+		
+		response := String streamContents:[ :s| WebUtils jsonMap: itemsOcurrences on: s].
+		
+		request send200Response: response.
+	]! !
+!TusLibrosRestInterface methodsFor: 'handlers' stamp: 'JPF 6/26/2021 12:18:52' prior: 50931127!
+handleListPurchases: request
+
+	self handle: request with: [	 | clientId password purchases itemsOcurrences response |	
+		
+		clientId := request fields at: 'clientId'.
+		password := request fields at: 'password'.
+		
+		purchases := tusLibrosSystemFacade listPurchasesOf: clientId authenticatingWith: password.
+		
+		itemsOcurrences := Mapper bagToDictionayOfOcurrences: purchases.
+		
+		response := String streamContents:[ :s| WebUtils jsonMap: itemsOcurrences on: s].
+		
+		request send200Response: response.
+	]! !
+!TusLibrosRestInterface methodsFor: 'initialization' stamp: 'JPF 6/26/2021 12:19:06' prior: 50931091!
+initializeWith: aPortNumber
+
+	tusLibrosSystemFacade := TusLibrosDefaultFactory new createFacade.
+	
+	port:= aPortNumber.
+	
+	webServer :=
+		WebServer new listenOn: self port;
+		addService: '/createCart' action:[ :request | self handleCreateCart: request ];
+		addService: '/addToCart' action:[ :request | self handleAddToCart: request ];
+		addService: '/listCart' action:[ :request | self handleListCart: request ];
+		addService: '/listPurchases' action:[ :request | self handleListPurchases: request ].! !
+!TusLibrosSystemFacadeTest methodsFor: 'tests - list purchases' stamp: 'JPF 6/26/2021 12:22:03' prior: 50928972!
+test14ListPurchasesIncludesBoughtItems
+
+	| cartId purchases |
+
+	cartId := systemFacade createCartFor: self validUser authenticatedWith: self validUserPassword.
+	systemFacade add: 2 of: self validBook toCartIdentifiedAs: cartId.
+	systemFacade add: 1 of: self anotherValidBook toCartIdentifiedAs: cartId.
+	systemFacade
+		checkOutCartIdentifiedAs: cartId
+		withCreditCardNumbered: '1111222233334444'
+		ownedBy: 'Juan Perez'
+		expiringOn: testObjectsFactory notExpiredMonthOfYear.
+
+	purchases := systemFacade listPurchasesOf: self validUser authenticatingWith: self validUserPassword.
+	self halt.
+
+	self assert: (purchases at: self validBook) equals: (testObjectsFactory itemSellByTheStorePrice * 2).
+	self assert: (purchases at: self anotherValidBook) equals: testObjectsFactory anotherItemSellByTheStorePrice.! !
+
+!testRun: #TusLibrosSystemFacadeTest #test14ListPurchasesIncludesBoughtItems stamp: 'JPF 6/26/2021 12:27:13'!
+PASSED!
+
+!testRun: #TusLibrosSystemFacadeTest #test01CanCreateCartWithValidUserAndPassword stamp: 'JPF 6/26/2021 12:27:13'!
+PASSED!
+
+!testRun: #TusLibrosSystemFacadeTest #test02CanNotCreateCartWithInvalidUser stamp: 'JPF 6/26/2021 12:27:13'!
+PASSED!
+
+!testRun: #TusLibrosSystemFacadeTest #test03CanNotCreateCartWithInvalidPassword stamp: 'JPF 6/26/2021 12:27:13'!
+PASSED!
+
+!testRun: #TusLibrosSystemFacadeTest #test04CanAddItemsToACreatedCart stamp: 'JPF 6/26/2021 12:27:13'!
+PASSED!
+
+!testRun: #TusLibrosSystemFacadeTest #test05CanNotAddItemToNotCreatedCart stamp: 'JPF 6/26/2021 12:27:13'!
+PASSED!
+
+!testRun: #TusLibrosSystemFacadeTest #test06CanNotAddItemNotSellByTheStore stamp: 'JPF 6/26/2021 12:27:13'!
+PASSED!
+
+!testRun: #TusLibrosSystemFacadeTest #test07ListCartOfAnEmptyCartReturnsAnEmptyBag stamp: 'JPF 6/26/2021 12:27:13'!
+PASSED!
+
+!testRun: #TusLibrosSystemFacadeTest #test08CanNotListCartOfInvalidCartId stamp: 'JPF 6/26/2021 12:27:13'!
+PASSED!
+
+!testRun: #TusLibrosSystemFacadeTest #test09ListCartReturnsTheRightNumberOfItems stamp: 'JPF 6/26/2021 12:27:13'!
+PASSED!
+
+!testRun: #TusLibrosSystemFacadeTest #test10CanCheckoutACart stamp: 'JPF 6/26/2021 12:27:13'!
+PASSED!
+
+!testRun: #TusLibrosSystemFacadeTest #test11CanNotCheckoutANotCreatedCart stamp: 'JPF 6/26/2021 12:27:13'!
+PASSED!
+
+!testRun: #TusLibrosSystemFacadeTest #test12CanNotCheckoutAnEmptyCart stamp: 'JPF 6/26/2021 12:27:13'!
+PASSED!
+
+!testRun: #TusLibrosSystemFacadeTest #test13CanNotCheckoutWithAnExpiredCreditCard stamp: 'JPF 6/26/2021 12:27:13'!
+PASSED!
+
+!testRun: #TusLibrosSystemFacadeTest #test15CanNotListPurchasesOfInvalidCustomer stamp: 'JPF 6/26/2021 12:27:13'!
+PASSED!
+
+!testRun: #TusLibrosSystemFacadeTest #test16CanNotListPurchasesOfValidCustomerWithInvalidPassword stamp: 'JPF 6/26/2021 12:27:13'!
+PASSED!
+
+!testRun: #TusLibrosSystemFacadeTest #test17CanNotAddToCartWhenSessionIsExpired stamp: 'JPF 6/26/2021 12:27:13'!
+PASSED!
+
+!testRun: #TusLibrosSystemFacadeTest #test18CanNotListCartWhenSessionIsExpired stamp: 'JPF 6/26/2021 12:27:13'!
+PASSED!
+
+!testRun: #TusLibrosSystemFacadeTest #test19CanNotCheckOutCartWhenSessionIsExpired stamp: 'JPF 6/26/2021 12:27:13'!
+PASSED!
+
+!testRun: #TusLibrosSystemFacadeTest #test14ListPurchasesIncludesBoughtItems stamp: 'JPF 6/26/2021 12:27:15'!
+PASSED!
+!TusLibrosSystemFacadeTest methodsFor: 'tests - list purchases' stamp: 'JPF 6/26/2021 12:27:20' prior: 50931184!
+test14ListPurchasesIncludesBoughtItems
+
+	| cartId purchases |
+
+	cartId := systemFacade createCartFor: self validUser authenticatedWith: self validUserPassword.
+	systemFacade add: 2 of: self validBook toCartIdentifiedAs: cartId.
+	systemFacade add: 1 of: self anotherValidBook toCartIdentifiedAs: cartId.
+	systemFacade
+		checkOutCartIdentifiedAs: cartId
+		withCreditCardNumbered: '1111222233334444'
+		ownedBy: 'Juan Perez'
+		expiringOn: testObjectsFactory notExpiredMonthOfYear.
+
+	purchases := systemFacade listPurchasesOf: self validUser authenticatingWith: self validUserPassword.
+
+	self assert: (purchases at: self validBook) equals: (testObjectsFactory itemSellByTheStorePrice * 2).
+	self assert: (purchases at: self anotherValidBook) equals: testObjectsFactory anotherItemSellByTheStorePrice.! !
+!TusLibrosRestInterface methodsFor: 'handlers' stamp: 'JPF 6/26/2021 12:28:40' prior: 50931144!
+handleListPurchases: request
+
+	self handle: request with: [	 | clientId password purchases response |	
+		
+		clientId := request fields at: 'clientId'.
+		password := request fields at: 'password'.
+		
+		purchases := tusLibrosSystemFacade listPurchasesOf: clientId authenticatingWith: password.
+		
+		response := String streamContents:[ :s| WebUtils jsonMap: purchases on: s].
+		
+		request send200Response: response.
+	]! !
+!TusLibrosRestInterface methodsFor: 'initialization' stamp: 'JPF 6/26/2021 12:29:51' prior: 50931164!
+initializeWith: aPortNumber
+
+	tusLibrosSystemFacade := TusLibrosDefaultFactory new createFacade.
+	
+	port:= aPortNumber.
+	
+	webServer :=
+		WebServer new listenOn: self port;
+		addService: '/createCart' action:[ :request | self handleCreateCart: request ];
+		addService: '/addToCart' action:[ :request | self handleAddToCart: request ];
+		addService: '/listCart' action:[ :request | self handleListCart: request ];
+		addService: '/listPurchases' action:[ :request | self handleListPurchases: request ];
+		addService: '/checkOutCart' action:[ :request | self handleCheckOutCart: request ].! !
+!TusLibrosRestInterface methodsFor: 'handlers' stamp: 'JPF 6/26/2021 12:30:09'!
+handleCheckOutCart: request
+
+	self handle: request with: [	 | cartId cartContent itemsOcurrences response |	
+		
+		cartId := request fields at: 'cartId'.
+		
+		cartContent := tusLibrosSystemFacade listCartIdentifiedAs: cartId asNumber.
+		
+		itemsOcurrences := Mapper bagToDictionayOfOcurrences: cartContent.
+		
+		response := String streamContents:[ :s| WebUtils jsonMap: itemsOcurrences on: s].
+		
+		request send200Response: response.
+	]! !
+!TusLibrosRestInterface methodsFor: 'handlers' stamp: 'JPF 6/26/2021 12:33:17' prior: 50931354!
+handleCheckOutCart: request
+
+	self handle: request with: [	 | cartId ticket |	
+		
+		cartId := request fields at: 'cartId'.
+		
+		ticket := tusLibrosSystemFacade
+			checkOutCartIdentifiedAs: cartId asNumber
+			withCreditCardNumbered: '1111222211112222'
+			ownedBy: 'Juan Ferrino'
+			expiringOn: ''.
+		
+		request send200Response: ticket.
+	]! !
+!TusLibrosRestInterface methodsFor: 'handlers' stamp: 'JPF 6/26/2021 12:35:10' prior: 50931371!
+handleCheckOutCart: request
+
+	self handle: request with: [	 | cartId ticket |	
+		
+		cartId := request fields at: 'cartId'.
+		
+		ticket := tusLibrosSystemFacade
+			checkOutCartIdentifiedAs: cartId asNumber
+			withCreditCardNumbered: '1111222211112222'
+			ownedBy: 'Juan Ferrino'
+			expiringOn: (Month month: 11 year: 2026).
+		
+		request send200Response: ticket.
+	]! !
+
+server destroy.!
+
+server := TusLibrosRestInterface listeningOn: 8080.!
+!TusLibrosRestInterface methodsFor: 'handlers' stamp: 'JPF 6/26/2021 12:37:56' prior: 50931385!
+handleCheckOutCart: request
+
+	self handle: request with: [	 | cartId ticket |	
+		
+		cartId := request fields at: 'cartId'.
+		
+		ticket := tusLibrosSystemFacade
+			checkOutCartIdentifiedAs: cartId asNumber
+			withCreditCardNumbered: '1111222211112222'
+			ownedBy: 'Juan Ferrino'
+			expiringOn: (Month month: 11 year: 2026).
+		self halt.
+		
+		request send200Response: ticket.
+	]! !
+
+bag := Bag with: 'item1' with: 'item1' with: 'item2'.!
+
+bag contents !
+!TusLibrosRestInterface methodsFor: 'handlers' stamp: 'JPF 6/26/2021 12:44:14' prior: 50931071!
+handleListCart: request
+
+	self handle: request with: [	 | cartId cart itemsOcurrences response |	
+		
+		cartId := request fields at: 'cartId'.
+		
+		cart := tusLibrosSystemFacade listCartIdentifiedAs: cartId asNumber.
+		
+		itemsOcurrences := Mapper bagToDictionayOfOcurrences: cart.
+		
+		response := String streamContents:[ :s| WebUtils jsonMap: itemsOcurrences on: s].
+		
+		request send200Response: response.
+	]! !
+!TusLibrosRestInterface methodsFor: 'handlers' stamp: 'JPF 6/26/2021 12:44:32' prior: 50931420!
+handleListCart: request
+
+	self handle: request with: [	 | cartId cart response |	
+		
+		cartId := request fields at: 'cartId'.
+		
+		cart := tusLibrosSystemFacade listCartIdentifiedAs: cartId asNumber.
+		
+		response := String streamContents:[ :s| WebUtils jsonMap: cart contents on: s].
+		
+		request send200Response: response.
+	]! !
+
+!testRun: #CartTest #test01NewCartsAreCreatedEmpty stamp: 'JPF 6/26/2021 12:47:10'!
+PASSED!
+
+!testRun: #CartTest #test02CanNotAddItemsThatDoNotBelongToStore stamp: 'JPF 6/26/2021 12:47:10'!
+PASSED!
+
+!testRun: #CartTest #test03AfterAddingAnItemTheCartIsNotEmptyAnymore stamp: 'JPF 6/26/2021 12:47:10'!
+PASSED!
+
+!testRun: #CartTest #test04CanNotAddNonPositiveNumberOfItems stamp: 'JPF 6/26/2021 12:47:10'!
+PASSED!
+
+!testRun: #CartTest #test05CanNotAddMoreThanOneItemNotSellByTheStore stamp: 'JPF 6/26/2021 12:47:10'!
+PASSED!
+
+!testRun: #CartTest #test06CartRemembersAddedItems stamp: 'JPF 6/26/2021 12:47:10'!
+PASSED!
+
+!testRun: #CartTest #test07CartDoesNotHoldNotAddedItems stamp: 'JPF 6/26/2021 12:47:10'!
+PASSED!
+
+!testRun: #CartTest #test08CartRemembersTheNumberOfAddedItems stamp: 'JPF 6/26/2021 12:47:10'!
+PASSED!
+
+!testRun: #CashierTest #test01CanNotCheckoutAnEmptyCart stamp: 'JPF 6/26/2021 12:47:10'!
+PASSED!
+
+!testRun: #CashierTest #test02CalculatedTotalIsCorrect stamp: 'JPF 6/26/2021 12:47:10'!
+PASSED!
+
+!testRun: #CashierTest #test03CanNotCheckoutWithAnExpiredCreditCart stamp: 'JPF 6/26/2021 12:47:10'!
+PASSED!
+
+!testRun: #CashierTest #test04CheckoutRegistersASale stamp: 'JPF 6/26/2021 12:47:10'!
+PASSED!
+
+!testRun: #CashierTest #test05CashierChargesCreditCardUsingMerchantProcessor stamp: 'JPF 6/26/2021 12:47:10'!
+PASSED!
+
+!testRun: #CashierTest #test06CashierDoesNotSaleWhenTheCreditCardHasNoCredit stamp: 'JPF 6/26/2021 12:47:10'!
+PASSED!
+
+!testRun: #TusLibrosSystemFacadeTest #test01CanCreateCartWithValidUserAndPassword stamp: 'JPF 6/26/2021 12:47:10'!
+PASSED!
+
+!testRun: #TusLibrosSystemFacadeTest #test02CanNotCreateCartWithInvalidUser stamp: 'JPF 6/26/2021 12:47:10'!
+PASSED!
+
+!testRun: #TusLibrosSystemFacadeTest #test03CanNotCreateCartWithInvalidPassword stamp: 'JPF 6/26/2021 12:47:10'!
+PASSED!
+
+!testRun: #TusLibrosSystemFacadeTest #test04CanAddItemsToACreatedCart stamp: 'JPF 6/26/2021 12:47:10'!
+PASSED!
+
+!testRun: #TusLibrosSystemFacadeTest #test05CanNotAddItemToNotCreatedCart stamp: 'JPF 6/26/2021 12:47:10'!
+PASSED!
+
+!testRun: #TusLibrosSystemFacadeTest #test06CanNotAddItemNotSellByTheStore stamp: 'JPF 6/26/2021 12:47:10'!
+PASSED!
+
+!testRun: #TusLibrosSystemFacadeTest #test07ListCartOfAnEmptyCartReturnsAnEmptyBag stamp: 'JPF 6/26/2021 12:47:10'!
+PASSED!
+
+!testRun: #TusLibrosSystemFacadeTest #test08CanNotListCartOfInvalidCartId stamp: 'JPF 6/26/2021 12:47:10'!
+PASSED!
+
+!testRun: #TusLibrosSystemFacadeTest #test09ListCartReturnsTheRightNumberOfItems stamp: 'JPF 6/26/2021 12:47:10'!
+PASSED!
+
+!testRun: #TusLibrosSystemFacadeTest #test10CanCheckoutACart stamp: 'JPF 6/26/2021 12:47:10'!
+PASSED!
+
+!testRun: #TusLibrosSystemFacadeTest #test11CanNotCheckoutANotCreatedCart stamp: 'JPF 6/26/2021 12:47:10'!
+PASSED!
+
+!testRun: #TusLibrosSystemFacadeTest #test12CanNotCheckoutAnEmptyCart stamp: 'JPF 6/26/2021 12:47:11'!
+PASSED!
+
+!testRun: #TusLibrosSystemFacadeTest #test13CanNotCheckoutWithAnExpiredCreditCard stamp: 'JPF 6/26/2021 12:47:11'!
+PASSED!
+
+!testRun: #TusLibrosSystemFacadeTest #test14ListPurchasesIncludesBoughtItems stamp: 'JPF 6/26/2021 12:47:11'!
+PASSED!
+
+!testRun: #TusLibrosSystemFacadeTest #test15CanNotListPurchasesOfInvalidCustomer stamp: 'JPF 6/26/2021 12:47:11'!
+PASSED!
+
+!testRun: #TusLibrosSystemFacadeTest #test16CanNotListPurchasesOfValidCustomerWithInvalidPassword stamp: 'JPF 6/26/2021 12:47:11'!
+PASSED!
+
+!testRun: #TusLibrosSystemFacadeTest #test17CanNotAddToCartWhenSessionIsExpired stamp: 'JPF 6/26/2021 12:47:11'!
+PASSED!
+
+!testRun: #TusLibrosSystemFacadeTest #test18CanNotListCartWhenSessionIsExpired stamp: 'JPF 6/26/2021 12:47:11'!
+PASSED!
+
+!testRun: #TusLibrosSystemFacadeTest #test19CanNotCheckOutCartWhenSessionIsExpired stamp: 'JPF 6/26/2021 12:47:11'!
+PASSED!
+!TusLibrosSystemFacade methodsFor: 'facade protocol' stamp: 'JPF 6/26/2021 12:47:55' prior: 50928508!
+checkOutCartIdentifiedAs: aCartId withCreditCardNumbered: aCreditCartNumber ownedBy: anOwner expiringOn: anExpirationMonthOfYear
+
+	self
+		withCartSessionIdentifiedAs: aCartId
+		do: [ :cartSession | ^ cartSession
+			checkOutCartWithCreditCardNumbered: aCreditCartNumber
+			ownedBy: anOwner
+			expiringOn: anExpirationMonthOfYear ]
+! !
+
+!testRun: #CartTest #test01NewCartsAreCreatedEmpty stamp: 'JPF 6/26/2021 12:48:24'!
+PASSED!
+
+!testRun: #CartTest #test02CanNotAddItemsThatDoNotBelongToStore stamp: 'JPF 6/26/2021 12:48:24'!
+PASSED!
+
+!testRun: #CartTest #test03AfterAddingAnItemTheCartIsNotEmptyAnymore stamp: 'JPF 6/26/2021 12:48:24'!
+PASSED!
+
+!testRun: #CartTest #test04CanNotAddNonPositiveNumberOfItems stamp: 'JPF 6/26/2021 12:48:24'!
+PASSED!
+
+!testRun: #CartTest #test05CanNotAddMoreThanOneItemNotSellByTheStore stamp: 'JPF 6/26/2021 12:48:24'!
+PASSED!
+
+!testRun: #CartTest #test06CartRemembersAddedItems stamp: 'JPF 6/26/2021 12:48:24'!
+PASSED!
+
+!testRun: #CartTest #test07CartDoesNotHoldNotAddedItems stamp: 'JPF 6/26/2021 12:48:24'!
+PASSED!
+
+!testRun: #CartTest #test08CartRemembersTheNumberOfAddedItems stamp: 'JPF 6/26/2021 12:48:24'!
+PASSED!
+
+!testRun: #CashierTest #test01CanNotCheckoutAnEmptyCart stamp: 'JPF 6/26/2021 12:48:24'!
+PASSED!
+
+!testRun: #CashierTest #test02CalculatedTotalIsCorrect stamp: 'JPF 6/26/2021 12:48:24'!
+PASSED!
+
+!testRun: #CashierTest #test03CanNotCheckoutWithAnExpiredCreditCart stamp: 'JPF 6/26/2021 12:48:24'!
+PASSED!
+
+!testRun: #CashierTest #test04CheckoutRegistersASale stamp: 'JPF 6/26/2021 12:48:24'!
+PASSED!
+
+!testRun: #CashierTest #test05CashierChargesCreditCardUsingMerchantProcessor stamp: 'JPF 6/26/2021 12:48:24'!
+PASSED!
+
+!testRun: #CashierTest #test06CashierDoesNotSaleWhenTheCreditCardHasNoCredit stamp: 'JPF 6/26/2021 12:48:24'!
+PASSED!
+
+!testRun: #TusLibrosSystemFacadeTest #test01CanCreateCartWithValidUserAndPassword stamp: 'JPF 6/26/2021 12:48:24'!
+PASSED!
+
+!testRun: #TusLibrosSystemFacadeTest #test02CanNotCreateCartWithInvalidUser stamp: 'JPF 6/26/2021 12:48:24'!
+PASSED!
+
+!testRun: #TusLibrosSystemFacadeTest #test03CanNotCreateCartWithInvalidPassword stamp: 'JPF 6/26/2021 12:48:24'!
+PASSED!
+
+!testRun: #TusLibrosSystemFacadeTest #test04CanAddItemsToACreatedCart stamp: 'JPF 6/26/2021 12:48:24'!
+PASSED!
+
+!testRun: #TusLibrosSystemFacadeTest #test05CanNotAddItemToNotCreatedCart stamp: 'JPF 6/26/2021 12:48:24'!
+PASSED!
+
+!testRun: #TusLibrosSystemFacadeTest #test06CanNotAddItemNotSellByTheStore stamp: 'JPF 6/26/2021 12:48:24'!
+PASSED!
+
+!testRun: #TusLibrosSystemFacadeTest #test07ListCartOfAnEmptyCartReturnsAnEmptyBag stamp: 'JPF 6/26/2021 12:48:24'!
+PASSED!
+
+!testRun: #TusLibrosSystemFacadeTest #test08CanNotListCartOfInvalidCartId stamp: 'JPF 6/26/2021 12:48:24'!
+PASSED!
+
+!testRun: #TusLibrosSystemFacadeTest #test09ListCartReturnsTheRightNumberOfItems stamp: 'JPF 6/26/2021 12:48:24'!
+PASSED!
+
+!testRun: #TusLibrosSystemFacadeTest #test10CanCheckoutACart stamp: 'JPF 6/26/2021 12:48:24'!
+PASSED!
+
+!testRun: #TusLibrosSystemFacadeTest #test11CanNotCheckoutANotCreatedCart stamp: 'JPF 6/26/2021 12:48:24'!
+PASSED!
+
+!testRun: #TusLibrosSystemFacadeTest #test12CanNotCheckoutAnEmptyCart stamp: 'JPF 6/26/2021 12:48:24'!
+PASSED!
+
+!testRun: #TusLibrosSystemFacadeTest #test13CanNotCheckoutWithAnExpiredCreditCard stamp: 'JPF 6/26/2021 12:48:24'!
+PASSED!
+
+!testRun: #TusLibrosSystemFacadeTest #test14ListPurchasesIncludesBoughtItems stamp: 'JPF 6/26/2021 12:48:24'!
+PASSED!
+
+!testRun: #TusLibrosSystemFacadeTest #test15CanNotListPurchasesOfInvalidCustomer stamp: 'JPF 6/26/2021 12:48:24'!
+PASSED!
+
+!testRun: #TusLibrosSystemFacadeTest #test16CanNotListPurchasesOfValidCustomerWithInvalidPassword stamp: 'JPF 6/26/2021 12:48:24'!
+PASSED!
+
+!testRun: #TusLibrosSystemFacadeTest #test17CanNotAddToCartWhenSessionIsExpired stamp: 'JPF 6/26/2021 12:48:24'!
+PASSED!
+
+!testRun: #TusLibrosSystemFacadeTest #test18CanNotListCartWhenSessionIsExpired stamp: 'JPF 6/26/2021 12:48:24'!
+PASSED!
+
+!testRun: #TusLibrosSystemFacadeTest #test19CanNotCheckOutCartWhenSessionIsExpired stamp: 'JPF 6/26/2021 12:48:24'!
+PASSED!
+
+server destroy.!
+
+server := TusLibrosRestInterface listeningOn: 8080.!
+!TusLibrosRestInterface methodsFor: 'handlers' stamp: 'JPF 6/26/2021 12:51:16' prior: 50931402!
+handleCheckOutCart: request
+
+	self handle: request with: [	 | cartId ticket |	
+		
+		cartId := request fields at: 'cartId'.
+		
+		ticket := tusLibrosSystemFacade
+			checkOutCartIdentifiedAs: cartId asNumber
+			withCreditCardNumbered: '1111222211112222'
+			ownedBy: 'Juan Ferrino'
+			expiringOn: (Month month: 11 year: 2026).
+		
+		request send200Response: (WebUtils jsonEncode: ticket).
+	]! !
+!TusLibrosRestInterface methodsFor: 'handlers' stamp: 'JPF 6/26/2021 12:57:21' prior: 50931436!
+handleListCart: request
+
+	self handle: request with: [	 | cartId cart |	
+		
+		cartId := request fields at: 'cartId'.
+		
+		cart := tusLibrosSystemFacade listCartIdentifiedAs: cartId asNumber.
+		
+		request send200Response: (WebUtils jsonEncode: cart contents).
+	]! !
+!TusLibrosRestInterface methodsFor: 'handlers' stamp: 'JPF 6/26/2021 13:02:17' prior: 50931700!
+handleCheckOutCart: request
+
+	self handle: request with: [	 | cartId ticket detail |	
+		
+		cartId := request fields at: 'cartId'.
+		
+		ticket := tusLibrosSystemFacade
+			checkOutCartIdentifiedAs: cartId asNumber
+			withCreditCardNumbered: '1111222211112222'
+			ownedBy: 'Juan Ferrino'
+			expiringOn: (Month month: 11 year: 2026).
+			
+		detail := ticket
+		
+		request send200Response: (WebUtils jsonEncode: ticket).
+	]! !
+
+!methodRemoval: Mapper class #bagToDictionayOfOcurrences: stamp: 'JPF 6/26/2021 13:04:16'!
+bagToDictionayOfOcurrences: aBag 
+	
+	| dictionary |
+	
+	dictionary := Dictionary new.
+	
+	aBag do: [ :item | dictionary at: item put: (aBag occurrencesOf: item)].
+	
+	^ dictionary!
+!MapperTest methodsFor: 'tests' stamp: 'JPF 6/26/2021 13:05:50'!
+test01ShouldConvertAnEmptyTicketToAnEmptyList
+
+	self assert: (Mapper bagToDictionayOfOcurrences: (Bag new)) = Dictionary new.
+
+	! !
+
+!methodRemoval: MapperTest #test01ShouldConvertAnEmptyBagToAEmptyDictionary stamp: 'JPF 6/26/2021 13:05:50'!
+test01ShouldConvertAnEmptyBagToAEmptyDictionary
+
+	self assert: (Mapper bagToDictionayOfOcurrences: (Bag new)) = Dictionary new.
+
+	!
+!MapperTest methodsFor: 'tests' stamp: 'JPF 6/26/2021 13:06:59' prior: 50931752!
+test01ShouldConvertAnEmptyTicketToAnEmptyList
+
+	self assert: (Mapper mapTicketToResponse: (Ticket of: OrderedCollection new)) = OrderedCollection new.
+
+	! !
+!MapperTest methodsFor: 'tests' stamp: 'JPF 6/26/2021 13:07:56' prior: 50931767!
+test01ShouldConvertAnEmptyTicketToAnEmptyList
+
+	self 
+		assert: OrderedCollection new
+		equals: (Mapper mapTicketToResponse: (Ticket of: OrderedCollection new)).
+	! !
+
+!testRun: #MapperTest #test01ShouldConvertAnEmptyTicketToAnEmptyList stamp: 'JPF 6/26/2021 13:07:59'!
+ERROR!
+!Mapper class methodsFor: 'to response' stamp: 'JPF 6/26/2021 13:08:19'!
+mapTicketToResponse: aTicket 
+	self shouldBeImplemented.! !
+!Mapper class methodsFor: 'to response' stamp: 'JPF 6/26/2021 13:08:28' prior: 50931786!
+mapTicketToResponse: aTicket 
+	^ OrderedCollection new.! !
+!Mapper class methodsFor: 'to response' stamp: 'JPF 6/26/2021 13:08:31' prior: 50931791!
+mapTicketToResponse: aTicket
+
+	^ OrderedCollection new.! !
+!MapperTest methodsFor: 'tests' stamp: 'JPF 6/26/2021 13:09:26'!
+test02ShouldConvertATicketToTheCorrespondingListOfDictionaries
+
+	| bag expectedDictionary |
+	
+	bag := Bag with: 'item1' with: 'item2' with: 'item1' with: 'item1' with: 'item2' with: 'item3'.
+	expectedDictionary := Dictionary with: ('item1'->3) with: ('item2'->2) with: ('item3'->1).
+
+	self assert: (Mapper bagToDictionayOfOcurrences: bag) = expectedDictionary
+
+	! !
+
+!methodRemoval: MapperTest #test02ShouldConvertABagWithItemsToTheCorrespondingDictionaryOfOcurrences stamp: 'JPF 6/26/2021 13:09:26'!
+test02ShouldConvertABagWithItemsToTheCorrespondingDictionaryOfOcurrences
+
+	| bag expectedDictionary |
+	
+	bag := Bag with: 'item1' with: 'item2' with: 'item1' with: 'item1' with: 'item2' with: 'item3'.
+	expectedDictionary := Dictionary with: ('item1'->3) with: ('item2'->2) with: ('item3'->1).
+
+	self assert: (Mapper bagToDictionayOfOcurrences: bag) = expectedDictionary
+
+	!
+!MapperTest methodsFor: 'tests' stamp: 'JPF 6/26/2021 13:16:05' prior: 50931800!
+test02ShouldConvertATicketToTheCorrespondingListOfDictionaries
+
+	| ticket expectedResponse |
+	
+	ticket := Ticket of: (OrderedCollection 
+		with: (LineItem of: 'item1' quantity: 2 total: 20)
+		with: (LineItem of: 'item2' quantity: 1 total: 30)).
+	
+	expectedResponse := OrderedCollection
+		with: (Dictionary with: ('product'->'item1') with: ('quantity'->2) with: ('total'->2))
+		with: (Dictionary with: ('product'->'item2') with: ('quantity'->1) with: ('total'->30)).
+
+	self assert: (Mapper mapTicketToResponse: ticket) = expectedResponse.
+
+	! !
+!MapperTest methodsFor: 'tests' stamp: 'JPF 6/26/2021 13:16:10' prior: 50931830!
+test02ShouldConvertATicketToTheCorrespondingListOfDictionaries
+
+	| ticket expectedResponse |
+	
+	ticket := Ticket of: (OrderedCollection 
+		with: (LineItem of: 'item1' quantity: 2 total: 20)
+		with: (LineItem of: 'item2' quantity: 1 total: 30)).
+	
+	expectedResponse := OrderedCollection
+		with: (Dictionary with: ('product'->'item1') with: ('quantity'->2) with: ('total'->2))	
+		with: (Dictionary with: ('product'->'item2') with: ('quantity'->1) with: ('total'->30)).
+
+	self assert: (Mapper mapTicketToResponse: ticket) = expectedResponse.
+
+	! !
+
+!testRun: #MapperTest #test02ShouldConvertATicketToTheCorrespondingListOfDictionaries stamp: 'JPF 6/26/2021 13:16:10'!
+FAILURE!
+!Mapper class methodsFor: 'to response' stamp: 'JPF 6/26/2021 13:21:03' prior: 50931796!
+mapTicketToResponse: aTicket
+	
+	| response |
+	response := OrderedCollection new.
+	
+	aTicket lineItemsDo: [ :lineItem |
+		response add: (Dictionary with: ('item'->lineItem item) with: ('total'->lineItem total))
+		].
+		
+
+	^ response.! !
+!Mapper class methodsFor: 'to response' stamp: 'JPF 6/26/2021 13:21:11' prior: 50931874!
+mapTicketToResponse: aTicket
+	
+	| response |
+	
+	response := OrderedCollection new.
+	
+	aTicket lineItemsDo: [ :lineItem |
+		response add: (Dictionary with: ('item'->lineItem item) with: ('total'->lineItem total))
+		].
+		
+	^ response.! !
+!MapperTest methodsFor: 'tests' stamp: 'JPF 6/26/2021 13:21:57' prior: 50931850!
+test02ShouldConvertATicketToTheCorrespondingListOfDictionaries
+
+	| ticket expectedResponse |
+	
+	ticket := Ticket of: (OrderedCollection 
+		with: (LineItem of: 'item1' quantity: 2 total: 20)
+		with: (LineItem of: 'item2' quantity: 1 total: 30)).
+	
+	expectedResponse := OrderedCollection
+		with: (Dictionary with: ('item'->'item1') with: ('total'->20))	
+		with: (Dictionary with: ('item'->'item2') with: ('total'->30)).
+
+	self assert: (Mapper mapTicketToResponse: ticket) = expectedResponse.
+
+	! !
+
+!testRun: #MapperTest #test02ShouldConvertATicketToTheCorrespondingListOfDictionaries stamp: 'JPF 6/26/2021 13:22:02'!
+PASSED!
+
+!testRun: #MapperTest #test01ShouldConvertAnEmptyTicketToAnEmptyList stamp: 'JPF 6/26/2021 13:22:05'!
+PASSED!
+!TusLibrosRestInterface methodsFor: 'handlers' stamp: 'JPF 6/26/2021 13:22:27' prior: 50931728!
+handleCheckOutCart: request
+
+	self handle: request with: [	 | cartId ticket response |	
+		
+		cartId := request fields at: 'cartId'.
+		
+		ticket := tusLibrosSystemFacade
+			checkOutCartIdentifiedAs: cartId asNumber
+			withCreditCardNumbered: '1111222211112222'
+			ownedBy: 'Juan Ferrino'
+			expiringOn: (Month month: 11 year: 2026).
+			
+		response := ticket
+		
+		request send200Response: (WebUtils jsonEncode: ticket).
+	]! !
+!TusLibrosRestInterface methodsFor: 'handlers' stamp: 'JPF 6/26/2021 13:22:43' prior: 50931921!
+handleCheckOutCart: request
+
+	self handle: request with: [	 | cartId ticket response |	
+		
+		cartId := request fields at: 'cartId'.
+		
+		ticket := tusLibrosSystemFacade
+			checkOutCartIdentifiedAs: cartId asNumber
+			withCreditCardNumbered: '1111222211112222'
+			ownedBy: 'Juan Ferrino'
+			expiringOn: (Month month: 11 year: 2026).
+			
+		response := Mapper mapTicketToResponse: ticket.
+		
+		request send200Response: (WebUtils jsonEncode: ticket).
+	]! !
+!TusLibrosRestInterface methodsFor: 'handlers' stamp: 'JPF 6/26/2021 13:24:08' prior: 50931938!
+handleCheckOutCart: request
+
+	self handle: request with: [	 | cartId ticket response |	
+		
+		cartId := request fields at: 'cartId'.
+		
+		ticket := tusLibrosSystemFacade
+			checkOutCartIdentifiedAs: cartId asNumber
+			withCreditCardNumbered: '1111222211112222'
+			ownedBy: 'Juan Ferrino'
+			expiringOn: (Month month: 11 year: 2026).
+			
+		response := Mapper mapTicketToResponse: ticket.
+		
+		request send200Response: (WebUtils jsonEncode: response).
+	]! !
+!MapperTest methodsFor: 'tests' stamp: 'JPF 6/26/2021 13:25:37'!
+test01ShouldConvertAnEmptyTicketToAnEmptyArray
+
+	self 
+		assert: OrderedCollection new
+		equals: (Mapper mapTicketToResponse: (Ticket of: OrderedCollection new)).
+	! !
+
+!methodRemoval: MapperTest #test01ShouldConvertAnEmptyTicketToAnEmptyList stamp: 'JPF 6/26/2021 13:25:37'!
+test01ShouldConvertAnEmptyTicketToAnEmptyList
+
+	self 
+		assert: OrderedCollection new
+		equals: (Mapper mapTicketToResponse: (Ticket of: OrderedCollection new)).
+	!
+!MapperTest methodsFor: 'tests' stamp: 'JPF 6/26/2021 13:25:48' prior: 50931973!
+test01ShouldConvertAnEmptyTicketToAnEmptyArray
+
+	self 
+		assert: OrderedCollection new
+		equals: (Mapper mapTicketToResponse: (Ticket of: Array new)).
+	! !
+!MapperTest methodsFor: 'tests' stamp: 'JPF 6/26/2021 13:26:00'!
+test02ShouldConvertATicketToTheCorrespondingArrayOfDictionaries
+
+	| ticket expectedResponse |
+	
+	ticket := Ticket of: (OrderedCollection 
+		with: (LineItem of: 'item1' quantity: 2 total: 20)
+		with: (LineItem of: 'item2' quantity: 1 total: 30)).
+	
+	expectedResponse := OrderedCollection
+		with: (Dictionary with: ('item'->'item1') with: ('total'->20))	
+		with: (Dictionary with: ('item'->'item2') with: ('total'->30)).
+
+	self assert: (Mapper mapTicketToResponse: ticket) = expectedResponse.
+
+	! !
+
+!methodRemoval: MapperTest #test02ShouldConvertATicketToTheCorrespondingListOfDictionaries stamp: 'JPF 6/26/2021 13:26:00'!
+test02ShouldConvertATicketToTheCorrespondingListOfDictionaries
+
+	| ticket expectedResponse |
+	
+	ticket := Ticket of: (OrderedCollection 
+		with: (LineItem of: 'item1' quantity: 2 total: 20)
+		with: (LineItem of: 'item2' quantity: 1 total: 30)).
+	
+	expectedResponse := OrderedCollection
+		with: (Dictionary with: ('item'->'item1') with: ('total'->20))	
+		with: (Dictionary with: ('item'->'item2') with: ('total'->30)).
+
+	self assert: (Mapper mapTicketToResponse: ticket) = expectedResponse.
+
+	!
+!MapperTest methodsFor: 'tests' stamp: 'JPF 6/26/2021 13:26:12' prior: 50931997!
+test02ShouldConvertATicketToTheCorrespondingArrayOfDictionaries
+
+	| ticket expectedResponse |
+	
+	ticket := Ticket of: (OrderedCollection 
+		with: (LineItem of: 'item1' quantity: 2 total: 20)
+		with: (LineItem of: 'item2' quantity: 1 total: 30)).
+	
+	expectedResponse := OrderedCollection
+		with: (Dictionary with: ('item'->'item1') with: ('total'->20))	
+		with: (Dictionary with: ('item'->'item2') with: ('total'->30)) asArray.
+
+	self assert: (Mapper mapTicketToResponse: ticket) = expectedResponse.
+
+	! !
+!Mapper class methodsFor: 'to response' stamp: 'JPF 6/26/2021 13:27:19' prior: 50931885!
+mapTicketToResponse: aTicket
+	
+	| response |
+	
+	response := OrderedCollection new.
+	
+	aTicket lineItemsDo: [ :lineItem |
+		response add: (Dictionary with: ('item'->lineItem item) with: ('total'->lineItem total))
+		].
+		
+	^ response asArray .! !
+!MapperTest methodsFor: 'tests' stamp: 'JPF 6/27/2021 10:05:45' prior: 50932035!
+test02ShouldConvertATicketToTheCorrespondingArrayOfDictionaries
+
+	| ticket expectedResponse |
+	
+	ticket := Ticket of: (OrderedCollection 
+		with: (LineItem of: 'item1' quantity: 2 total: 20)
+		with: (LineItem of: 'item2' quantity: 1 total: 30)).
+	
+	expectedResponse := OrderedCollection
+		with: (Dictionary with: ('item'->'item1') with: ('quantity'->2) with: ('total'->20))	
+		with: (Dictionary with: ('item'->'item2') with: ('quantity'->1) with: ('total'->30)) asArray.
+
+	self assert: (Mapper mapTicketToResponse: ticket) = expectedResponse.
+
+	! !
+!LineItem methodsFor: 'accessing' stamp: 'JPF 6/27/2021 10:06:39'!
+quantity
+
+	^ quantity! !
+!Mapper class methodsFor: 'to response' stamp: 'JPF 6/27/2021 10:07:24' prior: 50932054!
+mapTicketToResponse: aTicket
+	
+	| response |
+	
+	response := OrderedCollection new.
+	
+	aTicket lineItemsDo: [ :lineItem |
+		response add: (Dictionary
+			with: ('item'->lineItem item)
+			with: ('quantity'->lineItem item)
+			with: ('total'->lineItem total))
+		].
+		
+	^ response asArray .! !
+
+!testRun: #MapperTest #test01ShouldConvertAnEmptyTicketToAnEmptyArray stamp: 'JPF 6/27/2021 10:07:29'!
+FAILURE!
+
+!testRun: #MapperTest #test02ShouldConvertATicketToTheCorrespondingArrayOfDictionaries stamp: 'JPF 6/27/2021 10:07:29'!
+FAILURE!
+!Mapper class methodsFor: 'to response' stamp: 'JPF 6/27/2021 10:07:50' prior: 50932089!
+mapTicketToResponse: aTicket
+	
+	| response |
+	
+	response := OrderedCollection new.
+	
+	aTicket lineItemsDo: [ :lineItem |
+		response add: (Dictionary
+			with: ('item'->lineItem item)
+			with: ('quantity'->lineItem quantity)
+			with: ('total'->lineItem total))
+		].
+		
+	^ response asArray .! !
+
+!testRun: #MapperTest #test01ShouldConvertAnEmptyTicketToAnEmptyArray stamp: 'JPF 6/27/2021 10:07:59'!
+FAILURE!
+
+!testRun: #MapperTest #test02ShouldConvertATicketToTheCorrespondingArrayOfDictionaries stamp: 'JPF 6/27/2021 10:07:59'!
+FAILURE!
+
+!testRun: #MapperTest #test01ShouldConvertAnEmptyTicketToAnEmptyArray stamp: 'JPF 6/27/2021 10:08:10'!
+FAILURE!
+!MapperTest methodsFor: 'tests' stamp: 'JPF 6/27/2021 10:08:50' prior: 50931990!
+test01ShouldConvertAnEmptyTicketToAnEmptyArray
+
+	self 
+		assert: {}
+		equals: (Mapper mapTicketToResponse: (Ticket of: Array new)).
+	! !
+!MapperTest methodsFor: 'tests' stamp: 'JPF 6/27/2021 10:08:56' prior: 50932132!
+test01ShouldConvertAnEmptyTicketToAnEmptyArray
+
+	self 
+		assert: {} equals: (Mapper mapTicketToResponse: (Ticket of: Array new)).
+	! !
+
+!testRun: #MapperTest #test01ShouldConvertAnEmptyTicketToAnEmptyArray stamp: 'JPF 6/27/2021 10:09:04'!
+PASSED!
+
+!testRun: #MapperTest #test02ShouldConvertATicketToTheCorrespondingArrayOfDictionaries stamp: 'JPF 6/27/2021 10:09:04'!
+FAILURE!
+
+!testRun: #MapperTest #test02ShouldConvertATicketToTheCorrespondingArrayOfDictionaries stamp: 'JPF 6/27/2021 10:09:04'!
+FAILURE!
+!MapperTest methodsFor: 'tests' stamp: 'JPF 6/27/2021 10:10:03' prior: 50932065!
+test02ShouldConvertATicketToTheCorrespondingArrayOfDictionaries
+
+	| ticket expectedResponse |
+	
+	ticket := Ticket of: (OrderedCollection 
+		with: (LineItem of: 'item1' quantity: 2 total: 20)
+		with: (LineItem of: 'item2' quantity: 1 total: 30)).
+	
+	expectedResponse := (OrderedCollection
+		with: (Dictionary with: ('item'->'item1') with: ('quantity'->2) with: ('total'->20))	
+		with: (Dictionary with: ('item'->'item2') with: ('quantity'->1) with: ('total'->30))) asArray.
+
+	self assert: (Mapper mapTicketToResponse: ticket) = expectedResponse.
+
+	! !
+
+!testRun: #MapperTest #test01ShouldConvertAnEmptyTicketToAnEmptyArray stamp: 'JPF 6/27/2021 10:10:10'!
+PASSED!
+
+!testRun: #MapperTest #test02ShouldConvertATicketToTheCorrespondingArrayOfDictionaries stamp: 'JPF 6/27/2021 10:10:10'!
+PASSED!
+!TusLibrosSystemFacadeTest methodsFor: 'test - list catalog' stamp: 'JPF 6/27/2021 10:13:10'!
+test01shouldReturnTheCatalog
+
+	"catalog := systemFacade listCatalog.
+	
+	self assert: self catalog "! !
+
+!classDefinition: #TusLibrosSystemFacadeTest category: 'TusLibros-Tests' stamp: 'JPF 6/27/2021 10:13:55'!
+TestCase subclass: #TusLibrosSystemFacadeTest
+	instanceVariableNames: 'testObjectsFactory clock systemFacade catalog'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'TusLibros-Tests'!
+!TusLibrosSystemFacadeTest methodsFor: 'test - list catalog' stamp: 'JPF 6/27/2021 10:13:52' prior: 50932186!
+test01shouldReturnTheCatalog
+
+	catalog := systemFacade listCatalog.
+	
+	self assert: testObjectsFactory defaultCatalog equals: catalog! !
+
+!testRun: #TusLibrosSystemFacadeTest #test01shouldReturnTheCatalog stamp: 'JPF 6/27/2021 10:14:06'!
+ERROR!
+!TusLibrosSystemFacade methodsFor: 'as yet unclassified' stamp: 'JPF 6/27/2021 10:14:23'!
+listCatalog
+	self shouldBeImplemented.! !
+!TusLibrosSystemFacade methodsFor: 'as yet unclassified' stamp: 'JPF 6/27/2021 10:14:47' prior: 50932214!
+listCatalog
+
+	^ catalog copy.! !
+
+!testRun: #TusLibrosSystemFacadeTest #test01shouldReturnTheCatalog stamp: 'JPF 6/27/2021 10:14:55'!
+PASSED!
+!TusLibrosRestInterface methodsFor: 'initialization' stamp: 'JPF 6/27/2021 10:16:42' prior: 50931333!
+initializeWith: aPortNumber
+
+	tusLibrosSystemFacade := TusLibrosDefaultFactory new createFacade.
+	
+	port:= aPortNumber.
+	
+	webServer :=
+		WebServer new listenOn: self port;
+		addService: '/createCart' action:[ :request | self handleCreateCart: request ];
+		addService: '/addToCart' action:[ :request | self handleAddToCart: request ];
+		addService: '/listCart' action:[ :request | self handleListCart: request ];
+		addService: '/listPurchases' action:[ :request | self handleListPurchases: request ];
+		addService: '/checkOutCart' action:[ :request | self handleCheckOutCart: request ];
+		addService: '/listCatalog' action:[ :request | self handleListCatalog: request ].! !
+!TusLibrosRestInterface methodsFor: 'handlers' stamp: 'JPF 6/27/2021 10:17:09'!
+handleCatalog: request
+
+	self handle: request with: [	 | clientId password purchases response |	
+		
+		clientId := request fields at: 'clientId'.
+		password := request fields at: 'password'.
+		
+		purchases := tusLibrosSystemFacade listPurchasesOf: clientId authenticatingWith: password.
+		
+		response := String streamContents:[ :s| WebUtils jsonMap: purchases on: s].
+		
+		request send200Response: response.
+	]! !
+!TusLibrosRestInterface methodsFor: 'handlers' stamp: 'JPF 6/27/2021 10:17:13' prior: 50932251!
+handleCatalog: request
+
+	self handle: request with: [	 | clientId password catalog response |	
+		
+		clientId := request fields at: 'clientId'.
+		password := request fields at: 'password'.
+		
+		catalog := tusLibrosSystemFacade listPurchasesOf: clientId authenticatingWith: password.
+		
+		response := String streamContents:[ :s| WebUtils jsonMap: catalog on: s].
+		
+		request send200Response: response.
+	]! !
+!TusLibrosRestInterface methodsFor: 'handlers' stamp: 'JPF 6/27/2021 10:17:56' prior: 50932267!
+handleCatalog: request
+
+	self handle: request with: [	 | catalog response |	
+		
+		catalog := tusLibrosSystemFacade listCatalog.
+		
+		response := String streamContents:[ :s| WebUtils jsonMap: catalog on: s].
+		
+		request send200Response: response.
+	]! !
+
+server destroy.!
+
+server := TusLibrosRestInterface listeningOn: 8080.!
+!TusLibrosRestInterface methodsFor: 'handlers' stamp: 'JPF 6/27/2021 10:22:29'!
+handleListCatalog: request
+
+	self handle: request with: [	 | catalog response |	
+		
+		catalog := tusLibrosSystemFacade listCatalog.
+		
+		response := String streamContents:[ :s| WebUtils jsonMap: catalog on: s].
+		
+		request send200Response: response.
+	]! !
+
+!methodRemoval: TusLibrosRestInterface #handleCatalog: stamp: 'JPF 6/27/2021 10:22:33'!
+handleCatalog: request
+
+	self handle: request with: [	 | catalog response |	
+		
+		catalog := tusLibrosSystemFacade listCatalog.
+		
+		response := String streamContents:[ :s| WebUtils jsonMap: catalog on: s].
+		
+		request send200Response: response.
+	]!
+
+!testRun: #CartTest #test01NewCartsAreCreatedEmpty stamp: 'JPF 6/27/2021 10:30:06'!
+PASSED!
+
+!testRun: #CartTest #test02CanNotAddItemsThatDoNotBelongToStore stamp: 'JPF 6/27/2021 10:30:06'!
+PASSED!
+
+!testRun: #CartTest #test03AfterAddingAnItemTheCartIsNotEmptyAnymore stamp: 'JPF 6/27/2021 10:30:06'!
+PASSED!
+
+!testRun: #CartTest #test04CanNotAddNonPositiveNumberOfItems stamp: 'JPF 6/27/2021 10:30:06'!
+PASSED!
+
+!testRun: #CartTest #test05CanNotAddMoreThanOneItemNotSellByTheStore stamp: 'JPF 6/27/2021 10:30:06'!
+PASSED!
+
+!testRun: #CartTest #test06CartRemembersAddedItems stamp: 'JPF 6/27/2021 10:30:06'!
+PASSED!
+
+!testRun: #CartTest #test07CartDoesNotHoldNotAddedItems stamp: 'JPF 6/27/2021 10:30:06'!
+PASSED!
+
+!testRun: #CartTest #test08CartRemembersTheNumberOfAddedItems stamp: 'JPF 6/27/2021 10:30:06'!
+PASSED!
+
+!testRun: #CashierTest #test01CanNotCheckoutAnEmptyCart stamp: 'JPF 6/27/2021 10:30:06'!
+PASSED!
+
+!testRun: #CashierTest #test02CalculatedTotalIsCorrect stamp: 'JPF 6/27/2021 10:30:06'!
+PASSED!
+
+!testRun: #CashierTest #test03CanNotCheckoutWithAnExpiredCreditCart stamp: 'JPF 6/27/2021 10:30:06'!
+PASSED!
+
+!testRun: #CashierTest #test04CheckoutRegistersASale stamp: 'JPF 6/27/2021 10:30:06'!
+PASSED!
+
+!testRun: #CashierTest #test05CashierChargesCreditCardUsingMerchantProcessor stamp: 'JPF 6/27/2021 10:30:06'!
+PASSED!
+
+!testRun: #CashierTest #test06CashierDoesNotSaleWhenTheCreditCardHasNoCredit stamp: 'JPF 6/27/2021 10:30:06'!
+PASSED!
+
+!testRun: #MapperTest #test01ShouldConvertAnEmptyTicketToAnEmptyArray stamp: 'JPF 6/27/2021 10:30:06'!
+PASSED!
+
+!testRun: #MapperTest #test02ShouldConvertATicketToTheCorrespondingArrayOfDictionaries stamp: 'JPF 6/27/2021 10:30:06'!
+PASSED!
+
+!testRun: #TusLibrosSystemFacadeTest #test01CanCreateCartWithValidUserAndPassword stamp: 'JPF 6/27/2021 10:30:06'!
+PASSED!
+
+!testRun: #TusLibrosSystemFacadeTest #test01shouldReturnTheCatalog stamp: 'JPF 6/27/2021 10:30:06'!
+PASSED!
+
+!testRun: #TusLibrosSystemFacadeTest #test02CanNotCreateCartWithInvalidUser stamp: 'JPF 6/27/2021 10:30:06'!
+PASSED!
+
+!testRun: #TusLibrosSystemFacadeTest #test03CanNotCreateCartWithInvalidPassword stamp: 'JPF 6/27/2021 10:30:06'!
+PASSED!
+
+!testRun: #TusLibrosSystemFacadeTest #test04CanAddItemsToACreatedCart stamp: 'JPF 6/27/2021 10:30:06'!
+PASSED!
+
+!testRun: #TusLibrosSystemFacadeTest #test05CanNotAddItemToNotCreatedCart stamp: 'JPF 6/27/2021 10:30:06'!
+PASSED!
+
+!testRun: #TusLibrosSystemFacadeTest #test06CanNotAddItemNotSellByTheStore stamp: 'JPF 6/27/2021 10:30:06'!
+PASSED!
+
+!testRun: #TusLibrosSystemFacadeTest #test07ListCartOfAnEmptyCartReturnsAnEmptyBag stamp: 'JPF 6/27/2021 10:30:06'!
+PASSED!
+
+!testRun: #TusLibrosSystemFacadeTest #test08CanNotListCartOfInvalidCartId stamp: 'JPF 6/27/2021 10:30:06'!
+PASSED!
+
+!testRun: #TusLibrosSystemFacadeTest #test09ListCartReturnsTheRightNumberOfItems stamp: 'JPF 6/27/2021 10:30:06'!
+PASSED!
+
+!testRun: #TusLibrosSystemFacadeTest #test10CanCheckoutACart stamp: 'JPF 6/27/2021 10:30:06'!
+PASSED!
+
+!testRun: #TusLibrosSystemFacadeTest #test11CanNotCheckoutANotCreatedCart stamp: 'JPF 6/27/2021 10:30:06'!
+PASSED!
+
+!testRun: #TusLibrosSystemFacadeTest #test12CanNotCheckoutAnEmptyCart stamp: 'JPF 6/27/2021 10:30:06'!
+PASSED!
+
+!testRun: #TusLibrosSystemFacadeTest #test13CanNotCheckoutWithAnExpiredCreditCard stamp: 'JPF 6/27/2021 10:30:06'!
+PASSED!
+
+!testRun: #TusLibrosSystemFacadeTest #test14ListPurchasesIncludesBoughtItems stamp: 'JPF 6/27/2021 10:30:06'!
+PASSED!
+
+!testRun: #TusLibrosSystemFacadeTest #test15CanNotListPurchasesOfInvalidCustomer stamp: 'JPF 6/27/2021 10:30:06'!
+PASSED!
+
+!testRun: #TusLibrosSystemFacadeTest #test16CanNotListPurchasesOfValidCustomerWithInvalidPassword stamp: 'JPF 6/27/2021 10:30:06'!
+PASSED!
+
+!testRun: #TusLibrosSystemFacadeTest #test17CanNotAddToCartWhenSessionIsExpired stamp: 'JPF 6/27/2021 10:30:06'!
+PASSED!
+
+!testRun: #TusLibrosSystemFacadeTest #test18CanNotListCartWhenSessionIsExpired stamp: 'JPF 6/27/2021 10:30:06'!
+PASSED!
+
+!testRun: #TusLibrosSystemFacadeTest #test19CanNotCheckOutCartWhenSessionIsExpired stamp: 'JPF 6/27/2021 10:30:06'!
+PASSED!
+!TusLibrosSystemFacadeTest methodsFor: 'tests - list purchases' stamp: 'JPF 6/27/2021 10:33:49' prior: 50931288!
+test14ListPurchasesIncludesBoughtItems
+
+	| cartId purchases |
+
+	cartId := systemFacade createCartFor: self validUser authenticatedWith: self validUserPassword.
+	systemFacade add: 2 of: self validBook toCartIdentifiedAs: cartId.
+	systemFacade add: 1 of: self anotherValidBook toCartIdentifiedAs: cartId.
+	systemFacade
+		checkOutCartIdentifiedAs: cartId
+		withCreditCardNumbered: '1111222233334444'
+		ownedBy: 'Juan Perez'
+		expiringOn: testObjectsFactory notExpiredMonthOfYear.
+
+	purchases := systemFacade listPurchasesOf: self validUser authenticatingWith: self validUserPassword.
+
+	self assert: (purchases at: self validBook) equals: 2.
+	self assert: (purchases at: self anotherValidBook) equals: 1.
+	self assert: purchases total equals: (testObjectsFactory itemSellByTheStorePrice * 2) + testObjectsFactory anotherItemSellByTheStorePrice.! !
+
+!testRun: #TusLibrosSystemFacadeTest #test14ListPurchasesIncludesBoughtItems stamp: 'JPF 6/27/2021 10:34:03'!
+FAILURE!
+
+!testRun: #TusLibrosSystemFacadeTest #test14ListPurchasesIncludesBoughtItems stamp: 'JPF 6/27/2021 10:34:03'!
+FAILURE!
+!TusLibrosSystemFacade methodsFor: 'private' stamp: 'JPF 6/27/2021 10:37:31' prior: 50928564!
+list: aSale on: salesOrderedByBook
+
+	"Esto es un indicio de que por ahi conviene empezar a pensar en modelar un SaleBook - Hernan"
+	| total |
+	total := 0.
+	aSale lineItemsDo: [ :aLineItem | | oldQuantity newQuantity |
+		oldQuantity := salesOrderedByBook at: aLineItem item ifAbsentPut: [ 0 ].
+		newQuantity := oldQuantity + aLineItem quantity.
+		total := total + aLineItem total.
+		salesOrderedByBook at: aLineItem item put: newQuantity ].
+	
+	salesOrderedByBook total: total.! !
+
+!testRun: #TusLibrosSystemFacadeTest #test01CanCreateCartWithValidUserAndPassword stamp: 'JPF 6/27/2021 10:37:54'!
+PASSED!
+
+!testRun: #TusLibrosSystemFacadeTest #test01shouldReturnTheCatalog stamp: 'JPF 6/27/2021 10:37:54'!
+PASSED!
+
+!testRun: #TusLibrosSystemFacadeTest #test02CanNotCreateCartWithInvalidUser stamp: 'JPF 6/27/2021 10:37:54'!
+PASSED!
+
+!testRun: #TusLibrosSystemFacadeTest #test03CanNotCreateCartWithInvalidPassword stamp: 'JPF 6/27/2021 10:37:54'!
+PASSED!
+
+!testRun: #TusLibrosSystemFacadeTest #test04CanAddItemsToACreatedCart stamp: 'JPF 6/27/2021 10:37:54'!
+PASSED!
+
+!testRun: #TusLibrosSystemFacadeTest #test05CanNotAddItemToNotCreatedCart stamp: 'JPF 6/27/2021 10:37:54'!
+PASSED!
+
+!testRun: #TusLibrosSystemFacadeTest #test06CanNotAddItemNotSellByTheStore stamp: 'JPF 6/27/2021 10:37:54'!
+PASSED!
+
+!testRun: #TusLibrosSystemFacadeTest #test07ListCartOfAnEmptyCartReturnsAnEmptyBag stamp: 'JPF 6/27/2021 10:37:54'!
+PASSED!
+
+!testRun: #TusLibrosSystemFacadeTest #test08CanNotListCartOfInvalidCartId stamp: 'JPF 6/27/2021 10:37:54'!
+PASSED!
+
+!testRun: #TusLibrosSystemFacadeTest #test09ListCartReturnsTheRightNumberOfItems stamp: 'JPF 6/27/2021 10:37:54'!
+PASSED!
+
+!testRun: #TusLibrosSystemFacadeTest #test10CanCheckoutACart stamp: 'JPF 6/27/2021 10:37:54'!
+ERROR!
+
+!testRun: #TusLibrosSystemFacadeTest #test11CanNotCheckoutANotCreatedCart stamp: 'JPF 6/27/2021 10:37:54'!
+PASSED!
+
+!testRun: #TusLibrosSystemFacadeTest #test12CanNotCheckoutAnEmptyCart stamp: 'JPF 6/27/2021 10:37:54'!
+PASSED!
+
+!testRun: #TusLibrosSystemFacadeTest #test13CanNotCheckoutWithAnExpiredCreditCard stamp: 'JPF 6/27/2021 10:37:54'!
+PASSED!
+
+!testRun: #TusLibrosSystemFacadeTest #test14ListPurchasesIncludesBoughtItems stamp: 'JPF 6/27/2021 10:37:54'!
+ERROR!
+
+!testRun: #TusLibrosSystemFacadeTest #test15CanNotListPurchasesOfInvalidCustomer stamp: 'JPF 6/27/2021 10:37:54'!
+PASSED!
+
+!testRun: #TusLibrosSystemFacadeTest #test16CanNotListPurchasesOfValidCustomerWithInvalidPassword stamp: 'JPF 6/27/2021 10:37:54'!
+PASSED!
+
+!testRun: #TusLibrosSystemFacadeTest #test17CanNotAddToCartWhenSessionIsExpired stamp: 'JPF 6/27/2021 10:37:54'!
+PASSED!
+
+!testRun: #TusLibrosSystemFacadeTest #test18CanNotListCartWhenSessionIsExpired stamp: 'JPF 6/27/2021 10:37:54'!
+PASSED!
+
+!testRun: #TusLibrosSystemFacadeTest #test19CanNotCheckOutCartWhenSessionIsExpired stamp: 'JPF 6/27/2021 10:37:54'!
+PASSED!
+
+!testRun: #TusLibrosSystemFacadeTest #test14ListPurchasesIncludesBoughtItems stamp: 'JPF 6/27/2021 10:38:09'!
+ERROR!
+
+!classDefinition: #PurchasesDetail category: 'TusLibros-Model' stamp: 'JPF 6/27/2021 10:39:51'!
+Object subclass: #PurchasesDetail
+	instanceVariableNames: 'itemsAndQuantities total'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'TusLibros-Model'!
+!TusLibrosSystemFacade methodsFor: 'facade protocol' stamp: 'JPF 6/27/2021 10:39:11' prior: 50928542!
+listPurchasesOf: aUser authenticatingWith: aPassword
+
+	^self if: aUser authenticatesWith: aPassword do: [ | sales |
+		sales := self salesDoneBy: aUser.
+		sales
+			inject: PurchasesDetail new
+			into: [ :salesOrderedByBook :aSale |
+				self list: aSale on: salesOrderedByBook.
+				salesOrderedByBook ] ]! !
+
+!testRun: #TusLibrosSystemFacadeTest #test14ListPurchasesIncludesBoughtItems stamp: 'JPF 6/27/2021 10:39:59'!
+ERROR!
+!PurchasesDetail methodsFor: 'as yet unclassified' stamp: 'JPF 6/27/2021 10:40:33'!
+at: aString ifAbsentPut: aBlockClosure 
+	self shouldBeImplemented.! !
+!TusLibrosSystemFacade methodsFor: 'facade protocol' stamp: 'JPF 6/27/2021 10:42:50' prior: 50932588!
+listPurchasesOf: aUser authenticatingWith: aPassword
+
+	^self if: aUser authenticatesWith: aPassword do: [ | sales |
+		sales := self salesDoneBy: aUser.
+		"
+		sales
+			inject: PurchasesDetail new
+			into: [ :salesOrderedByBook :aSale |
+				self list: aSale on: salesOrderedByBook.
+				salesOrderedByBook ] "
+		^ PurchasesDetail for: sales.
+			]! !
+!PurchasesDetail class methodsFor: 'instance creation' stamp: 'JPF 6/27/2021 10:43:44'!
+for: sales
+
+	! !
+!PurchasesDetail class methodsFor: 'instance creation' stamp: 'JPF 6/27/2021 10:44:16' prior: 50932624!
+for: sales
+
+	^ self new initializeFor: sales.! !
+!PurchasesDetail methodsFor: 'as yet unclassified' stamp: 'JPF 6/27/2021 10:44:58'!
+initializeFor: sales
+
+	total := 0.
+	itemsAndQuantities := Dictionary new.! !
+!PurchasesDetail methodsFor: 'as yet unclassified' stamp: 'JPF 6/27/2021 10:45:06' prior: 50932633!
+initializeFor: sales
+
+	total := 0.
+	itemsAndQuantities := Dictionary new.
+	
+	! !
+!PurchasesDetail methodsFor: 'as yet unclassified' stamp: 'JPF 6/27/2021 10:46:48' prior: 50932639!
+initializeFor: sales
+
+	total := 0.
+	itemsAndQuantities := Dictionary new.
+	
+	sales do: [ :aSale | 
+		"self list: aSale on: salesOrderedByBook.
+		salesOrderedByBook "]
+	
+	! !
+!PurchasesDetail methodsFor: 'as yet unclassified' stamp: 'JPF 6/27/2021 10:48:26'!
+list: aSale
+
+	aSale lineItemsDo: [ :aLineItem | | oldQuantity newQuantity |
+		oldQuantity := itemsAndQuantities at: aLineItem item ifAbsentPut: [ 0 ].
+		newQuantity := oldQuantity + aLineItem quantity.
+		total := total + aLineItem total.
+		itemsAndQuantities at: aLineItem item put: newQuantity ].! !
+!PurchasesDetail methodsFor: 'as yet unclassified' stamp: 'JPF 6/27/2021 10:48:31'!
+add: aSale
+
+	aSale lineItemsDo: [ :aLineItem | | oldQuantity newQuantity |
+		oldQuantity := itemsAndQuantities at: aLineItem item ifAbsentPut: [ 0 ].
+		newQuantity := oldQuantity + aLineItem quantity.
+		total := total + aLineItem total.
+		itemsAndQuantities at: aLineItem item put: newQuantity ].! !
+
+!methodRemoval: PurchasesDetail #list: stamp: 'JPF 6/27/2021 10:48:37'!
+list: aSale
+
+	aSale lineItemsDo: [ :aLineItem | | oldQuantity newQuantity |
+		oldQuantity := itemsAndQuantities at: aLineItem item ifAbsentPut: [ 0 ].
+		newQuantity := oldQuantity + aLineItem quantity.
+		total := total + aLineItem total.
+		itemsAndQuantities at: aLineItem item put: newQuantity ].!
+!PurchasesDetail methodsFor: 'as yet unclassified' stamp: 'JPF 6/27/2021 10:49:03' prior: 50932645!
+initializeFor: sales
+
+	total := 0.
+	itemsAndQuantities := Dictionary new.
+	
+	sales do: [ :aSale | self add: aSale ]
+	
+	! !
+!PurchasesDetail methodsFor: 'as yet unclassified' stamp: 'JPF 6/27/2021 10:49:13' prior: 50932692!
+initializeFor: sales
+
+	total := 0.
+	itemsAndQuantities := Dictionary new.
+	
+	sales do: [ :aSale | self add: aSale ].
+	
+	! !
+
+!methodRemoval: PurchasesDetail #at:ifAbsentPut: stamp: 'JPF 6/27/2021 10:49:26'!
+at: aString ifAbsentPut: aBlockClosure 
+	self shouldBeImplemented.!
+
+!testRun: #CartTest #test01NewCartsAreCreatedEmpty stamp: 'JPF 6/27/2021 10:50:12'!
+PASSED!
+
+!testRun: #CartTest #test02CanNotAddItemsThatDoNotBelongToStore stamp: 'JPF 6/27/2021 10:50:12'!
+PASSED!
+
+!testRun: #CartTest #test03AfterAddingAnItemTheCartIsNotEmptyAnymore stamp: 'JPF 6/27/2021 10:50:12'!
+PASSED!
+
+!testRun: #CartTest #test04CanNotAddNonPositiveNumberOfItems stamp: 'JPF 6/27/2021 10:50:12'!
+PASSED!
+
+!testRun: #CartTest #test05CanNotAddMoreThanOneItemNotSellByTheStore stamp: 'JPF 6/27/2021 10:50:12'!
+PASSED!
+
+!testRun: #CartTest #test06CartRemembersAddedItems stamp: 'JPF 6/27/2021 10:50:12'!
+PASSED!
+
+!testRun: #CartTest #test07CartDoesNotHoldNotAddedItems stamp: 'JPF 6/27/2021 10:50:12'!
+PASSED!
+
+!testRun: #CartTest #test08CartRemembersTheNumberOfAddedItems stamp: 'JPF 6/27/2021 10:50:12'!
+PASSED!
+
+!testRun: #CashierTest #test01CanNotCheckoutAnEmptyCart stamp: 'JPF 6/27/2021 10:50:12'!
+PASSED!
+
+!testRun: #CashierTest #test02CalculatedTotalIsCorrect stamp: 'JPF 6/27/2021 10:50:12'!
+PASSED!
+
+!testRun: #CashierTest #test03CanNotCheckoutWithAnExpiredCreditCart stamp: 'JPF 6/27/2021 10:50:12'!
+PASSED!
+
+!testRun: #CashierTest #test04CheckoutRegistersASale stamp: 'JPF 6/27/2021 10:50:12'!
+PASSED!
+
+!testRun: #CashierTest #test05CashierChargesCreditCardUsingMerchantProcessor stamp: 'JPF 6/27/2021 10:50:12'!
+PASSED!
+
+!testRun: #CashierTest #test06CashierDoesNotSaleWhenTheCreditCardHasNoCredit stamp: 'JPF 6/27/2021 10:50:12'!
+PASSED!
+
+!testRun: #TusLibrosSystemFacadeTest #test01CanCreateCartWithValidUserAndPassword stamp: 'JPF 6/27/2021 10:50:12'!
+PASSED!
+
+!testRun: #TusLibrosSystemFacadeTest #test01shouldReturnTheCatalog stamp: 'JPF 6/27/2021 10:50:12'!
+PASSED!
+
+!testRun: #TusLibrosSystemFacadeTest #test02CanNotCreateCartWithInvalidUser stamp: 'JPF 6/27/2021 10:50:12'!
+PASSED!
+
+!testRun: #TusLibrosSystemFacadeTest #test03CanNotCreateCartWithInvalidPassword stamp: 'JPF 6/27/2021 10:50:12'!
+PASSED!
+
+!testRun: #TusLibrosSystemFacadeTest #test04CanAddItemsToACreatedCart stamp: 'JPF 6/27/2021 10:50:12'!
+PASSED!
+
+!testRun: #TusLibrosSystemFacadeTest #test05CanNotAddItemToNotCreatedCart stamp: 'JPF 6/27/2021 10:50:12'!
+PASSED!
+
+!testRun: #TusLibrosSystemFacadeTest #test06CanNotAddItemNotSellByTheStore stamp: 'JPF 6/27/2021 10:50:12'!
+PASSED!
+
+!testRun: #TusLibrosSystemFacadeTest #test07ListCartOfAnEmptyCartReturnsAnEmptyBag stamp: 'JPF 6/27/2021 10:50:12'!
+PASSED!
+
+!testRun: #TusLibrosSystemFacadeTest #test08CanNotListCartOfInvalidCartId stamp: 'JPF 6/27/2021 10:50:12'!
+PASSED!
+
+!testRun: #TusLibrosSystemFacadeTest #test09ListCartReturnsTheRightNumberOfItems stamp: 'JPF 6/27/2021 10:50:12'!
+PASSED!
+
+!testRun: #TusLibrosSystemFacadeTest #test10CanCheckoutACart stamp: 'JPF 6/27/2021 10:50:12'!
+ERROR!
+
+!testRun: #TusLibrosSystemFacadeTest #test11CanNotCheckoutANotCreatedCart stamp: 'JPF 6/27/2021 10:50:12'!
+PASSED!
+
+!testRun: #TusLibrosSystemFacadeTest #test12CanNotCheckoutAnEmptyCart stamp: 'JPF 6/27/2021 10:50:12'!
+ERROR!
+
+!testRun: #TusLibrosSystemFacadeTest #test13CanNotCheckoutWithAnExpiredCreditCard stamp: 'JPF 6/27/2021 10:50:12'!
+ERROR!
+
+!testRun: #TusLibrosSystemFacadeTest #test14ListPurchasesIncludesBoughtItems stamp: 'JPF 6/27/2021 10:50:12'!
+ERROR!
+
+!testRun: #TusLibrosSystemFacadeTest #test15CanNotListPurchasesOfInvalidCustomer stamp: 'JPF 6/27/2021 10:50:12'!
+PASSED!
+
+!testRun: #TusLibrosSystemFacadeTest #test16CanNotListPurchasesOfValidCustomerWithInvalidPassword stamp: 'JPF 6/27/2021 10:50:12'!
+PASSED!
+
+!testRun: #TusLibrosSystemFacadeTest #test17CanNotAddToCartWhenSessionIsExpired stamp: 'JPF 6/27/2021 10:50:12'!
+PASSED!
+
+!testRun: #TusLibrosSystemFacadeTest #test18CanNotListCartWhenSessionIsExpired stamp: 'JPF 6/27/2021 10:50:12'!
+PASSED!
+
+!testRun: #TusLibrosSystemFacadeTest #test19CanNotCheckOutCartWhenSessionIsExpired stamp: 'JPF 6/27/2021 10:50:12'!
+ERROR!
+
+!testRun: #TusLibrosSystemFacadeTest #test10CanCheckoutACart stamp: 'JPF 6/27/2021 10:50:20'!
+ERROR!
+!TusLibrosSystemFacadeTest methodsFor: 'tests - checkout' stamp: 'JPF 6/27/2021 10:51:43' prior: 50929144!
+test10CanCheckoutACart
+
+	| cartId purchases |
+
+	cartId := systemFacade createCartFor: self validUser authenticatedWith: self validUserPassword.
+	systemFacade add: 1 of: self validBook toCartIdentifiedAs: cartId.
+	systemFacade
+		checkOutCartIdentifiedAs: cartId
+		withCreditCardNumbered: testObjectsFactory notExpiredCreditCardNumber
+		ownedBy: testObjectsFactory notExpiredCreditCardOwner
+		expiringOn: testObjectsFactory notExpiredMonthOfYear.
+
+	purchases := systemFacade listPurchasesOf: self validUser authenticatingWith: self validUserPassword.
+
+	self assert: (purchases at: self validBook) equals: 1.
+	self assert: (purchases total) equals: testObjectsFactory itemSellByTheStorePrice.
+! !
+
+!testRun: #TusLibrosSystemFacadeTest #test10CanCheckoutACart stamp: 'JPF 6/27/2021 10:51:50'!
+ERROR!
+
+!testRun: #TusLibrosSystemFacadeTest #test10CanCheckoutACart stamp: 'JPF 6/27/2021 10:52:22'!
+ERROR!
+!PurchasesDetail methodsFor: 'accessing' stamp: 'JPF 6/27/2021 10:53:48' overrides: 16880774!
+at: lineItem! !
+!PurchasesDetail methodsFor: 'accessing' stamp: 'JPF 6/27/2021 10:54:35' prior: 50932866 overrides: 16880774!
+at: item
+
+	^ itemsAndQuantities at: item! !
+
+!testRun: #CartTest #test01NewCartsAreCreatedEmpty stamp: 'JPF 6/27/2021 10:54:45'!
+PASSED!
+
+!testRun: #CartTest #test02CanNotAddItemsThatDoNotBelongToStore stamp: 'JPF 6/27/2021 10:54:45'!
+PASSED!
+
+!testRun: #CartTest #test03AfterAddingAnItemTheCartIsNotEmptyAnymore stamp: 'JPF 6/27/2021 10:54:45'!
+PASSED!
+
+!testRun: #CartTest #test04CanNotAddNonPositiveNumberOfItems stamp: 'JPF 6/27/2021 10:54:45'!
+PASSED!
+
+!testRun: #CartTest #test05CanNotAddMoreThanOneItemNotSellByTheStore stamp: 'JPF 6/27/2021 10:54:45'!
+PASSED!
+
+!testRun: #CartTest #test06CartRemembersAddedItems stamp: 'JPF 6/27/2021 10:54:45'!
+PASSED!
+
+!testRun: #CartTest #test07CartDoesNotHoldNotAddedItems stamp: 'JPF 6/27/2021 10:54:45'!
+PASSED!
+
+!testRun: #CartTest #test08CartRemembersTheNumberOfAddedItems stamp: 'JPF 6/27/2021 10:54:45'!
+PASSED!
+
+!testRun: #CashierTest #test01CanNotCheckoutAnEmptyCart stamp: 'JPF 6/27/2021 10:54:45'!
+PASSED!
+
+!testRun: #CashierTest #test02CalculatedTotalIsCorrect stamp: 'JPF 6/27/2021 10:54:45'!
+PASSED!
+
+!testRun: #CashierTest #test03CanNotCheckoutWithAnExpiredCreditCart stamp: 'JPF 6/27/2021 10:54:45'!
+PASSED!
+
+!testRun: #CashierTest #test04CheckoutRegistersASale stamp: 'JPF 6/27/2021 10:54:45'!
+PASSED!
+
+!testRun: #CashierTest #test05CashierChargesCreditCardUsingMerchantProcessor stamp: 'JPF 6/27/2021 10:54:45'!
+PASSED!
+
+!testRun: #CashierTest #test06CashierDoesNotSaleWhenTheCreditCardHasNoCredit stamp: 'JPF 6/27/2021 10:54:45'!
+PASSED!
+
+!testRun: #TusLibrosSystemFacadeTest #test01CanCreateCartWithValidUserAndPassword stamp: 'JPF 6/27/2021 10:54:45'!
+PASSED!
+
+!testRun: #TusLibrosSystemFacadeTest #test01shouldReturnTheCatalog stamp: 'JPF 6/27/2021 10:54:45'!
+PASSED!
+
+!testRun: #TusLibrosSystemFacadeTest #test02CanNotCreateCartWithInvalidUser stamp: 'JPF 6/27/2021 10:54:45'!
+PASSED!
+
+!testRun: #TusLibrosSystemFacadeTest #test03CanNotCreateCartWithInvalidPassword stamp: 'JPF 6/27/2021 10:54:45'!
+PASSED!
+
+!testRun: #TusLibrosSystemFacadeTest #test04CanAddItemsToACreatedCart stamp: 'JPF 6/27/2021 10:54:45'!
+PASSED!
+
+!testRun: #TusLibrosSystemFacadeTest #test05CanNotAddItemToNotCreatedCart stamp: 'JPF 6/27/2021 10:54:45'!
+PASSED!
+
+!testRun: #TusLibrosSystemFacadeTest #test06CanNotAddItemNotSellByTheStore stamp: 'JPF 6/27/2021 10:54:45'!
+PASSED!
+
+!testRun: #TusLibrosSystemFacadeTest #test07ListCartOfAnEmptyCartReturnsAnEmptyBag stamp: 'JPF 6/27/2021 10:54:45'!
+PASSED!
+
+!testRun: #TusLibrosSystemFacadeTest #test08CanNotListCartOfInvalidCartId stamp: 'JPF 6/27/2021 10:54:45'!
+PASSED!
+
+!testRun: #TusLibrosSystemFacadeTest #test09ListCartReturnsTheRightNumberOfItems stamp: 'JPF 6/27/2021 10:54:45'!
+PASSED!
+
+!testRun: #TusLibrosSystemFacadeTest #test10CanCheckoutACart stamp: 'JPF 6/27/2021 10:54:45'!
+ERROR!
+
+!testRun: #TusLibrosSystemFacadeTest #test11CanNotCheckoutANotCreatedCart stamp: 'JPF 6/27/2021 10:54:45'!
+PASSED!
+
+!testRun: #TusLibrosSystemFacadeTest #test12CanNotCheckoutAnEmptyCart stamp: 'JPF 6/27/2021 10:54:45'!
+ERROR!
+
+!testRun: #TusLibrosSystemFacadeTest #test13CanNotCheckoutWithAnExpiredCreditCard stamp: 'JPF 6/27/2021 10:54:45'!
+ERROR!
+
+!testRun: #TusLibrosSystemFacadeTest #test14ListPurchasesIncludesBoughtItems stamp: 'JPF 6/27/2021 10:54:45'!
+ERROR!
+
+!testRun: #TusLibrosSystemFacadeTest #test15CanNotListPurchasesOfInvalidCustomer stamp: 'JPF 6/27/2021 10:54:45'!
+PASSED!
+
+!testRun: #TusLibrosSystemFacadeTest #test16CanNotListPurchasesOfValidCustomerWithInvalidPassword stamp: 'JPF 6/27/2021 10:54:45'!
+PASSED!
+
+!testRun: #TusLibrosSystemFacadeTest #test17CanNotAddToCartWhenSessionIsExpired stamp: 'JPF 6/27/2021 10:54:45'!
+PASSED!
+
+!testRun: #TusLibrosSystemFacadeTest #test18CanNotListCartWhenSessionIsExpired stamp: 'JPF 6/27/2021 10:54:45'!
+PASSED!
+
+!testRun: #TusLibrosSystemFacadeTest #test19CanNotCheckOutCartWhenSessionIsExpired stamp: 'JPF 6/27/2021 10:54:45'!
+ERROR!
+
+!testRun: #TusLibrosSystemFacadeTest #test10CanCheckoutACart stamp: 'JPF 6/27/2021 10:54:58'!
+ERROR!
+!PurchasesDetail methodsFor: 'accessing' stamp: 'JPF 6/27/2021 10:55:09'!
+total
+	self shouldBeImplemented.
+	^total! !
+!PurchasesDetail methodsFor: 'accessing' stamp: 'JPF 6/27/2021 10:55:14' prior: 50932997!
+total
+	
+	^total! !
+
+!testRun: #TusLibrosSystemFacadeTest #test10CanCheckoutACart stamp: 'JPF 6/27/2021 10:55:17'!
+FAILURE!
+!TusLibrosSystemFacadeTest methodsFor: 'tests - checkout' stamp: 'JPF 6/27/2021 10:55:51' prior: 50932835!
+test10CanCheckoutACart
+
+	| cartId purchases |
+
+	cartId := systemFacade createCartFor: self validUser authenticatedWith: self validUserPassword.
+	systemFacade add: 1 of: self validBook toCartIdentifiedAs: cartId.
+	systemFacade
+		checkOutCartIdentifiedAs: cartId
+		withCreditCardNumbered: testObjectsFactory notExpiredCreditCardNumber
+		ownedBy: testObjectsFactory notExpiredCreditCardOwner
+		expiringOn: testObjectsFactory notExpiredMonthOfYear.
+
+	purchases := systemFacade listPurchasesOf: self validUser authenticatingWith: self validUserPassword.
+
+	self assert: 1 equals: (purchases at: self validBook).
+	self assert: (purchases total) equals: testObjectsFactory itemSellByTheStorePrice.
+! !
+!TusLibrosSystemFacadeTest methodsFor: 'tests - checkout' stamp: 'JPF 6/27/2021 10:56:07' prior: 50933010!
+test10CanCheckoutACart
+
+	| cartId purchases |
+
+	cartId := systemFacade createCartFor: self validUser authenticatedWith: self validUserPassword.
+	systemFacade add: 1 of: self validBook toCartIdentifiedAs: cartId.
+	systemFacade
+		checkOutCartIdentifiedAs: cartId
+		withCreditCardNumbered: testObjectsFactory notExpiredCreditCardNumber
+		ownedBy: testObjectsFactory notExpiredCreditCardOwner
+		expiringOn: testObjectsFactory notExpiredMonthOfYear.
+
+	purchases := systemFacade listPurchasesOf: self validUser authenticatingWith: self validUserPassword.
+
+	self assert: 1 equals: (purchases at: self validBook).
+	self assert: testObjectsFactory itemSellByTheStorePrice equals: (purchases total).
+! !
+
+!testRun: #TusLibrosSystemFacadeTest #test10CanCheckoutACart stamp: 'JPF 6/27/2021 10:56:25'!
+FAILURE!
+
+!testRun: #CartTest #test01NewCartsAreCreatedEmpty stamp: 'JPF 6/27/2021 10:56:52'!
+PASSED!
+
+!testRun: #CartTest #test02CanNotAddItemsThatDoNotBelongToStore stamp: 'JPF 6/27/2021 10:56:52'!
+PASSED!
+
+!testRun: #CartTest #test03AfterAddingAnItemTheCartIsNotEmptyAnymore stamp: 'JPF 6/27/2021 10:56:52'!
+PASSED!
+
+!testRun: #CartTest #test04CanNotAddNonPositiveNumberOfItems stamp: 'JPF 6/27/2021 10:56:52'!
+PASSED!
+
+!testRun: #CartTest #test05CanNotAddMoreThanOneItemNotSellByTheStore stamp: 'JPF 6/27/2021 10:56:52'!
+PASSED!
+
+!testRun: #CartTest #test06CartRemembersAddedItems stamp: 'JPF 6/27/2021 10:56:52'!
+PASSED!
+
+!testRun: #CartTest #test07CartDoesNotHoldNotAddedItems stamp: 'JPF 6/27/2021 10:56:52'!
+PASSED!
+
+!testRun: #CartTest #test08CartRemembersTheNumberOfAddedItems stamp: 'JPF 6/27/2021 10:56:52'!
+PASSED!
+
+!testRun: #CashierTest #test01CanNotCheckoutAnEmptyCart stamp: 'JPF 6/27/2021 10:56:52'!
+PASSED!
+
+!testRun: #CashierTest #test02CalculatedTotalIsCorrect stamp: 'JPF 6/27/2021 10:56:52'!
+PASSED!
+
+!testRun: #CashierTest #test03CanNotCheckoutWithAnExpiredCreditCart stamp: 'JPF 6/27/2021 10:56:52'!
+PASSED!
+
+!testRun: #CashierTest #test04CheckoutRegistersASale stamp: 'JPF 6/27/2021 10:56:52'!
+PASSED!
+
+!testRun: #CashierTest #test05CashierChargesCreditCardUsingMerchantProcessor stamp: 'JPF 6/27/2021 10:56:52'!
+PASSED!
+
+!testRun: #CashierTest #test06CashierDoesNotSaleWhenTheCreditCardHasNoCredit stamp: 'JPF 6/27/2021 10:56:52'!
+PASSED!
+
+!testRun: #TusLibrosSystemFacadeTest #test01CanCreateCartWithValidUserAndPassword stamp: 'JPF 6/27/2021 10:56:52'!
+PASSED!
+
+!testRun: #TusLibrosSystemFacadeTest #test01shouldReturnTheCatalog stamp: 'JPF 6/27/2021 10:56:52'!
+PASSED!
+
+!testRun: #TusLibrosSystemFacadeTest #test02CanNotCreateCartWithInvalidUser stamp: 'JPF 6/27/2021 10:56:52'!
+PASSED!
+
+!testRun: #TusLibrosSystemFacadeTest #test03CanNotCreateCartWithInvalidPassword stamp: 'JPF 6/27/2021 10:56:52'!
+PASSED!
+
+!testRun: #TusLibrosSystemFacadeTest #test04CanAddItemsToACreatedCart stamp: 'JPF 6/27/2021 10:56:52'!
+PASSED!
+
+!testRun: #TusLibrosSystemFacadeTest #test05CanNotAddItemToNotCreatedCart stamp: 'JPF 6/27/2021 10:56:52'!
+PASSED!
+
+!testRun: #TusLibrosSystemFacadeTest #test06CanNotAddItemNotSellByTheStore stamp: 'JPF 6/27/2021 10:56:52'!
+PASSED!
+
+!testRun: #TusLibrosSystemFacadeTest #test07ListCartOfAnEmptyCartReturnsAnEmptyBag stamp: 'JPF 6/27/2021 10:56:52'!
+PASSED!
+
+!testRun: #TusLibrosSystemFacadeTest #test08CanNotListCartOfInvalidCartId stamp: 'JPF 6/27/2021 10:56:52'!
+PASSED!
+
+!testRun: #TusLibrosSystemFacadeTest #test09ListCartReturnsTheRightNumberOfItems stamp: 'JPF 6/27/2021 10:56:52'!
+PASSED!
+
+!testRun: #TusLibrosSystemFacadeTest #test10CanCheckoutACart stamp: 'JPF 6/27/2021 10:56:52'!
+PASSED!
+
+!testRun: #TusLibrosSystemFacadeTest #test11CanNotCheckoutANotCreatedCart stamp: 'JPF 6/27/2021 10:56:52'!
+PASSED!
+
+!testRun: #TusLibrosSystemFacadeTest #test12CanNotCheckoutAnEmptyCart stamp: 'JPF 6/27/2021 10:56:52'!
+ERROR!
+
+!testRun: #TusLibrosSystemFacadeTest #test13CanNotCheckoutWithAnExpiredCreditCard stamp: 'JPF 6/27/2021 10:56:52'!
+ERROR!
+
+!testRun: #TusLibrosSystemFacadeTest #test14ListPurchasesIncludesBoughtItems stamp: 'JPF 6/27/2021 10:56:52'!
+PASSED!
+
+!testRun: #TusLibrosSystemFacadeTest #test15CanNotListPurchasesOfInvalidCustomer stamp: 'JPF 6/27/2021 10:56:52'!
+PASSED!
+
+!testRun: #TusLibrosSystemFacadeTest #test16CanNotListPurchasesOfValidCustomerWithInvalidPassword stamp: 'JPF 6/27/2021 10:56:52'!
+PASSED!
+
+!testRun: #TusLibrosSystemFacadeTest #test17CanNotAddToCartWhenSessionIsExpired stamp: 'JPF 6/27/2021 10:56:52'!
+PASSED!
+
+!testRun: #TusLibrosSystemFacadeTest #test18CanNotListCartWhenSessionIsExpired stamp: 'JPF 6/27/2021 10:56:52'!
+PASSED!
+
+!testRun: #TusLibrosSystemFacadeTest #test19CanNotCheckOutCartWhenSessionIsExpired stamp: 'JPF 6/27/2021 10:56:52'!
+ERROR!
+
+!testRun: #TusLibrosSystemFacadeTest #test12CanNotCheckoutAnEmptyCart stamp: 'JPF 6/27/2021 10:56:58'!
+ERROR!
+!PurchasesDetail methodsFor: 'accessing' stamp: 'JPF 6/27/2021 10:57:21'!
+isEmpty
+	self shouldBeImplemented.! !
+!PurchasesDetail methodsFor: 'accessing' stamp: 'JPF 6/27/2021 10:57:39' prior: 50933187!
+isEmpty
+	
+	^ itemsAndQuantities isEmpty! !
+
+!testRun: #TusLibrosSystemFacadeTest #test12CanNotCheckoutAnEmptyCart stamp: 'JPF 6/27/2021 10:57:43'!
+PASSED!
+
+!testRun: #TusLibrosSystemFacadeTest #test13CanNotCheckoutWithAnExpiredCreditCard stamp: 'JPF 6/27/2021 10:57:45'!
+PASSED!
+
+!testRun: #TusLibrosSystemFacadeTest #test19CanNotCheckOutCartWhenSessionIsExpired stamp: 'JPF 6/27/2021 10:57:48'!
+PASSED!
+
+!testRun: #CartTest #test01NewCartsAreCreatedEmpty stamp: 'JPF 6/27/2021 10:57:53'!
+PASSED!
+
+!testRun: #CartTest #test02CanNotAddItemsThatDoNotBelongToStore stamp: 'JPF 6/27/2021 10:57:53'!
+PASSED!
+
+!testRun: #CartTest #test03AfterAddingAnItemTheCartIsNotEmptyAnymore stamp: 'JPF 6/27/2021 10:57:53'!
+PASSED!
+
+!testRun: #CartTest #test04CanNotAddNonPositiveNumberOfItems stamp: 'JPF 6/27/2021 10:57:53'!
+PASSED!
+
+!testRun: #CartTest #test05CanNotAddMoreThanOneItemNotSellByTheStore stamp: 'JPF 6/27/2021 10:57:53'!
+PASSED!
+
+!testRun: #CartTest #test06CartRemembersAddedItems stamp: 'JPF 6/27/2021 10:57:53'!
+PASSED!
+
+!testRun: #CartTest #test07CartDoesNotHoldNotAddedItems stamp: 'JPF 6/27/2021 10:57:53'!
+PASSED!
+
+!testRun: #CartTest #test08CartRemembersTheNumberOfAddedItems stamp: 'JPF 6/27/2021 10:57:53'!
+PASSED!
+
+!testRun: #CashierTest #test01CanNotCheckoutAnEmptyCart stamp: 'JPF 6/27/2021 10:57:53'!
+PASSED!
+
+!testRun: #CashierTest #test02CalculatedTotalIsCorrect stamp: 'JPF 6/27/2021 10:57:53'!
+PASSED!
+
+!testRun: #CashierTest #test03CanNotCheckoutWithAnExpiredCreditCart stamp: 'JPF 6/27/2021 10:57:53'!
+PASSED!
+
+!testRun: #CashierTest #test04CheckoutRegistersASale stamp: 'JPF 6/27/2021 10:57:53'!
+PASSED!
+
+!testRun: #CashierTest #test05CashierChargesCreditCardUsingMerchantProcessor stamp: 'JPF 6/27/2021 10:57:53'!
+PASSED!
+
+!testRun: #CashierTest #test06CashierDoesNotSaleWhenTheCreditCardHasNoCredit stamp: 'JPF 6/27/2021 10:57:53'!
+PASSED!
+
+!testRun: #TusLibrosSystemFacadeTest #test01CanCreateCartWithValidUserAndPassword stamp: 'JPF 6/27/2021 10:57:53'!
+PASSED!
+
+!testRun: #TusLibrosSystemFacadeTest #test01shouldReturnTheCatalog stamp: 'JPF 6/27/2021 10:57:53'!
+PASSED!
+
+!testRun: #TusLibrosSystemFacadeTest #test02CanNotCreateCartWithInvalidUser stamp: 'JPF 6/27/2021 10:57:53'!
+PASSED!
+
+!testRun: #TusLibrosSystemFacadeTest #test03CanNotCreateCartWithInvalidPassword stamp: 'JPF 6/27/2021 10:57:53'!
+PASSED!
+
+!testRun: #TusLibrosSystemFacadeTest #test04CanAddItemsToACreatedCart stamp: 'JPF 6/27/2021 10:57:53'!
+PASSED!
+
+!testRun: #TusLibrosSystemFacadeTest #test05CanNotAddItemToNotCreatedCart stamp: 'JPF 6/27/2021 10:57:53'!
+PASSED!
+
+!testRun: #TusLibrosSystemFacadeTest #test06CanNotAddItemNotSellByTheStore stamp: 'JPF 6/27/2021 10:57:53'!
+PASSED!
+
+!testRun: #TusLibrosSystemFacadeTest #test07ListCartOfAnEmptyCartReturnsAnEmptyBag stamp: 'JPF 6/27/2021 10:57:53'!
+PASSED!
+
+!testRun: #TusLibrosSystemFacadeTest #test08CanNotListCartOfInvalidCartId stamp: 'JPF 6/27/2021 10:57:53'!
+PASSED!
+
+!testRun: #TusLibrosSystemFacadeTest #test09ListCartReturnsTheRightNumberOfItems stamp: 'JPF 6/27/2021 10:57:53'!
+PASSED!
+
+!testRun: #TusLibrosSystemFacadeTest #test10CanCheckoutACart stamp: 'JPF 6/27/2021 10:57:53'!
+PASSED!
+
+!testRun: #TusLibrosSystemFacadeTest #test11CanNotCheckoutANotCreatedCart stamp: 'JPF 6/27/2021 10:57:53'!
+PASSED!
+
+!testRun: #TusLibrosSystemFacadeTest #test12CanNotCheckoutAnEmptyCart stamp: 'JPF 6/27/2021 10:57:53'!
+PASSED!
+
+!testRun: #TusLibrosSystemFacadeTest #test13CanNotCheckoutWithAnExpiredCreditCard stamp: 'JPF 6/27/2021 10:57:53'!
+PASSED!
+
+!testRun: #TusLibrosSystemFacadeTest #test14ListPurchasesIncludesBoughtItems stamp: 'JPF 6/27/2021 10:57:53'!
+PASSED!
+
+!testRun: #TusLibrosSystemFacadeTest #test15CanNotListPurchasesOfInvalidCustomer stamp: 'JPF 6/27/2021 10:57:53'!
+PASSED!
+
+!testRun: #TusLibrosSystemFacadeTest #test16CanNotListPurchasesOfValidCustomerWithInvalidPassword stamp: 'JPF 6/27/2021 10:57:53'!
+PASSED!
+
+!testRun: #TusLibrosSystemFacadeTest #test17CanNotAddToCartWhenSessionIsExpired stamp: 'JPF 6/27/2021 10:57:53'!
+PASSED!
+
+!testRun: #TusLibrosSystemFacadeTest #test18CanNotListCartWhenSessionIsExpired stamp: 'JPF 6/27/2021 10:57:53'!
+PASSED!
+
+!testRun: #TusLibrosSystemFacadeTest #test19CanNotCheckOutCartWhenSessionIsExpired stamp: 'JPF 6/27/2021 10:57:53'!
+PASSED!
+!MapperTest methodsFor: 'tests - map purchases detail' stamp: 'JPF 6/27/2021 11:03:37'!
+test01ShouldConvertAnEmptyPurchasesDetailToResponseWithTotalZero
+
+	| emptyPurchasesDetail expectedResponse |
+	expectedResponse := Dictionary with: ('items'->{}) with: ('total'->0).
+	emptyPurchasesDetail := PurchasesDetail with: OrderedCollection new.
+	
+	self 
+		assert: expectedResponse 
+		equals:  (Mapper mapPurchasesDetailToResponse: emptyPurchasesDetail).
+	! !
+!MapperTest methodsFor: 'tests - map purchases detail' stamp: 'JPF 6/27/2021 11:03:46' prior: 50933327!
+test01ShouldConvertAnEmptyPurchasesDetailToResponseWithTotalZero
+
+	| emptyPurchasesDetail expectedResponse |
+	
+	expectedResponse := Dictionary with: ('items'->{}) with: ('total'->0).
+	emptyPurchasesDetail := PurchasesDetail with: OrderedCollection new.
+	
+	self 
+		assert: expectedResponse 
+		equals:  (Mapper mapPurchasesDetailToResponse: emptyPurchasesDetail).
+	! !
+!MapperTest methodsFor: 'tests - map purchases detail' stamp: 'JPF 6/27/2021 11:03:53' prior: 50933342!
+test01ShouldConvertAnEmptyPurchasesDetailToResponseWithTotalZero
+
+	| emptyPurchasesDetail expectedResponse |
+	
+	expectedResponse := Dictionary with: ('items'->{}) with: ('total'->0).
+	emptyPurchasesDetail := PurchasesDetail with: OrderedCollection new.
+	
+	self 
+		assert: expectedResponse 
+		equals: (Mapper mapPurchasesDetailToResponse: emptyPurchasesDetail).
+	! !
+
+!testRun: #MapperTest #test01ShouldConvertAnEmptyPurchasesDetailToResponseWithTotalZero stamp: 'JPF 6/27/2021 11:03:54'!
+ERROR!
+!MapperTest methodsFor: 'tests - map purchases detail' stamp: 'JPF 6/27/2021 11:04:09' prior: 50933357!
+test01ShouldConvertAnEmptyPurchasesDetailToResponseWithTotalZero
+
+	| emptyPurchasesDetail expectedResponse |
+	
+	expectedResponse := Dictionary with: ('items'->{}) with: ('total'->0).
+	emptyPurchasesDetail := PurchasesDetail for: OrderedCollection new.
+	
+	self 
+		assert: expectedResponse 
+		equals: (Mapper mapPurchasesDetailToResponse: emptyPurchasesDetail).
+	! !
+
+!testRun: #MapperTest #test01ShouldConvertAnEmptyPurchasesDetailToResponseWithTotalZero stamp: 'JPF 6/27/2021 11:04:10'!
+ERROR!
+!Mapper class methodsFor: 'mapping' stamp: 'JPF 6/27/2021 11:04:21'!
+mapPurchasesDetailToResponse: aPurchasesDetail 
+	self shouldBeImplemented.! !
+!Mapper class methodsFor: 'mapping' stamp: 'JPF 6/27/2021 11:05:14' prior: 50933394!
+mapPurchasesDetailToResponse: aPurchasesDetail
+
+	^ Dictionary with: ('items'->{} with: ('total'->0)).! !
+
+!testRun: #MapperTest #test01ShouldConvertAnEmptyPurchasesDetailToResponseWithTotalZero stamp: 'JPF 6/27/2021 11:05:16'!
+ERROR!
+!Mapper class methodsFor: 'mapping' stamp: 'JPF 6/27/2021 11:05:35' prior: 50933400!
+mapPurchasesDetailToResponse: aPurchasesDetail
+
+	^ Dictionary with: ('items'->{}) with: ('total'->0).! !
+
+!testRun: #MapperTest #test01ShouldConvertAnEmptyPurchasesDetailToResponseWithTotalZero stamp: 'JPF 6/27/2021 11:05:37'!
+PASSED!
+
+!testRun: #MapperTest #test01ShouldConvertAnEmptyPurchasesDetailToResponseWithTotalZero stamp: 'JPF 6/27/2021 11:05:37'!
+PASSED!
+
+!testRun: #MapperTest #test01ShouldConvertAnEmptyTicketToAnEmptyArray stamp: 'JPF 6/27/2021 11:05:37'!
+PASSED!
+
+!testRun: #MapperTest #test02ShouldConvertATicketToTheCorrespondingArrayOfDictionaries stamp: 'JPF 6/27/2021 11:05:37'!
+PASSED!
+!MapperTest methodsFor: 'tests - map purchases detail' stamp: 'JPF 6/27/2021 11:09:59'!
+test01ShouldConvertAPurchasesDetailToResponseWithItemsAndTotal
+
+	| emptyPurchasesDetail expectedResponse |
+	
+	"ticket := Ticket of: (OrderedCollection with:"
+	
+	expectedResponse := Dictionary with: ('items'->{}) with: ('total'->0).
+	emptyPurchasesDetail := PurchasesDetail for: OrderedCollection new.
+	
+	self 
+		assert: expectedResponse 
+		equals: (Mapper mapPurchasesDetailToResponse: emptyPurchasesDetail).
+	! !
+!MapperTest methodsFor: 'tests - map ticket' stamp: 'JPF 6/27/2021 11:12:47' prior: 50932158!
+test02ShouldConvertATicketToTheCorrespondingArrayOfDictionaries
+
+	| expectedResponse |
+	
+	
+	
+	expectedResponse := (OrderedCollection
+		with: (Dictionary with: ('item'->'item1') with: ('quantity'->2) with: ('total'->20))	
+		with: (Dictionary with: ('item'->'item2') with: ('quantity'->1) with: ('total'->30))) asArray.
+
+	"self assert: (Mapper mapTicketToResponse: ticket) = expectedResponse."
+
+	! !
+
+MapperTest class
+	instanceVariableNames: 'ticket'!
+
+!classDefinition: 'MapperTest class' category: 'TusLibros-Server' stamp: 'JPF 6/27/2021 11:13:11'!
+MapperTest class
+	instanceVariableNames: 'ticket'!
+
+!classDefinition: #MapperTest category: 'TusLibros-Server' stamp: 'JPF 6/27/2021 11:13:29'!
+TestCase subclass: #MapperTest
+	instanceVariableNames: 'port webServer tusLibrosSystemFacade ticket'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'TusLibros-Server'!
+!MapperTest methodsFor: 'setUp' stamp: 'JPF 6/27/2021 11:13:26' overrides: 16927572!
+setUp
+
+	ticket := Ticket of: (OrderedCollection 
+		with: (LineItem of: 'item1' quantity: 2 total: 20)
+		with: (LineItem of: 'item2' quantity: 1 total: 30)).! !
+!MapperTest methodsFor: 'tests - map ticket' stamp: 'JPF 6/27/2021 11:14:17' prior: 50933448!
+test02ShouldConvertATicketToTheCorrespondingArrayOfDictionaries
+
+	| expectedResponse |
+	
+	expectedResponse := (OrderedCollection
+		with: (Dictionary with: ('item'->'item1') with: ('quantity'->2) with: ('total'->20))	
+		with: (Dictionary with: ('item'->'item2') with: ('quantity'->1) with: ('total'->30))) asArray.
+
+	self assert: (Mapper mapTicketToResponse: ticket) = expectedResponse.
+
+	! !
+
+!classDefinition: #MapperTest category: 'TusLibros-Server' stamp: 'JPF 6/27/2021 11:14:49'!
+TestCase subclass: #MapperTest
+	instanceVariableNames: 'port webServer tusLibrosSystemFacade ticket lineItem1'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'TusLibros-Server'!
+
+!classDefinition: #MapperTest category: 'TusLibros-Server' stamp: 'JPF 6/27/2021 11:15:42'!
+TestCase subclass: #MapperTest
+	instanceVariableNames: 'port webServer tusLibrosSystemFacade ticket lineItem1 lineItem2'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'TusLibros-Server'!
+!MapperTest methodsFor: 'setUp' stamp: 'JPF 6/27/2021 11:15:41' prior: 50933478 overrides: 16927572!
+setUp
+
+	lineItem1 := LineItem of: 'item1' quantity: 2 total: 20.
+	lineItem2 := LineItem of: 'item2' quantity: 1 total: 30.
+	ticket := Ticket of: (OrderedCollection with: lineItem1 with: lineItem2).! !
+!MapperTest methodsFor: 'tests - map ticket' stamp: 'JPF 6/27/2021 11:16:55' prior: 50933486!
+test02ShouldConvertATicketToTheCorrespondingArrayOfDictionaries
+
+	| expectedResponse |
+	
+	expectedResponse := (OrderedCollection
+		with: (Dictionary with: ('item'->lineItem1 item) with: ('quantity'->lineItem1 quantity) with: ('total'->lineItem1 total))	
+		with: (Dictionary with: ('item'->lineItem2 item) with: ('quantity'->lineItem2 quantity) with: ('total'->lineItem2 total))) asArray.
+
+	self assert: (Mapper mapTicketToResponse: ticket) = expectedResponse.
+
+	! !
+!MapperTest methodsFor: 'tests - map ticket' stamp: 'JPF 6/27/2021 11:17:48' prior: 50933530!
+test02ShouldConvertATicketToTheCorrespondingArrayOfDictionaries
+
+	| expectedResponse |
+	
+	expectedResponse := (OrderedCollection
+		with: (Dictionary
+			with: ('item'->lineItem1 item)
+			with: ('quantity'->lineItem1 quantity)
+			with: ('total'->lineItem1 total))	
+		with: (Dictionary 
+			with: ('item'->lineItem2 item) 
+			with: ('quantity'->lineItem2 quantity) 
+			with: ('total'->lineItem2 total))
+			) asArray.
+
+	self assert: (Mapper mapTicketToResponse: ticket) = expectedResponse.
+
+	! !
+!MapperTest methodsFor: 'tests - map purchases detail' stamp: 'JPF 6/27/2021 11:18:25'!
+test02ShouldConvertAPurchasesDetailToResponseWithItemsAndTotal
+
+	| emptyPurchasesDetail expectedResponse |
+	
+	"ticket := Ticket of: (OrderedCollection with:"
+	
+	expectedResponse := Dictionary with: ('items'->{}) with: ('total'->0).
+	emptyPurchasesDetail := PurchasesDetail for: OrderedCollection new.
+	
+	self 
+		assert: expectedResponse 
+		equals: (Mapper mapPurchasesDetailToResponse: emptyPurchasesDetail).
+	! !
+
+!methodRemoval: MapperTest #test01ShouldConvertAPurchasesDetailToResponseWithItemsAndTotal stamp: 'JPF 6/27/2021 11:18:25'!
+test01ShouldConvertAPurchasesDetailToResponseWithItemsAndTotal
+
+	| emptyPurchasesDetail expectedResponse |
+	
+	"ticket := Ticket of: (OrderedCollection with:"
+	
+	expectedResponse := Dictionary with: ('items'->{}) with: ('total'->0).
+	emptyPurchasesDetail := PurchasesDetail for: OrderedCollection new.
+	
+	self 
+		assert: expectedResponse 
+		equals: (Mapper mapPurchasesDetailToResponse: emptyPurchasesDetail).
+	!
+!MapperTest methodsFor: 'tests - map purchases detail' stamp: 'JPF 6/27/2021 11:18:33' prior: 50933567!
+test02ShouldConvertAPurchasesDetailToResponseWithItemsAndTotal
+
+	| emptyPurchasesDetail expectedResponse |
+	
+	expectedResponse := Dictionary with: ('items'->{}) with: ('total'->0).
+	emptyPurchasesDetail := PurchasesDetail for: OrderedCollection new.
+	
+	self 
+		assert: expectedResponse 
+		equals: (Mapper mapPurchasesDetailToResponse: emptyPurchasesDetail).
+	! !
+!MapperTest methodsFor: 'tests - map purchases detail' stamp: 'JPF 6/27/2021 11:18:58' prior: 50933600!
+test02ShouldConvertAPurchasesDetailToResponseWithItemsAndTotal
+
+	| purchasesDetail expectedResponse |
+	
+	expectedResponse := Dictionary with: ('items'->{}) with: ('total'->0).
+	purchasesDetail := PurchasesDetail for: OrderedCollection new.
+	
+	self 
+		assert: expectedResponse 
+		equals: (Mapper mapPurchasesDetailToResponse: purchasesDetail).
+	! !
+!MapperTest methodsFor: 'tests - map purchases detail' stamp: 'JPF 6/27/2021 11:20:11' prior: 50933615!
+test02ShouldConvertAPurchasesDetailToResponseWithItemsAndTotal
+
+	| purchasesDetail expectedResponse |
+	
+	expectedResponse := Dictionary with: ('items'->{}) with: ('total'->0).
+	purchasesDetail := PurchasesDetail
+		for: (OrderedCollection with: (Sale doneBy: 'client' certifiedWith: ticket)).
+	
+	self 
+		assert: expectedResponse 
+		equals: (Mapper mapPurchasesDetailToResponse: purchasesDetail).
+	! !
+!MapperTest methodsFor: 'tests - map purchases detail' stamp: 'JPF 6/27/2021 11:22:16' prior: 50933630!
+test02ShouldConvertAPurchasesDetailToResponseWithItemsAndTotal
+
+	| purchasesDetail expectedResponse expectedItems |
+	
+	expectedItems := OrderedCollection
+		with: 1.
+	
+	expectedResponse := Dictionary 
+		with: ('items'->expectedItems) with: ('total'->0).
+	
+	purchasesDetail := PurchasesDetail
+		for: (OrderedCollection with: (Sale doneBy: 'client' certifiedWith: ticket)).
+	
+	self 
+		assert: expectedResponse 
+		equals: (Mapper mapPurchasesDetailToResponse: purchasesDetail).
+	! !
+!MapperTest methodsFor: 'tests - map purchases detail' stamp: 'JPF 6/27/2021 11:22:53' prior: 50933646!
+test02ShouldConvertAPurchasesDetailToResponseWithItemsAndTotal
+
+	| purchasesDetail expectedResponse expectedItems |
+	
+	expectedItems := (OrderedCollection
+		with: (Dictionary
+			with: ('item'->lineItem1 item)
+			with: ('quantity'->lineItem1 quantity)
+			with: ('total'->lineItem1 total))	
+		with: (Dictionary 
+			with: ('item'->lineItem2 item) 
+			with: ('quantity'->lineItem2 quantity) 
+			with: ('total'->lineItem2 total))
+			) asArray.
+	
+	expectedResponse := Dictionary 
+		with: ('items'->expectedItems) with: ('total'->0).
+	
+	purchasesDetail := PurchasesDetail
+		for: (OrderedCollection with: (Sale doneBy: 'client' certifiedWith: ticket)).
+	
+	self 
+		assert: expectedResponse 
+		equals: (Mapper mapPurchasesDetailToResponse: purchasesDetail).
+	! !
+!MapperTest methodsFor: 'tests - map purchases detail' stamp: 'JPF 6/27/2021 11:23:00' prior: 50933665!
+test02ShouldConvertAPurchasesDetailToResponseWithItemsAndTotal
+
+	| purchasesDetail expectedResponse expectedItems |
+	
+	expectedItems := (OrderedCollection
+		with: (Dictionary
+			with: ('item'->lineItem1 item)
+			with: ('quantity'->lineItem1 quantity)
+			with: ('total'->lineItem1 total))	
+		with: (Dictionary 
+			with: ('item'->lineItem2 item) 
+			with: ('quantity'->lineItem2 quantity) 
+			with: ('total'->lineItem2 total))
+			) asArray.
+	
+	expectedResponse := Dictionary with: ('items'->expectedItems) with: ('total'->0).
+	
+	purchasesDetail := PurchasesDetail
+		for: (OrderedCollection with: (Sale doneBy: 'client' certifiedWith: ticket)).
+	
+	self 
+		assert: expectedResponse 
+		equals: (Mapper mapPurchasesDetailToResponse: purchasesDetail).
+	! !
+!MapperTest methodsFor: 'tests - map purchases detail' stamp: 'JPF 6/27/2021 11:23:53' prior: 50933692!
+test02ShouldConvertAPurchasesDetailToResponseWithItemsAndTotal
+
+	| purchasesDetail expectedResponse expectedItems |
+	
+	expectedItems := (OrderedCollection
+		with: (Dictionary
+			with: ('item'->lineItem1 item)
+			with: ('quantity'->lineItem1 quantity)
+			with: ('total'->lineItem1 total))	
+		with: (Dictionary 
+			with: ('item'->lineItem2 item) 
+			with: ('quantity'->lineItem2 quantity) 
+			with: ('total'->lineItem2 total))
+			) asArray.
+	
+	expectedResponse := Dictionary 
+		with: ('items'->expectedItems)
+		with: ('total'->(lineItem1 total + lineItem2 total)).
+	
+	purchasesDetail := PurchasesDetail
+		for: (OrderedCollection with: (Sale doneBy: 'client' certifiedWith: ticket)).
+	
+	self 
+		assert: expectedResponse 
+		equals: (Mapper mapPurchasesDetailToResponse: purchasesDetail).
+	! !
+
+!testRun: #MapperTest #test02ShouldConvertAPurchasesDetailToResponseWithItemsAndTotal stamp: 'JPF 6/27/2021 11:23:58'!
+FAILURE!
+!Mapper class methodsFor: 'mapping' stamp: 'JPF 6/27/2021 11:24:47' prior: 50933410!
+mapPurchasesDetailToResponse: aPurchasesDetail
+
+	^ Dictionary with: ('items'->{}) with: ('total'->aPurchasesDetail total).! !
+!MapperTest methodsFor: 'tests - map ticket' stamp: 'JPF 6/27/2021 11:25:13' prior: 50933548!
+test02ShouldConvertATicketToTheCorrespondingArrayOfDictionaries
+
+	| expectedResponse |
+	
+	expectedResponse := (OrderedCollection
+		with: (Dictionary
+			with: ('item'->lineItem1 item)
+			with: ('quantity'->lineItem1 quantity))	
+		with: (Dictionary 
+			with: ('item'->lineItem2 item) 
+			with: ('quantity'->lineItem2 quantity))
+			) asArray.
+
+	self assert: (Mapper mapTicketToResponse: ticket) = expectedResponse.
+
+	! !
+!Mapper class methodsFor: 'mapping' stamp: 'JPF 6/27/2021 11:29:17' prior: 50933751!
+mapPurchasesDetailToResponse: aPurchasesDetail
+
+	| items |
+	items := OrderedCollection new.
+	aPurchasesDetail itemsAndQuantitiesDo: [ :itemAndQuantity |
+		items add: (Dictionary with: ('item'->itemAndQuantity key) with: ('quantity'->itemAndQuantity value)) ].
+
+	^ Dictionary with: ('items'->{}) with: ('total'->aPurchasesDetail total).! !
+!Mapper class methodsFor: 'mapping' stamp: 'JPF 6/27/2021 11:29:43' prior: 50933774!
+mapPurchasesDetailToResponse: aPurchasesDetail
+
+	| items |
+	
+	items := OrderedCollection new.
+	aPurchasesDetail itemsAndQuantitiesDo: [ :itemAndQuantity |
+		items add: (Dictionary
+			with: ('item'->itemAndQuantity key)
+			with: ('quantity'->itemAndQuantity value)) ].
+
+	^ Dictionary with: ('items'->items) with: ('total'->aPurchasesDetail total).! !
+
+!testRun: #MapperTest #test01ShouldConvertAnEmptyPurchasesDetailToResponseWithTotalZero stamp: 'JPF 6/27/2021 11:29:59'!
+ERROR!
+
+!testRun: #MapperTest #test01ShouldConvertAnEmptyTicketToAnEmptyArray stamp: 'JPF 6/27/2021 11:29:59'!
+PASSED!
+
+!testRun: #MapperTest #test02ShouldConvertAPurchasesDetailToResponseWithItemsAndTotal stamp: 'JPF 6/27/2021 11:29:59'!
+ERROR!
+
+!testRun: #MapperTest #test02ShouldConvertATicketToTheCorrespondingArrayOfDictionaries stamp: 'JPF 6/27/2021 11:29:59'!
+FAILURE!
+
+!testRun: #MapperTest #test02ShouldConvertATicketToTheCorrespondingArrayOfDictionaries stamp: 'JPF 6/27/2021 11:30:13'!
+FAILURE!
+!MapperTest methodsFor: 'tests - map purchases detail' stamp: 'JPF 6/27/2021 11:30:43' prior: 50933719!
+test02ShouldConvertAPurchasesDetailToResponseWithItemsAndTotal
+
+	| purchasesDetail expectedResponse expectedItems |
+	
+	expectedItems := (OrderedCollection
+		with: (Dictionary
+			with: ('item'->lineItem1 item)
+			with: ('quantity'->lineItem1 quantity))	
+		with: (Dictionary 
+			with: ('item'->lineItem2 item) 
+			with: ('quantity'->lineItem2 quantity))
+			) asArray.
+	
+	expectedResponse := Dictionary 
+		with: ('items'->expectedItems)
+		with: ('total'->(lineItem1 total + lineItem2 total)).
+	
+	purchasesDetail := PurchasesDetail
+		for: (OrderedCollection with: (Sale doneBy: 'client' certifiedWith: ticket)).
+	
+	self 
+		assert: expectedResponse 
+		equals: (Mapper mapPurchasesDetailToResponse: purchasesDetail).
+	! !
+!MapperTest methodsFor: 'tests - map ticket' stamp: 'JPF 6/27/2021 11:31:13' prior: 50933758!
+test02ShouldConvertATicketToTheCorrespondingArrayOfDictionaries
+
+	| expectedResponse |
+	
+	expectedResponse := (OrderedCollection
+		with: (Dictionary
+			with: ('item'->lineItem1 item)
+			with: ('quantity'->lineItem1 quantity)
+			with: ('total'->lineItem1 total))	
+		with: (Dictionary 
+			with: ('item'->lineItem2 item) 
+			with: ('quantity'->lineItem2 quantity)
+			with: ('total'->lineItem2 total))
+			) asArray.
+
+	self assert: (Mapper mapTicketToResponse: ticket) = expectedResponse.
+
+	! !
+
+!testRun: #MapperTest #test01ShouldConvertAnEmptyPurchasesDetailToResponseWithTotalZero stamp: 'JPF 6/27/2021 11:31:16'!
+ERROR!
+
+!testRun: #MapperTest #test01ShouldConvertAnEmptyTicketToAnEmptyArray stamp: 'JPF 6/27/2021 11:31:16'!
+PASSED!
+
+!testRun: #MapperTest #test02ShouldConvertAPurchasesDetailToResponseWithItemsAndTotal stamp: 'JPF 6/27/2021 11:31:16'!
+ERROR!
+
+!testRun: #MapperTest #test02ShouldConvertATicketToTheCorrespondingArrayOfDictionaries stamp: 'JPF 6/27/2021 11:31:16'!
+PASSED!
+
+!testRun: #MapperTest #test01ShouldConvertAnEmptyPurchasesDetailToResponseWithTotalZero stamp: 'JPF 6/27/2021 11:31:22'!
+ERROR!
+!PurchasesDetail methodsFor: 'accessing' stamp: 'JPF 6/27/2021 11:31:32'!
+itemsAndQuantitiesDo: aBlockClosure 
+	self shouldBeImplemented.! !
+!PurchasesDetail methodsFor: 'accessing' stamp: 'JPF 6/27/2021 11:32:08' prior: 50933886!
+itemsAndQuantitiesDo: aBlockClosure 
+	
+	itemsAndQuantities associationsDo: aBlockClosure! !
+
+!testRun: #MapperTest #test01ShouldConvertAnEmptyPurchasesDetailToResponseWithTotalZero stamp: 'JPF 6/27/2021 11:32:12'!
+FAILURE!
+!Mapper class methodsFor: 'mapping' stamp: 'JPF 6/27/2021 11:33:06' prior: 50933788!
+mapPurchasesDetailToResponse: aPurchasesDetail
+
+	| items |
+	
+	items := OrderedCollection new.
+	aPurchasesDetail itemsAndQuantitiesDo: [ :itemAndQuantity |
+		items add: (Dictionary
+			with: ('item'->itemAndQuantity key)
+			with: ('quantity'->itemAndQuantity value)) ].
+
+	^ Dictionary with: ('items'->items asArray) with: ('total'->aPurchasesDetail total).! !
+
+!testRun: #MapperTest #test01ShouldConvertAnEmptyPurchasesDetailToResponseWithTotalZero stamp: 'JPF 6/27/2021 11:33:16'!
+PASSED!
+
+!testRun: #MapperTest #test01ShouldConvertAnEmptyTicketToAnEmptyArray stamp: 'JPF 6/27/2021 11:33:16'!
+PASSED!
+
+!testRun: #MapperTest #test02ShouldConvertAPurchasesDetailToResponseWithItemsAndTotal stamp: 'JPF 6/27/2021 11:33:16'!
+FAILURE!
+
+!testRun: #MapperTest #test02ShouldConvertATicketToTheCorrespondingArrayOfDictionaries stamp: 'JPF 6/27/2021 11:33:16'!
+PASSED!
+
+!testRun: #MapperTest #test02ShouldConvertAPurchasesDetailToResponseWithItemsAndTotal stamp: 'JPF 6/27/2021 11:33:16'!
+FAILURE!
+!MapperTest methodsFor: 'tests - map purchases detail' stamp: 'JPF 6/27/2021 11:34:31' prior: 50933822!
+test02ShouldConvertAPurchasesDetailToResponseWithItemsAndTotal
+
+	| purchasesDetail expectedResponse expectedItems actualResponse |
+	
+	expectedItems := (OrderedCollection
+		with: (Dictionary
+			with: ('item'->lineItem1 item)
+			with: ('quantity'->lineItem1 quantity))	
+		with: (Dictionary 
+			with: ('item'->lineItem2 item) 
+			with: ('quantity'->lineItem2 quantity))
+			) asArray.
+	
+	expectedResponse := Dictionary 
+		with: ('items'->expectedItems)
+		with: ('total'->(lineItem1 total + lineItem2 total)).
+	
+	purchasesDetail := PurchasesDetail
+		for: (OrderedCollection with: (Sale doneBy: 'client' certifiedWith: ticket)).
+		
+	actualResponse := Mapper mapPurchasesDetailToResponse: purchasesDetail.
+	
+	self assert: expectedResponse equals: actualResponse.
+	! !
+!MapperTest methodsFor: 'tests - map purchases detail' stamp: 'JPF 6/27/2021 11:41:24' prior: 50933936!
+test02ShouldConvertAPurchasesDetailToResponseWithItemsAndTotal
+
+	| purchasesDetail expectedResponse expectedItems actualResponse |
+	
+	expectedItems := (OrderedCollection
+		with: (Dictionary
+			with: ('item'->lineItem1 item)
+			with: ('quantity'->lineItem1 quantity))	
+		with: (Dictionary 
+			with: ('item'->lineItem2 item) 
+			with: ('quantity'->lineItem2 quantity))
+			) asArray.
+	
+	expectedResponse := Dictionary 
+		with: ('items'->expectedItems)
+		with: ('total'->(lineItem1 total + lineItem2 total)).
+	
+	purchasesDetail := PurchasesDetail
+		for: (OrderedCollection with: (Sale doneBy: 'client' certifiedWith: ticket)).
+		
+	actualResponse := Mapper mapPurchasesDetailToResponse: purchasesDetail.
+	
+	self assert: (expectedResponse at: 'items') asSortedCollection equals: (actualResponse at: 'items') asSortedCollection.
+	self assert: (expectedResponse at: 'total') equals: (actualResponse at: 'total').
+	! !
+
+!testRun: #MapperTest #test02ShouldConvertAPurchasesDetailToResponseWithItemsAndTotal stamp: 'JPF 6/27/2021 11:41:26'!
+ERROR!
+!MapperTest methodsFor: 'tests - map purchases detail' stamp: 'JPF 6/27/2021 11:47:45' prior: 50933964!
+test02ShouldConvertAPurchasesDetailToResponseWithItemsAndTotal
+
+	| purchasesDetail expectedResponse expectedItems actualResponse |
+	
+	expectedItems := (OrderedCollection
+		with: (Dictionary
+			with: ('item'->lineItem1 item)
+			with: ('quantity'->lineItem1 quantity))	
+		with: (Dictionary 
+			with: ('item'->lineItem2 item) 
+			with: ('quantity'->lineItem2 quantity))
+			) asArray.
+	
+	expectedResponse := Dictionary 
+		with: ('items'->expectedItems)
+		with: ('total'->(lineItem1 total + lineItem2 total)).
+	
+	purchasesDetail := PurchasesDetail
+		for: (OrderedCollection with: (Sale doneBy: 'client' certifiedWith: ticket)).
+		
+	actualResponse := Mapper mapPurchasesDetailToResponse: purchasesDetail.
+	
+	"self assert: (expectedResponse at: 'items') asSortedCollection equals: (actualResponse at: 'items') asSortedCollection.
+	self assert: (expectedResponse at: 'total') equals: (actualResponse at: 'total')."
+	self assert: expectedResponse equals: actualResponse.
+	! !
+!Mapper class methodsFor: 'mapping' stamp: 'JPF 6/27/2021 11:49:49' prior: 50933901!
+mapPurchasesDetailToResponse: aPurchasesDetail
+
+	| items sortBlock |
+	
+	items := OrderedCollection new.
+	aPurchasesDetail itemsAndQuantitiesDo: [ :itemAndQuantity |
+		items add: (Dictionary
+			with: ('item'->itemAndQuantity key)
+			with: ('quantity'->itemAndQuantity value)) ].
+		
+	sortBlock := [ :element1 :element2 | (element1 at: 'item') <= (element1 at: 'item')].
+
+	^ Dictionary with: ('items'->(items asSortedCollection: sortBlock) asArray) with: ('total'->aPurchasesDetail total).! !
+
+!testRun: #MapperTest #test01ShouldConvertAnEmptyPurchasesDetailToResponseWithTotalZero stamp: 'JPF 6/27/2021 11:49:55'!
+PASSED!
+
+!testRun: #MapperTest #test01ShouldConvertAnEmptyTicketToAnEmptyArray stamp: 'JPF 6/27/2021 11:49:55'!
+PASSED!
+
+!testRun: #MapperTest #test02ShouldConvertAPurchasesDetailToResponseWithItemsAndTotal stamp: 'JPF 6/27/2021 11:49:55'!
+FAILURE!
+
+!testRun: #MapperTest #test02ShouldConvertATicketToTheCorrespondingArrayOfDictionaries stamp: 'JPF 6/27/2021 11:49:55'!
+PASSED!
+
+!testRun: #MapperTest #test02ShouldConvertAPurchasesDetailToResponseWithItemsAndTotal stamp: 'JPF 6/27/2021 11:49:55'!
+FAILURE!
+
+!testRun: #MapperTest #test01ShouldConvertAnEmptyPurchasesDetailToResponseWithTotalZero stamp: 'JPF 6/27/2021 11:50:21'!
+PASSED!
+
+!testRun: #MapperTest #test01ShouldConvertAnEmptyTicketToAnEmptyArray stamp: 'JPF 6/27/2021 11:50:21'!
+PASSED!
+
+!testRun: #MapperTest #test02ShouldConvertAPurchasesDetailToResponseWithItemsAndTotal stamp: 'JPF 6/27/2021 11:50:21'!
+FAILURE!
+
+!testRun: #MapperTest #test02ShouldConvertATicketToTheCorrespondingArrayOfDictionaries stamp: 'JPF 6/27/2021 11:50:21'!
+PASSED!
+
+!testRun: #MapperTest #test02ShouldConvertAPurchasesDetailToResponseWithItemsAndTotal stamp: 'JPF 6/27/2021 11:50:21'!
+FAILURE!
+!Mapper class methodsFor: 'mapping' stamp: 'JPF 6/27/2021 11:51:20' prior: 50934033!
+mapPurchasesDetailToResponse: aPurchasesDetail
+
+	| items sortBlock |
+	
+	items := OrderedCollection new.
+	aPurchasesDetail itemsAndQuantitiesDo: [ :itemAndQuantity |
+		items add: (Dictionary
+			with: ('item'->itemAndQuantity key)
+			with: ('quantity'->itemAndQuantity value)) ].
+		
+	sortBlock := [ :element1 :element2 | (element1 at: 'item') >= (element1 at: 'item')].
+
+	^ Dictionary with: ('items'->(items asSortedCollection: sortBlock) asArray) with: ('total'->aPurchasesDetail total).! !
+
+!testRun: #MapperTest #test01ShouldConvertAnEmptyPurchasesDetailToResponseWithTotalZero stamp: 'JPF 6/27/2021 11:51:23'!
+PASSED!
+
+!testRun: #MapperTest #test01ShouldConvertAnEmptyTicketToAnEmptyArray stamp: 'JPF 6/27/2021 11:51:23'!
+PASSED!
+
+!testRun: #MapperTest #test02ShouldConvertAPurchasesDetailToResponseWithItemsAndTotal stamp: 'JPF 6/27/2021 11:51:23'!
+FAILURE!
+
+!testRun: #MapperTest #test02ShouldConvertATicketToTheCorrespondingArrayOfDictionaries stamp: 'JPF 6/27/2021 11:51:23'!
+PASSED!
+
+!testRun: #MapperTest #test02ShouldConvertAPurchasesDetailToResponseWithItemsAndTotal stamp: 'JPF 6/27/2021 11:51:23'!
+FAILURE!
+!Mapper class methodsFor: 'mapping' stamp: 'JPF 6/27/2021 11:53:34' prior: 50934091!
+mapPurchasesDetailToResponse: aPurchasesDetail
+
+	| items sortBlock |
+	
+	items := OrderedCollection new.
+	aPurchasesDetail itemsAndQuantitiesDo: [ :itemAndQuantity |
+		items add: (Dictionary
+			with: ('item'->itemAndQuantity key)
+			with: ('quantity'->itemAndQuantity value)) ].
+		
+	sortBlock := [ :element1 :element2 | (element1 at: 'item') <= (element2 at: 'item')].
+
+	^ Dictionary with: ('items'->(items asSortedCollection: sortBlock) asArray) with: ('total'->aPurchasesDetail total).! !
+
+!testRun: #MapperTest #test01ShouldConvertAnEmptyPurchasesDetailToResponseWithTotalZero stamp: 'JPF 6/27/2021 11:53:41'!
+PASSED!
+
+!testRun: #MapperTest #test01ShouldConvertAnEmptyTicketToAnEmptyArray stamp: 'JPF 6/27/2021 11:53:41'!
+PASSED!
+
+!testRun: #MapperTest #test02ShouldConvertAPurchasesDetailToResponseWithItemsAndTotal stamp: 'JPF 6/27/2021 11:53:41'!
+PASSED!
+
+!testRun: #MapperTest #test02ShouldConvertATicketToTheCorrespondingArrayOfDictionaries stamp: 'JPF 6/27/2021 11:53:41'!
+PASSED!
+
+!testRun: #MapperTest #test01ShouldConvertAnEmptyPurchasesDetailToResponseWithTotalZero stamp: 'JPF 6/27/2021 11:53:47'!
+PASSED!
+
+!testRun: #MapperTest #test01ShouldConvertAnEmptyTicketToAnEmptyArray stamp: 'JPF 6/27/2021 11:53:47'!
+PASSED!
+
+!testRun: #MapperTest #test02ShouldConvertAPurchasesDetailToResponseWithItemsAndTotal stamp: 'JPF 6/27/2021 11:53:47'!
+PASSED!
+
+!testRun: #MapperTest #test02ShouldConvertATicketToTheCorrespondingArrayOfDictionaries stamp: 'JPF 6/27/2021 11:53:47'!
+PASSED!
+!TusLibrosRestInterface methodsFor: 'handlers' stamp: 'JPF 6/27/2021 11:55:35' prior: 50931316!
+handleListPurchases: request
+
+	self handle: request with: [	 | clientId password purchases response |	
+		
+		clientId := request fields at: 'clientId'.
+		password := request fields at: 'password'.
+		
+		purchases := tusLibrosSystemFacade listPurchasesOf: clientId authenticatingWith: password.
+		
+		response := Mapper mapPurchasesDetailToResponse: purchases.
+		
+		request send200Response: response.
+	]! !
+!TusLibrosRestInterface methodsFor: 'handlers' stamp: 'JPF 6/27/2021 11:56:03' prior: 50934179!
+handleListPurchases: request
+
+	self handle: request with: [	 | clientId password purchases response |	
+		
+		clientId := request fields at: 'clientId'.
+		password := request fields at: 'password'.
+		
+		purchases := tusLibrosSystemFacade listPurchasesOf: clientId authenticatingWith: password.
+		
+		response := Mapper mapPurchasesDetailToResponse: purchases.
+		
+		request send200Response: (WebUtils jsonEncode: response).
+	]! !
+
+server destroy.!
+
+server := TusLibrosRestInterface listeningOn: 8080.!
+!TusLibrosSystemFacadeTest methodsFor: 'tests - remove item' stamp: 'JPF 6/27/2021 12:11:32'!
+test01ShoulFailIfTryToRemoveAnItemFromAnInexistentCart
+
+	self
+		should: [ systemFacade remove: testObjectsFactory itemSellByTheStore from: '1' ]
+		raise: Error - MessageNotUnderstood 
+		withMessageText: systemFacade class 
+
+	! !
+!TusLibrosSystemFacadeTest methodsFor: 'tests - remove item' stamp: 'JPF 6/27/2021 12:12:12' prior: 50934214!
+test01ShoulFailIfTryToRemoveAnItemFromAnInexistentCart
+
+	self
+		should: [ systemFacade remove: testObjectsFactory itemSellByTheStore from: '1' ]
+		raise: Error - MessageNotUnderstood 
+		withMessageText: systemFacade class invalidCartIdErrorDescription.
+
+	! !
+
+!testRun: #TusLibrosSystemFacadeTest #test01ShoulFailIfTryToRemoveAnItemFromAnInexistentCart stamp: 'JPF 6/27/2021 12:12:17'!
+ERROR!
+!TusLibrosSystemFacadeTest methodsFor: 'tests - remove item' stamp: 'JPF 6/27/2021 12:13:34' prior: 50934225!
+test01ShoulFailIfTryToRemoveAnItemFromAnInexistentCart
+
+	self
+		should: [ systemFacade remove: testObjectsFactory itemSellByTheStore from: '1' ]
+		raise: Error - MessageNotUnderstood 
+		withMessageText: systemFacade invalidCartIdErrorDescription.
+
+	! !
+
+!testRun: #TusLibrosSystemFacadeTest #test01ShoulFailIfTryToRemoveAnItemFromAnInexistentCart stamp: 'JPF 6/27/2021 12:13:36'!
+ERROR!
+!TusLibrosSystemFacade methodsFor: 'facade protocol' stamp: 'JPF 6/27/2021 12:14:06'!
+remove: aString from: aString2 
+	self shouldBeImplemented.! !
+!TusLibrosSystemFacade methodsFor: 'facade protocol' stamp: 'JPF 6/27/2021 12:14:22' prior: 50934256!
+remove: anItem from: aCartId
+
+	self shouldBeImplemented.! !
+!TusLibrosSystemFacade methodsFor: 'facade protocol' stamp: 'JPF 6/27/2021 12:14:29' prior: 50934262!
+remove: anItem from: aCartId
+	
+	! !
+!TusLibrosSystemFacade methodsFor: 'facade protocol' stamp: 'JPF 6/27/2021 12:15:27'!
+remove: anItem fromCartIdentifiedAs: aCartId
+	
+	! !
+
+!methodRemoval: TusLibrosSystemFacade #remove:from: stamp: 'JPF 6/27/2021 12:15:27'!
+remove: anItem from: aCartId
+	
+	!
+!TusLibrosSystemFacade methodsFor: 'facade protocol' stamp: 'JPF 6/27/2021 12:16:17' prior: 50934272!
+remove: anItem fromCartIdentifiedAs: aCartId
+
+	self withCartSessionIdentifiedAs: aCartId do: [ :cartSession | ]
+	
+	! !
+
+!testRun: #TusLibrosSystemFacadeTest #test01ShoulFailIfTryToRemoveAnItemFromAnInexistentCart stamp: 'JPF 6/27/2021 12:16:32'!
+ERROR!
+
+!testRun: #TusLibrosSystemFacadeTest #test01ShoulFailIfTryToRemoveAnItemFromAnInexistentCart stamp: 'JPF 6/27/2021 12:16:32'!
+ERROR!
+!TusLibrosSystemFacadeTest methodsFor: 'tests - remove item' stamp: 'JPF 6/27/2021 12:16:48' prior: 50934241!
+test01ShoulFailIfTryToRemoveAnItemFromAnInexistentCart
+
+	self
+		should: [ systemFacade remove: testObjectsFactory itemSellByTheStore fromCartIdentifiedAs: '1' ]
+		raise: Error - MessageNotUnderstood 
+		withMessageText: systemFacade invalidCartIdErrorDescription.
+
+	! !
+
+!testRun: #TusLibrosSystemFacadeTest #test01ShoulFailIfTryToRemoveAnItemFromAnInexistentCart stamp: 'JPF 6/27/2021 12:16:52'!
+PASSED!
+!TusLibrosSystemFacadeTest methodsFor: 'tests - remove item' stamp: 'JPF 6/27/2021 12:18:25'!
+test01ShoulFailIfTryToRemoveAnItemThatItIsNotInTheCart
+
+	self
+		should: [ systemFacade remove: testObjectsFactory itemSellByTheStore fromCartIdentifiedAs: '1' ]
+		raise: Error - MessageNotUnderstood 
+		withMessageText: systemFacade invalidCartIdErrorDescription.
+
+	! !
+!TusLibrosSystemFacadeTest methodsFor: 'tests - remove item' stamp: 'JPF 6/27/2021 12:18:33'!
+test02ShoulFailIfTryToRemoveAnItemThatItIsNotInTheCart
+
+	self
+		should: [ systemFacade remove: testObjectsFactory itemSellByTheStore fromCartIdentifiedAs: '1' ]
+		raise: Error - MessageNotUnderstood 
+		withMessageText: systemFacade invalidCartIdErrorDescription.
+
+	! !
+
+!methodRemoval: TusLibrosSystemFacadeTest #test01ShoulFailIfTryToRemoveAnItemThatItIsNotInTheCart stamp: 'JPF 6/27/2021 12:18:33'!
+test01ShoulFailIfTryToRemoveAnItemThatItIsNotInTheCart
+
+	self
+		should: [ systemFacade remove: testObjectsFactory itemSellByTheStore fromCartIdentifiedAs: '1' ]
+		raise: Error - MessageNotUnderstood 
+		withMessageText: systemFacade invalidCartIdErrorDescription.
+
+	!
+!TusLibrosSystemFacadeTest methodsFor: 'tests - remove item' stamp: 'JPF 6/27/2021 12:20:07' prior: 50934325!
+test02ShoulFailIfTryToRemoveAnItemThatItIsNotInTheCart
+
+	| cartId |
+	cartId := systemFacade createCartFor: self validUser authenticatedWith: self validUserPassword.
+
+	self
+		should: [ systemFacade remove: testObjectsFactory itemSellByTheStore fromCartIdentifiedAs: '1' ]
+		raise: Error - MessageNotUnderstood.
+
+	! !
+!TusLibrosSystemFacadeTest methodsFor: 'tests - remove item' stamp: 'JPF 6/27/2021 12:20:17' prior: 50934350!
+test02ShoulFailIfTryToRemoveAnItemThatItIsNotInTheCart
+
+	| cartId |
+	cartId := systemFacade createCartFor: self validUser authenticatedWith: self validUserPassword.
+
+	self
+		should: [ systemFacade remove: testObjectsFactory itemSellByTheStore fromCartIdentifiedAs: cartId ]
+		raise: Error - MessageNotUnderstood.
+
+	! !
+!TusLibrosSystemFacadeTest methodsFor: 'tests - remove item' stamp: 'JPF 6/27/2021 12:20:22' prior: 50934364!
+test02ShoulFailIfTryToRemoveAnItemThatItIsNotInTheCart
+
+	| cartId |
+	
+	cartId := systemFacade createCartFor: self validUser authenticatedWith: self validUserPassword.
+
+	self
+		should: [ systemFacade remove: testObjectsFactory itemSellByTheStore fromCartIdentifiedAs: cartId ]
+		raise: Error - MessageNotUnderstood.
+
+	! !
+
+!testRun: #TusLibrosSystemFacadeTest #test02ShoulFailIfTryToRemoveAnItemThatItIsNotInTheCart stamp: 'JPF 6/27/2021 12:20:26'!
+FAILURE!
+
+!testRun: #TusLibrosSystemFacadeTest #test02ShoulFailIfTryToRemoveAnItemThatItIsNotInTheCart stamp: 'JPF 6/27/2021 12:20:26'!
+FAILURE!
+!CartTest methodsFor: 'tests' stamp: 'JPF 6/27/2021 12:23:05'!
+test09CanNotRemoveAnItemThatIsNotInTheCart
+
+	| cart |
+
+	cart := testObjectsFactory createCart.
+
+	self
+		should: [ cart remove: testObjectsFactory itemSellByTheStore ]
+		raise: Error - MessageNotUnderstood
+		withMessageText: ''.! !
+!CartTest methodsFor: 'tests' stamp: 'JPF 6/27/2021 12:23:52' prior: 50934399!
+test09CanNotRemoveAnItemThatIsNotInTheCart
+
+	| cart |
+
+	cart := testObjectsFactory createCart.
+
+	self
+		should: [ cart remove: testObjectsFactory itemSellByTheStore ]
+		raise: Error - MessageNotUnderstood
+		withMessageText: cart itemIsNotInTheCart.! !
+
+!testRun: #CartTest #test01NewCartsAreCreatedEmpty stamp: 'JPF 6/27/2021 12:24:53'!
+PASSED!
+
+!testRun: #CartTest #test02CanNotAddItemsThatDoNotBelongToStore stamp: 'JPF 6/27/2021 12:24:53'!
+PASSED!
+
+!testRun: #CartTest #test03AfterAddingAnItemTheCartIsNotEmptyAnymore stamp: 'JPF 6/27/2021 12:24:53'!
+PASSED!
+
+!testRun: #CartTest #test04CanNotAddNonPositiveNumberOfItems stamp: 'JPF 6/27/2021 12:24:53'!
+PASSED!
+
+!testRun: #CartTest #test05CanNotAddMoreThanOneItemNotSellByTheStore stamp: 'JPF 6/27/2021 12:24:53'!
+PASSED!
+
+!testRun: #CartTest #test06CartRemembersAddedItems stamp: 'JPF 6/27/2021 12:24:53'!
+PASSED!
+
+!testRun: #CartTest #test07CartDoesNotHoldNotAddedItems stamp: 'JPF 6/27/2021 12:24:53'!
+PASSED!
+
+!testRun: #CartTest #test08CartRemembersTheNumberOfAddedItems stamp: 'JPF 6/27/2021 12:24:53'!
+PASSED!
+
+!testRun: #CartTest #test09CanNotRemoveAnItemThatIsNotInTheCart stamp: 'JPF 6/27/2021 12:24:53'!
+ERROR!
+
+!testRun: #CartTest #test09CanNotRemoveAnItemThatIsNotInTheCart stamp: 'JPF 6/27/2021 12:24:53'!
+ERROR!
+!Cart methodsFor: 'error messages' stamp: 'JPF 6/27/2021 12:25:01'!
+itemIsNotInTheCart
+	self shouldBeImplemented.! !
+!Cart methodsFor: 'error messages' stamp: 'JPF 6/27/2021 12:25:17' prior: 50934452!
+itemIsNotInTheCart
+	
+	^ 'item is not present in the cart'! !
+
+!testRun: #CartTest #test09CanNotRemoveAnItemThatIsNotInTheCart stamp: 'JPF 6/27/2021 12:25:20'!
+ERROR!
+!Cart methodsFor: 'removing' stamp: 'JPF 6/27/2021 12:26:01'!
+remove: aString 
+	self shouldBeImplemented.! !
+!Cart methodsFor: 'removing' stamp: 'JPF 6/27/2021 12:26:21' prior: 50934465!
+remove: anItem! !
+
+!testRun: #CartTest #test09CanNotRemoveAnItemThatIsNotInTheCart stamp: 'JPF 6/27/2021 12:26:30'!
+FAILURE!
+!Cart methodsFor: 'removing' stamp: 'JPF 6/27/2021 12:29:23' prior: 50934469!
+remove: anItem
+
+	(items includes: anItem) ifFalse: [ self error: self itemIsNotInTheCart ].! !
+
+!testRun: #CartTest #test01NewCartsAreCreatedEmpty stamp: 'JPF 6/27/2021 12:29:33'!
+PASSED!
+
+!testRun: #CartTest #test02CanNotAddItemsThatDoNotBelongToStore stamp: 'JPF 6/27/2021 12:29:33'!
+PASSED!
+
+!testRun: #CartTest #test03AfterAddingAnItemTheCartIsNotEmptyAnymore stamp: 'JPF 6/27/2021 12:29:33'!
+PASSED!
+
+!testRun: #CartTest #test04CanNotAddNonPositiveNumberOfItems stamp: 'JPF 6/27/2021 12:29:33'!
+PASSED!
+
+!testRun: #CartTest #test05CanNotAddMoreThanOneItemNotSellByTheStore stamp: 'JPF 6/27/2021 12:29:33'!
+PASSED!
+
+!testRun: #CartTest #test06CartRemembersAddedItems stamp: 'JPF 6/27/2021 12:29:33'!
+PASSED!
+
+!testRun: #CartTest #test07CartDoesNotHoldNotAddedItems stamp: 'JPF 6/27/2021 12:29:33'!
+PASSED!
+
+!testRun: #CartTest #test08CartRemembersTheNumberOfAddedItems stamp: 'JPF 6/27/2021 12:29:33'!
+PASSED!
+
+!testRun: #CartTest #test09CanNotRemoveAnItemThatIsNotInTheCart stamp: 'JPF 6/27/2021 12:29:33'!
+PASSED!
+!Cart methodsFor: 'removing' stamp: 'JPF 6/27/2021 12:30:04'!
+assertItemIsInTheCart: anItem
+
+	^ (items includes: anItem) ifFalse: [ self error: self itemIsNotInTheCart ]! !
+!Cart methodsFor: 'removing' stamp: 'JPF 6/27/2021 12:30:04' prior: 50934476!
+remove: anItem
+
+	self assertItemIsInTheCart: anItem.! !
+!CartTest methodsFor: 'tests' stamp: 'JPF 6/27/2021 12:31:01'!
+test10ShouldRemoveAnItemFromTheCart
+
+	| cart |
+
+	cart := testObjectsFactory createCart.
+
+	self
+		should: [ cart remove: testObjectsFactory itemSellByTheStore ]
+		raise: Error - MessageNotUnderstood
+		withMessageText: cart itemIsNotInTheCart.! !
+!CartTest methodsFor: 'tests' stamp: 'JPF 6/27/2021 12:31:55' prior: 50934520!
+test10ShouldRemoveAnItemFromTheCart
+
+	| cart |
+
+	cart := testObjectsFactory createCart.
+	cart add: 2 of: testObjectsFactory itemSellByTheStore.
+	cart add: 2 of: testObjectsFactory anotherItemSellByTheStore.
+
+	self
+		should: [ cart remove: testObjectsFactory itemSellByTheStore ]
+		raise: Error - MessageNotUnderstood
+		withMessageText: cart itemIsNotInTheCart.! !
+!CartTest methodsFor: 'tests' stamp: 'JPF 6/27/2021 12:32:59' prior: 50934531!
+test10ShouldRemoveAnItemFromTheCart
+
+	| cart |
+
+	cart := testObjectsFactory createCart.
+	cart add: 2 of: testObjectsFactory itemSellByTheStore.
+	cart add: 2 of: testObjectsFactory anotherItemSellByTheStore.
+
+	cart remove: testObjectsFactory itemSellByTheStore.
+	
+	self deny: (cart includes: testObjectsFactory itemSellByTheStore)! !
+!CartTest methodsFor: 'tests' stamp: 'JPF 6/27/2021 12:33:31' prior: 50934545!
+test10ShouldRemoveAnItemFromTheCart
+
+	| cart |
+
+	cart := testObjectsFactory createCart.
+	cart add: 2 of: testObjectsFactory itemSellByTheStore.
+	cart add: 2 of: testObjectsFactory anotherItemSellByTheStore.
+
+	cart remove: testObjectsFactory itemSellByTheStore.
+	
+	self deny: (cart includes: testObjectsFactory itemSellByTheStore).
+	self assert: 2 equals: testObjectsFactory anotherItemSellByTheStore.! !
+
+!testRun: #CartTest #test10ShouldRemoveAnItemFromTheCart stamp: 'JPF 6/27/2021 12:33:36'!
+FAILURE!
+
+!testRun: #CartTest #test10ShouldRemoveAnItemFromTheCart stamp: 'JPF 6/27/2021 12:33:36'!
+FAILURE!
+!Cart methodsFor: 'removing' stamp: 'JPF 6/27/2021 12:34:51' prior: 50934516!
+remove: anItem
+
+	self assertItemIsInTheCart: anItem.
+	items remove: anItem.! !
+
+!testRun: #CartTest #test10ShouldRemoveAnItemFromTheCart stamp: 'JPF 6/27/2021 12:34:59'!
+FAILURE!
+!Cart methodsFor: 'removing' stamp: 'JPF 6/27/2021 12:36:26' prior: 50934580!
+remove: anItem
+
+	self assertItemIsInTheCart: anItem.
+	items removeAll: anItem.! !
+
+!testRun: #CartTest #test10ShouldRemoveAnItemFromTheCart stamp: 'JPF 6/27/2021 12:36:32'!
+ERROR!
+
+!testRun: #CartTest #test10ShouldRemoveAnItemFromTheCart stamp: 'JPF 6/27/2021 12:36:43'!
+ERROR!
+
+!testRun: #CartTest #test10ShouldRemoveAnItemFromTheCart stamp: 'JPF 6/27/2021 12:36:43'!
+ERROR!
+!Cart methodsFor: 'removing' stamp: 'JPF 6/27/2021 12:41:46' prior: 50934589!
+remove: anItem
+
+	self assertItemIsInTheCart: anItem.
+	
+	items := items select: [ :item | item ~= anItem ].! !
+!Cart methodsFor: 'removing' stamp: 'JPF 6/27/2021 12:41:57' prior: 50934604!
+remove: itemToRemove
+
+	self assertItemIsInTheCart: itemToRemove.
+	
+	items := items select: [ :item | item ~= itemToRemove ].! !
+!Cart methodsFor: 'removing' stamp: 'JPF 6/27/2021 12:42:18' prior: 50934610!
+remove: itemToRemove
+
+	self assertItemIsInTheCart: itemToRemove.
+	
+	items := items reject: [ :item | item = itemToRemove ].! !
+
+!testRun: #CartTest #test01NewCartsAreCreatedEmpty stamp: 'JPF 6/27/2021 12:42:45'!
+PASSED!
+
+!testRun: #CartTest #test02CanNotAddItemsThatDoNotBelongToStore stamp: 'JPF 6/27/2021 12:42:45'!
+PASSED!
+
+!testRun: #CartTest #test03AfterAddingAnItemTheCartIsNotEmptyAnymore stamp: 'JPF 6/27/2021 12:42:45'!
+PASSED!
+
+!testRun: #CartTest #test04CanNotAddNonPositiveNumberOfItems stamp: 'JPF 6/27/2021 12:42:45'!
+PASSED!
+
+!testRun: #CartTest #test05CanNotAddMoreThanOneItemNotSellByTheStore stamp: 'JPF 6/27/2021 12:42:45'!
+PASSED!
+
+!testRun: #CartTest #test06CartRemembersAddedItems stamp: 'JPF 6/27/2021 12:42:45'!
+PASSED!
+
+!testRun: #CartTest #test07CartDoesNotHoldNotAddedItems stamp: 'JPF 6/27/2021 12:42:45'!
+PASSED!
+
+!testRun: #CartTest #test08CartRemembersTheNumberOfAddedItems stamp: 'JPF 6/27/2021 12:42:45'!
+PASSED!
+
+!testRun: #CartTest #test09CanNotRemoveAnItemThatIsNotInTheCart stamp: 'JPF 6/27/2021 12:42:45'!
+PASSED!
+
+!testRun: #CartTest #test10ShouldRemoveAnItemFromTheCart stamp: 'JPF 6/27/2021 12:42:45'!
+FAILURE!
+
+!testRun: #CashierTest #test01CanNotCheckoutAnEmptyCart stamp: 'JPF 6/27/2021 12:42:45'!
+PASSED!
+
+!testRun: #CashierTest #test02CalculatedTotalIsCorrect stamp: 'JPF 6/27/2021 12:42:45'!
+PASSED!
+
+!testRun: #CashierTest #test03CanNotCheckoutWithAnExpiredCreditCart stamp: 'JPF 6/27/2021 12:42:45'!
+PASSED!
+
+!testRun: #CashierTest #test04CheckoutRegistersASale stamp: 'JPF 6/27/2021 12:42:45'!
+PASSED!
+
+!testRun: #CashierTest #test05CashierChargesCreditCardUsingMerchantProcessor stamp: 'JPF 6/27/2021 12:42:45'!
+PASSED!
+
+!testRun: #CashierTest #test06CashierDoesNotSaleWhenTheCreditCardHasNoCredit stamp: 'JPF 6/27/2021 12:42:45'!
+PASSED!
+
+!testRun: #TusLibrosSystemFacadeTest #test01CanCreateCartWithValidUserAndPassword stamp: 'JPF 6/27/2021 12:42:45'!
+PASSED!
+
+!testRun: #TusLibrosSystemFacadeTest #test01ShoulFailIfTryToRemoveAnItemFromAnInexistentCart stamp: 'JPF 6/27/2021 12:42:45'!
+PASSED!
+
+!testRun: #TusLibrosSystemFacadeTest #test01shouldReturnTheCatalog stamp: 'JPF 6/27/2021 12:42:45'!
+PASSED!
+
+!testRun: #TusLibrosSystemFacadeTest #test02CanNotCreateCartWithInvalidUser stamp: 'JPF 6/27/2021 12:42:45'!
+PASSED!
+
+!testRun: #TusLibrosSystemFacadeTest #test02ShoulFailIfTryToRemoveAnItemThatItIsNotInTheCart stamp: 'JPF 6/27/2021 12:42:45'!
+FAILURE!
+
+!testRun: #TusLibrosSystemFacadeTest #test03CanNotCreateCartWithInvalidPassword stamp: 'JPF 6/27/2021 12:42:45'!
+PASSED!
+
+!testRun: #TusLibrosSystemFacadeTest #test04CanAddItemsToACreatedCart stamp: 'JPF 6/27/2021 12:42:45'!
+PASSED!
+
+!testRun: #TusLibrosSystemFacadeTest #test05CanNotAddItemToNotCreatedCart stamp: 'JPF 6/27/2021 12:42:45'!
+PASSED!
+
+!testRun: #TusLibrosSystemFacadeTest #test06CanNotAddItemNotSellByTheStore stamp: 'JPF 6/27/2021 12:42:45'!
+PASSED!
+
+!testRun: #TusLibrosSystemFacadeTest #test07ListCartOfAnEmptyCartReturnsAnEmptyBag stamp: 'JPF 6/27/2021 12:42:45'!
+PASSED!
+
+!testRun: #TusLibrosSystemFacadeTest #test08CanNotListCartOfInvalidCartId stamp: 'JPF 6/27/2021 12:42:45'!
+PASSED!
+
+!testRun: #TusLibrosSystemFacadeTest #test09ListCartReturnsTheRightNumberOfItems stamp: 'JPF 6/27/2021 12:42:45'!
+PASSED!
+
+!testRun: #TusLibrosSystemFacadeTest #test10CanCheckoutACart stamp: 'JPF 6/27/2021 12:42:45'!
+PASSED!
+
+!testRun: #TusLibrosSystemFacadeTest #test11CanNotCheckoutANotCreatedCart stamp: 'JPF 6/27/2021 12:42:45'!
+PASSED!
+
+!testRun: #TusLibrosSystemFacadeTest #test12CanNotCheckoutAnEmptyCart stamp: 'JPF 6/27/2021 12:42:45'!
+PASSED!
+
+!testRun: #TusLibrosSystemFacadeTest #test13CanNotCheckoutWithAnExpiredCreditCard stamp: 'JPF 6/27/2021 12:42:45'!
+PASSED!
+
+!testRun: #TusLibrosSystemFacadeTest #test14ListPurchasesIncludesBoughtItems stamp: 'JPF 6/27/2021 12:42:45'!
+PASSED!
+
+!testRun: #TusLibrosSystemFacadeTest #test15CanNotListPurchasesOfInvalidCustomer stamp: 'JPF 6/27/2021 12:42:45'!
+PASSED!
+
+!testRun: #TusLibrosSystemFacadeTest #test16CanNotListPurchasesOfValidCustomerWithInvalidPassword stamp: 'JPF 6/27/2021 12:42:45'!
+PASSED!
+
+!testRun: #TusLibrosSystemFacadeTest #test17CanNotAddToCartWhenSessionIsExpired stamp: 'JPF 6/27/2021 12:42:45'!
+PASSED!
+
+!testRun: #TusLibrosSystemFacadeTest #test18CanNotListCartWhenSessionIsExpired stamp: 'JPF 6/27/2021 12:42:45'!
+PASSED!
+
+!testRun: #TusLibrosSystemFacadeTest #test19CanNotCheckOutCartWhenSessionIsExpired stamp: 'JPF 6/27/2021 12:42:45'!
+PASSED!
+
+!testRun: #CartTest #test10ShouldRemoveAnItemFromTheCart stamp: 'JPF 6/27/2021 12:42:52'!
+FAILURE!
+!CartTest methodsFor: 'tests' stamp: 'JPF 6/27/2021 12:43:44' prior: 50934558!
+test10ShouldRemoveAnItemFromTheCart
+
+	| cart |
+
+	cart := testObjectsFactory createCart.
+	cart add: 2 of: testObjectsFactory itemSellByTheStore.
+	cart add: 2 of: testObjectsFactory anotherItemSellByTheStore.
+
+	cart remove: testObjectsFactory itemSellByTheStore.
+	
+	self deny: (cart includes: testObjectsFactory itemSellByTheStore).
+	self assert: 2 equals: (cart occurrencesOf: testObjectsFactory anotherItemSellByTheStore).! !
+
+!testRun: #CartTest #test01NewCartsAreCreatedEmpty stamp: 'JPF 6/27/2021 12:43:57'!
+PASSED!
+
+!testRun: #CartTest #test02CanNotAddItemsThatDoNotBelongToStore stamp: 'JPF 6/27/2021 12:43:57'!
+PASSED!
+
+!testRun: #CartTest #test03AfterAddingAnItemTheCartIsNotEmptyAnymore stamp: 'JPF 6/27/2021 12:43:57'!
+PASSED!
+
+!testRun: #CartTest #test04CanNotAddNonPositiveNumberOfItems stamp: 'JPF 6/27/2021 12:43:57'!
+PASSED!
+
+!testRun: #CartTest #test05CanNotAddMoreThanOneItemNotSellByTheStore stamp: 'JPF 6/27/2021 12:43:57'!
+PASSED!
+
+!testRun: #CartTest #test06CartRemembersAddedItems stamp: 'JPF 6/27/2021 12:43:57'!
+PASSED!
+
+!testRun: #CartTest #test07CartDoesNotHoldNotAddedItems stamp: 'JPF 6/27/2021 12:43:57'!
+PASSED!
+
+!testRun: #CartTest #test08CartRemembersTheNumberOfAddedItems stamp: 'JPF 6/27/2021 12:43:57'!
+PASSED!
+
+!testRun: #CartTest #test09CanNotRemoveAnItemThatIsNotInTheCart stamp: 'JPF 6/27/2021 12:43:57'!
+PASSED!
+
+!testRun: #CartTest #test10ShouldRemoveAnItemFromTheCart stamp: 'JPF 6/27/2021 12:43:57'!
+PASSED!
+
+!testRun: #CashierTest #test01CanNotCheckoutAnEmptyCart stamp: 'JPF 6/27/2021 12:43:57'!
+PASSED!
+
+!testRun: #CashierTest #test02CalculatedTotalIsCorrect stamp: 'JPF 6/27/2021 12:43:57'!
+PASSED!
+
+!testRun: #CashierTest #test03CanNotCheckoutWithAnExpiredCreditCart stamp: 'JPF 6/27/2021 12:43:57'!
+PASSED!
+
+!testRun: #CashierTest #test04CheckoutRegistersASale stamp: 'JPF 6/27/2021 12:43:57'!
+PASSED!
+
+!testRun: #CashierTest #test05CashierChargesCreditCardUsingMerchantProcessor stamp: 'JPF 6/27/2021 12:43:57'!
+PASSED!
+
+!testRun: #CashierTest #test06CashierDoesNotSaleWhenTheCreditCardHasNoCredit stamp: 'JPF 6/27/2021 12:43:57'!
+PASSED!
+
+!testRun: #TusLibrosSystemFacadeTest #test01CanCreateCartWithValidUserAndPassword stamp: 'JPF 6/27/2021 12:43:57'!
+PASSED!
+
+!testRun: #TusLibrosSystemFacadeTest #test01ShoulFailIfTryToRemoveAnItemFromAnInexistentCart stamp: 'JPF 6/27/2021 12:43:57'!
+PASSED!
+
+!testRun: #TusLibrosSystemFacadeTest #test01shouldReturnTheCatalog stamp: 'JPF 6/27/2021 12:43:57'!
+PASSED!
+
+!testRun: #TusLibrosSystemFacadeTest #test02CanNotCreateCartWithInvalidUser stamp: 'JPF 6/27/2021 12:43:57'!
+PASSED!
+
+!testRun: #TusLibrosSystemFacadeTest #test02ShoulFailIfTryToRemoveAnItemThatItIsNotInTheCart stamp: 'JPF 6/27/2021 12:43:57'!
+FAILURE!
+
+!testRun: #TusLibrosSystemFacadeTest #test03CanNotCreateCartWithInvalidPassword stamp: 'JPF 6/27/2021 12:43:57'!
+PASSED!
+
+!testRun: #TusLibrosSystemFacadeTest #test04CanAddItemsToACreatedCart stamp: 'JPF 6/27/2021 12:43:57'!
+PASSED!
+
+!testRun: #TusLibrosSystemFacadeTest #test05CanNotAddItemToNotCreatedCart stamp: 'JPF 6/27/2021 12:43:57'!
+PASSED!
+
+!testRun: #TusLibrosSystemFacadeTest #test06CanNotAddItemNotSellByTheStore stamp: 'JPF 6/27/2021 12:43:57'!
+PASSED!
+
+!testRun: #TusLibrosSystemFacadeTest #test07ListCartOfAnEmptyCartReturnsAnEmptyBag stamp: 'JPF 6/27/2021 12:43:57'!
+PASSED!
+
+!testRun: #TusLibrosSystemFacadeTest #test08CanNotListCartOfInvalidCartId stamp: 'JPF 6/27/2021 12:43:57'!
+PASSED!
+
+!testRun: #TusLibrosSystemFacadeTest #test09ListCartReturnsTheRightNumberOfItems stamp: 'JPF 6/27/2021 12:43:57'!
+PASSED!
+
+!testRun: #TusLibrosSystemFacadeTest #test10CanCheckoutACart stamp: 'JPF 6/27/2021 12:43:57'!
+PASSED!
+
+!testRun: #TusLibrosSystemFacadeTest #test11CanNotCheckoutANotCreatedCart stamp: 'JPF 6/27/2021 12:43:57'!
+PASSED!
+
+!testRun: #TusLibrosSystemFacadeTest #test12CanNotCheckoutAnEmptyCart stamp: 'JPF 6/27/2021 12:43:57'!
+PASSED!
+
+!testRun: #TusLibrosSystemFacadeTest #test13CanNotCheckoutWithAnExpiredCreditCard stamp: 'JPF 6/27/2021 12:43:57'!
+PASSED!
+
+!testRun: #TusLibrosSystemFacadeTest #test14ListPurchasesIncludesBoughtItems stamp: 'JPF 6/27/2021 12:43:57'!
+PASSED!
+
+!testRun: #TusLibrosSystemFacadeTest #test15CanNotListPurchasesOfInvalidCustomer stamp: 'JPF 6/27/2021 12:43:57'!
+PASSED!
+
+!testRun: #TusLibrosSystemFacadeTest #test16CanNotListPurchasesOfValidCustomerWithInvalidPassword stamp: 'JPF 6/27/2021 12:43:57'!
+PASSED!
+
+!testRun: #TusLibrosSystemFacadeTest #test17CanNotAddToCartWhenSessionIsExpired stamp: 'JPF 6/27/2021 12:43:57'!
+PASSED!
+
+!testRun: #TusLibrosSystemFacadeTest #test18CanNotListCartWhenSessionIsExpired stamp: 'JPF 6/27/2021 12:43:57'!
+PASSED!
+
+!testRun: #TusLibrosSystemFacadeTest #test19CanNotCheckOutCartWhenSessionIsExpired stamp: 'JPF 6/27/2021 12:43:57'!
+PASSED!
+
+!testRun: #TusLibrosSystemFacadeTest #test02ShoulFailIfTryToRemoveAnItemThatItIsNotInTheCart stamp: 'JPF 6/27/2021 12:43:57'!
+FAILURE!
+
+!testRun: #CartTest #test01NewCartsAreCreatedEmpty stamp: 'JPF 6/27/2021 12:44:14'!
+PASSED!
+
+!testRun: #CartTest #test02CanNotAddItemsThatDoNotBelongToStore stamp: 'JPF 6/27/2021 12:44:14'!
+PASSED!
+
+!testRun: #CartTest #test03AfterAddingAnItemTheCartIsNotEmptyAnymore stamp: 'JPF 6/27/2021 12:44:14'!
+PASSED!
+
+!testRun: #CartTest #test04CanNotAddNonPositiveNumberOfItems stamp: 'JPF 6/27/2021 12:44:14'!
+PASSED!
+
+!testRun: #CartTest #test05CanNotAddMoreThanOneItemNotSellByTheStore stamp: 'JPF 6/27/2021 12:44:14'!
+PASSED!
+
+!testRun: #CartTest #test06CartRemembersAddedItems stamp: 'JPF 6/27/2021 12:44:14'!
+PASSED!
+
+!testRun: #CartTest #test07CartDoesNotHoldNotAddedItems stamp: 'JPF 6/27/2021 12:44:14'!
+PASSED!
+
+!testRun: #CartTest #test08CartRemembersTheNumberOfAddedItems stamp: 'JPF 6/27/2021 12:44:14'!
+PASSED!
+
+!testRun: #CartTest #test09CanNotRemoveAnItemThatIsNotInTheCart stamp: 'JPF 6/27/2021 12:44:14'!
+PASSED!
+
+!testRun: #CartTest #test10ShouldRemoveAnItemFromTheCart stamp: 'JPF 6/27/2021 12:44:14'!
+PASSED!
+!TusLibrosSystemFacade methodsFor: 'facade protocol' stamp: 'JPF 6/27/2021 12:45:26' prior: 50934281!
+remove: anItem fromCartIdentifiedAs: aCartId
+
+	self withCartSessionIdentifiedAs: aCartId do: [ :cartSession | self error: '']
+	
+	! !
+
+!testRun: #TusLibrosSystemFacadeTest #test01CanCreateCartWithValidUserAndPassword stamp: 'JPF 6/27/2021 12:45:37'!
+PASSED!
+
+!testRun: #TusLibrosSystemFacadeTest #test01ShoulFailIfTryToRemoveAnItemFromAnInexistentCart stamp: 'JPF 6/27/2021 12:45:37'!
+PASSED!
+
+!testRun: #TusLibrosSystemFacadeTest #test01shouldReturnTheCatalog stamp: 'JPF 6/27/2021 12:45:37'!
+PASSED!
+
+!testRun: #TusLibrosSystemFacadeTest #test02CanNotCreateCartWithInvalidUser stamp: 'JPF 6/27/2021 12:45:37'!
+PASSED!
+
+!testRun: #TusLibrosSystemFacadeTest #test02ShoulFailIfTryToRemoveAnItemThatItIsNotInTheCart stamp: 'JPF 6/27/2021 12:45:37'!
+PASSED!
+
+!testRun: #TusLibrosSystemFacadeTest #test03CanNotCreateCartWithInvalidPassword stamp: 'JPF 6/27/2021 12:45:37'!
+PASSED!
+
+!testRun: #TusLibrosSystemFacadeTest #test04CanAddItemsToACreatedCart stamp: 'JPF 6/27/2021 12:45:37'!
+PASSED!
+
+!testRun: #TusLibrosSystemFacadeTest #test05CanNotAddItemToNotCreatedCart stamp: 'JPF 6/27/2021 12:45:37'!
+PASSED!
+
+!testRun: #TusLibrosSystemFacadeTest #test06CanNotAddItemNotSellByTheStore stamp: 'JPF 6/27/2021 12:45:37'!
+PASSED!
+
+!testRun: #TusLibrosSystemFacadeTest #test07ListCartOfAnEmptyCartReturnsAnEmptyBag stamp: 'JPF 6/27/2021 12:45:37'!
+PASSED!
+
+!testRun: #TusLibrosSystemFacadeTest #test08CanNotListCartOfInvalidCartId stamp: 'JPF 6/27/2021 12:45:37'!
+PASSED!
+
+!testRun: #TusLibrosSystemFacadeTest #test09ListCartReturnsTheRightNumberOfItems stamp: 'JPF 6/27/2021 12:45:37'!
+PASSED!
+
+!testRun: #TusLibrosSystemFacadeTest #test10CanCheckoutACart stamp: 'JPF 6/27/2021 12:45:37'!
+PASSED!
+
+!testRun: #TusLibrosSystemFacadeTest #test11CanNotCheckoutANotCreatedCart stamp: 'JPF 6/27/2021 12:45:37'!
+PASSED!
+
+!testRun: #TusLibrosSystemFacadeTest #test12CanNotCheckoutAnEmptyCart stamp: 'JPF 6/27/2021 12:45:37'!
+PASSED!
+
+!testRun: #TusLibrosSystemFacadeTest #test13CanNotCheckoutWithAnExpiredCreditCard stamp: 'JPF 6/27/2021 12:45:37'!
+PASSED!
+
+!testRun: #TusLibrosSystemFacadeTest #test14ListPurchasesIncludesBoughtItems stamp: 'JPF 6/27/2021 12:45:37'!
+PASSED!
+
+!testRun: #TusLibrosSystemFacadeTest #test15CanNotListPurchasesOfInvalidCustomer stamp: 'JPF 6/27/2021 12:45:37'!
+PASSED!
+
+!testRun: #TusLibrosSystemFacadeTest #test16CanNotListPurchasesOfValidCustomerWithInvalidPassword stamp: 'JPF 6/27/2021 12:45:37'!
+PASSED!
+
+!testRun: #TusLibrosSystemFacadeTest #test17CanNotAddToCartWhenSessionIsExpired stamp: 'JPF 6/27/2021 12:45:37'!
+PASSED!
+
+!testRun: #TusLibrosSystemFacadeTest #test18CanNotListCartWhenSessionIsExpired stamp: 'JPF 6/27/2021 12:45:37'!
+PASSED!
+
+!testRun: #TusLibrosSystemFacadeTest #test19CanNotCheckOutCartWhenSessionIsExpired stamp: 'JPF 6/27/2021 12:45:37'!
+PASSED!
+!TusLibrosSystemFacadeTest methodsFor: 'tests - remove item' stamp: 'JPF 6/27/2021 12:46:20'!
+test03ShoulRemoveAnItemFromTheCart
+
+	| cartId |
+	
+	cartId := systemFacade createCartFor: self validUser authenticatedWith: self validUserPassword.
+
+	self
+		should: [ systemFacade remove: testObjectsFactory itemSellByTheStore fromCartIdentifiedAs: cartId ]
+		raise: Error - MessageNotUnderstood.
+
+	! !
+!TusLibrosSystemFacadeTest methodsFor: 'tests - remove item' stamp: 'JPF 6/27/2021 12:47:14' prior: 50935041!
+test03ShoulRemoveAnItemFromTheCart
+
+	| cartId |
+	
+	cartId := systemFacade createCartFor: self validUser authenticatedWith: self validUserPassword.
+	systemFacade add: 2 of: self validBook toCartIdentifiedAs: cartId.
+	systemFacade add: 2 of: self anotherValidBook toCartIdentifiedAs: cartId.
+
+	self
+		should: [ systemFacade remove: testObjectsFactory itemSellByTheStore fromCartIdentifiedAs: cartId ]
+		raise: Error - MessageNotUnderstood.
+
+	! !
+!TusLibrosSystemFacadeTest methodsFor: 'tests - remove item' stamp: 'JPF 6/27/2021 12:47:44' prior: 50935054!
+test03ShoulRemoveAnItemFromTheCart
+
+	| cartId |
+	
+	cartId := systemFacade createCartFor: self validUser authenticatedWith: self validUserPassword.
+	systemFacade add: 2 of: self validBook toCartIdentifiedAs: cartId.
+	systemFacade add: 2 of: self anotherValidBook toCartIdentifiedAs: cartId.
+
+	systemFacade remove: self validBook fromCartIdentifiedAs: cartId.
+
+	! !
+!TusLibrosSystemFacadeTest methodsFor: 'tests - remove item' stamp: 'JPF 6/27/2021 12:47:57' prior: 50935072!
+test03ShoulRemoveAnItemFromTheCart
+
+	| cartId |
+	
+	cartId := systemFacade createCartFor: self validUser authenticatedWith: self validUserPassword.
+	systemFacade add: 2 of: self validBook toCartIdentifiedAs: cartId.
+	systemFacade add: 2 of: self anotherValidBook toCartIdentifiedAs: cartId.
+
+	systemFacade remove: self validBook fromCartIdentifiedAs: cartId.
+	
+	
+
+	! !
+!TusLibrosSystemFacadeTest methodsFor: 'tests - remove item' stamp: 'JPF 6/27/2021 12:48:46' prior: 50935087!
+test03ShoulRemoveAnItemFromTheCart
+
+	| cartId cartContent |
+	
+	cartId := systemFacade createCartFor: self validUser authenticatedWith: self validUserPassword.
+	systemFacade add: 2 of: self validBook toCartIdentifiedAs: cartId.
+	systemFacade add: 2 of: self anotherValidBook toCartIdentifiedAs: cartId.
+
+	systemFacade remove: self validBook fromCartIdentifiedAs: cartId.
+	
+	cartContent := systemFacade listCartIdentifiedAs: cartId.
+
+	self assert: (cartContent occurrencesOf: self validBook) equals: 0.
+	self assert: (cartContent occurrencesOf: self anotherValidBook) equals: 2
+	
+	
+
+	! !
+
+!testRun: #TusLibrosSystemFacadeTest #test03ShoulRemoveAnItemFromTheCart stamp: 'JPF 6/27/2021 12:48:53'!
+ERROR!
+
+!testRun: #TusLibrosSystemFacadeTest #test03ShoulRemoveAnItemFromTheCart stamp: 'JPF 6/27/2021 12:48:53'!
+ERROR!
+!TusLibrosSystemFacade methodsFor: 'facade protocol' stamp: 'JPF 6/27/2021 12:49:36' prior: 50934950!
+remove: anItem fromCartIdentifiedAs: aCartId
+
+	self withCartSessionIdentifiedAs: aCartId do: [ :cartSession | cartSession remove: anItem ]
+	
+	! !
+
+!testRun: #TusLibrosSystemFacadeTest #test03ShoulRemoveAnItemFromTheCart stamp: 'JPF 6/27/2021 12:49:37'!
+ERROR!
+!CartSession methodsFor: 'cart' stamp: 'JPF 6/27/2021 12:49:46'!
+remove: aString 
+	self shouldBeImplemented.! !
+!CartSession methodsFor: 'cart' stamp: 'JPF 6/27/2021 12:49:57' prior: 50935142!
+remove: anItemToRemove! !
+!CartSession methodsFor: 'cart' stamp: 'JPF 6/27/2021 12:50:25' prior: 50935146!
+remove: anItemToRemove
+
+	cart remove: anItemToRemove! !
+
+!testRun: #TusLibrosSystemFacadeTest #test03ShoulRemoveAnItemFromTheCart stamp: 'JPF 6/27/2021 12:50:33'!
+PASSED!
+
+!testRun: #CartTest #test01NewCartsAreCreatedEmpty stamp: 'JPF 6/27/2021 12:50:38'!
+PASSED!
+
+!testRun: #CartTest #test02CanNotAddItemsThatDoNotBelongToStore stamp: 'JPF 6/27/2021 12:50:38'!
+PASSED!
+
+!testRun: #CartTest #test03AfterAddingAnItemTheCartIsNotEmptyAnymore stamp: 'JPF 6/27/2021 12:50:38'!
+PASSED!
+
+!testRun: #CartTest #test04CanNotAddNonPositiveNumberOfItems stamp: 'JPF 6/27/2021 12:50:38'!
+PASSED!
+
+!testRun: #CartTest #test05CanNotAddMoreThanOneItemNotSellByTheStore stamp: 'JPF 6/27/2021 12:50:38'!
+PASSED!
+
+!testRun: #CartTest #test06CartRemembersAddedItems stamp: 'JPF 6/27/2021 12:50:38'!
+PASSED!
+
+!testRun: #CartTest #test07CartDoesNotHoldNotAddedItems stamp: 'JPF 6/27/2021 12:50:38'!
+PASSED!
+
+!testRun: #CartTest #test08CartRemembersTheNumberOfAddedItems stamp: 'JPF 6/27/2021 12:50:38'!
+PASSED!
+
+!testRun: #CartTest #test09CanNotRemoveAnItemThatIsNotInTheCart stamp: 'JPF 6/27/2021 12:50:38'!
+PASSED!
+
+!testRun: #CartTest #test10ShouldRemoveAnItemFromTheCart stamp: 'JPF 6/27/2021 12:50:38'!
+PASSED!
+
+!testRun: #CashierTest #test01CanNotCheckoutAnEmptyCart stamp: 'JPF 6/27/2021 12:50:38'!
+PASSED!
+
+!testRun: #CashierTest #test02CalculatedTotalIsCorrect stamp: 'JPF 6/27/2021 12:50:38'!
+PASSED!
+
+!testRun: #CashierTest #test03CanNotCheckoutWithAnExpiredCreditCart stamp: 'JPF 6/27/2021 12:50:38'!
+PASSED!
+
+!testRun: #CashierTest #test04CheckoutRegistersASale stamp: 'JPF 6/27/2021 12:50:38'!
+PASSED!
+
+!testRun: #CashierTest #test05CashierChargesCreditCardUsingMerchantProcessor stamp: 'JPF 6/27/2021 12:50:38'!
+PASSED!
+
+!testRun: #CashierTest #test06CashierDoesNotSaleWhenTheCreditCardHasNoCredit stamp: 'JPF 6/27/2021 12:50:38'!
+PASSED!
+
+!testRun: #TusLibrosSystemFacadeTest #test01CanCreateCartWithValidUserAndPassword stamp: 'JPF 6/27/2021 12:50:38'!
+PASSED!
+
+!testRun: #TusLibrosSystemFacadeTest #test01ShoulFailIfTryToRemoveAnItemFromAnInexistentCart stamp: 'JPF 6/27/2021 12:50:38'!
+PASSED!
+
+!testRun: #TusLibrosSystemFacadeTest #test01shouldReturnTheCatalog stamp: 'JPF 6/27/2021 12:50:38'!
+PASSED!
+
+!testRun: #TusLibrosSystemFacadeTest #test02CanNotCreateCartWithInvalidUser stamp: 'JPF 6/27/2021 12:50:38'!
+PASSED!
+
+!testRun: #TusLibrosSystemFacadeTest #test02ShoulFailIfTryToRemoveAnItemThatItIsNotInTheCart stamp: 'JPF 6/27/2021 12:50:38'!
+PASSED!
+
+!testRun: #TusLibrosSystemFacadeTest #test03CanNotCreateCartWithInvalidPassword stamp: 'JPF 6/27/2021 12:50:38'!
+PASSED!
+
+!testRun: #TusLibrosSystemFacadeTest #test03ShoulRemoveAnItemFromTheCart stamp: 'JPF 6/27/2021 12:50:38'!
+PASSED!
+
+!testRun: #TusLibrosSystemFacadeTest #test04CanAddItemsToACreatedCart stamp: 'JPF 6/27/2021 12:50:38'!
+PASSED!
+
+!testRun: #TusLibrosSystemFacadeTest #test05CanNotAddItemToNotCreatedCart stamp: 'JPF 6/27/2021 12:50:38'!
+PASSED!
+
+!testRun: #TusLibrosSystemFacadeTest #test06CanNotAddItemNotSellByTheStore stamp: 'JPF 6/27/2021 12:50:38'!
+PASSED!
+
+!testRun: #TusLibrosSystemFacadeTest #test07ListCartOfAnEmptyCartReturnsAnEmptyBag stamp: 'JPF 6/27/2021 12:50:38'!
+PASSED!
+
+!testRun: #TusLibrosSystemFacadeTest #test08CanNotListCartOfInvalidCartId stamp: 'JPF 6/27/2021 12:50:38'!
+PASSED!
+
+!testRun: #TusLibrosSystemFacadeTest #test09ListCartReturnsTheRightNumberOfItems stamp: 'JPF 6/27/2021 12:50:38'!
+PASSED!
+
+!testRun: #TusLibrosSystemFacadeTest #test10CanCheckoutACart stamp: 'JPF 6/27/2021 12:50:38'!
+PASSED!
+
+!testRun: #TusLibrosSystemFacadeTest #test11CanNotCheckoutANotCreatedCart stamp: 'JPF 6/27/2021 12:50:38'!
+PASSED!
+
+!testRun: #TusLibrosSystemFacadeTest #test12CanNotCheckoutAnEmptyCart stamp: 'JPF 6/27/2021 12:50:38'!
+PASSED!
+
+!testRun: #TusLibrosSystemFacadeTest #test13CanNotCheckoutWithAnExpiredCreditCard stamp: 'JPF 6/27/2021 12:50:38'!
+PASSED!
+
+!testRun: #TusLibrosSystemFacadeTest #test14ListPurchasesIncludesBoughtItems stamp: 'JPF 6/27/2021 12:50:38'!
+PASSED!
+
+!testRun: #TusLibrosSystemFacadeTest #test15CanNotListPurchasesOfInvalidCustomer stamp: 'JPF 6/27/2021 12:50:38'!
+PASSED!
+
+!testRun: #TusLibrosSystemFacadeTest #test16CanNotListPurchasesOfValidCustomerWithInvalidPassword stamp: 'JPF 6/27/2021 12:50:38'!
+PASSED!
+
+!testRun: #TusLibrosSystemFacadeTest #test17CanNotAddToCartWhenSessionIsExpired stamp: 'JPF 6/27/2021 12:50:38'!
+PASSED!
+
+!testRun: #TusLibrosSystemFacadeTest #test18CanNotListCartWhenSessionIsExpired stamp: 'JPF 6/27/2021 12:50:38'!
+PASSED!
+
+!testRun: #TusLibrosSystemFacadeTest #test19CanNotCheckOutCartWhenSessionIsExpired stamp: 'JPF 6/27/2021 12:50:38'!
+PASSED!
+!TusLibrosRestInterface methodsFor: 'initialization' stamp: 'JPF 6/27/2021 12:51:44' prior: 50932227!
+initializeWith: aPortNumber
+
+	tusLibrosSystemFacade := TusLibrosDefaultFactory new createFacade.
+	
+	port:= aPortNumber.
+	
+	webServer :=
+		WebServer new listenOn: self port;
+		addService: '/createCart' action:[ :request | self handleCreateCart: request ];
+		addService: '/addToCart' action:[ :request | self handleAddToCart: request ];
+		addService: '/listCart' action:[ :request | self handleListCart: request ];
+		addService: '/listPurchases' action:[ :request | self handleListPurchases: request ];
+		addService: '/checkOutCart' action:[ :request | self handleCheckOutCart: request ];
+		addService: '/listCatalog' action:[ :request | self handleListCatalog: request ];
+		addService: '/removeFromCart' action:[ :request | self removeFromCart: request ].
+		.! !
+!TusLibrosRestInterface methodsFor: 'handlers' stamp: 'JPF 6/27/2021 12:52:00'!
+handleRemoveFromCart: request
+
+	self handle: request with: [	 | book quantity cartId |	
+		
+		cartId := request fields at: 'cartId'.
+		book := request fields at: 'book'.
+		quantity := request fields at: 'quantity'.
+		
+		tusLibrosSystemFacade
+			add: quantity asNumber
+			of: book
+			toCartIdentifiedAs: cartId asNumber.
+		
+		request send200Response: 'OK'
+	]! !
+!TusLibrosRestInterface methodsFor: 'handlers' stamp: 'JPF 6/27/2021 12:52:43' prior: 50935325!
+handleRemoveFromCart: request
+
+	self handle: request with: [	 | book cartId |	
+		
+		cartId := request fields at: 'cartId'.
+		book := request fields at: 'book'.
+		
+		tusLibrosSystemFacade
+			remove: book
+			fromCartIdentifiedAs: cartId asNumber.
+		
+		request send200Response: 'OK'
+	]! !
+
+server destroy.!
+
+server := TusLibrosRestInterface listeningOn: 8080.!
+!TusLibrosRestInterface methodsFor: 'initialization' stamp: 'JPF 6/27/2021 12:54:57' prior: 50935298!
+initializeWith: aPortNumber
+
+	tusLibrosSystemFacade := TusLibrosDefaultFactory new createFacade.
+	
+	port:= aPortNumber.
+	
+	webServer :=
+		WebServer new listenOn: self port;
+		addService: '/createCart' action:[ :request | self handleCreateCart: request ];
+		addService: '/addToCart' action:[ :request | self handleAddToCart: request ];
+		addService: '/listCart' action:[ :request | self handleListCart: request ];
+		addService: '/listPurchases' action:[ :request | self handleListPurchases: request ];
+		addService: '/checkOutCart' action:[ :request | self handleCheckOutCart: request ];
+		addService: '/listCatalog' action:[ :request | self handleListCatalog: request ];
+		addService: '/removeFromCart' action:[ :request | self handleRemoveFromCart: request ].
+		.! !
+
+server destroy.!
+
+server := TusLibrosRestInterface listeningOn: 8080.!
+
+----SNAPSHOT----(27 June 2021 12:57:23) Interfaz.image priorSource: 19172593!
