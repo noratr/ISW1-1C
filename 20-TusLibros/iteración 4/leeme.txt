@@ -1,0 +1,24 @@
+Para abrir la ventana de login:
+
+	LoginWindow open.
+
+Se pueden loguear con 2 usuarios:
+
+	'Juan Ferrino'
+	'Nora Trinchero'
+
+El primero tiene la tarjeta no expirada y el segundo expirada.
+Para ambos la contraseña es:
+
+	'1234'
+
+Uno vez logueados, para agregar productos al carrito seleccionan el producto de la lista, escriben la cantidad y dan click en 'Add to cart'.
+
+Para quitar productos del carrito seleccionan el producto del carrito y dan click en 'Remove from cart'.
+
+Para ver historial de compras, dan click en 'Purchase History'.
+
+Para hacer el checkout del carrito, dan click en 'Check out'.
+
+Al hacer checkout, si todo va bien, se abre la ventana con el detalle
+del ticket, y ahi pueden volver a comprar o desloguearse.
